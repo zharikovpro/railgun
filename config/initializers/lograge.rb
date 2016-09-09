@@ -1,11 +1,13 @@
 # Compact logs
 Rails.application.config.lograge.enabled = true
 
-# Log process pid and all request params by default
+# Log process host, pid, timestamp and all request params by default
 Rails.application.config.lograge.custom_options = lambda do |event|
   payload = event.payload.fetch(:lograge, {})
 
   payload[:pid] = Process.pid
+  # TODO: skip inside Heroku env
+  payload[:timestamp] = Time.now.iso8601(3)
 
   payload.merge!(event.payload[:params].except('controller', 'action').transform_keys { |key| "params.#{key}" })
 end
@@ -36,8 +38,9 @@ ActionController::Instrumentation.class_eval do
     }
 
     raw_payload[:lograge] = {} # railgun
-    raw_payload[:lograge][:request_ip] = request.remote_ip # railgun
+    raw_payload[:lograge][:host] = request.host # railgun
     raw_payload[:lograge][:request_uuid] = request.uuid # railgun
+    raw_payload[:lograge][:request_ip] = request.remote_ip # railgun
     raw_payload[:lograge][:user_id] = current_user.try(:id) if defined?(current_user) # railgun
 
     ActiveSupport::Notifications.instrument("start_processing.action_controller", raw_payload.dup)
