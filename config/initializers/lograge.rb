@@ -7,7 +7,7 @@ Rails.application.config.lograge.custom_options = lambda do |event|
 
   payload[:pid] = Process.pid
   # TODO: skip inside Heroku env
-  payload[:timestamp] = Time.now.iso8601(3)
+  payload[:timestamp] = Time.now.utc
 
   payload.merge!(event.payload[:params].except('controller', 'action').transform_keys { |key| "params.#{key}" })
 end
