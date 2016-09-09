@@ -36,7 +36,7 @@ gem 'sidekiq-failures', '~> 0.4.5'
 gem 'passenger', '~> 5.0'
 
 # Rails 5 with Action Cable
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.0.0.1'
 
 # Redis for Action Cable, Sidekiq and cache
 gem 'redis', '~> 3.0'
@@ -128,11 +128,11 @@ gem 'chartkick'
 # gem 'paperclip', '~> 5.0.0'
 
 # Administration area
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
 
 # Required by ActiveAdmin to work with Rails 5
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources.git'
+gem 'ransack', git: 'https://github.com/activerecord-hackery/ransack.git'
 gem 'draper', '> 3.x'
 
 # Make network requests
