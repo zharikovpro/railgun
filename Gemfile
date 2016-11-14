@@ -44,6 +44,9 @@ gem 'redis', '~> 3.0'
 # Compact logs
 gem 'lograge'
 
+# Restore original remote_ip when using CloudFlare
+gem 'actionpack-cloudflare'
+
 # Elastic logs support
 # gem 'logstash-event'
 # gem 'logstash-logger'

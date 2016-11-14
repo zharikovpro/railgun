@@ -58,6 +58,8 @@ GEM
       rack-test (~> 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionpack-cloudflare (1.1.0)
+      actionpack (>= 3.2)
     actionview (5.0.0.1)
       activesupport (= 5.0.0.1)
       builder (~> 3.1)
@@ -364,6 +366,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-cloudflare
   activeadmin!
   awesome_print
   bcrypt (~> 3.1.7)
@@ -418,4 +421,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
