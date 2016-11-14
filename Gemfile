@@ -218,4 +218,9 @@ group :production do
 
   # New Relic APM
   gem 'newrelic_rpm'
+
+  gem 'rollbar'
+
+  # faster JSON serialization recommended by Rollbar
+  gem 'oj', '~> 2.12.14'
 end
