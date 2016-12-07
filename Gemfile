@@ -128,6 +128,7 @@ gem 'jquery-rails', '~> 4.1.1'
 
 # File uploads and attachments
 # gem 'paperclip', '~> 5.0.0'
+# gem 'aws-sdk', '~> 2.3'
 
 # Administration area and additional gems required for it to work with Rails 5
 # gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
