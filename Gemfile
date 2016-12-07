@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.3.3"
+ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 
 # Pretty print Ruby objects
 gem 'awesome_print'
