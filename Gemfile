@@ -9,16 +9,16 @@ gem 'awesome_print'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 # Cron jobs manager
-gem 'whenever', require: false
+# gem 'whenever', require: false
 
 # Background jobs queue
-gem 'sidekiq', '~> 4.1', '>= 4.1.1'
+# gem 'sidekiq', '~> 4.1', '>= 4.1.1'
 
 # Scheduled and recurrent background jobs
-gem 'sidetiq', '~> 0.6.3'
+# gem 'sidetiq', '~> 0.6.3'
 
 # Track failed jobs
-gem 'sidekiq-failures', '~> 0.4.5'
+# gem 'sidekiq-failures', '~> 0.4.5'
 
 # Expiration time for jobs
 # gem 'sidekiq-status', '~> 0.6.0'
@@ -39,7 +39,7 @@ gem 'passenger', '~> 5.0'
 gem 'rails', '~> 5.0.0.1'
 
 # Redis for Action Cable, Sidekiq and cache
-gem 'redis', '~> 3.0'
+# gem 'redis', '~> 3.0'
 
 # Compact logs
 gem 'lograge'
@@ -55,7 +55,7 @@ gem 'actionpack-cloudflare'
 gem 'pg', '~> 0.18'
 
 # Versioned database views in migrations
-gem 'scenic', '~> 1.3.0'
+# gem 'scenic', '~> 1.3.0'
 
 # When PostgreSQL is not an option
 # gem 'mysql2'
@@ -68,6 +68,9 @@ gem 'scenic', '~> 1.3.0'
 
 # Authentication engine
 gem 'devise', '~> 4.2.0'
+
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
 
 # Authorization helpers
 # gem 'pundit', '~> 1.1'
@@ -108,10 +111,6 @@ gem 'jquery-rails', '~> 4.1.1'
 # Alternative to Jbuilder
 # gem 'active_model_serializers', '~> 0.10.0'
 
-
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
-
 # Soft delete
 # gem 'paranoia', '~> 2.0'
 
@@ -125,18 +124,16 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'counter_culture', '~> 0.1.33'
 
 # Charts made easy
-gem 'chartkick'
+# gem 'chartkick'
 
 # File uploads and attachments
 # gem 'paperclip', '~> 5.0.0'
 
-# Administration area
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
-
-# Required by ActiveAdmin to work with Rails 5
-gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources.git'
-gem 'ransack', git: 'https://github.com/activerecord-hackery/ransack.git'
-gem 'draper', '> 3.x'
+# Administration area and additional gems required for it to work with Rails 5
+# gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin.git'
+# gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources.git'
+# gem 'ransack', git: 'https://github.com/activerecord-hackery/ransack.git'
+# gem 'draper', '> 3.x'
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
@@ -150,9 +147,6 @@ gem 'draper', '> 3.x'
 # gem 'therubyracer', platforms: :ruby
 
 group :development do
-  # Run commands from Procfile
-  gem 'foreman'
-
   # Run app in background for faster reload
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
