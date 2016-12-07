@@ -1,3 +1,5 @@
+require 'time'
+
 # Compact logs
 Rails.application.config.lograge.enabled = true
 
@@ -6,8 +8,8 @@ Rails.application.config.lograge.custom_options = lambda do |event|
   payload = event.payload.fetch(:lograge, {})
 
   payload[:pid] = Process.pid
-  # TODO: skip inside Heroku env
-  payload[:timestamp] = Time.now.utc
+
+  payload[:timestamp] = Time.now.utc.iso8601(3)
 
   payload.merge!(event.payload[:params].except('controller', 'action').transform_keys { |key| "params.#{key}" })
 end
