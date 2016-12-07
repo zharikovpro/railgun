@@ -8,6 +8,8 @@ gem 'awesome_print'
 # Load ENV variables from .env file
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
+gem 'rollbar'
+
 # Cron jobs manager
 # gem 'whenever', require: false
 
@@ -213,8 +215,6 @@ group :production do
 
   # New Relic APM
   gem 'newrelic_rpm'
-
-  gem 'rollbar'
 
   # faster JSON serialization recommended by Rollbar
   gem 'oj', '~> 2.12.14'
