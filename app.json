@@ -38,8 +38,7 @@
     "heroku-postgresql",
     "redismonitor",
     "heroku-redis",
-    "rollbar",
-    "scout"
+    "rollbar"
   ],
   "buildpacks": [
     {
