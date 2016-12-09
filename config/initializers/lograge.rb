@@ -1,4 +1,5 @@
 require 'time'
+require 'json'
 
 # Compact logs
 Rails.application.config.lograge.enabled = true
@@ -27,7 +28,10 @@ ActionController::Instrumentation.class_eval do
     # one log line must consist of key=value pairs without line breaks
     # as values may contain special chars like space, tab, comma, line break and quotes,
     # they must be dumped in a log-friendly escaped format, surrounded with quotes
-    escaped_params = request.filtered_parameters.map { |key, val| [key, val.dump] }.to_h
+    escaped_params = request.filtered_parameters.map do |key, val|
+      escaped_val = val.is_a?(String) ? val.dump : val.to_json
+      [key, escaped_val]
+    end.to_h
 
     raw_payload = {
       :controller => self.class.name,
