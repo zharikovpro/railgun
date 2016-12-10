@@ -29,8 +29,8 @@ ActionController::Instrumentation.class_eval do
     # as values may contain special chars like space, tab, comma, line break and quotes,
     # they must be dumped in a log-friendly escaped format, surrounded with quotes
     escaped_params = request.filtered_parameters.map do |key, val|
-      escaped_val = val.is_a?(String) ? val.dump : val.to_json
-      [key, escaped_val]
+      escaped_val = val.is_a?(String) ? val : val.to_json
+      [key, escaped_val.dump]
     end.to_h
 
     raw_payload = {
