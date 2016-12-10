@@ -161,6 +161,7 @@ group :development do
   # Insert console everywhere it's required
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
+  gem "binding_of_caller"
 
   # Debugger for console-only environments
   gem 'byebug', platform: :mri
