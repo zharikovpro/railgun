@@ -67,7 +67,9 @@ ActionController::Instrumentation.class_eval do
     ActiveSupport::Notifications.instrument("process_action.action_controller", raw_payload) do |payload|
       begin
         result = super
-        payload[:status] = response.status
+        # try used to avoid exception from failed devise authentication
+        # https://github.com/roidrage/lograge/issues/67
+        payload[:status] = response.try(:status) # railgun
         result
       ensure
         append_info_to_payload(payload)
