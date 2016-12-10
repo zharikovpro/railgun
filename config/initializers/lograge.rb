@@ -1,8 +1,20 @@
+# Consolidate general guidelines, default settings, various tweaks and patches
 require 'time'
 require 'json'
 
 # Compact logs
 Rails.application.config.lograge.enabled = true
+
+# Use plain logging formatter without Rails clutter
+Rails.application.config.log_formatter = ::Logger::Formatter.new
+
+# Detect 12F app environment, compatible with Heroku
+if ENV["RAILS_LOG_TO_STDOUT"].present?
+  Rails.application.config.logger = ActiveSupport::Logger.new(STDOUT)
+end
+
+# Configure sensitive parameters which will be filtered from the log file.
+Rails.application.config.filter_parameters += [:password]
 
 # Log process host, pid, timestamp and all request params by default
 Rails.application.config.lograge.custom_options = lambda do |event|
@@ -22,6 +34,7 @@ ActionController::Metal.class_eval do
 end
 
 # Patch required to automatically log request_ip, request_uuid, user_id inside all controllers
+# It also escapes special chars in values to make output compatible with KVP format used by LogEntries
 # Original file: actionpack/lib/action_controller/metal/instrumentation.rb, line 17
 ActionController::Instrumentation.class_eval do
   def process_action(*args)
