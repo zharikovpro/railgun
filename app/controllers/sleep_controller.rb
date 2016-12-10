@@ -1,4 +1,7 @@
 class SleepController < ActionController::Metal
+  # Metal controllers require explicit Instrumentation to support Lograge and New Relic
+  include ActionController::Instrumentation
+
   def show
     options = /^(?<from>\d+)(-(?<to>\d+))?(?<scale>ms|s|m)/.match(params[:period])
 

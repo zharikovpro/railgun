@@ -27,11 +27,13 @@ Rails.application.config.lograge.custom_options = lambda do |event|
   payload.merge!(event.payload[:params].except('controller', 'action').transform_keys { |key| "params.#{key}" })
 end
 
-# Metal controllers require explicit Instrumentation initialization to support Lograge and New Relic
-# Force instrumentation usage to never forget essential logging
-ActionController::Metal.class_eval do
-  include ActionController::Instrumentation
-end
+# Metal controllers require explicit Instrumentation to support Lograge and New Relic
+# https://github.com/zharikovpro/railgun/issues/13
+# TODO: Code below could force instrumentation usage to never forget essential logging,
+# but coupled with inherited_resources gem which is required by ActiveAdmin this hack outputs logs twice
+# ActionController::Metal.class_eval do
+#   include ActionController::Instrumentation
+# end
 
 # Patch required to automatically log request_ip, request_uuid, user_id inside all controllers
 # It also escapes special chars in values to make output compatible with KVP format used by LogEntries
