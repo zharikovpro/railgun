@@ -133,8 +133,8 @@ gem 'jquery-rails', '~> 4.1.1'
 # gem 'aws-sdk', '~> 2.6.33'
 
 # Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', github: 'activeadmin'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
