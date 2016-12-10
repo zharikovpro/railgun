@@ -33,7 +33,7 @@ ActiveAdmin.setup do |config|
   #   config.default_namespace = false
   #
   # Default:
-  config.default_namespace = ENV.fetch('ADMIN_NAMESPACE', :cowboy)
+  config.default_namespace = ENV.fetch('ADMIN_NAMESPACE', :cowboy).to_sym
   #
   # You can customize the settings for each namespace by using
   # a namespace block. For example, to change the site title
