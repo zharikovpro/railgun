@@ -1,6 +1,15 @@
 ActiveAdmin.register_page "Dashboard" do
-
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+
+  controller do
+    before_action :show_namespace_warning, only: :index
+
+    private
+
+    def show_namespace_warning
+      flash.now[:error] = 'Change ENV[\'ADMIN_NAMESPACE\'] for better security!' unless ENV['ADMIN_NAMESPACE'].present?
+    end
+  end
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
     div class: "blank_slate_container", id: "dashboard_default_message" do
