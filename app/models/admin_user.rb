@@ -6,6 +6,10 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable, :trackable, :timeoutable
 
   def timeout_in
-    10.minutes
+    if Rails.env.development?
+      1.week
+    else
+      10.minutes
+    end
   end
 end
