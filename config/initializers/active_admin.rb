@@ -1,3 +1,5 @@
+# See Railgun tweaks below config section
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
@@ -270,3 +272,18 @@ ActiveAdmin.setup do |config|
   #
   # config.include_default_association_filters = true
 end
+
+# Railgun tweaks
+
+module DefaultMainContentWithTimestampsInTheEnd
+  def default_attribute_table_rows
+    columns = super
+
+    [:deleted_at, :updated_at, :created_at].each do |column|
+      columns << column if columns.delete(column)
+    end
+
+    columns
+  end
+end
+ActiveAdmin::Views::Pages::Show.prepend(DefaultMainContentWithTimestampsInTheEnd)
