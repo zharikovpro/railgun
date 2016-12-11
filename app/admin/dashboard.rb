@@ -7,7 +7,9 @@ ActiveAdmin.register_page "Dashboard" do
     private
 
     def show_namespace_warning
-      flash.now[:error] = 'Change ENV[\'ADMIN_NAMESPACE\'] for better security!' unless ENV['ADMIN_NAMESPACE'].present?
+      unless Rails.env.development?
+        flash.now[:error] = 'Change ENV[\'ADMIN_NAMESPACE\'] for better security!' unless ENV['ADMIN_NAMESPACE'].present?
+      end
     end
   end
 
