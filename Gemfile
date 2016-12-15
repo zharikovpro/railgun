@@ -10,6 +10,9 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 gem 'rollbar'
 
+# generate security report with brakeman -o brakeman.html
+gem 'brakeman', require: false
+
 # Cron jobs manager
 # gem 'whenever', require: false
 

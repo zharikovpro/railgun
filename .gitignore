@@ -1,3 +1,5 @@
+brakeman.html
+
 *.rbc
 capybara-*.html
 /log
