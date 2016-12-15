@@ -142,6 +142,7 @@ GEM
       activesupport (>= 4.1, < 5.1)
     high_voltage (3.0.0)
     i18n (0.7.0)
+    its-it (1.3.0)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -152,6 +153,7 @@ GEM
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    key_struct (0.4.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -173,6 +175,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    modware (0.1.3)
+      key_struct (~> 0.4)
     multi_json (1.12.1)
     newrelic_rpm (3.16.0.318)
     nio4r (1.2.1)
@@ -256,6 +260,26 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    schema_monkey (2.1.5)
+      activerecord (>= 4.2)
+      modware (~> 0.1)
+    schema_plus_columns (0.1.3)
+      activerecord (>= 4.2, < 5.1)
+      its-it (~> 1.2)
+      schema_plus_core
+      schema_plus_indexes (~> 0.2)
+    schema_plus_core (2.0.1)
+      activerecord (~> 5.0)
+      its-it (~> 1.2)
+      schema_monkey (~> 2.1)
+    schema_plus_indexes (0.2.4)
+      activerecord (>= 4.2, < 5.1)
+      its-it (~> 1.2)
+      schema_plus_core
+    schema_validations (2.2.0)
+      activerecord (>= 4.2.1, < 5.1)
+      schema_plus_columns
+      valuable
     should_not (1.1.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
@@ -296,6 +320,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.1)
       execjs (>= 0.3.0, < 3)
+    valuable (0.9.13)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (3.3.1)
@@ -345,6 +370,7 @@ DEPENDENCIES
   rollbar
   rspec
   rspec-rails
+  schema_validations (~> 2.2.x)
   should_not
   shoulda-matchers
   simplecov

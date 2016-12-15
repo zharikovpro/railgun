@@ -56,6 +56,9 @@ gem 'actionpack-cloudflare'
 # PostgreSQL for Active Record
 gem 'pg', '~> 0.18'
 
+# Automatically creates validations basing on the database schema
+gem 'schema_validations', '~> 2.2.x'
+
 # Versioned database views in migrations
 # gem 'scenic', '~> 1.3.0'
 
