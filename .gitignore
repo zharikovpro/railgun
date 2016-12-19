@@ -4,6 +4,7 @@ brakeman.html
 capybara-*.html
 /log
 /tmp
+/db/*.bak
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
