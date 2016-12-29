@@ -105,9 +105,6 @@ gem 'uglifier', '>= 1.3.0'
 # CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails', '~> 4.1.1'
-
 # Optional daster navigation with some JavaScript caveats
 # Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
@@ -144,10 +141,6 @@ gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resour
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
-
-# ActionCable alternative for realtime messaging
-# gem 'firebase'
-# gem 'firebase_token_generator'
 
 # Run JavaScript code on the server
 # See https://github.com/rails/execjs#readme for more supported runtimes

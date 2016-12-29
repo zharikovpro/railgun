@@ -360,7 +360,6 @@ DEPENDENCIES
   flutie
   high_voltage
   inherited_resources!
-  jquery-rails (~> 4.1.1)
   kaminari
   letter_opener
   listen (~> 3.0.5)
