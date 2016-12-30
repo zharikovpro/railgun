@@ -18,5 +18,7 @@ module Railgun
     # + support advanced PostgreSQL features like deferred constraints, etc
     # + dump complete structure in SQL format for better integration with SQL utilities
     config.active_record.schema_format = :sql
+
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
