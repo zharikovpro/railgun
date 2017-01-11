@@ -108,8 +108,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.3)
-    connection_pool (2.2.0)
+    concurrent-ruby (1.0.4)
+    connection_pool (2.2.1)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     devise (4.2.0)
@@ -195,6 +195,8 @@ GEM
       activerecord (>= 3.0)
     public_suffix (2.0.4)
     rack (2.0.1)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.1)
@@ -230,7 +232,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    redis (3.3.1)
+    redis (3.3.2)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rollbar (2.14.0)
@@ -289,9 +291,10 @@ GEM
     should_not (1.1.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
-    sidekiq (4.1.2)
+    sidekiq (4.2.8)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
     simplecov (0.12.0)
       docile (~> 1.1.0)
@@ -385,6 +388,7 @@ DEPENDENCIES
   schema_validations (~> 2.2.x)
   should_not
   shoulda-matchers
+  sidekiq (~> 4.2, >= 4.2.8)
   simplecov
   slim (~> 3.0.7)
   slim-rails (~> 3.1.0)

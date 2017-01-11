@@ -17,7 +17,7 @@ gem 'brakeman', require: false
 # gem 'whenever', require: false
 
 # Background jobs queue
-# gem 'sidekiq', '~> 4.2', '>= 4.2.8'
+gem 'sidekiq', '~> 4.2', '>= 4.2.8'
 
 # Scheduled and recurrent background jobs
 # gem 'sidetiq', '~> 0.6.3'
