@@ -17,7 +17,7 @@ gem 'brakeman', require: false
 # gem 'whenever', require: false
 
 # Background jobs queue
-# gem 'sidekiq', '~> 4.1', '>= 4.1.1'
+# gem 'sidekiq', '~> 4.2', '>= 4.2.8'
 
 # Scheduled and recurrent background jobs
 # gem 'sidetiq', '~> 0.6.3'
@@ -205,6 +205,9 @@ group :test do
 
   # Upload coverage reports to CodeClimate
   gem 'codeclimate-test-reporter', require: nil
+
+  # Test background jobs
+  gem 'rspec-sidekiq'
 end
 
 group :production do

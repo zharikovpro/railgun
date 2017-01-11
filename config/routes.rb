@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  authenticate :admin_user do
+    mount Sidekiq::Web => "/#{ENV.fetch('ADMIN_NAMESPACE', :cowboy)}/sidekiq"
+  end
+
   # for simple probes and stress tests
   # period examples: 10ms, 1s, 1-2m
   # get 'sleep/:period', to: 'sleep#show', id: /^\d+(-(\d+))?(ms|s|m)/

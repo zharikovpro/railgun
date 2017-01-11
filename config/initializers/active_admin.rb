@@ -222,6 +222,11 @@ ActiveAdmin.setup do |config|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
   #     end
   #   end
+  config.namespace ENV.fetch('ADMIN_NAMESPACE', :cowboy).to_sym do |admin|
+    admin.build_menu do |menu|
+      menu.add label: 'Background Jobs', url: "/#{ENV.fetch('ADMIN_NAMESPACE', :cowboy)}/sidekiq", priority: 999
+    end
+  end
 
   # == Download Links
   #
