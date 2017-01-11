@@ -212,7 +212,7 @@ end
 
 group :production do
   # Redirect from additional hosts to original
-  # gem 'rack-canonical-host'
+  gem 'rack-canonical-host'
 
   # New Relic APM
   gem 'newrelic_rpm'
