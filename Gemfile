@@ -19,11 +19,11 @@ gem 'brakeman', require: false
 # Background jobs queue
 gem 'sidekiq', '~> 4.2', '>= 4.2.8'
 
+# Track failed jobs
+gem 'sidekiq-failures', '~> 0.4.5'
+
 # Scheduled and recurrent background jobs
 # gem 'sidetiq', '~> 0.6.3'
-
-# Track failed jobs
-# gem 'sidekiq-failures', '~> 0.4.5'
 
 # Expiration time for jobs
 # gem 'sidekiq-status', '~> 0.6.0'

@@ -299,6 +299,8 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
+    sidekiq-failures (0.4.5)
+      sidekiq (>= 2.16.0)
     simplecov (0.12.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -393,6 +395,7 @@ DEPENDENCIES
   should_not
   shoulda-matchers
   sidekiq (~> 4.2, >= 4.2.8)
+  sidekiq-failures (~> 0.4.5)
   simplecov
   slim (~> 3.0.7)
   slim-rails (~> 3.1.0)
