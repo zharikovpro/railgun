@@ -1,4 +1,6 @@
 class AdminUser < ApplicationRecord
+  acts_as_paranoid
+
   # Devise options for better security
   # :confirmable, :recoverable - disabled, only manual creation/update via console/db allowed
   # :rememberable - disabled, we dont want session to last forever and wait for a hijack

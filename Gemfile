@@ -117,7 +117,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'active_model_serializers', '~> 0.10.0'
 
 # Soft delete
-# gem 'paranoia', '~> 2.0'
+gem "paranoia", "~> 2.2"
 
 # Encrypted attributes
 # gem 'attr_encrypted', '~> 3.0', '>= 3.0.1'
