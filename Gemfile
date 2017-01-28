@@ -186,6 +186,9 @@ group :development, :test do
   # Fake values generator
   gem 'faker'
 
+  # Time travel
+  gem 'timecop'
+
   # View sent letters locally
   gem 'letter_opener'
 
