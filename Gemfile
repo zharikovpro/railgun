@@ -116,6 +116,9 @@ gem 'coffee-rails', '~> 4.2'
 # Alternative to Jbuilder
 # gem 'active_model_serializers', '~> 0.10.0'
 
+# Authorization policies
+gem "pundit", '~> 1.1.0'
+
 # Soft delete
 gem "paranoia", "~> 2.2"
 

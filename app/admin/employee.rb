@@ -16,8 +16,17 @@ ActiveAdmin.register Employee do
   filter :sign_in_count
   filter :created_at
 
+  show do
+    attributes_table do
+      row :role
+      row :email
+    end
+
+    active_admin_comments
+  end
+
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs 'Admin Details' do
       f.input :role
       f.input :email
       f.input :password

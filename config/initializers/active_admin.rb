@@ -62,7 +62,7 @@ ActiveAdmin.setup do |config|
   # method in a before filter of all controller actions to
   # ensure that there is a user with proper rights. You can use
   # CanCanAdapter or make your own. Please refer to documentation.
-  # config.authorization_adapter = ActiveAdmin::CanCanAdapter
+  config.authorization_adapter = ActiveAdmin::PunditAdapter
 
   # In case you prefer Pundit over other solutions you can here pass
   # the name of default policy class. This policy will be used in every
@@ -224,7 +224,9 @@ ActiveAdmin.setup do |config|
   #   end
   config.namespace ENV.fetch('ADMIN_NAMESPACE', :cowboy).to_sym do |admin|
     admin.build_menu do |menu|
-      menu.add label: 'Background Jobs', url: "/#{ENV.fetch('ADMIN_NAMESPACE', :cowboy)}/sidekiq", priority: 999
+      menu.add priority: 999, label: 'Background Jobs',
+               url: "/#{ENV.fetch('ADMIN_NAMESPACE', :cowboy)}/sidekiq",
+               if: -> { current_employee.admin? }
     end
   end
 
