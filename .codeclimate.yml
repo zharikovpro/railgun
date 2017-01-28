@@ -2,3 +2,4 @@ languages:
   Ruby: true
 exclude_paths:
 - "**/vendor"
+- "**/public"
