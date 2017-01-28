@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
 
   def root
     if Rails.env.development?
-      if AdminUser.count.zero?
-        AdminUser.create!(email: 'admin', password: 'admin', password_confirmation: 'admin')
+      if Employee.count.zero?
+        Employee.create!(role: :admin, email: 'admin', password: 'admin', password_confirmation: 'admin')
       end
 
-      admin = AdminUser.first
+      admin = Employee.first
       sign_in(admin, bypass: true)
       flash[:notice] = "Development mode, logged in as #{admin.email}"
       redirect_to '/' + ActiveAdmin.application.default_namespace.to_s

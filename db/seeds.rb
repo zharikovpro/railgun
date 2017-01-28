@@ -3,4 +3,4 @@
 #
 # Examples:
 #
-# AdminUser.create!(email: 'admin', password: 'admin', password_confirmation: 'admin')
+# Employee.create!(role: :admin, email: 'admin', password: 'admin', password_confirmation: 'admin')

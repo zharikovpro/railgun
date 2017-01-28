@@ -71,10 +71,22 @@ ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 
 
 --
--- Name: admin_users; Type: TABLE; Schema: public; Owner: -
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE admin_users (
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: employees; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE employees (
     id integer NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
@@ -88,15 +100,16 @@ CREATE TABLE admin_users (
     last_sign_in_ip inet,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    deleted_at timestamp without time zone
+    deleted_at timestamp without time zone,
+    role integer NOT NULL
 );
 
 
 --
--- Name: admin_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: employees_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE admin_users_id_seq
+CREATE SEQUENCE employees_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -105,22 +118,10 @@ CREATE SEQUENCE admin_users_id_seq
 
 
 --
--- Name: admin_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: employees_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE admin_users_id_seq OWNED BY admin_users.id;
-
-
---
--- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE ar_internal_metadata (
-    key character varying NOT NULL,
-    value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
+ALTER SEQUENCE employees_id_seq OWNED BY employees.id;
 
 
 --
@@ -140,10 +141,10 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 
 
 --
--- Name: admin_users id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: employees id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id_seq'::regclass);
+ALTER TABLE ONLY employees ALTER COLUMN id SET DEFAULT nextval('employees_id_seq'::regclass);
 
 
 --
@@ -155,19 +156,19 @@ ALTER TABLE ONLY active_admin_comments
 
 
 --
--- Name: admin_users admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY admin_users
-    ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
-
-
---
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: employees employees_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY employees
+    ADD CONSTRAINT employees_pkey PRIMARY KEY (id);
 
 
 --
@@ -200,24 +201,24 @@ CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON act
 
 
 --
--- Name: index_admin_users_on_deleted_at; Type: INDEX; Schema: public; Owner: -
+-- Name: index_employees_on_deleted_at; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_admin_users_on_deleted_at ON admin_users USING btree (deleted_at);
-
-
---
--- Name: index_admin_users_on_email; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_admin_users_on_email ON admin_users USING btree (email);
+CREATE INDEX index_employees_on_deleted_at ON employees USING btree (deleted_at);
 
 
 --
--- Name: index_admin_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_employees_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON admin_users USING btree (reset_password_token);
+CREATE UNIQUE INDEX index_employees_on_email ON employees USING btree (email);
+
+
+--
+-- Name: index_employees_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_employees_on_reset_password_token ON employees USING btree (reset_password_token);
 
 
 --
@@ -229,6 +230,8 @@ SET search_path TO "$user", public;
 INSERT INTO schema_migrations (version) VALUES
 ('20161209220302'),
 ('20161209220307'),
-('20170113150456');
+('20170113150456'),
+('20170128202329'),
+('20170128204436');
 
 

@@ -1,4 +1,4 @@
-ActiveAdmin.register AdminUser do
+ActiveAdmin.register Employee do
   permit_params :email, :password, :password_confirmation
 
   index do
@@ -24,5 +24,4 @@ ActiveAdmin.register AdminUser do
     end
     f.actions
   end
-
 end
