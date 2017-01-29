@@ -33,7 +33,7 @@
   },
   "addons": [
     "codeship",
-    "logentries",
+    "papertrail",
     "newrelic",
     "heroku-postgresql",
     "redismonitor",
