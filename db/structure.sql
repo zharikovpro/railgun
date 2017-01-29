@@ -111,8 +111,7 @@ CREATE TABLE employees (
 --
 
 COMMENT ON COLUMN employees.role IS '0 - admin
-1 - support
-2 - examinator';
+1 - support';
 
 
 --
@@ -144,6 +143,46 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
 -- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -155,6 +194,13 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 --
 
 ALTER TABLE ONLY employees ALTER COLUMN id SET DEFAULT nextval('employees_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
@@ -179,6 +225,30 @@ ALTER TABLE ONLY ar_internal_metadata
 
 ALTER TABLE ONLY employees
     ADD CONSTRAINT employees_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users employees_pkey_0; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT employees_pkey_0 PRIMARY KEY (id);
+
+
+--
+-- Name: users index_employees_on_email_0; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT index_employees_on_email_0 UNIQUE (email);
+
+
+--
+-- Name: users index_employees_on_reset_password_token_0; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT index_employees_on_reset_password_token_0 UNIQUE (reset_password_token);
 
 
 --

@@ -47,8 +47,7 @@
 			<column name="id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
 			<column name="role" type="integer" jt="4" mandatory="y" >
 				<comment><![CDATA[0 - admin
-1 - support
-2 - examinator]]></comment>
+1 - support]]></comment>
 			</column>
 			<column name="email" type="varchar" decimal="0" jt="12" mandatory="y" >
 				<defo>&#039;&#039;::character varying</defo>
@@ -95,21 +94,57 @@
 				<column name="version" />
 			</index>
 		</table>
+		<table name="users" >
+			<column name="id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="email" type="varchar" decimal="0" jt="12" mandatory="y" >
+				<defo>&#039;&#039;::character varying</defo>
+			</column>
+			<column name="encrypted_password" type="varchar" decimal="0" jt="12" mandatory="y" >
+				<defo>&#039;&#039;::character varying</defo>
+			</column>
+			<column name="reset_password_token" type="varchar" decimal="0" jt="12" />
+			<column name="reset_password_sent_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="remember_created_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="sign_in_count" type="integer" length="10" decimal="0" jt="4" mandatory="y" >
+				<defo>0</defo>
+			</column>
+			<column name="current_sign_in_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="last_sign_in_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="current_sign_in_ip" type="inet" decimal="0" jt="1111" />
+			<column name="last_sign_in_ip" type="inet" decimal="0" jt="1111" />
+			<column name="created_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
+				<defo>now()</defo>
+			</column>
+			<column name="updated_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
+				<defo>now()</defo>
+			</column>
+			<index name="employees_pkey_0" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="index_employees_on_email_0" unique="UNIQUE" >
+				<column name="email" />
+			</index>
+			<index name="index_employees_on_reset_password_token_0" unique="UNIQUE" >
+				<column name="reset_password_token" />
+			</index>
+		</table>
 		<sequence name="active_admin_comments_id_seq" start="1" />
 		<sequence name="employees_id_seq" start="1" />
+		<sequence name="users_id_seq" start="1" />
 	</schema>
-	<connector name="railgun_development" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4.1213-20161126.144548-16.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_development" user="postgres" usage="Development" read_only="y" />
+	<connector name="railgun_development" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4.1213-20161126.144548-16.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_development" user="postgres" usage="Development" />
 	<connector name="railgun_test" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4.1213-20161126.144548-16.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_test" user="postgres" usage="Test" read_only="y" />
 	<layout name="Default Layout" id="Layout_d7c4743" joined_routing="y" show_column_type="y" show_relation="name" >
-		<entity schema="public" name="ar_internal_metadata" color="ffcccc" x="544" y="80" />
-		<entity schema="public" name="schema_migrations" color="ffcccc" x="544" y="224" />
-		<entity schema="public" name="employees" color="ffccff" x="48" y="80" />
-		<entity schema="public" name="active_admin_comments" color="ffccff" x="320" y="80" />
-		<group name="Rails 5 Internals" color="ffcccc" >
+		<entity schema="public" name="active_admin_comments" color="ccccff" x="272" y="80" />
+		<entity schema="public" name="schema_migrations" color="ffccff" x="48" y="208" />
+		<entity schema="public" name="ar_internal_metadata" color="ffccff" x="48" y="80" />
+		<entity schema="public" name="employees" color="ccccff" x="464" y="80" />
+		<entity schema="public" name="users" color="ffffcc" x="752" y="80" />
+		<group name="Rails 5 Internals" color="ffccff" >
 			<entity schema="public" name="ar_internal_metadata" />
 			<entity schema="public" name="schema_migrations" />
 		</group>
-		<group name="Active Admin" color="ffccff" >
+		<group name="Active Admin" color="ccccff" >
 			<entity schema="public" name="active_admin_comments" />
 			<entity schema="public" name="employees" />
 		</group>
