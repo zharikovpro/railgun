@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="railgun" id="Project_2bd374ee" template="Default" database="PostgreSQL" >
+	<schema name="public" catalogname="4s_development" schemaname="public" >
+		<table name="active_admin_comments" >
+			<column name="id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="namespace" type="varchar" decimal="0" jt="12" />
+			<column name="body" type="text" decimal="0" jt="12" />
+			<column name="resource_id" type="varchar" decimal="0" jt="12" mandatory="y" />
+			<column name="resource_type" type="varchar" decimal="0" jt="12" mandatory="y" />
+			<column name="author_type" type="varchar" decimal="0" jt="12" />
+			<column name="author_id" type="integer" length="10" decimal="0" jt="4" />
+			<column name="created_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
+				<defo>now()</defo>
+			</column>
+			<column name="updated_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
+				<defo>now()</defo>
+			</column>
+			<index name="active_admin_comments_pkey" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="index_active_admin_comments_on_author_type_and_author_id" unique="NORMAL" >
+				<column name="author_type" />
+				<column name="author_id" />
+			</index>
+			<index name="index_active_admin_comments_on_namespace" unique="NORMAL" >
+				<column name="namespace" />
+			</index>
+			<index name="index_active_admin_comments_on_resource_type_and_resource_id" unique="NORMAL" >
+				<column name="resource_type" />
+				<column name="resource_id" />
+			</index>
+		</table>
+		<table name="ar_internal_metadata" >
+			<column name="key" type="varchar" decimal="0" jt="12" mandatory="y" />
+			<column name="value" type="varchar" decimal="0" jt="12" />
+			<column name="created_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
+				<defo>now()</defo>
+			</column>
+			<column name="updated_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
+				<defo>now()</defo>
+			</column>
+			<index name="ar_internal_metadata_pkey" unique="PRIMARY_KEY" >
+				<column name="key" />
+			</index>
+		</table>
+		<table name="employees" >
+			<column name="id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="role" type="integer" jt="4" mandatory="y" >
+				<comment><![CDATA[0 - admin
+1 - support
+2 - examinator]]></comment>
+			</column>
+			<column name="email" type="varchar" decimal="0" jt="12" mandatory="y" >
+				<defo>&#039;&#039;::character varying</defo>
+			</column>
+			<column name="encrypted_password" type="varchar" decimal="0" jt="12" mandatory="y" >
+				<defo>&#039;&#039;::character varying</defo>
+			</column>
+			<column name="reset_password_token" type="varchar" decimal="0" jt="12" />
+			<column name="reset_password_sent_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="remember_created_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="sign_in_count" type="integer" length="10" decimal="0" jt="4" mandatory="y" >
+				<defo>0</defo>
+			</column>
+			<column name="current_sign_in_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="last_sign_in_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="current_sign_in_ip" type="inet" decimal="0" jt="1111" />
+			<column name="last_sign_in_ip" type="inet" decimal="0" jt="1111" />
+			<column name="created_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
+				<defo>now()</defo>
+			</column>
+			<column name="updated_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
+				<defo>now()</defo>
+			</column>
+			<column name="deleted_at" type="timestamp" jt="93" />
+			<index name="employees_pkey" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="index_employees_on_email" unique="UNIQUE" >
+				<column name="email" />
+			</index>
+			<index name="index_employees_on_reset_password_token" unique="UNIQUE" >
+				<column name="reset_password_token" />
+			</index>
+			<index name="index_employees_on_deleted_at" unique="NORMAL" >
+				<column name="deleted_at" />
+			</index>
+			<constraint name="employees_role_check" >
+				<string>role &gt;= 0</string>
+			</constraint>
+		</table>
+		<table name="schema_migrations" >
+			<column name="version" type="varchar" decimal="0" jt="12" mandatory="y" />
+			<index name="schema_migrations_pkey" unique="PRIMARY_KEY" >
+				<column name="version" />
+			</index>
+		</table>
+		<sequence name="active_admin_comments_id_seq" start="1" />
+		<sequence name="employees_id_seq" start="1" />
+	</schema>
+	<connector name="railgun_development" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4.1213-20161126.144548-16.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_development" user="postgres" usage="Development" read_only="y" />
+	<connector name="railgun_test" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4.1213-20161126.144548-16.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_test" user="postgres" usage="Test" read_only="y" />
+	<layout name="Default Layout" id="Layout_d7c4743" joined_routing="y" show_column_type="y" show_relation="name" >
+		<entity schema="public" name="ar_internal_metadata" color="ffcccc" x="544" y="80" />
+		<entity schema="public" name="schema_migrations" color="ffcccc" x="544" y="224" />
+		<entity schema="public" name="employees" color="ffccff" x="48" y="80" />
+		<entity schema="public" name="active_admin_comments" color="ffccff" x="320" y="80" />
+		<group name="Rails 5 Internals" color="ffcccc" >
+			<entity schema="public" name="ar_internal_metadata" />
+			<entity schema="public" name="schema_migrations" />
+		</group>
+		<group name="Active Admin" color="ffccff" >
+			<entity schema="public" name="active_admin_comments" />
+			<entity schema="public" name="employees" />
+		</group>
+	</layout>
+</project>

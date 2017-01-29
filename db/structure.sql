@@ -46,8 +46,8 @@ CREATE TABLE active_admin_comments (
     resource_type character varying NOT NULL,
     author_type character varying,
     author_id integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -77,8 +77,8 @@ ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 CREATE TABLE ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -98,11 +98,21 @@ CREATE TABLE employees (
     last_sign_in_at timestamp without time zone,
     current_sign_in_ip inet,
     last_sign_in_ip inet,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL,
     deleted_at timestamp without time zone,
-    role integer NOT NULL
+    role integer NOT NULL,
+    CONSTRAINT employees_role_check CHECK ((role >= 0))
 );
+
+
+--
+-- Name: COLUMN employees.role; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN employees.role IS '0 - admin
+1 - support
+2 - examinator';
 
 
 --
