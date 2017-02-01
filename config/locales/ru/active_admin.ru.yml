@@ -3,4 +3,6 @@ ru:
     models:
       employee:
         one: Сотрудник
+        few: Сотрудника
+        many: Сотрудников
         other: Сотрудники
