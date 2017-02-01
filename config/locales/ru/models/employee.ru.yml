@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    attributes:
+      employee:
+        role: Роль
+        roles:
+          admin: Администратор
+          support: Техподдержка
+        password: Пароль
+        password_confirmation: Подтверждение пароля

@@ -1,0 +1,6 @@
+ru:
+  activerecord:
+    models:
+      employee:
+        one: Сотрудник
+        other: Сотрудники

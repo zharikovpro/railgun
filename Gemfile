@@ -8,9 +8,13 @@ gem 'awesome_print'
 # Load ENV variables from .env file
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
+# Exceptions monitoring
 gem 'rollbar'
 
-# generate security report with brakeman -o brakeman.html
+# Guess my country
+gem 'russian'
+
+# Generate security report with brakeman -o brakeman.html
 gem 'brakeman', require: false
 
 # Cron jobs manager
