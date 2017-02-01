@@ -18,9 +18,18 @@ class ApplicationController < ActionController::Base
       admin = Employee.first
       sign_in(admin, bypass: true)
       flash[:notice] = "Development mode, logged in as #{admin.email}"
-      redirect_to '/' + ActiveAdmin.application.default_namespace.to_s
+      redirect_to active_admin_root
     else
       render plain: 'Hello!'
     end
   end
+
+  def active_admin_root
+    '/' + ActiveAdmin.application.default_namespace.to_s
+  end
+
+  def reincarnation?
+    session[:reincarnated_employee_id].present?
+  end
+  helper_method :reincarnation?
 end

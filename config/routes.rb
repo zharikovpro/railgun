@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   devise_for :employees, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
 
+  authenticate :employee do
+    resources :users, only: [] do
+      resource :reincarnation, only: :create
+    end
+    resource :reincarnation, only: :destroy
+  end
+
   require 'sidekiq/web'
   authenticate :employee, lambda { |e| e.admin? } do
     mount Sidekiq::Web => "/#{ENV.fetch('ADMIN_NAMESPACE', :cowboy)}/sidekiq"
