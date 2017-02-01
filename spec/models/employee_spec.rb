@@ -1,2 +1,0 @@
-describe Employee do
-end
