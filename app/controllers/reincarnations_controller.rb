@@ -1,4 +1,4 @@
-class ReincarnationController < ApplicationController
+class ReincarnationsController < ApplicationController
   def create
     authorize :reincarnation
 
@@ -13,6 +13,6 @@ class ReincarnationController < ApplicationController
     sign_in Employee.find(session[:reincarnated_employee_id])
     session.delete(:reincarnated_employee_id)
 
-    redirect_to admin_path, notice: 'Returned from reincarnation'
+    redirect_to active_admin_root_path, notice: 'Returned from reincarnation'
   end
 end

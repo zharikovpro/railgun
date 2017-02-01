@@ -118,6 +118,10 @@
 			<column name="updated_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
 				<defo>now()</defo>
 			</column>
+			<column name="confirmation_token" type="varchar" decimal="0" jt="12" />
+			<column name="confirmed_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="confirmation_sent_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="unconfirmed_email" type="varchar" decimal="0" jt="12" />
 			<index name="employees_pkey_0" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -126,6 +130,9 @@
 			</index>
 			<index name="index_employees_on_reset_password_token_0" unique="UNIQUE" >
 				<column name="reset_password_token" />
+			</index>
+			<index name="index_users_on_confirmation_token" unique="UNIQUE" >
+				<column name="confirmation_token" />
 			</index>
 		</table>
 		<sequence name="active_admin_comments_id_seq" start="1" />

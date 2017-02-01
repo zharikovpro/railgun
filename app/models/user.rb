@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # :lockable - consider using it for ban feature
+  # :lockable - consider using it when users has financial transactions
   devise :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :timeoutable
 
   validates_presence_of :email

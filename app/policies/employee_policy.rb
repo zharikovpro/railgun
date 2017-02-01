@@ -12,11 +12,11 @@ class EmployeePolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    create?
   end
 
   def destroy?
-    user.admin?
+    create?
   end
 
   class Scope < Scope

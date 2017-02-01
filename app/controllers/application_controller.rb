@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def active_admin_root
+  def active_admin_root_path
     '/' + ActiveAdmin.application.default_namespace.to_s
   end
 
