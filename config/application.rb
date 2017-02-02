@@ -22,3 +22,5 @@ module Railgun
     config.autoload_paths << Rails.root.join('lib')
   end
 end
+
+Rails.application.routes.default_url_options[:host] = ENV.fetch('CANONICAL_HOST', 'localhost:3000')
