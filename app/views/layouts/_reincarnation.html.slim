@@ -1,4 +1,4 @@
-- if reincarnation?
+- if reincarnation? && current_user
   .alert.alert-warning.text-center
     = "Be careful, you're acting as #{current_user.email}"
     =< link_to reincarnation_path, method: :delete
