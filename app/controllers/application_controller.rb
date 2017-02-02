@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :active_admin_root_path, reincarnation?
+  helper_method :active_admin_root_path, :reincarnation?
 
   protect_from_forgery with: :exception
 
