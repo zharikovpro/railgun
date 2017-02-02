@@ -9,7 +9,7 @@ ActiveAdmin.register User do
   end
 
   action_item only: :show do
-    if policy(:reincarnation).create?
+    if ReincarnationPolicy.new(current_employee, resource).create?
       link_to 'Reincarnate', user_reincarnation_path(resource.id), method: :post
     end
   end

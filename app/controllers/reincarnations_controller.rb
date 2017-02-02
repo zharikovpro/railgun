@@ -1,9 +1,12 @@
 class ReincarnationsController < ApplicationController
   def create
-    authorize :reincarnation
+    user = User.find(params[:user_id])
+
+    unless ReincarnationPolicy.new(current_employee, user).create?
+      raise Pundit::NotAuthorizedError
+    end
 
     session[:reincarnated_employee_id] = current_employee.id
-    user = User.find(params[:user_id])
     sign_in user
 
     redirect_to root_path, notice: "Reincarnated as #{user.email}"

@@ -10,17 +10,14 @@ class ApplicationController < ActionController::Base
   end
 
   def root
-    if Rails.env.development?
-      if Employee.count.zero?
-        Employee.create!(role: :admin, email: 'admin', password: 'admin', password_confirmation: 'admin')
-      end
-
-      admin = Employee.first
+    if Rails.env.development? && Employee.count.zero?
+      admin = Employee.create!(role: :admin, email: 'admin', password: 'admin', password_confirmation: 'admin')
       sign_in(admin, bypass: true)
-      flash[:notice] = "Development mode, logged in as #{admin.email}"
+
+      flash[:notice] = "Development mode, default admin employee created #{admin.email}"
       redirect_to active_admin_root_path
     else
-      render plain: 'Hello!'
+      render 'root'
     end
   end
 
