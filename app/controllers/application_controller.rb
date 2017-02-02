@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  helper_method :active_admin_root_path, reincarnation?
+
   protect_from_forgery with: :exception
 
   include Pundit
@@ -28,5 +30,4 @@ class ApplicationController < ActionController::Base
   def reincarnation?
     session[:reincarnated_employee_id].present?
   end
-  helper_method :reincarnation?
 end
