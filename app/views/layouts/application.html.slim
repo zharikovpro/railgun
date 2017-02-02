@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Railgun
+    = csrf_meta_tags
+
+    link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+
+    script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+    script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+
+  body
+    = render 'layouts/reincarnation'
+
+    = yield
+
+    = render 'layouts/google_analytics'

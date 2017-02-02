@@ -1,0 +1,6 @@
+- if reincarnation?
+  .alert.alert-warning.text-center
+    = "Be careful, you're acting as #{current_user.email}"
+    =< link_to reincarnation_path, method: :delete
+      | Logout and return to employee mode
+      i.glyphicon.glyphicon-log-out<
