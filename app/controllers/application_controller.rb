@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       admin = Employee.first
       sign_in(admin, bypass: true)
       flash[:notice] = "Development mode, logged in as #{admin.email}"
-      redirect_to active_admin_root
+      redirect_to active_admin_root_path
     else
       render plain: 'Hello!'
     end
