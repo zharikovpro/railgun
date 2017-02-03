@@ -10,7 +10,7 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :trackable, :timeoutable
 
   validates_presence_of :role
-  validates_presence_of :email
+  validates :email, email: true
   validates_presence_of :password
 
   def timeout_in

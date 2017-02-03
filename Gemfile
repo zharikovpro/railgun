@@ -66,6 +66,12 @@ gem 'pg', '~> 0.18'
 # Automatically creates validations basing on the database schema
 gem 'schema_validations', '~> 2.2.x'
 
+# Validates emails
+gem 'email_validator'
+
+# Validate and normalize phone numbers
+gem 'phony_rails'
+
 # Versioned database views in migrations
 # gem 'scenic', '~> 1.3.0'
 
