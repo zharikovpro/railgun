@@ -2,12 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'application#root'
 
-  devise_for :users
-
-  devise_for :employees, ActiveAdmin::Devise.config
+  devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
 
-  authenticate :employee do
+  authenticate :user do
     resources :users, only: [] do
       resource :reincarnation, only: :create
     end
@@ -15,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   require 'sidekiq/web'
-  authenticate :employee, lambda { |e| e.admin? } do
+  authenticate :user, lambda { |e| e.admin? } do
     mount Sidekiq::Web => "/#{ENV.fetch('ADMIN_NAMESPACE', :cowboy)}/sidekiq"
   end
 

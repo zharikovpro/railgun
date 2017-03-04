@@ -1,8 +1,8 @@
 ru:
   activerecord:
     models:
-      employee:
-        one: Сотрудник
-        few: Сотрудника
-        many: Сотрудников
-        other: Сотрудники
+      user:
+        one: Пользователь
+        few: Пользователя
+        many: Пользователей
+        other: Пользователей

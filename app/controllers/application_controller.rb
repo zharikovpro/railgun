@@ -7,16 +7,12 @@ class ApplicationController < ActionController::Base
   #after_action :verify_authorized, except: :index, unless: :devise_controller?
   #after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
 
-  def pundit_user
-    current_employee
-  end
-
   def root
-    if Rails.env.development? && Employee.count.zero?
-      admin = Employee.create!(role: :admin, email: 'admin', password: 'admin', password_confirmation: 'admin')
+    if Rails.env.development? && User.count.zero?
+      admin = User.create!(role: :admin, email: 'admin', password: 'admin', password_confirmation: 'admin')
       sign_in(admin, bypass: true)
 
-      flash[:notice] = "Development mode, default admin employee created #{admin.email}"
+      flash[:notice] = "Development mode, default admin user created #{admin.email}"
       redirect_to active_admin_root_path
     else
       render 'root'
@@ -28,6 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def reincarnation?
-    session[:reincarnated_employee_id].present?
+    session[:reincarnated_user_id].present?
   end
 end
