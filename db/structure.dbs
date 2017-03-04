@@ -52,7 +52,7 @@
 		<table name="users" >
 			<column name="id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
 			<column name="role" type="user_role" jt="12" mandatory="y" >
-				<defo>&#039;consumer&#039;</defo>
+				<defo>&#039;consumer&#039;::user_role</defo>
 			</column>
 			<column name="email" type="varchar" decimal="0" jt="12" mandatory="y" >
 				<defo>&#039;&#039;::character varying</defo>
@@ -92,12 +92,14 @@
 			<index name="index_users_on_confirmation_token" unique="UNIQUE" >
 				<column name="confirmation_token" />
 			</index>
+			<index name="index_users_on_role" unique="NORMAL" >
+				<column name="role" />
+			</index>
 		</table>
 		<sequence name="active_admin_comments_id_seq" start="1" />
-		<sequence name="employees_id_seq" start="1" />
 		<sequence name="users_id_seq" start="1" />
 	</schema>
-	<connector name="railgun_development" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4.1213-20161126.144548-16.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_development" user="postgres" usage="Development" />
+	<connector name="railgun_development" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4.1213.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_development" user="postgres" usage="Development" />
 	<connector name="railgun_test" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4.1213-20161126.144548-16.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_test" user="postgres" usage="Test" read_only="y" />
 	<layout name="Default Layout" id="Layout_d7c4743" joined_routing="y" show_column_type="y" show_relation="name" >
 		<entity schema="public" name="active_admin_comments" color="ccccff" x="272" y="80" />

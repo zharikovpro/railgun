@@ -94,57 +94,6 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
--- Name: employees; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE employees (
-    id integer NOT NULL,
-    email character varying DEFAULT ''::character varying NOT NULL,
-    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
-    reset_password_token character varying,
-    reset_password_sent_at timestamp without time zone,
-    remember_created_at timestamp without time zone,
-    sign_in_count integer DEFAULT 0 NOT NULL,
-    current_sign_in_at timestamp without time zone,
-    last_sign_in_at timestamp without time zone,
-    current_sign_in_ip inet,
-    last_sign_in_ip inet,
-    created_at timestamp without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp without time zone DEFAULT now() NOT NULL,
-    deleted_at timestamp without time zone,
-    role integer NOT NULL,
-    CONSTRAINT employees_role_check CHECK ((role >= 0))
-);
-
-
---
--- Name: COLUMN employees.role; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN employees.role IS '0 - admin
-1 - support';
-
-
---
--- Name: employees_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE employees_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: employees_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE employees_id_seq OWNED BY employees.id;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -206,13 +155,6 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 
 
 --
--- Name: employees id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY employees ALTER COLUMN id SET DEFAULT nextval('employees_id_seq'::regclass);
-
-
---
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -233,14 +175,6 @@ ALTER TABLE ONLY active_admin_comments
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
-
-
---
--- Name: employees employees_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY employees
-    ADD CONSTRAINT employees_pkey PRIMARY KEY (id);
 
 
 --
@@ -297,27 +231,6 @@ CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON act
 
 
 --
--- Name: index_employees_on_deleted_at; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_employees_on_deleted_at ON employees USING btree (deleted_at);
-
-
---
--- Name: index_employees_on_email; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_employees_on_email ON employees USING btree (email);
-
-
---
--- Name: index_employees_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_employees_on_reset_password_token ON employees USING btree (reset_password_token);
-
-
---
 -- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -345,6 +258,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170128204436'),
 ('20170201210123'),
 ('20170201210738'),
-('20170304192306');
+('20170304192306'),
+('20170304195109');
 
 

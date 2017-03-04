@@ -12,6 +12,14 @@ class User < ApplicationRecord
   validates_presence_of :password
 
   def timeout_in
-    7.days
+    if employee?
+      30.minutes
+    else
+      7.days
+    end
+  end
+
+  def employee?
+    role != 'consumer'
   end
 end
