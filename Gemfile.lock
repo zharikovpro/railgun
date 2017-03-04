@@ -191,7 +191,7 @@ GEM
     orm_adapter (0.5.0)
     paranoia (2.2.0)
       activerecord (>= 4.0, < 5.1)
-    passenger (5.1.0)
+    passenger (5.1.2)
       rack
       rake (>= 0.8.1)
     pg (0.19.0)
@@ -398,7 +398,7 @@ DEPENDENCIES
   newrelic_rpm
   oj (~> 2.12.14)
   paranoia (~> 2.2)
-  passenger (~> 5.1)
+  passenger (~> 5.1.2)
   pg (~> 0.18)
   phony_rails
   pundit (~> 1.1.0)
@@ -429,4 +429,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.13.6
+   1.14.3

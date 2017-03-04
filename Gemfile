@@ -42,7 +42,7 @@ gem 'sidekiq-failures', '~> 0.4.5'
 # gem 'rack-cors', :require => 'rack/cors'
 
 # Passenger has the best documentation and support
-gem 'passenger', '~> 5.1'
+gem 'passenger', '~> 5.1.2'
 
 # Rails 5 with Action Cable
 gem 'rails', '~> 5.0.1'
