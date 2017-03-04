@@ -30,6 +30,17 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: user_role; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE user_role AS ENUM (
+    'admin',
+    'support',
+    'consumer'
+);
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -163,7 +174,8 @@ CREATE TABLE users (
     confirmation_token character varying,
     confirmed_at timestamp without time zone,
     confirmation_sent_at timestamp without time zone,
-    unconfirmed_email character varying
+    unconfirmed_email character varying,
+    role user_role DEFAULT 'consumer'::user_role NOT NULL
 );
 
 
@@ -313,6 +325,13 @@ CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (conf
 
 
 --
+-- Name: index_users_on_role; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_role ON users USING btree (role);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -325,6 +344,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170128202329'),
 ('20170128204436'),
 ('20170201210123'),
-('20170201210738');
+('20170201210738'),
+('20170304192306');
 
 
