@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def employee?
     role != 'consumer'
   end
+
+  def confirmation_required?
+    !employee?
+  end
 end
