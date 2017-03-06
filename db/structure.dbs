@@ -57,6 +57,7 @@
 			<column name="email" type="varchar" decimal="0" jt="12" mandatory="y" >
 				<defo>&#039;&#039;::character varying</defo>
 			</column>
+			<column name="unconfirmed_email" type="varchar" decimal="0" jt="12" />
 			<column name="encrypted_password" type="varchar" decimal="0" jt="12" mandatory="y" >
 				<defo>&#039;&#039;::character varying</defo>
 			</column>
@@ -70,16 +71,15 @@
 			<column name="last_sign_in_at" type="timestamp" length="29" decimal="6" jt="93" />
 			<column name="current_sign_in_ip" type="inet" decimal="0" jt="1111" />
 			<column name="last_sign_in_ip" type="inet" decimal="0" jt="1111" />
+			<column name="confirmation_token" type="varchar" decimal="0" jt="12" />
+			<column name="confirmed_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<column name="confirmation_sent_at" type="timestamp" length="29" decimal="6" jt="93" />
 			<column name="created_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
 				<defo>now()</defo>
 			</column>
 			<column name="updated_at" type="timestamp" length="29" decimal="6" jt="93" mandatory="y" >
 				<defo>now()</defo>
 			</column>
-			<column name="confirmation_token" type="varchar" decimal="0" jt="12" />
-			<column name="confirmed_at" type="timestamp" length="29" decimal="6" jt="93" />
-			<column name="confirmation_sent_at" type="timestamp" length="29" decimal="6" jt="93" />
-			<column name="unconfirmed_email" type="varchar" decimal="0" jt="12" />
 			<index name="employees_pkey_0" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
