@@ -8,4 +8,4 @@ Installation
 
 1. Clone/fork
 2. Change db names in config/database.yml
-3. rails db:create && rails db:structure:load
+3. rails db:create && rails db:structure:load && rails db:seed
