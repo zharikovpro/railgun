@@ -275,15 +275,15 @@ end
 
 # http://stackoverflow.com/questions/36965377/rails-factorygirl-inside-app-in-development-env/37003351
 ActionDispatch::Callbacks.before do
-  # Reload the factories
-  return unless (Rails.env.development? || Rails.env.test?)
+  if Rails.env.development? || Rails.env.test?
+    # Reload the factories
+    FactoryGirl.definition_file_paths = [Rails.root.join('spec', 'factories')]
 
-  FactoryGirl.definition_file_paths = [Rails.root.join('spec', 'factories')]
-
-  # first init will load factories, this should only run on subsequent reloads
-  unless FactoryGirl.factories.blank?
-    FactoryGirl.factories.clear
-    FactoryGirl.sequences.clear
-    FactoryGirl.find_definitions
+    # first init will load factories, this should only run on subsequent reloads
+    unless FactoryGirl.factories.blank?
+      FactoryGirl.factories.clear
+      FactoryGirl.sequences.clear
+      FactoryGirl.find_definitions
+    end
   end
 end
