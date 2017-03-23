@@ -2,6 +2,7 @@
   "name": "railgun",
   "description": "",
   "scripts": {
+    "test": "bundle exec rake factory_girl:lint && bundle exec rspec"
   },
   "env": {
     "LANG": {
@@ -24,6 +25,27 @@
     },
     "SECRET_KEY_BASE": {
       "required": true
+    }
+  },
+  "environments": {
+    "test": {
+      "env": {
+        "LANG": "en_US.UTF-8",
+        "NEW_RELIC_APP_NAME": "test",
+        "RACK_ENV": "test",
+        "RAILS_ENV": "test",
+        "RAILS_LOG_TO_STDOUT": "enabled",
+        "RAILS_SERVE_STATIC_FILES": "enabled",
+        "SECRET_KEY_BASE": "test"
+      },
+      "buildpacks": [
+        {
+          "url": "heroku/ruby"
+        },
+        {
+          "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
+        }
+      ]
     }
   },
   "formation": {

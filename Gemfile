@@ -145,12 +145,21 @@ gem "paranoia", "~> 2.2"
 # gem 'chartkick'
 
 # File uploads and attachments
-# gem 'paperclip', '~> 5.1.0'
-# gem 'aws-sdk', '~> 2.6.33'
+gem 'paperclip', '~> 5.1.0'
+gem 'aws-sdk', '~> 2.6.33'
 
 # Administration area and additional gems required for it to work with Rails 5
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+
+# Form builder
+gem 'formtastic', '~> 3.1'
+
+# HTML/XML parser
+gem 'nokogiri'
+
+# Model factories in all environments
+gem 'factory_girl_rails'
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
@@ -181,7 +190,6 @@ end
 
 group :development, :test do
   # Eloquent specs
-  gem 'rspec'
   gem 'rspec-rails'
 
   # Testing helpers
@@ -189,9 +197,6 @@ group :development, :test do
 
   # Cleaner test names
   gem 'should_not'
-
-  # Model factories
-  gem 'factory_girl_rails'
 
   # Fake values generator
   gem 'faker'
@@ -205,14 +210,21 @@ group :development, :test do
   # Acceptance testing
   gem 'capybara'
 
-  # Faster driver with additional setup
-  # gem 'capybara-webkit'
-
-  # Screenshots for failed tests
+  # Screenshot all failures
   gem 'capybara-screenshot'
+
+  # Email utilities
+  gem 'capybara-email'
+
+  # Fully featured driver
+  # http://stackoverflow.com/questions/23951381/how-do-poltergeist-phantomjs-and-capybara-webkit-differ
+  gem 'poltergeist'
 end
 
 group :test do
+  # Instafailing formatter
+  gem 'fuubar'
+
   # Run tests with clean database
   gem 'database_cleaner'
 
@@ -224,6 +236,9 @@ group :test do
 
   # Test background jobs
   gem 'rspec-sidekiq'
+
+  # Mutation testing
+  gem 'mutant-rspec'
 end
 
 group :production do
