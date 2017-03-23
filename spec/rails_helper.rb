@@ -48,7 +48,7 @@ RSpec.configure do |config|
 
   config.before(focus: true) { fail 'Remove focused specs before commit!' if ENV['CI'] }
   config.after(:each) { Warden.test_reset! }
-  config.after(:suite) { FileUtils.rm_r("#{Rails.root}/tmp/paperclip") }
+  config.after(:suite) { FileUtils.rm_rf("#{Rails.root}/tmp/paperclip") }
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
