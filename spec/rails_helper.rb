@@ -5,10 +5,17 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
+require 'fileutils'
 require 'spec_helper'
 require 'rspec/rails'
+require 'factory_girl_rails'
 require 'paperclip/matchers'
+require 'pundit/rspec'
 require 'capybara/rspec'
+require 'capybara/rails'
+require 'capybara-screenshot/rspec'
+require 'capybara/email/rspec'
+require 'capybara/poltergeist'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -25,7 +32,7 @@ require 'capybara/rspec'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -34,6 +41,14 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Paperclip::Shoulda::Matchers
+  config.include Rails.application.routes.url_helpers
+  config.include AcceptanceSupport, type: :feature
+  config.include ActiveSupport::Testing::TimeHelpers
+  config.include Warden::Test::Helpers
+
+  config.before(focus: true) { fail 'Remove focused specs before commit!' if ENV['CI'] }
+  config.after(:each) { Warden.test_reset! }
+  config.after(:suite) { FileUtils.rm_r("#{Rails.root}/tmp/paperclip") }
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -54,6 +69,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # http://www.virtuouscode.com/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
+  config.use_transactional_fixtures = false
 end
 
 Shoulda::Matchers.configure do |config|
@@ -62,3 +80,20 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new app, {
+    timeout: 60,
+    window_size: [1280, 720],
+    js_errors: true
+  }
+end
+
+Capybara.app_host = 'http://localhost:3333'
+Capybara.server_host = 'localhost'
+Capybara.server_port = '3333'
+Capybara.default_wait_time = 10
+
+Capybara.javascript_driver = :poltergeist
+Capybara.ignore_hidden_elements = true
+Capybara::Screenshot.prune_strategy = :keep_last_run

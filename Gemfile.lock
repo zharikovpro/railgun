@@ -30,6 +30,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    abstract_type (0.0.7)
     actioncable (5.0.1)
       actionpack (= 5.0.1)
       nio4r (~> 1.2)
@@ -69,12 +70,28 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    adamantium (0.2.0)
+      ice_nine (~> 0.11.0)
+      memoizable (~> 0.4.0)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
+    anima (0.3.0)
+      abstract_type (~> 0.0.7)
+      adamantium (~> 0.2)
+      equalizer (~> 0.0.11)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
+    ast (2.3.0)
     awesome_print (1.7.0)
+    aws-sdk (2.6.33)
+      aws-sdk-resources (= 2.6.33)
+    aws-sdk-core (2.6.33)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.6.33)
+      aws-sdk-core (= 2.6.33)
+    aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -95,9 +112,17 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-email (2.5.0)
+      capybara (~> 2.4)
+      mail
     capybara-screenshot (1.0.14)
       capybara (>= 1.0, < 3)
       launchy
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cliver (0.3.2)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (1.0.3)
       simplecov
     coderay (1.1.1)
@@ -108,6 +133,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    concord (0.1.5)
+      adamantium (~> 0.2.0)
+      equalizer (~> 0.0.9)
     concurrent-ruby (1.0.4)
     connection_pool (2.2.1)
     database_cleaner (1.5.3)
@@ -126,6 +154,7 @@ GEM
       railties (>= 4.0, < 5.1)
     email_validator (1.6.0)
       activemodel
+    equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -140,6 +169,9 @@ GEM
     formtastic (3.1.4)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    fuubar (2.2.0)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     has_scope (0.7.0)
@@ -147,7 +179,9 @@ GEM
       activesupport (>= 4.1, < 5.1)
     high_voltage (3.0.0)
     i18n (0.7.0)
+    ice_nine (0.11.2)
     its-it (1.3.0)
+    jmespath (1.3.1)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -174,23 +208,63 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     modware (0.1.3)
       key_struct (~> 0.4)
+    morpher (0.2.6)
+      abstract_type (~> 0.0.7)
+      adamantium (~> 0.2.0)
+      anima (~> 0.3.0)
+      ast (~> 2.2)
+      concord (~> 0.1.5)
+      equalizer (~> 0.0.9)
+      ice_nine (~> 0.11.0)
+      procto (~> 0.0.2)
     multi_json (1.12.1)
+    mutant (0.8.12)
+      abstract_type (~> 0.0.7)
+      adamantium (~> 0.2.0)
+      anima (~> 0.3.0)
+      ast (~> 2.2)
+      concord (~> 0.1.5)
+      diff-lcs (~> 1.2)
+      equalizer (~> 0.0.9)
+      ice_nine (~> 0.11.1)
+      memoizable (~> 0.4.2)
+      morpher (~> 0.2.6)
+      parallel (~> 1.3)
+      parser (~> 2.3.1, >= 2.3.1.4)
+      procto (~> 0.0.2)
+      regexp_parser (~> 0.3.6)
+      unparser (~> 0.2.5)
+    mutant-rspec (0.8.11)
+      mutant (~> 0.8.11)
+      rspec-core (>= 3.4.0, < 3.6.0)
     newrelic_rpm (3.17.2.327)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     oj (2.12.14)
     orm_adapter (0.5.0)
+    paperclip (5.1.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (~> 0.3.0)
+    parallel (1.11.1)
     paranoia (2.2.0)
       activerecord (>= 4.0, < 5.1)
+    parser (2.3.3.1)
+      ast (~> 2.2)
     passenger (5.1.2)
       rack
       rake (>= 0.8.1)
@@ -199,8 +273,13 @@ GEM
     phony_rails (0.14.4)
       activesupport (>= 3.0)
       phony (~> 2.15)
+    poltergeist (1.13.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     polyamorous (1.3.1)
       activerecord (>= 3.0)
+    procto (0.0.3)
     public_suffix (2.0.4)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -246,6 +325,7 @@ GEM
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redis (3.3.3)
+    regexp_parser (0.3.6)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rollbar (2.14.0)
@@ -274,6 +354,7 @@ GEM
       rspec (~> 3.0, >= 3.0.0)
       sidekiq (>= 2.4.0)
     rspec-support (3.5.0)
+    ruby-progressbar (1.8.1)
     russian (0.6.0)
       i18n (>= 0.5.0)
     sass (3.4.23)
@@ -352,6 +433,14 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
+    unparser (0.2.5)
+      abstract_type (~> 0.0.7)
+      adamantium (~> 0.2.0)
+      concord (~> 0.1.5)
+      diff-lcs (~> 1.2.5)
+      equalizer (~> 0.0.9)
+      parser (~> 2.3.0)
+      procto (~> 0.0.2)
     valuable (0.9.13)
     warden (1.2.6)
       rack (>= 1.0)
@@ -373,12 +462,14 @@ DEPENDENCIES
   actionpack-cloudflare
   activeadmin!
   awesome_print
+  aws-sdk (~> 2.6.33)
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
   brakeman
   byebug
   capybara
+  capybara-email
   capybara-screenshot
   codeclimate-test-reporter
   coffee-rails (~> 4.2)
@@ -389,23 +480,28 @@ DEPENDENCIES
   factory_girl_rails
   faker
   flutie
+  formtastic (~> 3.1)
+  fuubar
   high_voltage
   inherited_resources!
   kaminari
   letter_opener
   listen (~> 3.0.5)
   lograge
+  mutant-rspec
   newrelic_rpm
+  nokogiri
   oj (~> 2.12.14)
+  paperclip (~> 5.1.0)
   paranoia (~> 2.2)
   passenger (~> 5.1.2)
   pg (~> 0.18)
   phony_rails
+  poltergeist
   pundit (~> 1.1.0)
   rack-canonical-host
   rails (~> 5.0.1)
   rollbar
-  rspec
   rspec-rails
   rspec-sidekiq
   russian
