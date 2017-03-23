@@ -161,6 +161,9 @@ gem 'nokogiri'
 # Model factories in all environments
 gem 'factory_girl_rails'
 
+# Fake values generator
+gem 'faker'
+
 # Make network requests
 # gem 'httpclient', '~> 2.8'
 
@@ -197,9 +200,6 @@ group :development, :test do
 
   # Cleaner test names
   gem 'should_not'
-
-  # Fake values generator
-  gem 'faker'
 
   # Time travel
   gem 'timecop'
