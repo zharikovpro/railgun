@@ -10,3 +10,8 @@ Rake::Task['db:schema:load'].clear
 task 'db:schema:load' do
   Rake::Task['db:structure:load'].invoke
 end
+
+# run all specs like on the CI server
+task 'ci' do
+  system('CI=1 rspec')
+end
