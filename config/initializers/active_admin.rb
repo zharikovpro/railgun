@@ -33,7 +33,7 @@ ActiveAdmin.setup do |config|
   #   config.default_namespace = false
   #
   # Default:
-  config.default_namespace = ENV.fetch('ADMIN_NAMESPACE', :cowboy).to_sym
+  config.default_namespace = :staff
   #
   # You can customize the settings for each namespace by using
   # a namespace block. For example, to change the site title
@@ -222,11 +222,11 @@ ActiveAdmin.setup do |config|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
   #     end
   #   end
-  config.namespace ENV.fetch('ADMIN_NAMESPACE', :cowboy).to_sym do |admin|
+  config.namespace :staff do |admin|
     admin.build_menu do |menu|
       menu.add priority: 999, label: 'Background Jobs',
-               url: "/#{ENV.fetch('ADMIN_NAMESPACE', :cowboy)}/sidekiq",
-               if: -> { current_user.admin? }
+               url: '/staff/sidekiq',
+               if: -> { current_user.developer? }
     end
   end
 

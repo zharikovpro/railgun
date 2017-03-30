@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   end
 
   require 'sidekiq/web'
-  authenticate :user, lambda { |e| e.admin? } do
-    mount Sidekiq::Web => "/#{ENV.fetch('ADMIN_NAMESPACE', :cowboy)}/sidekiq"
+  authenticate :user, lambda { |user| user.developer? } do
+    mount Sidekiq::Web => "/staff/sidekiq"
   end
 
   # for simple probes and stress tests
