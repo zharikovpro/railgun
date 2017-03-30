@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module Railgun
   class Application < Rails::Application
+    if Rails.application.class.parent_name == 'Railgun'
+      puts 'You must change default "Railgun" app name in config/application.rb:9'
+      exit(1)
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

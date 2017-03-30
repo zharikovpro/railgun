@@ -5,11 +5,15 @@
 # Exit if any subcommand fails
 set -e
 
-# Set up Ruby dependencies via Bundler
-bundle install
+if grep -Fxq "module Railgun" config/application.rb
+then
+  echo "$(tput setaf 1)You must change default "Railgun" app name in config/application.rb:9$ and repeat$(tput sgr 0)"
+else
+  npm install -g phantomjs-prebuilt
 
-npm install -g phantomjs-prebuilt
+  bundle install
 
-bundle exec rails db:create
-bundle exec rails db:structure:load
-bundle exec rails db:seed
+  bundle exec rails db:create
+  bundle exec rails db:structure:load
+  bundle exec rails db:seed
+fi
