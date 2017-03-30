@@ -73,7 +73,7 @@ GEM
     adamantium (0.2.0)
       ice_nine (~> 0.11.0)
       memoizable (~> 0.4.0)
-    addressable (2.5.0)
+    addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     anima (0.3.0)
       abstract_type (~> 0.0.7)
@@ -97,6 +97,7 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    bindex (0.5.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bourbon (4.3.3)
@@ -260,7 +261,6 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
-    oj (2.12.14)
     orm_adapter (0.5.0)
     paperclip (5.1.0)
       activemodel (>= 4.2.0)
@@ -452,10 +452,10 @@ GEM
     valuable (0.9.13)
     warden (1.2.7)
       rack (>= 1.0)
-    web-console (3.4.0)
+    web-console (3.5.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
-      debug_inspector
+      bindex (>= 0.4.0)
       railties (>= 5.0)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -499,7 +499,6 @@ DEPENDENCIES
   mutant-rspec
   newrelic_rpm
   nokogiri
-  oj (~> 2.12.14)
   paperclip (~> 5.1.0)
   paranoia (~> 2.2)
   passenger (~> 5.1.2)
@@ -530,7 +529,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.4.1p111
 
 BUNDLED WITH
-   1.14.3
+   1.14.6

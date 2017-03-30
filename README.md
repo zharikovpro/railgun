@@ -1,7 +1,7 @@
 Railgun
 =======
 
-Opinionated Ruby 2.3 + Rails 5 [Twelve-Factor](http://12factor.net/) project template. 
+Opinionated Ruby 2.4 + Rails 5 [Twelve-Factor](http://12factor.net/) project template. 
 
 Installation
 ------------
@@ -14,5 +14,5 @@ Running tests
 -------------
 
 1. npm install -g phantomjs
-2. rails s
-3. rspec
+2. rspec
+3. rails s
