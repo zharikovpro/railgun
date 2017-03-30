@@ -13,6 +13,6 @@ Installation
 Running tests
 -------------
 
-1. npm install -g phantomjs
+1. npm install -g phantomjs-prebuilt
 2. rspec
 3. rails s
