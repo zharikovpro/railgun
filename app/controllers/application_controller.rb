@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :reincarnation?
+  helper_method :user_reincarnated?
 
   protect_from_forgery with: :exception
 
@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def root
   end
 
-  def reincarnation?
-    session[:reincarnated_user_id].present?
-  end
+  # def user_reincarnated?
+  #   session[:reincarnated_user_id].present?
+  # end
 end

@@ -1,6 +1,6 @@
-- if reincarnation? && current_user
-  .alert.alert-warning.text-center
-    = "Be careful, you're acting as #{current_user.email}"
-    =< link_to reincarnation_path, method: :delete
-      | Logout and return to previous user
-      i.glyphicon.glyphicon-log-out<
+/- if user_reincarnated? && current_user
+/  .alert.alert-warning.text-center
+/    = "Be careful, you're acting as #{current_user.email}"
+/    =< link_to reincarnation_path, method: :delete
+/      | Logout and return to previous user
+/      i.glyphicon.glyphicon-log-out<

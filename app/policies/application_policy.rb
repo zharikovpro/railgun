@@ -10,44 +10,27 @@ class ApplicationPolicy
     false
   end
 
-  def show?
-    scope.where(id: record.id).exists?
+  def new?
+    false
   end
 
   def create?
     false
   end
 
-  def new?
-    create?
+  def show?
+    false
+  end
+
+  def edit?
+    false
   end
 
   def update?
     false
   end
 
-  def edit?
-    update?
-  end
-
   def destroy?
     false
-  end
-
-  def scope
-    Pundit.policy_scope!(user, record.class)
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope
-    end
   end
 end

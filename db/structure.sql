@@ -103,6 +103,39 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: user_roles; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE user_roles (
+    id integer NOT NULL,
+    grantor_id integer NOT NULL,
+    user_id integer NOT NULL,
+    role user_role NOT NULL,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    deleted_at timestamp without time zone
+);
+
+
+--
+-- Name: user_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE user_roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: user_roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE user_roles_id_seq OWNED BY user_roles.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -123,8 +156,7 @@ CREATE TABLE users (
     confirmation_token character varying,
     confirmed_at timestamp without time zone,
     confirmation_sent_at timestamp without time zone,
-    unconfirmed_email character varying,
-    role user_role DEFAULT 'consumer'::user_role NOT NULL
+    unconfirmed_email character varying
 );
 
 
@@ -152,6 +184,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 --
 
 ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
+
+
+--
+-- Name: user_roles id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY user_roles ALTER COLUMN id SET DEFAULT nextval('user_roles_id_seq'::regclass);
 
 
 --
@@ -186,6 +225,14 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: user_roles idx_roles; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY user_roles
+    ADD CONSTRAINT idx_roles UNIQUE (user_id, role);
+
+
+--
 -- Name: users index_employees_on_email_0; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -202,11 +249,33 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: user_roles pk_roles; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY user_roles
+    ADD CONSTRAINT pk_roles PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: idx_roles_0; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_roles_0 ON user_roles USING btree (user_id);
+
+
+--
+-- Name: idx_roles_1; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_roles_1 ON user_roles USING btree (grantor_id);
 
 
 --
@@ -238,10 +307,19 @@ CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (conf
 
 
 --
--- Name: index_users_on_role; Type: INDEX; Schema: public; Owner: -
+-- Name: user_roles fk_grantor_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-CREATE INDEX index_users_on_role ON users USING btree (role);
+ALTER TABLE ONLY user_roles
+    ADD CONSTRAINT fk_grantor_id FOREIGN KEY (grantor_id) REFERENCES users(id);
+
+
+--
+-- Name: user_roles fk_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY user_roles
+    ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
@@ -249,3 +327,16 @@ CREATE INDEX index_users_on_role ON users USING btree (role);
 --
 
 SET search_path TO "$user", public;
+
+INSERT INTO "schema_migrations" (version) VALUES
+('20161209220302'),
+('20161209220307'),
+('20170113150456'),
+('20170128202329'),
+('20170128204436'),
+('20170201210123'),
+('20170201210738'),
+('20170304192306'),
+('20170304195109');
+
+
