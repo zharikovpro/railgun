@@ -9,7 +9,7 @@ RSpec.feature feature, issues: [54] do
   scenario = <<~HEREDOC
     Given user with 'support' role
     Given administrator is on the edit user page
-    When he checks Delete near 'support' and clicks 'Update User',
+    When he checks 'Delete' near 'support' and clicks 'Update User',
     Then user has no 'support' role
   HEREDOC
 
@@ -21,6 +21,6 @@ RSpec.feature feature, issues: [54] do
     check 'Delete'
     click_button 'Update User'
 
-    expect(UserRole.all).to be_empty
+    expect(support.reload.user_roles).to be_empty
   end
 end
