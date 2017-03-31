@@ -25,6 +25,12 @@ RSpec.configure do |config|
     Timeout.timeout(60, &example)
   end
 
+  if ENV['CI']
+    config.before(focus: true) { fail 'Remove focused specs before commit!' }
+    config.before(skip: true) { fail 'Remove skipped specs before commit!' }
+    config.before(:each) { |example| fail 'Add issues metadata!' if example.metadata.fetch(:issues, []).empty? }
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

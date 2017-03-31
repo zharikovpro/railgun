@@ -46,11 +46,6 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
   config.include Warden::Test::Helpers
 
-  if ENV['CI']
-    config.before(focus: true) { fail 'Remove focused specs before commit!' }
-    config.before(skip: true) { fail 'Remove skipped specs before commit!' }
-  end
-
   config.after(:each) { Warden.test_reset! }
   config.after(:suite) { FileUtils.rm_rf("#{Rails.root}/tmp/paperclip") }
 
