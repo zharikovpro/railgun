@@ -12,7 +12,15 @@ FactoryGirl.define do
       #confirmed
 
       factory :administrator do
-        # TODO: role = :administrator
+        # after :create do |user|
+        #   user.user_roles << create(:user_role, :administrator)
+        # end
+      end
+
+      factory :support do
+        after :create do |user|
+          user.user_roles << create(:user_role, :support)
+        end
       end
     end
   end

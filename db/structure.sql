@@ -35,9 +35,10 @@ SET search_path = public, pg_catalog;
 --
 
 CREATE TYPE user_role AS ENUM (
-    'admin',
+    'administrator',
+    'developer',
     'support',
-    'consumer'
+    'moderator'
 );
 
 

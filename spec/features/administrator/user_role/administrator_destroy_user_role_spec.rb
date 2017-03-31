@@ -13,15 +13,14 @@ RSpec.feature feature, issues: [54] do
     Then user has no 'support' role
   HEREDOC
 
-  fscenario scenario do
-    role = create(:support)
-    user = role.user
+  scenario scenario do
+    support = create(:support)
     login_as create(:administrator)
-    visit edit_staff_user_path(user)
+    visit edit_staff_user_path(support)
 
     check 'Delete'
     click_button 'Update User'
 
-    expect(user.user_roles).to be_empty
+    expect(UserRole.all).to be_empty
   end
 end

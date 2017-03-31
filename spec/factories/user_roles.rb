@@ -3,7 +3,7 @@ FactoryGirl.define do
     association :user
     association :grantor, factory: :user
 
-    factory :support do
+    trait :support do
       role :support
     end
   end
