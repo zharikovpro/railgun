@@ -23,4 +23,4 @@ module Railgun
   end
 end
 
-Rails.application.routes.default_url_options[:host] = ENV.fetch('CANONICAL_HOST', 'localhost:3000')
+Rails.application.routes.default_url_options[:host] = ENV.fetch('CANONICAL_HOST', 'localhost:5000')
