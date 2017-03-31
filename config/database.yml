@@ -7,7 +7,7 @@ default: &default
 
 development:
   <<: *default
-  database: <%= Rails.application.class.parent_name %>_development
+  database: <%= Rails.application.class.parent_name.downcase %>_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -41,7 +41,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: <%= Rails.application.class.parent_name %>_test
+  database: <%= Rails.application.class.parent_name.downcase %>_test
 
 # Heroku exposes DATABASE_URL, use this ENV as a convention
 production:
