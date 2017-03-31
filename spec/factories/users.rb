@@ -4,12 +4,16 @@ FactoryGirl.define do
     password Faker::Internet.password
     password_confirmation Faker::Internet.password
 
-    trait :confirmed do
-      confirmed_at { Faker::Date.backward(3) }
-    end
+    # trait :confirmed do
+    #   confirmed_at { Faker::Date.backward(3) }
+    # end
 
-    factory :administrator do
-      confirmed
+    factory :employee do
+      #confirmed
+
+      factory :administrator do
+        # TODO: role = :administrator
+      end
     end
   end
 end

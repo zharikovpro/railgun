@@ -25,7 +25,7 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    f.inputs 'Admin Details' do
+    f.inputs 'Credentials' do
       f.input :email
       f.input :password
       f.input :password_confirmation

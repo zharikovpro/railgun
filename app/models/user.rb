@@ -5,6 +5,8 @@ class User < ApplicationRecord
   validates_presence_of :email
   validates_presence_of :password
 
+  has_many :user_roles, inverse_of: :user
+
   # TODO: def timeout_in
   #   if employee?
   #     30.minutes
@@ -21,14 +23,18 @@ class User < ApplicationRecord
   #   employee?
   # end
 
-  def employee?
-    false
-  end
+  # def customer?
+  #   true
+  # end
 
-  def administrator?
-    true
-  end
-
+  # def employee?
+  #   false
+  # end
+  #
+  # def administrator?
+  #   true
+  # end
+  #
   def developer?
     false
   end

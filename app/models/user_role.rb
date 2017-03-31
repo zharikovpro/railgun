@@ -1,4 +1,7 @@
 class UserRole < ApplicationRecord
-  ROLES = [:administrator, :developer, :support, :moderator]
-  enum role: Hash[ROLES.zip(ROLES)]
+  TITLES = [:administrator, :developer, :support, :moderator]
+  enum role: Hash[TITLES.zip(TITLES)]
+
+  belongs_to :grantor, inverse_of: :user
+  belongs_to :user, inverse_of: :user_roles
 end
