@@ -11,17 +11,18 @@ RSpec.feature feature, issues: [54] do
     Then new user record with that credentials is present
   HEREDOC
 
-  let (:user_attributes) { attributes_for(:user) }
+  let (:email) { Faker::Internet.email }
+  let (:password) { Faker::Internet.password }
 
   scenario scenario do
     login_as FactoryGirl.create(:administrator)
     visit new_staff_user_path
 
-    fill_in 'Email', with: user_attributes[:email]
-    fill_in 'Password', with: user_attributes[:password], match: :prefer_exact
-    fill_in 'Password confirmation', with: user_attributes[:password], match: :prefer_exact
+    fill_in 'Email', with: email
+    fill_in 'Password', with: password, match: :prefer_exact
+    fill_in 'Password confirmation', with: password, match: :prefer_exact
     click_button 'Create User'
 
-    expect(User.find_by_email(user_attributes[:email]).valid_password?(user_attributes[:password])).to be_truthy
+    expect(User.find_by_email(email).valid_password?(password)).to be_truthy
   end
 end
