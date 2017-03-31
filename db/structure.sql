@@ -249,16 +249,3 @@ CREATE INDEX index_users_on_role ON users USING btree (role);
 --
 
 SET search_path TO "$user", public;
-
-INSERT INTO schema_migrations (version) VALUES
-('20161209220302'),
-('20161209220307'),
-('20170113150456'),
-('20170128202329'),
-('20170128204436'),
-('20170201210123'),
-('20170201210738'),
-('20170304192306'),
-('20170304195109');
-
-

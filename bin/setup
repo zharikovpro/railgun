@@ -7,7 +7,7 @@ set -e
 
 if grep -Fxq "module Railgun" config/application.rb
 then
-  echo "$(tput setaf 1)You must change default "Railgun" app name in config/application.rb:9$ and repeat$(tput sgr 0)"
+  echo "$(tput setaf 1)You must change default "Railgun" app name in config/application.rb:9 and repeat $(tput sgr 0)"
 else
   cp .env.example .env
 
