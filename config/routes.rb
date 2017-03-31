@@ -14,10 +14,6 @@ Rails.application.routes.draw do
 
   require 'sidekiq/web'
   authenticate :user, lambda { |user| user.developer? } do
-    mount Sidekiq::Web => "/staff/sidekiq"
+    mount Sidekiq::Web => '/staff/sidekiq'
   end
-
-  # for simple probes and stress tests
-  # period examples: 10ms, 1s, 1-2m
-  # get 'sleep/:period', to: 'sleep#show', id: /^\d+(-(\d+))?(ms|s|m)/
 end
