@@ -88,9 +88,9 @@ Capybara.register_driver :poltergeist do |app|
   }
 end
 
-Capybara.app_host = 'http://localhost:3333'
+Capybara.app_host = 'https://localhost:5050'
 Capybara.server_host = 'localhost'
-Capybara.server_port = '3333'
+Capybara.server_port = '5050'
 Capybara.default_wait_time = 10
 
 Capybara.javascript_driver = :poltergeist

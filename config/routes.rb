@@ -5,15 +5,15 @@ Rails.application.routes.draw do
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
 
-  authenticate :user do
-    resources :users, only: [] do
-      resource :reincarnation, only: :create
-    end
-    resource :reincarnation, only: :destroy
-  end
+  # authenticate :user do
+  #   resources :users, only: [] do
+  #     resource :reincarnation, only: :create
+  #   end
+  #   resource :reincarnation, only: :destroy
+  # end
 
-  require 'sidekiq/web'
-  authenticate :user, lambda { |user| user.developer? } do
-    mount Sidekiq::Web => '/staff/sidekiq'
-  end
+  # require 'sidekiq/web'
+  # authenticate :user, lambda { |user| user.developer? } do
+  #   mount Sidekiq::Web => '/staff/sidekiq'
+  # end
 end

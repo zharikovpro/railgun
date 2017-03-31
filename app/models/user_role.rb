@@ -1,7 +1,4 @@
 class UserRole < ApplicationRecord
-  enum role: {
-    admin: 'admin',
-    support: 'support',
-    consumer: 'consumer'
-  }
+  ROLES = [:administrator, :developer, :support, :moderator]
+  enum role: Hash[ROLES.zip(ROLES)]
 end
