@@ -51,7 +51,6 @@
 		</table>
 		<table name="user_roles" >
 			<column name="id" type="serial" jt="4" mandatory="y" />
-			<column name="grantor_id" type="integer" jt="4" mandatory="y" />
 			<column name="user_id" type="integer" jt="4" mandatory="y" />
 			<column name="role" type="user_role" jt="12" mandatory="y" />
 			<column name="created_at" type="timestamp" jt="93" mandatory="y" >
@@ -68,14 +67,8 @@
 			<index name="idx_roles_0" unique="NORMAL" >
 				<column name="user_id" />
 			</index>
-			<index name="idx_roles_1" unique="NORMAL" >
-				<column name="grantor_id" />
-			</index>
 			<fk name="fk_user_id" to_schema="public" to_table="users" >
 				<fk_column name="user_id" pk="id" />
-			</fk>
-			<fk name="fk_grantor_id" to_schema="public" to_table="users" >
-				<fk_column name="grantor_id" pk="id" />
 			</fk>
 		</table>
 		<table name="users" >
@@ -119,24 +112,45 @@
 				<column name="confirmation_token" />
 			</index>
 		</table>
+		<table name="versions" >
+			<column name="id" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="item_type" type="varchar" decimal="0" jt="12" mandatory="y" />
+			<column name="item_id" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="event" type="varchar" decimal="0" jt="12" mandatory="y" />
+			<column name="whodunnit" type="varchar" decimal="0" jt="12" />
+			<column name="object" type="text" decimal="0" jt="12" />
+			<column name="created_at" type="timestamp" length="29" decimal="6" jt="93" />
+			<index name="versions_pkey" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="index_versions_on_item_type_and_item_id" unique="NORMAL" >
+				<column name="item_type" />
+				<column name="item_id" />
+			</index>
+		</table>
 		<sequence name="active_admin_comments_id_seq" start="1" />
 		<sequence name="user_roles_id_seq" start="1" />
 		<sequence name="users_id_seq" start="1" />
+		<sequence name="versions_id_seq" start="1" />
 	</schema>
 	<connector name="railgun_development" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-42.0.0.jre6.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_development" user="postgres" usage="Development" />
 	<connector name="railgun_test" database="PostgreSQL" host="localhost" port="5432" instance="railgun_test" user="postgres" usage="Test" read_only="y" />
 	<layout name="Default Layout" id="Layout_d7c4743" joined_routing="y" show_column_type="y" show_relation="cascade" >
-		<entity schema="public" name="schema_migrations" color="ffccff" x="48" y="240" />
-		<entity schema="public" name="users" color="ccffcc" x="480" y="112" />
-		<entity schema="public" name="active_admin_comments" color="ccccff" x="272" y="112" />
-		<entity schema="public" name="ar_internal_metadata" color="ffccff" x="48" y="112" />
-		<entity schema="public" name="user_roles" color="ccffcc" x="784" y="80" />
+		<entity schema="public" name="schema_migrations" color="ffccff" x="48" y="224" />
+		<entity schema="public" name="active_admin_comments" color="ccccff" x="256" y="96" />
+		<entity schema="public" name="ar_internal_metadata" color="ffccff" x="48" y="96" />
+		<entity schema="public" name="user_roles" color="ccffcc" x="736" y="80" />
+		<entity schema="public" name="versions" color="ccccff" x="256" y="352" />
+		<entity schema="public" name="users" color="ccffcc" x="464" y="96" />
 		<group name="Rails 5 Internals" color="ffccff" >
 			<entity schema="public" name="ar_internal_metadata" />
 			<entity schema="public" name="schema_migrations" />
 		</group>
-		<group name="Active Admin" color="ccccff" >
+		<group name="ActiveAdmin" color="ccccff" >
 			<entity schema="public" name="active_admin_comments" />
+		</group>
+		<group name="PaperTrail" color="ccccff" >
+			<entity schema="public" name="versions" />
 		</group>
 	</layout>
 </project>
