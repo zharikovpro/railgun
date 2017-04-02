@@ -164,6 +164,9 @@ gem 'factory_girl_rails'
 # Fake values generator
 gem 'faker'
 
+# Changes audit
+gem 'paper_trail', '~> 7.0.0'
+
 # Make network requests
 # gem 'httpclient', '~> 2.8'
 

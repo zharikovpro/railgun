@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
-  helper_method :user_reincarnated?
-
   protect_from_forgery with: :exception
 
+  before_action :set_paper_trail_whodunnit
+
   include Pundit
+
+  #helper_method :user_reincarnated?
+
   #after_action :verify_authorized, except: :index, unless: :devise_controller?
   #after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
 

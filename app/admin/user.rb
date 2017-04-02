@@ -5,7 +5,7 @@ ActiveAdmin.register User do
                 user_role_ids: [],
                 user_roles_attributes: [
                   :id,
-                  :grantor_id, :user_id, :role,
+                  :user_id, :role,
                   :_create, :_destroy
                 ]
 
@@ -65,7 +65,6 @@ ActiveAdmin.register User do
 
     f.inputs 'Roles' do
       f.has_many :user_roles, new_record: 'Add Role', allow_destroy: true do |r|
-        r.input :grantor_id, as: :hidden, input_html: { value: current_user.id }
         r.input :role, as: :select, collection: UserRole::TITLES
       end
     end

@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.1
--- Dumped by pg_dump version 9.6.1
+-- Dumped from database version 9.6.2
+-- Dumped by pg_dump version 9.6.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -109,7 +109,6 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE user_roles (
     id integer NOT NULL,
-    grantor_id integer NOT NULL,
     user_id integer NOT NULL,
     role user_role NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
@@ -181,6 +180,40 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
+-- Name: versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE versions (
+    id integer NOT NULL,
+    item_type character varying NOT NULL,
+    item_id integer NOT NULL,
+    event character varying NOT NULL,
+    whodunnit character varying,
+    object text,
+    created_at timestamp without time zone
+);
+
+
+--
+-- Name: versions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE versions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: versions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE versions_id_seq OWNED BY versions.id;
+
+
+--
 -- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -199,6 +232,13 @@ ALTER TABLE ONLY user_roles ALTER COLUMN id SET DEFAULT nextval('user_roles_id_s
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: versions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY versions ALTER COLUMN id SET DEFAULT nextval('versions_id_seq'::regclass);
 
 
 --
@@ -266,17 +306,18 @@ ALTER TABLE ONLY schema_migrations
 
 
 --
+-- Name: versions versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY versions
+    ADD CONSTRAINT versions_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: idx_roles_0; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX idx_roles_0 ON user_roles USING btree (user_id);
-
-
---
--- Name: idx_roles_1; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX idx_roles_1 ON user_roles USING btree (grantor_id);
 
 
 --
@@ -308,11 +349,10 @@ CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (conf
 
 
 --
--- Name: user_roles fk_grantor_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: index_versions_on_item_type_and_item_id; Type: INDEX; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY user_roles
-    ADD CONSTRAINT fk_grantor_id FOREIGN KEY (grantor_id) REFERENCES users(id);
+CREATE INDEX index_versions_on_item_type_and_item_id ON versions USING btree (item_type, item_id);
 
 
 --
@@ -338,6 +378,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170201210123'),
 ('20170201210738'),
 ('20170304192306'),
-('20170304195109');
+('20170304195109'),
+('20170402194926'),
+('20170402201720');
 
 
