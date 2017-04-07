@@ -7,3 +7,8 @@ Installation
 ------------
 
 `./bin/setup`
+
+Checkup
+-------
+
+`rspec`
