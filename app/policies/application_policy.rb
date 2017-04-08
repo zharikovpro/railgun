@@ -1,4 +1,7 @@
 class ApplicationPolicy
+  # Default deny stance:
+  # specify only what you allow
+  # and prohibit everything else.
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -11,23 +14,23 @@ class ApplicationPolicy
   end
 
   def new?
-    true
+    false
   end
 
   def create?
-    true
+    false
   end
 
   def show?
-    true
+    false
   end
 
   def edit?
-    true
+    false
   end
 
   def update?
-    true
+    false
   end
 
   def destroy?
