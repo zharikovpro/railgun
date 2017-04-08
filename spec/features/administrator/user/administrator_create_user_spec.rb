@@ -5,8 +5,8 @@ feature = <<~HEREDOC
 HEREDOC
 
 RSpec.feature feature, issues: [54] do
-  let (:email) { Faker::Internet.email }
-  let (:password) { Faker::Internet.password }
+  let(:email) { Faker::Internet.email }
+  let(:password) { Faker::Internet.password }
 
   scenario = <<~HEREDOC
     Given administrator is on the new user page

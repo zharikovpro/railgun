@@ -34,10 +34,10 @@ class User < ApplicationRecord
   #   false
   # end
   #
-  # def administrator?
-  #   true
-  # end
-  #
+  def administrator?
+    user_roles.exists?(role: :administrator)
+  end
+
   def developer?
     false
   end

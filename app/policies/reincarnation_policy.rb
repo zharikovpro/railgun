@@ -1,2 +1,0 @@
-class ReincarnationPolicy < ApplicationPolicy
-end

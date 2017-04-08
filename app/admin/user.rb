@@ -26,26 +26,6 @@ ActiveAdmin.register User do
   filter :sign_in_count
   filter :created_at
 
-  show do
-    columns do
-      column do
-        attributes_table do
-          row :email
-        end
-      end
-
-      column do
-        panel 'Roles' do
-          table_for user.user_roles do
-            column(:role) { |user_role| user_role.role.titleize }
-          end
-        end
-      end
-    end
-
-    active_admin_comments
-  end
-
   form do |f|
     f.inputs 'Credentials' do
       f.input :email
