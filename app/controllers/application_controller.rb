@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :set_paper_trail_whodunnit
 
   include Pundit
-  after_action :verify_authorized, except: :index, unless: :devise_or_active_admin_controller?
   after_action :verify_policy_scoped, only: :index, unless: :devise_or_active_admin_controller?
+  after_action :verify_authorized, except: :index, unless: :devise_or_active_admin_controller?
 
   def root
   end
