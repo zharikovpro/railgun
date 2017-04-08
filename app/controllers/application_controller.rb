@@ -3,12 +3,9 @@ class ApplicationController < ActionController::Base
 
   before_action :set_paper_trail_whodunnit
 
-  include Pundit
-
-  #helper_method :user_reincarnated?
-
-  #after_action :verify_authorized, except: :index, unless: :devise_controller?
-  #after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
+  # TODO: include Pundit
+  # TODO: after_action :verify_authorized, except: :index, unless: :devise_controller?
+  # TODO: after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
 
   def root
   end
