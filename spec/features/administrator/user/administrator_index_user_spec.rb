@@ -23,7 +23,8 @@ HEREDOC
 RSpec.feature feature, issues: [76] do
   scenario = <<~HEREDOC
     Given employee
-    Given administrator is on the Employees page
+    Given administrator is on the Users page
+    When he clicks 'Employees'
     Then he can click 'show' link to see employee details
   HEREDOC
 
