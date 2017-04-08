@@ -11,7 +11,7 @@ then
 else
   cp .env.example .env
 
-  npm install -g phantomjs-prebuilt
+  sudo npm install -g phantomjs-prebuilt
 
   bundle install
 
