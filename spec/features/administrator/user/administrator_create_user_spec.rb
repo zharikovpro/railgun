@@ -14,7 +14,7 @@ RSpec.feature feature, issues: [54] do
     Then new user record with that credentials is present
   HEREDOC
 
-  fscenario scenario do
+  scenario scenario do
     login_as FactoryGirl.create(:administrator)
     visit new_staff_user_path
 

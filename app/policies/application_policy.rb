@@ -13,19 +13,11 @@ class ApplicationPolicy
     false
   end
 
-  def new?
-    false
-  end
-
   def create?
     false
   end
 
   def show?
-    false
-  end
-
-  def edit?
     false
   end
 
