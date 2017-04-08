@@ -1,3 +1,15 @@
+module ActiveAdmin
+  module Views
+    class Footer
+      def powered_by_message
+        text_node '<div style="text-align: center;">
+          Made with zero defects by <a href="http://www.zharikov.pro">Andrey Zharikov</a> &copy;
+        </div>'.html_safe
+      end
+    end
+  end
+end
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
