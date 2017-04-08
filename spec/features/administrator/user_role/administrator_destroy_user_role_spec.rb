@@ -5,7 +5,6 @@ feature = <<~HEREDOC
 HEREDOC
 
 RSpec.feature feature, issues: [54] do
-
   scenario = <<~HEREDOC
     Given user with 'support' role
     Given administrator is on the edit user page
@@ -18,9 +17,9 @@ RSpec.feature feature, issues: [54] do
     login_as create(:administrator)
     visit edit_staff_user_path(support)
 
-    # check 'Delete'
-    # click_button 'Update User'
+    check 'Delete'
+    click_button 'Update User'
 
-    #expect(support.reload.user_roles).to be_empty
+    expect(support.reload.user_roles).to be_empty
   end
 end
