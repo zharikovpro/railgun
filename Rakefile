@@ -13,5 +13,5 @@ end
 
 # run all specs like on the CI server
 task 'ci' do
-  system('rake factory_girl:lint && CI=1 rspec')
+  system('bundle exec rake factory_girl:lint && CI=1 bundle exec rspec')
 end

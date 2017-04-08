@@ -2,7 +2,7 @@
   "name": "railgun",
   "description": "",
   "scripts": {
-    "test": "bundle exec rake factory_girl:lint && bundle exec rspec"
+    "test": "rake ci"
   },
   "env": {
     "LANG": {
