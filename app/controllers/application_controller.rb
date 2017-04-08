@@ -1,16 +1,22 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception # TODO: unless current_user.visitor?
 
   before_action :set_paper_trail_whodunnit
 
-  # TODO: include Pundit
-  # TODO: after_action :verify_authorized, except: :index, unless: :devise_controller?
-  # TODO: after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
+  include Pundit
+  after_action :verify_authorized, except: :index, unless: :devise_or_active_admin_controller?
+  after_action :verify_policy_scoped, only: :index, unless: :devise_or_active_admin_controller?
 
   def root
   end
 
-  # def user_reincarnated?
-  #   session[:reincarnated_user_id].present?
-  # end
+  private
+
+  def active_admin_controller?
+    params[:controller].start_with?(ActiveAdmin.application.default_namespace.to_s)
+  end
+
+  def devise_or_active_admin_controller?
+    devise_controller? || active_admin_controller?
+  end
 end
