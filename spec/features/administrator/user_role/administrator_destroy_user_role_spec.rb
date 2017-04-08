@@ -8,7 +8,7 @@ RSpec.feature feature, issues: [54] do
   scenario = <<~HEREDOC
     Given user with 'support' role
     Given administrator is on the edit user page
-    When he checks 'Delete' near 'support' and clicks 'Update User',
+    When he checks 'Delete' near 'support' and clicks 'Update User'
     Then user has no 'support' role
   HEREDOC
 

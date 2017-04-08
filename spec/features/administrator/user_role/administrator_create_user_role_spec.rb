@@ -8,7 +8,7 @@ RSpec.feature feature, issues: [54] do
 
   scenario = <<~HEREDOC
     Given administrator is on the edit user page
-    When he clicks Add Role, selects 'support' and clicks 'Update User',
+    When he clicks Add Role, selects 'support' and clicks 'Update User'
     Then user has 'support' role
   HEREDOC
 

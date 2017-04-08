@@ -10,7 +10,7 @@ RSpec.feature feature, issues: [54] do
 
   scenario = <<~HEREDOC
     Given administrator is on the new user page
-    When he fills in email and password and clicks 'Create User' button,
+    When he fills in email and password and clicks 'Create User' button
     Then new user record with that credentials is present
   HEREDOC
 
