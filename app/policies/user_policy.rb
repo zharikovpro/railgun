@@ -14,7 +14,15 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    user.administrator?
+  end
+
   def create?
+    user.administrator?
+  end
+
+  def show?
     user.administrator?
   end
 

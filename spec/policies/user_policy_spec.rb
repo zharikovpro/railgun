@@ -12,7 +12,7 @@ RSpec.describe UserPolicy, issues: [54] do
       end
 
       it 'reads all users' do
-        user = create(:user)
+        create(:user)
 
         resolved_scope = subject::Scope.new(administrator, User).resolve
         
