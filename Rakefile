@@ -13,5 +13,5 @@ end
 
 # run all specs like on the CI server
 task 'ci' do
-  system('bundle exec rails_best_practices . && bundle exec rake factory_girl:lint && CI=1 bundle exec rspec')
+  system('bundle exec rake factory_girl:lint && CI=1 bundle exec rspec')
 end

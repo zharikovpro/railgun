@@ -1,3 +1,9 @@
+if ENV['CI']
+  unless system('rails_best_practices .')
+    exit 1
+  end
+end
+
 require 'simplecov'
 SimpleCov.start 'rails'
 SimpleCov.minimum_coverage 100

@@ -226,7 +226,7 @@ end
 
 group :test do
   # Best practices FTW!
-  gem 'rails_best_practices'
+  gem 'rails_best_practices', require: false
 
   # Instafailing formatter
   gem 'fuubar'
