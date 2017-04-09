@@ -225,6 +225,9 @@ group :development, :test do
 end
 
 group :test do
+  # Best practices FTW!
+  gem 'rails_best_practices'
+
   # Instafailing formatter
   gem 'fuubar'
 
