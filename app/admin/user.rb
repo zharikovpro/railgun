@@ -26,6 +26,14 @@ ActiveAdmin.register User do
   filter :sign_in_count
   filter :created_at
 
+=begin  
+  index do
+    id_column
+    email
+    actions
+  end
+=end
+
   form do |f|
     f.inputs 'Credentials' do
       f.input :email
@@ -41,4 +49,5 @@ ActiveAdmin.register User do
 
     f.actions
   end
+
 end

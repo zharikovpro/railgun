@@ -7,11 +7,20 @@ HEREDOC
 RSpec.feature feature, issues: [75] do
   scenario = <<~HEREDOC
     Given user
-    When administrator visits users page
-    Then he can click 'show' link to see user details
+    Given administrator is on the Users page
+    When he clicks 'View'
+    Then he sees user details
   HEREDOC
 
-  scenario scenario
+  scenario scenario do
+    user = create(:user)
+    login_as create(:administrator)
+    visit staff_users_path
+
+    click_link('View', href: "/staff/users/#{user.id}")
+
+    expect(page).to have_content(user.email)
+  end
 end
 
 feature = <<~HEREDOC
