@@ -5,7 +5,7 @@
 # Exit if any subcommand fails
 set -e
 
-if [[ $1 != railgun ]] && grep -Fxq "module Railgun" config/application.rb
+if [ "$1" != railgun ] && grep -Fxq "module Railgun" config/application.rb
 then
   echo "$(tput setaf 1)You must change default "Railgun" app name in config/application.rb:9 and repeat $(tput sgr 0)"
 else
