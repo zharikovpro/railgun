@@ -30,10 +30,10 @@ class User < ApplicationRecord
   #   true
   # end
 
-  # def employee?
-  #   false
-  # end
-  #
+  def employee?
+    user_roles.present?
+  end
+  
   def administrator?
     user_roles.exists?(role: :administrator)
   end

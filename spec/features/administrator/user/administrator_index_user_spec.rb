@@ -26,7 +26,7 @@ end
 feature = <<~HEREDOC
   When administrator wants to work with employees,
   he wants to list all employees,
-  so that he can know more about employee
+  so that he can know more about employees
 HEREDOC
 
 RSpec.feature feature, issues: [76] do
@@ -37,6 +37,8 @@ RSpec.feature feature, issues: [76] do
     Then he can click 'show' link to see employee details
   HEREDOC
 
-  scenario scenario
+  scenario scenario do
   # TODO: check Index Scopes section on https://activeadmin.info/3-index-pages.html
+    
+  end
 end

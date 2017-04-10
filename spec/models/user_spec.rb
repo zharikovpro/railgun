@@ -4,7 +4,22 @@ RSpec.describe do
   end
 
   context 'has role' do
-    it 'is employee', issues: [76]
-    # TODO: implement User#employee? method
+    it 'is employee', issues: [76] do
+    	user = create(:administrator)
+
+  		is_employee = user.employee?
+
+  		expect(is_employee).to be true
+		end
+  end
+
+  context 'has no role' do 
+  	it 'is not employee' do
+  		user = create(:user)
+
+  		is_employee = user.employee?
+
+  		expect(is_employee).to be false
+  	end
   end
 end
