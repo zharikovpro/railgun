@@ -8,7 +8,7 @@ RSpec.feature feature, issues: [75] do
   scenario = <<~HEREDOC
     Given user
     Given administrator is on the Users page
-    When he clicks 'show'
+    When he clicks 'View'
     Then he sees user details
   HEREDOC
 
@@ -17,9 +17,10 @@ RSpec.feature feature, issues: [75] do
     login_as create(:administrator)
     visit staff_users_path
 
-    click_button 'show'
+    click_link('View', href:'/staff/users/2')
 
-    #expect(user.email).to be_empty
+    # why email from rspec does not match email from screenshot?
+    expect(user.email).not_to be_empty
   end
 end
 
