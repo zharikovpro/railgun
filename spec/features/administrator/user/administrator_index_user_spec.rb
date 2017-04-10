@@ -17,10 +17,9 @@ RSpec.feature feature, issues: [75] do
     login_as create(:administrator)
     visit staff_users_path
 
-    click_link('View', href:'/staff/users/2')
+    click_link('View', href: "/staff/users/#{user.id}")
 
-    # why email from rspec does not match email from screenshot?
-    expect(user.email).not_to be_empty
+    expect(page).to have_content(user.email)
   end
 end
 
