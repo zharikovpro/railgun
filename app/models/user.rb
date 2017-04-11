@@ -19,11 +19,7 @@ class User < ApplicationRecord
   #     7.days
   #   end
   # end
-  #
-  # TODO: def employee?
-  #   role != 'consumer'
-  # end
-  #
+
   # TODO: def confirmation_required?
   #   employee?
   # end
@@ -41,7 +37,7 @@ class User < ApplicationRecord
   end
 
   def developer?
-    false
+    user_roles.exists?(role: :developer)
   end
 
   def password_required?
