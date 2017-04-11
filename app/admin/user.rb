@@ -26,13 +26,7 @@ ActiveAdmin.register User do
   filter :sign_in_count
   filter :created_at
 
-=begin  
-  index do
-    id_column
-    email
-    actions
-  end
-=end
+  scope :employees
 
   form do |f|
     f.inputs 'Credentials' do

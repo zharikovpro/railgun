@@ -26,7 +26,7 @@ end
 feature = <<~HEREDOC
   When administrator wants to work with employees,
   he wants to list all employees,
-  so that he can know more about employee
+  so that he can know more about employees
 HEREDOC
 
 RSpec.feature feature, issues: [76] do
@@ -34,9 +34,17 @@ RSpec.feature feature, issues: [76] do
     Given employee
     Given administrator is on the Users page
     When he clicks 'Employees'
-    Then he can click 'show' link to see employee details
+    Then he sees only employees
   HEREDOC
 
-  scenario scenario
-  # TODO: check Index Scopes section on https://activeadmin.info/3-index-pages.html
+  scenario scenario do
+    create(:user)
+    create(:developer)
+    login_as create(:administrator)
+    visit staff_users_path
+
+    click_link('Employees')
+    
+    expect(User.employees.count).to eq(2)
+  end
 end
