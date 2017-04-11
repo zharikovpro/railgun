@@ -24,17 +24,19 @@ RSpec.feature feature, issues: [75] do
 end
 
 feature = <<~HEREDOC
-  When administrator wants to work with employees,
-  he wants to list all employees,
-  so that he can know more about employees
+  When administrator wants to work with employees
+  and struggles to find 10 employees amongst 1000 users,
+  he wants to quickly list only employees,
+  so that he can work with them right away
 HEREDOC
 
 RSpec.feature feature, issues: [76] do
   scenario = <<~HEREDOC
+    Given user
     Given employee
     Given administrator is on the Users page
     When he clicks 'Employees'
-    Then he sees only employees
+    Then he sees only employee
   HEREDOC
 
   scenario scenario do
@@ -47,4 +49,23 @@ RSpec.feature feature, issues: [76] do
     
     expect(User.employees.count).to eq(2)
   end
+end
+
+feature = <<~HEREDOC
+  When administrator wants to work with employees with specific role
+  and struggles to find 3 editors amongst 100 employees,
+  he wants to quickly filter employees list by 'editor' role,
+  so that he can work with editors right away
+HEREDOC
+
+RSpec.feature feature, issues: [82] do
+  scenario = <<~HEREDOC
+    Given employee with role 'editor'
+    Given employee with role 'support'
+    Given administrator is on the Employees page
+    When he selects 'editor' in 'Role' filter
+    Then he sees only editor
+  HEREDOC
+
+  scenario scenario
 end
