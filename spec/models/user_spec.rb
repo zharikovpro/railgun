@@ -14,7 +14,7 @@ RSpec.describe do
   end
 
   context 'has no role' do 
-  	it 'is not employee' do
+  	it 'is not employee', issues: [76] do
   		user = create(:user)
 
   		is_employee = user.employee?
