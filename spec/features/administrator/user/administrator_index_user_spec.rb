@@ -38,8 +38,8 @@ RSpec.feature feature, issues: [76] do
   HEREDOC
 
   scenario scenario do
-    user = create(:user)
-    employee = create(:developer)
+    create(:user)
+    create(:developer)
     login_as create(:administrator)
     visit staff_users_path
 

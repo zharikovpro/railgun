@@ -24,8 +24,8 @@ RSpec.describe do
   end
 
   it 'Scope employees return only employees', issues: [76] do
-    user = create(:user)
-    employee = create(:administrator)
+    create(:user)
+    create(:administrator)
 
     employees = User.employees
 
