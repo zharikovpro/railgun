@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :user_roles
   accepts_nested_attributes_for :user_roles, allow_destroy: true
 
+  scope :employees, -> {joins(:user_roles).uniq}
+
   # TODO: def timeout_in
   #   if employee?
   #     30.minutes
