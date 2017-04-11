@@ -23,7 +23,10 @@ RSpec.describe do
   	end
   end
 
-  it '', issues: [76] do
+  it 'Scope employees return only employees', issues: [76] do
+  	user = create(:user)
+  	employee = create(:administrator)
 
+  	expect(User.count != User.employees.count).to be true
   end
 end
