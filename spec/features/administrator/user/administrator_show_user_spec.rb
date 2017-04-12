@@ -12,7 +12,7 @@ RSpec.feature feature, issues: [83] do
     he sees 'Roles' and 'editor, support'
   HEREDOC
 
-  fscenario scenario do
+  scenario scenario do
     employee = create(:editor)
     create(:user_role, :support, user: employee)
     login_as create(:administrator)
