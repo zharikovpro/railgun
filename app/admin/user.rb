@@ -25,6 +25,7 @@ ActiveAdmin.register User do
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at
+  filter :user_roles_role_equals, label: "Role", as: :select, collection: UserRole::TITLES
 
   scope :employees
 
