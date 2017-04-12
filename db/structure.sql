@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.2
+-- Dumped from database version 9.6.1
+-- Dumped by pg_dump version 9.6.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,6 +26,20 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: citext; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION citext; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings';
 
 
 SET search_path = public, pg_catalog;
@@ -102,6 +116,36 @@ CREATE TABLE ar_internal_metadata (
 CREATE TABLE schema_migrations (
     version character varying NOT NULL
 );
+
+
+--
+-- Name: snippets; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE snippets (
+    id integer NOT NULL,
+    slug citext NOT NULL,
+    text text NOT NULL
+);
+
+
+--
+-- Name: snippets_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE snippets_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: snippets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE snippets_id_seq OWNED BY snippets.id;
 
 
 --
@@ -222,6 +266,13 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 
 
 --
+-- Name: snippets id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY snippets ALTER COLUMN id SET DEFAULT nextval('snippets_id_seq'::regclass);
+
+
+--
 -- Name: user_roles id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -299,11 +350,27 @@ ALTER TABLE ONLY user_roles
 
 
 --
+-- Name: snippets pk_snippets; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY snippets
+    ADD CONSTRAINT pk_snippets PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: snippets unique_index_snippets_on_slug; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY snippets
+    ADD CONSTRAINT unique_index_snippets_on_slug UNIQUE (slug);
 
 
 --
@@ -381,6 +448,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170304192306'),
 ('20170304195109'),
 ('20170402194926'),
-('20170402201720');
+('20170402201720'),
+('20170412113626');
 
 

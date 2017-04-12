@@ -71,7 +71,7 @@ RSpec.feature feature, issues: [82] do
     editor = create(:editor)
     support = create(:support)
     admin = create(:administrator)
-    login_as create(:administrator)
+    login_as admin
     visit staff_users_path(scope: 'employees')
 
     select 'editor', from: 'Role'
