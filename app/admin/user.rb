@@ -29,6 +29,15 @@ ActiveAdmin.register User do
 
   scope :employees
 
+  show do
+    attributes_table do
+      row :roles do
+        user.user_roles.map(&:role).join(', ')
+      end
+    end
+    active_admin_comments
+  end
+
   form do |f|
     f.inputs 'Credentials' do
       f.input :email
