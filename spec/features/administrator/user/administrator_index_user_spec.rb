@@ -67,16 +67,16 @@ RSpec.feature feature, issues: [82] do
     Then he sees only editor
   HEREDOC
 
-  scenario scenario do
+  fscenario scenario do
     create(:editor)
     create(:support)
     login_as create(:administrator)
     visit staff_users_path(scope: 'employees')
 
-    select "editor", from: "Role"
+    select 'editor', from: 'Role'
     click_button('Filter')
 
     expect(page).to have_select 'Role', selected: 'editor'
-    expect(page.all(:css, 'table').size).to eq(1)
+    expect(page.all(:css, 'table tr').size).to eq(2)
   end
 end
