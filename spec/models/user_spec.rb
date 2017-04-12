@@ -3,6 +3,24 @@ RSpec.describe do
     it.is_expected.to have_many(:roles)
   end
 
+  it '.roles returns array of role titles', issues: [54] do
+    user = create(:user)
+    UserRole.create(user: user, role: :support)
+    UserRole.create(user: user, role: :editor)
+
+    roles = user.roles
+
+    expect(roles).to match_array([:support, :editor])
+  end
+
+  it '.add_role adds and returns associated UserRole', issues: [54] do
+    user = create(:user)
+
+    user.add_role(:editor)
+
+    expect(user.roles).to include(:editor)
+  end
+
   context 'has role' do
     it 'is employee', issues: [76] do
       user = create(:administrator)

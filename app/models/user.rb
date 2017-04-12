@@ -23,21 +23,24 @@ class User < ApplicationRecord
   # TODO: def confirmation_required?
   #   employee?
   # end
+  def add_role(title)
+    UserRole.create(user: self, role: title)
+  end
 
-  # def customer?
-  #   true
-  # end
+  def roles
+    user_roles.pluck(:role).map(&:to_sym)
+  end
 
   def employee?
-    user_roles.present?
+    roles.present?
   end
   
   def administrator?
-    user_roles.exists?(role: :administrator)
+    roles.include?(:administrator)
   end
 
   def developer?
-    user_roles.exists?(role: :developer)
+    roles.include?(:developer)
   end
 
   def password_required?

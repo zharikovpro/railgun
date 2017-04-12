@@ -71,6 +71,7 @@ RSpec.feature feature, issues: [82] do
     editor = create(:editor)
     support = create(:support)
     admin = create(:administrator)
+
     login_as admin
     visit staff_users_path(scope: 'employees')
 
@@ -79,6 +80,6 @@ RSpec.feature feature, issues: [82] do
 
     expect(page).to have_select 'Role', selected: 'editor'
     expect(page).to have_content editor.email
-    expect(page).not_to have_content support.email and admin.email
+    expect(page).not_to have_content support.email
   end
 end

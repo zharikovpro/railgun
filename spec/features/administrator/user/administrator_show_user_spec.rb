@@ -13,10 +13,11 @@ RSpec.feature feature, issues: [83] do
   HEREDOC
 
   scenario scenario do
-    employee = create(:editor)
-    create(:user_role, :support, user: employee)
-    login_as create(:administrator)
+    employee = create(:user)
+    employee.add_role(:editor)
+    employee.add_role(:support)
 
+    login_as create(:administrator)
     visit staff_user_path(employee)
 
     expect(page).to have_content('Roles')
