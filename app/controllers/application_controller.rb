@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :devise_or_active_admin_controller?
 
   def root
+    skip_authorization
+    skip_policy_scope
   end
 
   private
