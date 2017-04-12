@@ -49,14 +49,21 @@
 				<column name="version" />
 			</index>
 		</table>
+		<table name="snippets" >
+			<column name="id" type="serial" jt="4" mandatory="y" />
+			<column name="slug" type="citext" jt="12" mandatory="y" />
+			<column name="text" type="text" length="250" jt="12" mandatory="y" />
+			<index name="pk_snippets" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="unique_index_snippets_on_slug" unique="UNIQUE" >
+				<column name="slug" />
+			</index>
+		</table>
 		<table name="user_roles" >
 			<column name="id" type="serial" jt="4" mandatory="y" />
 			<column name="user_id" type="integer" jt="4" mandatory="y" />
 			<column name="role" type="user_role" jt="12" mandatory="y" />
-			<column name="created_at" type="timestamp" jt="93" mandatory="y" >
-				<defo>now()</defo>
-			</column>
-			<column name="deleted_at" type="timestamp" jt="93" />
 			<index name="pk_roles" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -64,7 +71,7 @@
 				<column name="user_id" />
 				<column name="role" />
 			</index>
-			<index name="idx_roles_0" unique="NORMAL" >
+			<index name="user_unique_roles_0" unique="NORMAL" >
 				<column name="user_id" />
 			</index>
 			<fk name="fk_user_id" to_schema="public" to_table="users" >
@@ -102,7 +109,7 @@
 			<index name="employees_pkey_0" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<index name="index_employees_on_email_0" unique="UNIQUE" >
+			<index name="unique_index_employees_on_email" unique="UNIQUE" >
 				<column name="email" />
 			</index>
 			<index name="index_employees_on_reset_password_token_0" unique="UNIQUE" >
@@ -136,12 +143,13 @@
 	<connector name="railgun_development" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-42.0.0.jre6.jar" driver_desc="Standard" host="localhost" port="5432" instance="railgun_development" user="postgres" usage="Development" />
 	<connector name="railgun_test" database="PostgreSQL" host="localhost" port="5432" instance="railgun_test" user="postgres" usage="Test" read_only="y" />
 	<layout name="Default Layout" id="Layout_d7c4743" joined_routing="y" show_column_type="y" show_relation="cascade" >
-		<entity schema="public" name="schema_migrations" color="ffccff" x="48" y="224" />
-		<entity schema="public" name="active_admin_comments" color="ccccff" x="256" y="96" />
-		<entity schema="public" name="ar_internal_metadata" color="ffccff" x="48" y="96" />
-		<entity schema="public" name="user_roles" color="ccffcc" x="736" y="80" />
-		<entity schema="public" name="versions" color="ccccff" x="256" y="352" />
-		<entity schema="public" name="users" color="ccffcc" x="464" y="96" />
+		<entity schema="public" name="schema_migrations" color="ffccff" x="48" y="320" />
+		<entity schema="public" name="active_admin_comments" color="ccccff" x="256" y="192" />
+		<entity schema="public" name="ar_internal_metadata" color="ffccff" x="48" y="192" />
+		<entity schema="public" name="versions" color="ccccff" x="256" y="448" />
+		<entity schema="public" name="users" color="ccffcc" x="464" y="192" />
+		<entity schema="public" name="user_roles" color="ccffcc" x="736" y="176" />
+		<entity schema="public" name="snippets" color="c1d8ee" x="464" y="80" />
 		<group name="Rails 5 Internals" color="ffccff" >
 			<entity schema="public" name="ar_internal_metadata" />
 			<entity schema="public" name="schema_migrations" />
