@@ -18,4 +18,8 @@ class SnippetPolicy < ApplicationPolicy
     user.developer?
   end
 
+  def create?
+    user.developer?
+  end
+
 end
