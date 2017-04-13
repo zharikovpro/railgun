@@ -11,5 +11,12 @@ RSpec.feature feature, issues: [88] do
     Then he sees 'copyright'
   HEREDOC
 
-  scenario scenario
+  scenario scenario do
+  	create(:snippet, slug: 'copyright')
+  	login_as create(:developer)
+
+  	visit snippets_path
+
+  	expect(page).to have_content('copyright')
+  end
 end
