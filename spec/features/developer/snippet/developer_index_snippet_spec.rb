@@ -15,7 +15,7 @@ RSpec.feature feature, issues: [88] do
   	create(:snippet, slug: 'copyright')
   	login_as create(:developer)
 
-  	visit snippets_path
+  	visit staff_snippets_path
 
   	expect(page).to have_content('copyright')
   end
