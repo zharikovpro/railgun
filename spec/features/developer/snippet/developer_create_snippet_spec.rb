@@ -11,5 +11,14 @@ RSpec.feature feature, issues: [89] do
     Then new snippet record with that data is present
   HEREDOC
 
-  scenario scenario
+  scenario scenario do
+    login_as create(:developer)
+    visit new_staff_snippet_path
+
+    fill_in 'snippet_slug', with: 'slug'
+    fill_in 'snippet_text', with: 'text'
+    click_button 'Create Snippet'
+
+    expect(Snippet.find_by_slug(:slug).text).to eq('text')
+  end
 end
