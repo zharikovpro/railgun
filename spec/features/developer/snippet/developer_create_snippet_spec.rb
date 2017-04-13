@@ -19,7 +19,6 @@ RSpec.feature feature, issues: [89] do
     fill_in 'snippet_text', with: 'text'
     click_button 'Create Snippet'
 
-    expect(Snippet.find_by_slug(:slug)).to be_truthy
     expect(Snippet.find_by_slug(:slug).text).to eq('text')
   end
 end
