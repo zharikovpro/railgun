@@ -11,7 +11,11 @@ RSpec.feature feature, issues: [41] do
     Then he sees 'test'
   HEREDOC
 
-  scenario scenario
-  # visit root_path
-  # expect(page).to have_content('test')
+  scenario scenario do
+    create(:snippet, slug: 'head', text: "<script>document.write('test');</script>")
+
+    visit root_path
+
+    expect(page).to have_content('test')
+  end
 end

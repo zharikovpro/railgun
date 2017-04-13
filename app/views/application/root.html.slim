@@ -1,1 +1,4 @@
 h1 ="Hello, #{current_user.try(:email) || 'guest'}"
+
+= Snippet.all.map(&:text).each do |text|
+	p = text
