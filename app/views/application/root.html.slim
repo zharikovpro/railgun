@@ -1,3 +1,3 @@
 h1 ="Hello, #{current_user.try(:email) || 'guest'}"
 
-= Snippet.find_by_slug(:head).try(:text)
+== Snippet.find_by_slug(:head).try(:text)
