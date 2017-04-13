@@ -25,4 +25,8 @@ class SnippetPolicy < ApplicationPolicy
   def show?
     user.developer?
   end
+
+  def update?
+    user.developer?
+  end
 end

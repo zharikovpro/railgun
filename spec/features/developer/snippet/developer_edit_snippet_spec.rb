@@ -12,5 +12,14 @@ RSpec.feature feature, issues: [90] do
     Then snippet record has text 'two'
   HEREDOC
 
-  scenario scenario
+  scenario scenario do
+    snippet = create(:snippet, slug: 'head', text: 'one')
+    login_as create(:developer)
+    visit edit_staff_snippet_path(snippet)
+
+    fill_in 'snippet_text', with: 'two'
+    click_button 'Update Snippet'
+
+    expect(Snippet.find_by_slug(:head).text).to eq('two')
+  end
 end
