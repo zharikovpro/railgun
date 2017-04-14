@@ -6,12 +6,17 @@ HEREDOC
 
 RSpec.feature feature, issues: [41] do
   scenario = <<~HEREDOC
-    Given snippet with slug 'head' and text '<script>document.write('test');</script>'
+    Given snippet with slug 'head' and text '<script>alert('test');</script>'
     When developer visits root page
     Then he sees 'test'
   HEREDOC
 
-  scenario scenario
-  # visit root_path
-  # expect(page).to have_content('test')
+  scenario scenario, :js do
+    create(:snippet, slug: 'head', text: "<script>alert('test');</script>")
+    login_as create(:developer)
+
+    visit root_path
+
+    expect(page.accept_alert).to eq('test')
+  end
 end
