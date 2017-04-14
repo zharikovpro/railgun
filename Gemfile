@@ -152,6 +152,20 @@ gem 'aws-sdk', '~> 2.6.33'
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 
+# Clone records with a click
+# gem 'active_admin-duplicatable'
+
+# Batch import from CSV
+# gem 'active_admin_import'
+
+# Batch archive and batch restore
+# gem 'active_admin_paranoia'
+
+# advanced UI controls:
+# enums, booleans, tags, lists, colors, images
+# datepickers, ajax search, nested selects
+# gem 'activeadmin_addons'
+
 # Form builder
 gem 'formtastic', '~> 3.1'
 
