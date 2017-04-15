@@ -25,8 +25,8 @@ ActiveAdmin.register User do
     selectable_column
     column :id
     column :email
-    actions do |post|
-      item "Add Role", new_staff_user_role_path(id: id)
+    actions do |user|
+      item "Add Role", new_staff_user_role_path(id: user.id)
     end
   end
 

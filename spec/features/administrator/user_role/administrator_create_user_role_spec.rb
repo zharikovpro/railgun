@@ -5,17 +5,36 @@ feature = <<~HEREDOC
 HEREDOC
 
 RSpec.feature feature, issues: [54, 95] do
+  scenario = <<~HEREDOC
+    Given user
+    Given administrator is on the users page
+    When he clicks 'Add Role' certain user
+    Then he is on new user role page for that user
+  HEREDOC
+
+  fscenario scenario do
+    user = create(:user)
+    login_as create(:administrator)
+    visit staff_users_path
+
+    click_on 'Add Role'
+    select 'support', from: 'Role'
+    click_button 'Update User'
+
+    expect(user.user_roles.first.role).to eq('support')
+  end
 
   scenario = <<~HEREDOC
-    Given administrator is on the edit user page
-    When he clicks Add Role, selects 'support' and clicks 'Update User'
+    Given administrator is on the new user role page
+    Given administrator sees user email
+    When he selects role 'support' and clicks 'create user role'
     Then user has 'support' role
   HEREDOC
 
-  scenario scenario, :js do
+  fscenario scenario do
     user = create(:user)
     login_as create(:administrator)
-    visit edit_staff_user_path(user)
+    visit staff_users_path
 
     click_on 'Add Role'
     select 'support', from: 'Role'
