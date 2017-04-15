@@ -29,4 +29,8 @@ class SnippetPolicy < ApplicationPolicy
   def update?
     user.developer?
   end
+
+  def permitted_attributes
+    [:slug, :text]
+  end
 end

@@ -1,6 +1,7 @@
 ActiveAdmin.register Snippet do
-
-  permit_params :slug, :text
+  permit_params do
+    active_admin_authorization.retrieve_policy(resource_class).permitted_attributes
+  end
 
   form do |f|
     f.inputs 'Snippet' do
@@ -10,5 +11,4 @@ ActiveAdmin.register Snippet do
 
     f.actions
   end
-
 end
