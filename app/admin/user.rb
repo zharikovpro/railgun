@@ -21,6 +21,15 @@ ActiveAdmin.register User do
     end
   end
 
+  index do
+    selectable_column
+    column :id
+    column :email
+    actions do |post|
+      item "Add Role", new_staff_user_role_path(id: id)
+    end
+  end
+
   filter :email
   filter :current_sign_in_at
   filter :sign_in_count
@@ -45,13 +54,6 @@ ActiveAdmin.register User do
       f.input :password_confirmation
     end
 
-    f.inputs 'Roles' do
-      f.has_many :user_roles, new_record: 'Add Role', allow_destroy: true do |r|
-        r.input :role, as: :select, collection: UserRole::TITLES
-      end
-    end
-
     f.actions
   end
-
 end
