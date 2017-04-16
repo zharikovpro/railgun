@@ -56,4 +56,8 @@ ActiveAdmin.register User do
 
     f.actions
   end
+
+  action_item only: :edit  do
+    link_to 'Add Role', new_staff_user_role_path(user_id: user.id)
+  end
 end
