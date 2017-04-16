@@ -1,4 +1,12 @@
 class UserRolePolicy < ApplicationPolicy
+  class Scope < ApplicationPolicy::Scope
+    def resolve
+      if user.administrator?
+        scope.all
+      end
+    end
+  end
+
   def index?
     user.administrator?
   end

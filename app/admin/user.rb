@@ -9,18 +9,6 @@ ActiveAdmin.register User do
                   :_create, :_destroy
                 ]
 
-  controller do
-    def update
-      # allow updates without password change
-      if params[:user][:password].blank?
-        params[:user].delete('password')
-        params[:user].delete('password_confirmation')
-      end
-
-      super
-    end
-  end
-
   index do
     selectable_column
     column :id
