@@ -26,7 +26,7 @@ ActiveAdmin.register User do
     column :id
     column :email
     actions do |user|
-      item "Add Role", new_staff_user_role_path(id: user.id)
+      item "Add Role", new_staff_user_role_path(user_id: user.id)
     end
   end
 

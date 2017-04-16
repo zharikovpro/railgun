@@ -10,4 +10,8 @@ class UserRolePolicy < ApplicationPolicy
   def destroy?
     user.administrator?
   end
+
+  def show?
+    user.administrator?
+  end
 end
