@@ -25,10 +25,9 @@ ActiveAdmin.register User do
 
   show do
     attributes_table do
-      row :roles do
-        user.roles.join(', ')
-      end
+      row :email
     end
+
     active_admin_comments
   end
 

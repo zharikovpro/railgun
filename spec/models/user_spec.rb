@@ -57,6 +57,6 @@ RSpec.describe do
 
     missing_roles  = user.missing_roles
 
-    expect(missing_roles).to contain_exactly(:administrator, :moderator, :support)
+    expect(missing_roles).to contain_exactly(:owner, :administrator, :moderator, :support)
   end
 end

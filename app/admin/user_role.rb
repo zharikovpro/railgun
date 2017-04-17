@@ -1,5 +1,5 @@
 ActiveAdmin.register UserRole do
-  menu priority: 3, label: 'Employees'
+  menu priority: 3, label: 'Roles'
 
   config.clear_action_items!
   permit_params :user_id, :role
