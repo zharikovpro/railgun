@@ -4,7 +4,7 @@ RSpec.describe UserRole, issues: [54] do
   end
 
   it 'has predefined list of possible roles' do
-    it.is_expected.to define_enum_for(:status).with([:administrator, :developer, :support, :moderator])
+    it.is_expected.to define_enum_for(:status).with([:owner, :administrator, :developer, :support, :moderator])
   end
 
   it 'is versioned' do

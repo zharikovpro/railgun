@@ -1,7 +1,8 @@
 ActiveAdmin.register UserRole do
   menu priority: 3, label: 'Employees'
+
   config.clear_action_items!
-  permit_params :grantor_id, :user_id, :role
+  permit_params :user_id, :role
 
   form do |f|
     f.semantic_errors(*f.object.errors.keys)

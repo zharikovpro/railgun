@@ -60,7 +60,10 @@
     "heroku-postgresql",
     "redismonitor",
     "heroku-redis",
-    "rollbar"
+    "rollbar",
+    {
+      "plan": "bucketeer:hobbyist"
+    }
   ],
   "buildpacks": [
     {

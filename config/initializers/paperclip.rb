@@ -3,11 +3,10 @@
 #     s3_protocol: 'https',
 #
 #     s3_credentials: {
-#         s3_region: ENV.fetch('AWS_REGION'),
-#         bucket: ENV.fetch('AWS_BUCKET'),
-#         access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
-#         secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY')
-#
+#         s3_region: ENV.fetch('AWS_REGION', 'us-east-1'),
+#         bucket: ENV.fetch('BUCKETEER_BUCKET_NAME', ENV.fetch('AWS_BUCKET')),
+#         access_key_id: ENV.fetch('BUCKETEER_AWS_ACCESS_KEY_ID', ENV.fetch('AWS_ACCESS_KEY_ID')),
+#         secret_access_key: ENV.fetch('BUCKETEER_AWS_SECRET_ACCESS_KEY', ENV.fetch('AWS_SECRET_ACCESS_KEY'))
 #     },
 #
 #     hash_secret: ENV.fetch('PAPERCLIP_HASH_SECRET'),

@@ -49,6 +49,7 @@ SET search_path = public, pg_catalog;
 --
 
 CREATE TYPE user_role AS ENUM (
+    'owner',
     'administrator',
     'developer',
     'editor',
@@ -107,6 +108,66 @@ CREATE TABLE ar_internal_metadata (
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL
 );
+
+
+--
+-- Name: pages; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE pages (
+    id integer NOT NULL,
+    slug citext NOT NULL,
+    markdown text NOT NULL
+);
+
+
+--
+-- Name: pages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE pages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: pages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE pages_id_seq OWNED BY pages.id;
+
+
+--
+-- Name: public_files; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public_files (
+    id integer NOT NULL,
+    slug citext NOT NULL,
+    file_file_name text NOT NULL
+);
+
+
+--
+-- Name: public_files_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public_files_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: public_files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public_files_id_seq OWNED BY public_files.id;
 
 
 --
@@ -266,6 +327,20 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 
 
 --
+-- Name: pages id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pages ALTER COLUMN id SET DEFAULT nextval('pages_id_seq'::regclass);
+
+
+--
+-- Name: public_files id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public_files ALTER COLUMN id SET DEFAULT nextval('public_files_id_seq'::regclass);
+
+
+--
 -- Name: snippets id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -318,6 +393,14 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: public_files idx_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public_files
+    ADD CONSTRAINT idx_mediafiles UNIQUE (slug);
+
+
+--
 -- Name: user_roles idx_roles; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -342,6 +425,14 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: public_files pk_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public_files
+    ADD CONSTRAINT pk_mediafiles PRIMARY KEY (id);
+
+
+--
 -- Name: user_roles pk_roles; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -358,6 +449,14 @@ ALTER TABLE ONLY snippets
 
 
 --
+-- Name: pages pk_snippets_0; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pages
+    ADD CONSTRAINT pk_snippets_0 PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -371,6 +470,14 @@ ALTER TABLE ONLY schema_migrations
 
 ALTER TABLE ONLY snippets
     ADD CONSTRAINT unique_index_snippets_on_slug UNIQUE (slug);
+
+
+--
+-- Name: pages unique_index_snippets_on_slug_0; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pages
+    ADD CONSTRAINT unique_index_snippets_on_slug_0 UNIQUE (slug);
 
 
 --
@@ -449,6 +556,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170304195109'),
 ('20170402194926'),
 ('20170402201720'),
-('20170412113626');
+('20170412113626'),
+('20170414193341'),
+('20170414193456');
 
 

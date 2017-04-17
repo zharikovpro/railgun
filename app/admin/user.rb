@@ -17,6 +17,12 @@ ActiveAdmin.register User do
 
   scope :employees
 
+  index do
+    id_column
+    column :email
+    actions
+  end
+
   show do
     attributes_table do
       row :roles do

@@ -1,12 +1,5 @@
 class SnippetPolicy < ApplicationPolicy
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user  = user
-      @scope = scope
-    end
-
+  class Scope < ApplicationPolicy::Scope
     def resolve
       if user.developer?
         scope.all
@@ -28,5 +21,9 @@ class SnippetPolicy < ApplicationPolicy
 
   def update?
     user.developer?
+  end
+
+  def permitted_attributes
+    [:slug, :text]
   end
 end
