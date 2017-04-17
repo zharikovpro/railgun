@@ -51,12 +51,12 @@ RSpec.describe do
     expect(employees.first).to be_employee
   end
 
-  it '.busy_role takes an argument ID of user and returns character array of available user roles', issues: [95] do
+  it '.missing_roles returns missing user roles as array of symbols', issues: [95] do
     user = create(:editor)
     user.add_role(:developer)
 
-    unused_roles  = user.available_roles(user.id)
+    missing_roles  = user.missing_roles
 
-    expect(unused_roles).to be == [:administrator, :support, :moderator]
+    expect(missing_roles).to contain_exactly(:administrator, :moderator, :support)
   end
 end

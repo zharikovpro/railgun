@@ -23,8 +23,8 @@ class User < ApplicationRecord
   # TODO: def confirmation_required?
   #   employee?
   # end
-  def available_roles(user_id)
-    UserRole::TITLES - User.find_by_id(user_id).roles
+  def missing_roles
+    UserRole::TITLES - roles
   end
 
   def add_role(title)

@@ -7,23 +7,6 @@ HEREDOC
 RSpec.feature feature, issues: [54, 95] do
   scenario = <<~HEREDOC
     Given user
-    Given administrator is on the users page
-    When he clicks 'Add Role' near user
-    Then he is on new user role page for that user
-  HEREDOC
-
-  scenario scenario do
-    user = create(:user)
-    login_as create(:administrator)
-    visit staff_users_path
-
-    click_link 'Add Role', href: new_staff_user_role_path(user_id: user.id)
-
-    expect(page).to have_content(user.email)
-  end
-
-  scenario = <<~HEREDOC
-    Given user
     Given administrator is on the edit user page
     When he clicks 'Add Role'
     Then he is on new user role page and sees user email

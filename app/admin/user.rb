@@ -9,27 +9,18 @@ ActiveAdmin.register User do
                   :_create, :_destroy
                 ]
 
-  index do
-    selectable_column
-    column :id
-    column :email
-    actions do |user|
-      item "Add Role", new_staff_user_role_path(user_id: user.id)
-    end
-  end
-
   filter :email
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at
-  filter :user_roles_role_equals, label: "Role", as: :select, collection: UserRole::TITLES
+  filter :user_roles_role_equals, label: 'Role', as: :select, collection: UserRole::TITLES
 
   scope :employees
 
   show do
     attributes_table do
       row :roles do
-        user.user_roles.map(&:role).join(', ')
+        user.roles.join(', ')
       end
     end
     active_admin_comments
