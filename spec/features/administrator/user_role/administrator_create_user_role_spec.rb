@@ -29,15 +29,14 @@ RSpec.feature feature, issues: [54, 95] do
     Then he is on new user role page and sees user email
   HEREDOC
 
-  fscenario scenario do
+  scenario scenario do
     user = create(:user)
     login_as create(:administrator)
     visit edit_staff_user_path(user)
 
     click_link 'Add Role'
-    #TODO get URL
-    #expect(current_path).to be('/staff/user_roles/new'), params:{user_id: user.id}
-    expect(get: :new).to be params:{user_id: user.id}
+
+    expect(page).to have_current_path(new_staff_user_role_path(user_id: user.id))
   end
 
   scenario = <<~HEREDOC
