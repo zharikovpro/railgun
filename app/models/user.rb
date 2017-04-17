@@ -23,6 +23,10 @@ class User < ApplicationRecord
   # TODO: def confirmation_required?
   #   employee?
   # end
+  def available_roles(user_id)
+    UserRole::TITLES - User.find_by_id(user_id).roles
+  end
+
   def add_role(title)
     UserRole.create(user: self, role: title)
   end

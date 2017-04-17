@@ -50,4 +50,13 @@ RSpec.describe do
     expect(employees.count).to eq(1)
     expect(employees.first).to be_employee
   end
+
+  it '.busy_role takes an argument ID of user and returns character array of available user roles', issues: [95] do
+    user = create(:editor)
+    user.add_role(:developer)
+
+    unused_roles  = user.available_roles(user.id)
+
+    expect(unused_roles).to be == [:administrator, :support, :moderator]
+  end
 end
