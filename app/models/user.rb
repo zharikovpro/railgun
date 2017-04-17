@@ -23,6 +23,10 @@ class User < ApplicationRecord
   # TODO: def confirmation_required?
   #   employee?
   # end
+  def missing_roles
+    UserRole::TITLES - roles
+  end
+
   def add_role(title)
     UserRole.create(user: self, role: title)
   end

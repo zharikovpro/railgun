@@ -50,4 +50,13 @@ RSpec.describe do
     expect(employees.count).to eq(1)
     expect(employees.first).to be_employee
   end
+
+  it '.missing_roles returns missing user roles as array of symbols', issues: [95] do
+    user = create(:editor)
+    user.add_role(:developer)
+
+    missing_roles  = user.missing_roles
+
+    expect(missing_roles).to contain_exactly(:administrator, :moderator, :support)
+  end
 end
