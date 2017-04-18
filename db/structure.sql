@@ -111,6 +111,17 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: files; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE files (
+    id integer NOT NULL,
+    slug citext NOT NULL,
+    file_file_name text NOT NULL
+);
+
+
+--
 -- Name: pages; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -141,17 +152,6 @@ ALTER SEQUENCE pages_id_seq OWNED BY pages.id;
 
 
 --
--- Name: public_files; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public_files (
-    id integer NOT NULL,
-    slug citext NOT NULL,
-    file_file_name text NOT NULL
-);
-
-
---
 -- Name: public_files_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -167,7 +167,7 @@ CREATE SEQUENCE public_files_id_seq
 -- Name: public_files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public_files_id_seq OWNED BY public_files.id;
+ALTER SEQUENCE public_files_id_seq OWNED BY files.id;
 
 
 --
@@ -216,9 +216,7 @@ ALTER SEQUENCE snippets_id_seq OWNED BY snippets.id;
 CREATE TABLE user_roles (
     id integer NOT NULL,
     user_id integer NOT NULL,
-    role user_role NOT NULL,
-    created_at timestamp without time zone DEFAULT now() NOT NULL,
-    deleted_at timestamp without time zone
+    role user_role NOT NULL
 );
 
 
@@ -327,17 +325,17 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 
 
 --
+-- Name: files id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY files ALTER COLUMN id SET DEFAULT nextval('public_files_id_seq'::regclass);
+
+
+--
 -- Name: pages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY pages ALTER COLUMN id SET DEFAULT nextval('pages_id_seq'::regclass);
-
-
---
--- Name: public_files id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public_files ALTER COLUMN id SET DEFAULT nextval('public_files_id_seq'::regclass);
 
 
 --
@@ -393,10 +391,10 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: public_files idx_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: files idx_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public_files
+ALTER TABLE ONLY files
     ADD CONSTRAINT idx_mediafiles UNIQUE (slug);
 
 
@@ -425,10 +423,10 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: public_files pk_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: files pk_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public_files
+ALTER TABLE ONLY files
     ADD CONSTRAINT pk_mediafiles PRIMARY KEY (id);
 
 
