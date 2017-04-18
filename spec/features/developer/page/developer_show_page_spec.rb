@@ -15,7 +15,7 @@ RSpec.feature feature, issues: [97] do
     page = create(:page, slug: 'faq', markdown: 'something')
     login_as create(:developer)
 
-    #visit page_path(page.id)
+    visit staff_page_path(page.id)
 
     #expect(page).to have_content('something')
   end
