@@ -177,7 +177,6 @@ GEM
     has_scope (0.7.0)
       actionpack (>= 4.1, < 5.1)
       activesupport (>= 4.1, < 5.1)
-    high_voltage (3.0.0)
     i18n (0.8.1)
     ice_nine (0.11.2)
     its-it (1.3.0)
@@ -335,6 +334,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    redcarpet (3.4.0)
     redis (3.3.3)
     regexp_parser (0.3.6)
     request_store (1.3.2)
@@ -494,7 +494,6 @@ DEPENDENCIES
   flutie
   formtastic (~> 3.1)
   fuubar
-  high_voltage
   inherited_resources!
   kaminari
   letter_opener
@@ -513,6 +512,7 @@ DEPENDENCIES
   pundit (~> 1.1.0)
   rack-canonical-host
   rails (~> 5.0.1)
+  redcarpet
   rollbar
   rspec-rails
   rspec-sidekiq

@@ -1,14 +1,14 @@
-=begin
 require 'rails_helper'
 
-RSpec.describe PagesController, type: :controller do
+RSpec.describe PagesController, type: :controller, issues: [97] do
 
+=begin
   describe "GET #show" do
-    it "returns http success" do
+    fit "returns http success" do
       get :show
       expect(response).to have_http_status(:success)
     end
   end
+=end
 
 end
-=end

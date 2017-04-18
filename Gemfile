@@ -100,8 +100,8 @@ gem 'slim-rails', '~> 3.1.0'
 # Stylus for styles
 gem 'stylus', '~> 1.0.1'
 
-# Static pages
-gem 'high_voltage'
+# Markdown rendering
+gem 'redcarpet'
 
 # View helpers
 gem 'flutie'
@@ -127,10 +127,10 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'active_model_serializers', '~> 0.10.0'
 
 # Authorization policies
-gem "pundit", '~> 1.1.0'
+gem 'pundit', '~> 1.1.0'
 
 # Soft delete
-gem "paranoia", "~> 2.2"
+gem 'paranoia', '~> 2.2'
 
 # Encrypted attributes
 # gem 'attr_encrypted', '~> 3.0', '>= 3.0.1'
