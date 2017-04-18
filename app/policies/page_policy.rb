@@ -1,9 +1,7 @@
 class PagePolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     def resolve
-      if user.developer?
-        scope.all
-      end
+      scope.all
     end
   end
 

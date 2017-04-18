@@ -1,13 +1,13 @@
 feature = <<~HEREDOC
   When visitor finds site in google,
-  he wants to visit roo pages,
+  he wants to visit roo page,
   so that he can read content
 HEREDOC
 
 RSpec.feature feature, issues: [41] do
   scenario = <<~HEREDOC
     Given link to the domain
-    When visitor visits root pages
+    When visitor visits root page
     Then he sees 'Hello'
   HEREDOC
 
@@ -21,16 +21,16 @@ RSpec.feature feature, issues: [41] do
 end
 
 feature = <<~HEREDOC
-  When developer visits non-staff pages,
-  he want to see installed analytics tracking code,
-  so that he can confirm correct analytics code installation
+  When visitor visits page URL,
+  he want to see formatted content,
+  so that he can find important words faster
 HEREDOC
 
 RSpec.feature feature, issues: [97] do
   scenario = <<~HEREDOC
-    Given page with slug 'faq' and markdown 'something'
-    When developer visits root pages
-    Then he sees 'test'
+    Given page with slug 'faq' and markdown '*italic*'
+    When developer visits FAQ page
+    Then he sees formatted 'italic' text
   HEREDOC
 
   scenario scenario do

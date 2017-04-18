@@ -1,7 +1,7 @@
 feature = <<~HEREDOC
-  When developer wants to update analytics code page,
-  he wants to edit code page with tag 'faq',
-  so that it has new markdown
+  When developer wants to update FAQ page content,
+  he wants to edit page with slug 'faq',
+  so that it has new content
 HEREDOC
 
 RSpec.feature feature, issues: [97] do

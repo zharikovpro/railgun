@@ -1,13 +1,13 @@
 feature = <<~HEREDOC
-  When developer wants to install analytics code page,
-  he wants to create new code page with tag 'faq',
-  so that its markdown will be rendered
+  When developer wants to create formatted FAQ page,
+  he wants to create new page with slug 'faq',
+  so that editor can edit this page
 HEREDOC
 
 RSpec.feature feature, issues: [97] do
   scenario = <<~HEREDOC
-    Given developer is on the new snippet page
-    When he fills in slug and text and clicks 'Create Page'
+    Given developer is on the new page URL
+    When he fills in slug and markdown and clicks 'Create Page'
     Then new page record with that data is present
   HEREDOC
 

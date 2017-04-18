@@ -7,7 +7,7 @@ HEREDOC
 RSpec.feature feature, issues: [88] do
   scenario = <<~HEREDOC
     Given snippet with slug 'copyright'
-    When developer visits snippets pages
+    When developer visits snippets page
     Then he sees 'copyright'
   HEREDOC
 
