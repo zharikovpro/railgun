@@ -33,12 +33,12 @@ RSpec.feature feature, issues: [97] do
     Then he sees 'test'
   HEREDOC
 
-  fscenario scenario do
-    page = create(:page, slug: 'faq', markdown: '*123*')
+  scenario scenario do
+    faq = create(:page, slug: 'faq', markdown: '*italic*')
     login_as create(:developer)
 
-    visit page_path(page.slug)
+    visit page_path(faq.slug)
 
-    expect(page).to have_selector('em')
+    expect(page).to have_css('em', text: 'italic')
   end
 end
