@@ -33,7 +33,7 @@ RSpec.feature feature, issues: [97] do
     Then he sees formatted 'italic' text
   HEREDOC
 
-  fscenario scenario do
+  scenario scenario do
     faq = create(:page, slug: 'faq', markdown: '*italic*')
 
     visit page_path(faq.slug)

@@ -21,6 +21,10 @@ class PagePolicy < ApplicationPolicy
     user.editor?
   end
 
+  def destroy?
+    user.editor?
+  end
+
   def permitted_attributes
     [:slug, :markdown]
   end
