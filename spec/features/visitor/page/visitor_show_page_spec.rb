@@ -1,13 +1,13 @@
 feature = <<~HEREDOC
   When visitor finds site in google,
-  he wants to visit roo page,
+  he wants to visit roo pages,
   so that he can read content
 HEREDOC
 
 RSpec.feature feature, issues: [41] do
   scenario = <<~HEREDOC
     Given link to the domain
-    When visitor visits root page
+    When visitor visits root pages
     Then he sees 'Hello'
   HEREDOC
 

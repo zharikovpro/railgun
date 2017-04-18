@@ -4,19 +4,19 @@ feature = <<~HEREDOC
   so that he can confirm correct analytics code installation
 HEREDOC
 
-RSpec.feature feature, issues: [41] do
+RSpec.feature feature, issues: [97] do
   scenario = <<~HEREDOC
-    Given snippet with slug 'head' and text '<script>alert('test');</script>'
+    Given page with slug 'faq' and markdown 'something'
     When developer visits root pages
     Then he sees 'test'
   HEREDOC
 
-  scenario scenario, :js do
-    create(:snippet, slug: 'head', text: "<script>alert('test');</script>")
+  scenario scenario do
+    page = create(:page, slug: 'faq', markdown: 'something')
     login_as create(:developer)
 
-    visit root_path
+    #visit page_path(page.id)
 
-    expect(page.accept_alert).to eq('test')
+    #expect(page).to have_content('something')
   end
 end

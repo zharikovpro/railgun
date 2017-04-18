@@ -196,7 +196,7 @@ group :development do
   # Run tests in background, too
   gem 'spring-commands-rspec'
 
-  # Very informative error page with console
+  # Very informative error pages with console
   gem 'better_errors'
 
   # Insert console everywhere it's required

@@ -7,9 +7,9 @@ HEREDOC
 RSpec.feature feature, issues: [54, 95] do
   scenario = <<~HEREDOC
     Given user
-    Given administrator is on the edit user page
+    Given administrator is on the edit user pages
     When he clicks 'Add Role'
-    Then he is on new user role page and sees user email
+    Then he is on new user role pages and sees user email
   HEREDOC
 
   scenario scenario do
