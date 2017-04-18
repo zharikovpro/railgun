@@ -6,19 +6,19 @@ class PagePolicy < ApplicationPolicy
   end
 
   def index?
-    user.developer?
+    user.editor?
   end
 
   def create?
-    user.developer?
+    user.editor?
   end
 
   def show?
-    user.developer?
+    true
   end
 
   def update?
-    user.developer?
+    user.editor?
   end
 
   def permitted_attributes

@@ -29,13 +29,12 @@ HEREDOC
 RSpec.feature feature, issues: [97] do
   scenario = <<~HEREDOC
     Given page with slug 'faq' and markdown '*italic*'
-    When developer visits FAQ page
+    When visitor visits FAQ page
     Then he sees formatted 'italic' text
   HEREDOC
 
-  scenario scenario do
+  fscenario scenario do
     faq = create(:page, slug: 'faq', markdown: '*italic*')
-    login_as create(:developer)
 
     visit page_path(faq.slug)
 
