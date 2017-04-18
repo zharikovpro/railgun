@@ -47,6 +47,10 @@ class User < ApplicationRecord
     roles.include?(:developer)
   end
 
+  def editor?
+    roles.include?(:editor)
+  end
+
   def password_required?
     # Password is required if it is being set, but not for new records
     if persisted?
