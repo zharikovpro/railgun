@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   #   resource :reincarnation, only: :destroy
   # end
 
-  # require 'sidekiq/web'
-  # authenticate :user, lambda { |user| user.developer? } do
-  #   mount Sidekiq::Web => '/staff/sidekiq'
-  # end
+  require 'sidekiq/web'
+  authenticate :user, lambda { |user| user.try(:developer?) } do
+    mount Sidekiq::Web => '/staff/sidekiq'
+  end
 end
