@@ -6,7 +6,7 @@ ActiveAdmin.register Media do
   form do |f|
     f.inputs 'Media' do
       f.input :slug
-      f.input :file_file_name, as: :file
+      f.input :file, as: :file
     end
 
     f.actions

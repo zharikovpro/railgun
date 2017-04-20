@@ -1,4 +1,4 @@
-class FilePolicy < ApplicationPolicy
+class MediaPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     def resolve
       scope.all
@@ -26,6 +26,6 @@ class FilePolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:slug, :file_file_name]
+    [:slug, :file]
   end
 end
