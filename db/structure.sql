@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.1
--- Dumped by pg_dump version 9.6.1
+-- Dumped from database version 9.6.2
+-- Dumped by pg_dump version 9.6.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -111,10 +111,10 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
--- Name: media; Type: TABLE; Schema: public; Owner: -
+-- Name: medias; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE media (
+CREATE TABLE medias (
     id integer NOT NULL,
     slug citext NOT NULL,
     file_file_name text NOT NULL
@@ -167,7 +167,7 @@ CREATE SEQUENCE public_files_id_seq
 -- Name: public_files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public_files_id_seq OWNED BY media.id;
+ALTER SEQUENCE public_files_id_seq OWNED BY medias.id;
 
 
 --
@@ -325,10 +325,10 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 
 
 --
--- Name: media id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: medias id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY media ALTER COLUMN id SET DEFAULT nextval('public_files_id_seq'::regclass);
+ALTER TABLE ONLY medias ALTER COLUMN id SET DEFAULT nextval('public_files_id_seq'::regclass);
 
 
 --
@@ -391,10 +391,10 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: media idx_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: medias idx_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY media
+ALTER TABLE ONLY medias
     ADD CONSTRAINT idx_mediafiles UNIQUE (slug);
 
 
@@ -423,10 +423,10 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: media pk_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: medias pk_mediafiles; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY media
+ALTER TABLE ONLY medias
     ADD CONSTRAINT pk_mediafiles PRIMARY KEY (id);
 
 
@@ -556,6 +556,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170402201720'),
 ('20170412113626'),
 ('20170414193341'),
-('20170414193456');
+('20170414193456'),
+('20170422112125');
 
 

@@ -7,18 +7,18 @@ HEREDOC
 RSpec.feature feature, issues: [84] do
   scenario = <<~HEREDOC
     Given editor is on the new media page
-    When he fills in slug and file and clicks 'Create Media'
+    When he fills in slug and attachment file and clicks 'Create Media'
     Then new media file record with that data is present
   HEREDOC
 
   scenario scenario do
     login_as create(:editor)
-    visit new_staff_medium_path
+    visit new_staff_media_path
 
-    fill_in 'page_slug', with: 'faq'
-    fill_in 'page_markdown', with: 'markdown'
-    click_button 'Create Page'
+    fill_in 'media_slug', with: 'image'
+    attach_file('media_file', Rails.root + 'spec/media/images/demo.jpg')
+    click_button 'Create Media'
 
-    expect(Page.find_by_slug(:faq).markdown).to eq('markdown')
+    expect(Media.find_by_slug(:image).file_file_name).to eq('demo.jpg')
   end
 end

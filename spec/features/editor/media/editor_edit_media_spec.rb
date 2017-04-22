@@ -12,15 +12,14 @@ RSpec.feature feature, issues: [84] do
     Then page record has file_file_name 'logo.png'
   HEREDOC
 
-  fscenario scenario do
+  scenario scenario do
     media = create(:media, slug: 'image', file_file_name: 'image.jpg')
     login_as create(:editor)
-    visit edit_staff_medium_path(media)
+    visit edit_staff_media_path(media)
 
-    attach_file('media_file', Rails.root + 'logo.png')
-    attach_file("test[test_attachments_attributes][5][attachment]", Rails.root + 'spec/media/images/demo.png')
+    attach_file('media_file', Rails.root + 'spec/media/images/demo.jpg')
     click_button 'Update Media'
 
-    expect(Media.find_by_slug(:image).file_file_name).to eq('logo.png')
+    expect(Media.find_by_slug(:image).file_file_name).to eq('demo.jpg')
   end
 end
