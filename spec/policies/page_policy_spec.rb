@@ -8,7 +8,7 @@ RSpec.describe PagePolicy, issues: [109] do
       it 'allow' do
         editor = create(:editor)
 
-        expect(subject).to permit(editor, page)
+        is_expected.to permit(editor, page)
       end
     end
   end
@@ -16,7 +16,7 @@ RSpec.describe PagePolicy, issues: [109] do
   context 'visitor' do
     permissions :show? do
       it 'allow' do
-        expect(subject).to permit(nil, :page)
+        is_expected.to permit(nil, :page)
       end
     end
   end

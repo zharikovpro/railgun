@@ -9,7 +9,7 @@ RSpec.describe UserRolePolicy, issues: [54] do
 
         user_role = build(:user_role, :support, user: user)
 
-        expect(subject).to permit(administrator, user_role)
+        is_expected.to permit(administrator, user_role)
       end
     end
   end

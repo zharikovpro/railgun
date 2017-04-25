@@ -8,7 +8,7 @@ RSpec.describe UserPolicy, issues: [54] do
       it 'allow' do
         user_role = build(:user_role)
 
-        expect(subject).to permit(administrator, user_role)
+        is_expected.to permit(administrator, user_role)
       end
 
       it 'reads all users' do
