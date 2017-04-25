@@ -11,11 +11,15 @@ RSpec.feature feature, issues: [84] do
     Then he is redirected to file URL
   HEREDOC
 
-  fscenario scenario do
+  scenario scenario do
     media = create(:media, slug: 'image')
 
-    visit media_path(media.slug)
+    begin
+      visit media_path(media.slug)
+    rescue ActionController::RoutingError
+    end
 
-    #expect(response).to redirect_to
+    expect(page.status_code).to eq(303)
+    expect(page.current_url).to eq(media.file.url)
   end
 end

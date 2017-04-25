@@ -15,7 +15,7 @@ RSpec.feature feature, issues: [84] do
   	create(:media, slug: 'document')
   	login_as create(:editor)
 
-  	visit staff_media_path
+  	visit staff_medias_path
 
   	expect(page).to have_content('document')
   end
