@@ -1,13 +1,13 @@
 RSpec.describe UserRole, issues: [54] do
-  it 'belongs to user' do
-    it.is_expected.to belong_to(:user)
-  end
-
-  it 'has predefined list of possible roles' do
-    it.is_expected.to define_enum_for(:status).with([:owner, :administrator, :developer, :support, :moderator])
-  end
-
   it 'is versioned' do
     is_expected.to be_versioned
+  end
+
+  it 'belongs to user' do
+    is_expected.to belong_to(:user)
+  end
+
+  it 'has list of available role titles' do
+    expect(subject.class::TITLES).to contain_exactly(:owner, :administrator, :developer, :editor, :support, :moderator)
   end
 end
