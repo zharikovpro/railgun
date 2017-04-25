@@ -43,7 +43,7 @@
 				<column name="key" />
 			</index>
 		</table>
-		<table name="media" >
+		<table name="medias" >
 			<column name="id" type="serial" jt="4" mandatory="y" />
 			<column name="slug" type="citext" jt="12" mandatory="y" />
 			<column name="file_file_name" type="text" length="100" jt="12" mandatory="y" />
@@ -164,7 +164,7 @@
 		<sequence name="user_roles_id_seq" start="1" />
 		<sequence name="users_id_seq" start="1" />
 		<sequence name="versions_id_seq" start="1" />
-		<function name="citext" id="Function_39a5406" isSystem="false" >
+		<function name="citext" id="Function_313d0605" isSystem="false" >
 			<string><![CDATA[CREATE OR REPLACE FUNCTION public.citext(boolean)
  RETURNS citext
  LANGUAGE internal
@@ -200,7 +200,7 @@ CREATE OR REPLACE FUNCTION public.citext(character)
 AS $function$rtrim1$function$
 ]]></string>
 		</function>
-		<function name="citext" id="Function_313d0605" isSystem="false" >
+		<function name="citext" id="Function_39a5406" isSystem="false" >
 			<string><![CDATA[CREATE OR REPLACE FUNCTION public.citext(boolean)
  RETURNS citext
  LANGUAGE internal
@@ -318,23 +318,6 @@ AS $function$textsend$function$
 		</function>
 		<function name="max" id="Function_9ef97cb" isSystem="false" />
 		<function name="min" id="Function_2a2df460" isSystem="false" />
-		<function name="regexp_matches" id="Function_1e13af66" isSystem="false" >
-			<string><![CDATA[CREATE OR REPLACE FUNCTION public.regexp_matches(citext, citext)
- RETURNS SETOF text[]
- LANGUAGE sql
- IMMUTABLE PARALLEL SAFE STRICT ROWS 1
-AS $function$
-    SELECT pg_catalog.regexp_matches( $1::pg_catalog.text, $2::pg_catalog.text, 'i' );
-$function$
-CREATE OR REPLACE FUNCTION public.regexp_matches(citext, citext, text)
- RETURNS SETOF text[]
- LANGUAGE sql
- IMMUTABLE PARALLEL SAFE STRICT ROWS 10
-AS $function$
-    SELECT pg_catalog.regexp_matches( $1::pg_catalog.text, $2::pg_catalog.text, CASE WHEN pg_catalog.strpos($3, 'c') = 0 THEN  $3 || 'i' ELSE $3 END );
-$function$
-]]></string>
-		</function>
 		<function name="regexp_matches" id="Function_25cd00ed" isSystem="false" >
 			<string><![CDATA[CREATE OR REPLACE FUNCTION public.regexp_matches(citext, citext)
  RETURNS SETOF text[]
@@ -352,20 +335,20 @@ AS $function$
 $function$
 ]]></string>
 		</function>
-		<function name="regexp_replace" id="Function_6457fed" isSystem="false" >
-			<string><![CDATA[CREATE OR REPLACE FUNCTION public.regexp_replace(citext, citext, text)
- RETURNS text
+		<function name="regexp_matches" id="Function_1e13af66" isSystem="false" >
+			<string><![CDATA[CREATE OR REPLACE FUNCTION public.regexp_matches(citext, citext)
+ RETURNS SETOF text[]
  LANGUAGE sql
- IMMUTABLE PARALLEL SAFE STRICT
+ IMMUTABLE PARALLEL SAFE STRICT ROWS 1
 AS $function$
-    SELECT pg_catalog.regexp_replace( $1::pg_catalog.text, $2::pg_catalog.text, $3, 'i');
+    SELECT pg_catalog.regexp_matches( $1::pg_catalog.text, $2::pg_catalog.text, 'i' );
 $function$
-CREATE OR REPLACE FUNCTION public.regexp_replace(citext, citext, text, text)
- RETURNS text
+CREATE OR REPLACE FUNCTION public.regexp_matches(citext, citext, text)
+ RETURNS SETOF text[]
  LANGUAGE sql
- IMMUTABLE PARALLEL SAFE STRICT
+ IMMUTABLE PARALLEL SAFE STRICT ROWS 10
 AS $function$
-    SELECT pg_catalog.regexp_replace( $1::pg_catalog.text, $2::pg_catalog.text, $3, CASE WHEN pg_catalog.strpos($4, 'c') = 0 THEN  $4 || 'i' ELSE $4 END);
+    SELECT pg_catalog.regexp_matches( $1::pg_catalog.text, $2::pg_catalog.text, CASE WHEN pg_catalog.strpos($3, 'c') = 0 THEN  $3 || 'i' ELSE $3 END );
 $function$
 ]]></string>
 		</function>
@@ -386,20 +369,20 @@ AS $function$
 $function$
 ]]></string>
 		</function>
-		<function name="regexp_split_to_array" id="Function_3197afd1" isSystem="false" >
-			<string><![CDATA[CREATE OR REPLACE FUNCTION public.regexp_split_to_array(citext, citext)
- RETURNS text[]
+		<function name="regexp_replace" id="Function_6457fed" isSystem="false" >
+			<string><![CDATA[CREATE OR REPLACE FUNCTION public.regexp_replace(citext, citext, text)
+ RETURNS text
  LANGUAGE sql
  IMMUTABLE PARALLEL SAFE STRICT
 AS $function$
-    SELECT pg_catalog.regexp_split_to_array( $1::pg_catalog.text, $2::pg_catalog.text, 'i' );
+    SELECT pg_catalog.regexp_replace( $1::pg_catalog.text, $2::pg_catalog.text, $3, 'i');
 $function$
-CREATE OR REPLACE FUNCTION public.regexp_split_to_array(citext, citext, text)
- RETURNS text[]
+CREATE OR REPLACE FUNCTION public.regexp_replace(citext, citext, text, text)
+ RETURNS text
  LANGUAGE sql
  IMMUTABLE PARALLEL SAFE STRICT
 AS $function$
-    SELECT pg_catalog.regexp_split_to_array( $1::pg_catalog.text, $2::pg_catalog.text, CASE WHEN pg_catalog.strpos($3, 'c') = 0 THEN  $3 || 'i' ELSE $3 END );
+    SELECT pg_catalog.regexp_replace( $1::pg_catalog.text, $2::pg_catalog.text, $3, CASE WHEN pg_catalog.strpos($4, 'c') = 0 THEN  $4 || 'i' ELSE $4 END);
 $function$
 ]]></string>
 		</function>
@@ -420,7 +403,24 @@ AS $function$
 $function$
 ]]></string>
 		</function>
-		<function name="regexp_split_to_table" id="Function_322ee332" isSystem="false" >
+		<function name="regexp_split_to_array" id="Function_3197afd1" isSystem="false" >
+			<string><![CDATA[CREATE OR REPLACE FUNCTION public.regexp_split_to_array(citext, citext)
+ RETURNS text[]
+ LANGUAGE sql
+ IMMUTABLE PARALLEL SAFE STRICT
+AS $function$
+    SELECT pg_catalog.regexp_split_to_array( $1::pg_catalog.text, $2::pg_catalog.text, 'i' );
+$function$
+CREATE OR REPLACE FUNCTION public.regexp_split_to_array(citext, citext, text)
+ RETURNS text[]
+ LANGUAGE sql
+ IMMUTABLE PARALLEL SAFE STRICT
+AS $function$
+    SELECT pg_catalog.regexp_split_to_array( $1::pg_catalog.text, $2::pg_catalog.text, CASE WHEN pg_catalog.strpos($3, 'c') = 0 THEN  $3 || 'i' ELSE $3 END );
+$function$
+]]></string>
+		</function>
+		<function name="regexp_split_to_table" id="Function_1c6cfc52" isSystem="false" >
 			<string><![CDATA[CREATE OR REPLACE FUNCTION public.regexp_split_to_table(citext, citext)
  RETURNS SETOF text
  LANGUAGE sql
@@ -437,7 +437,7 @@ AS $function$
 $function$
 ]]></string>
 		</function>
-		<function name="regexp_split_to_table" id="Function_1c6cfc52" isSystem="false" >
+		<function name="regexp_split_to_table" id="Function_322ee332" isSystem="false" >
 			<string><![CDATA[CREATE OR REPLACE FUNCTION public.regexp_split_to_table(citext, citext)
  RETURNS SETOF text
  LANGUAGE sql
@@ -484,19 +484,6 @@ AS $function$
 $function$
 ]]></string>
 		</function>
-		<function name="texticlike" id="Function_b39cf1a" isSystem="false" >
-			<string><![CDATA[CREATE OR REPLACE FUNCTION public.texticlike(citext, text)
- RETURNS boolean
- LANGUAGE internal
- IMMUTABLE PARALLEL SAFE STRICT
-AS $function$texticlike$function$
-CREATE OR REPLACE FUNCTION public.texticlike(citext, citext)
- RETURNS boolean
- LANGUAGE internal
- IMMUTABLE PARALLEL SAFE STRICT
-AS $function$texticlike$function$
-]]></string>
-		</function>
 		<function name="texticlike" id="Function_5292473" isSystem="false" >
 			<string><![CDATA[CREATE OR REPLACE FUNCTION public.texticlike(citext, text)
  RETURNS boolean
@@ -510,17 +497,17 @@ CREATE OR REPLACE FUNCTION public.texticlike(citext, citext)
 AS $function$texticlike$function$
 ]]></string>
 		</function>
-		<function name="texticnlike" id="Function_2fe27264" isSystem="false" >
-			<string><![CDATA[CREATE OR REPLACE FUNCTION public.texticnlike(citext, text)
+		<function name="texticlike" id="Function_b39cf1a" isSystem="false" >
+			<string><![CDATA[CREATE OR REPLACE FUNCTION public.texticlike(citext, text)
  RETURNS boolean
  LANGUAGE internal
  IMMUTABLE PARALLEL SAFE STRICT
-AS $function$texticnlike$function$
-CREATE OR REPLACE FUNCTION public.texticnlike(citext, citext)
+AS $function$texticlike$function$
+CREATE OR REPLACE FUNCTION public.texticlike(citext, citext)
  RETURNS boolean
  LANGUAGE internal
  IMMUTABLE PARALLEL SAFE STRICT
-AS $function$texticnlike$function$
+AS $function$texticlike$function$
 ]]></string>
 		</function>
 		<function name="texticnlike" id="Function_11cba50b" isSystem="false" >
@@ -536,17 +523,17 @@ CREATE OR REPLACE FUNCTION public.texticnlike(citext, citext)
 AS $function$texticnlike$function$
 ]]></string>
 		</function>
-		<function name="texticregexeq" id="Function_37f9a99e" isSystem="false" >
-			<string><![CDATA[CREATE OR REPLACE FUNCTION public.texticregexeq(citext, text)
+		<function name="texticnlike" id="Function_2fe27264" isSystem="false" >
+			<string><![CDATA[CREATE OR REPLACE FUNCTION public.texticnlike(citext, text)
  RETURNS boolean
  LANGUAGE internal
  IMMUTABLE PARALLEL SAFE STRICT
-AS $function$texticregexeq$function$
-CREATE OR REPLACE FUNCTION public.texticregexeq(citext, citext)
+AS $function$texticnlike$function$
+CREATE OR REPLACE FUNCTION public.texticnlike(citext, citext)
  RETURNS boolean
  LANGUAGE internal
  IMMUTABLE PARALLEL SAFE STRICT
-AS $function$texticregexeq$function$
+AS $function$texticnlike$function$
 ]]></string>
 		</function>
 		<function name="texticregexeq" id="Function_a54539c" isSystem="false" >
@@ -562,7 +549,20 @@ CREATE OR REPLACE FUNCTION public.texticregexeq(citext, citext)
 AS $function$texticregexeq$function$
 ]]></string>
 		</function>
-		<function name="texticregexne" id="Function_85d3b66" isSystem="false" >
+		<function name="texticregexeq" id="Function_37f9a99e" isSystem="false" >
+			<string><![CDATA[CREATE OR REPLACE FUNCTION public.texticregexeq(citext, text)
+ RETURNS boolean
+ LANGUAGE internal
+ IMMUTABLE PARALLEL SAFE STRICT
+AS $function$texticregexeq$function$
+CREATE OR REPLACE FUNCTION public.texticregexeq(citext, citext)
+ RETURNS boolean
+ LANGUAGE internal
+ IMMUTABLE PARALLEL SAFE STRICT
+AS $function$texticregexeq$function$
+]]></string>
+		</function>
+		<function name="texticregexne" id="Function_c44a046" isSystem="false" >
 			<string><![CDATA[CREATE OR REPLACE FUNCTION public.texticregexne(citext, text)
  RETURNS boolean
  LANGUAGE internal
@@ -575,7 +575,7 @@ CREATE OR REPLACE FUNCTION public.texticregexne(citext, citext)
 AS $function$texticregexne$function$
 ]]></string>
 		</function>
-		<function name="texticregexne" id="Function_c44a046" isSystem="false" >
+		<function name="texticregexne" id="Function_85d3b66" isSystem="false" >
 			<string><![CDATA[CREATE OR REPLACE FUNCTION public.texticregexne(citext, text)
  RETURNS boolean
  LANGUAGE internal
@@ -610,7 +610,7 @@ $function$
 		<entity schema="public" name="users" color="ccffcc" x="448" y="304" />
 		<entity schema="public" name="user_roles" color="ccffcc" x="720" y="288" />
 		<entity schema="public" name="pages" color="ffffcc" x="560" y="192" />
-		<entity schema="public" name="media" color="ffffcc" x="544" y="80" />
+		<entity schema="public" name="medias" color="ffffcc" x="544" y="80" />
 		<group name="Rails 5 Internals" color="ffccff" >
 			<entity schema="public" name="ar_internal_metadata" />
 			<entity schema="public" name="schema_migrations" />
