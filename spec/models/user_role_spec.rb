@@ -8,6 +8,6 @@ RSpec.describe UserRole, issues: [54] do
   end
 
   it 'is versioned' do
-    it.is_expected.to be_versioned
+    is_expected.to be_versioned
   end
 end
