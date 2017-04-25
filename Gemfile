@@ -233,9 +233,6 @@ group :development, :test do
   # Email utilities
   gem 'capybara-email'
 
-  # redirect from local to global
-  gem 'selenium-webdriver'
-
   # Fully featured driver
   # http://stackoverflow.com/questions/23951381/how-do-poltergeist-phantomjs-and-capybara-webkit-differ
   gem 'poltergeist'
