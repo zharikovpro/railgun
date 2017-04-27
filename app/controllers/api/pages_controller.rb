@@ -1,40 +1,30 @@
-class Api::PagesController < ApplicationController
-  protect_from_forgery with: :null_session
-
+class Api::PagesController < Api::ApiController
   before_action :set_page, only: [:show, :update, :destroy]
-  before_action :destroy_session
 
-  # GET /api/pages
   def index
-    @pages = Page.all
+    @pages = policy_scope(Page)
+    authorize(@pages)
     render json: @pages, status: :ok
   end
 
-  # GET /api/pages/:slug
   def show
     render json: @page, status: :ok
   end
 
-  # POST /api/pages
   def create
     @page = Page.create!(permitted_attributes(@page))
+    authorize(@page)
     render json: @page, status: :created
   end
 
-  # PUT /api/pages/:id
   def update
     @page.update(permitted_attributes(@page))
     head :no_content
   end
 
-  # DELETE /api/pages/:id
   def destroy
     @page.destroy
     head :no_content
-  end
-
-  def destroy_session
-    request.session_options[:skip] = true
   end
 
   private

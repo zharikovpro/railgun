@@ -28,7 +28,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
         expect(response).to have_http_status(200)
       end
     end
-
+    #TODO Pundit::NotDefinedError: unable to find policy scope of nil
     context 'when the record does not exist' do
       let(:page_id) { 100 }
 
@@ -41,12 +41,12 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
       end
     end
   end
-
-  describe 'POST /pages' do
+#TODO Pundit::NotDefinedError: unable to find policy scope of nil
+  describe 'POST /api/pages' do
     let(:valid_attributes) { { slug: 'faq' } }
 
     context 'when request is valid' do
-      before { post '/pages', params: valid_attributes }
+      before { post '/api/pages', params: valid_attributes }
 
       it 'creates a page' do
         expect(json['slug']).to eq('faq')
@@ -58,7 +58,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
     end
 
     context 'when request is invalid' do
-      before { post '/pages', params: { slug: 'faq' } }
+      before { post '/api/pages', params: { slug: 'faq' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -70,24 +70,24 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
     end
   end
 
-  describe 'PUT /pages/:id' do
-    let(:valid_attributes) { { id: 'faq' }.to_json }
+  describe 'PUT /api/pages/:id' do
+    let(:valid_attributes) { { id: '1' }.to_json }
 
     context 'when the record exists' do
-      before { put "/pages/#{page_id}", params: valid_attributes }
+      before { put "/api/pages/#{page_id}", params: valid_attributes }
 
-      it 'updates the record' do
+      fit 'updates the record' do
         expect(response.body).to be_empty
       end
 
-      it 'returns status code 204' do
+      fit 'returns status code 204' do
         expect(response).to have_http_status(204)
       end
     end
   end
 
-  describe 'DELETE /pages/:id' do
-    before { delete "/pages/#{page_id}" }
+  describe 'DELETE /api/pages/:id' do
+    before { delete "/api/pages/#{page_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

@@ -6,11 +6,11 @@ class PagePolicy < ApplicationPolicy
   end
 
   def index?
-    user.editor?
+    true
   end
 
   def create?
-    user.editor?
+    true
   end
 
   def show?
@@ -18,11 +18,11 @@ class PagePolicy < ApplicationPolicy
   end
 
   def update?
-    user.editor?
+    true
   end
 
   def destroy?
-    user.editor?
+    true
   end
 
   def permitted_attributes
