@@ -4,8 +4,8 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
   let!(:pages) { create_list(:page, 10) }
   let(:page_id) { pages.first.id }
 
-  describe 'GET /api/pages' do
-    before { get '/api/pages' }
+  describe 'GET /api/v1/pages' do
+    before { get '/api/v1/pages' }
 
     it 'returns pages' do
       expect(json.size).to eq(10)
@@ -17,7 +17,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
   end
 
   describe 'GET /api/pages/:id' do
-    before { get "/api/pages/#{page_id}" }
+    before { get "/api/v1/pages/#{page_id}" }
 
     context 'when the record exists' do
       it 'returns the page' do
@@ -28,9 +28,9 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
         expect(response).to have_http_status(200)
       end
     end
-    #TODO Pundit::NotDefinedError: unable to find policy scope of nil
+
     context 'when the record does not exist' do
-      let(:page_id) { 100 }
+      let(:page_id) { 0 }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
@@ -41,15 +41,15 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
       end
     end
   end
-#TODO Pundit::NotDefinedError: unable to find policy scope of nil
-  describe 'POST /api/pages' do
-    let(:valid_attributes) { { slug: 'faq' } }
+
+  describe 'POST /api/v1/pages' do
 
     context 'when request is valid' do
-      before { post '/api/pages', params: valid_attributes }
+      before { post '/api/v1/pages', params: { slug: 'faq', markdown: 'something' } }
 
       it 'creates a page' do
         expect(json['slug']).to eq('faq')
+        expect(Page.find_by_slug(:faq).markdown).to eq('something')
       end
 
       it 'returns status code 201' do
@@ -58,36 +58,35 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
     end
 
     context 'when request is invalid' do
-      before { post '/api/pages', params: { slug: 'faq' } }
+      before { post '/api/v1/pages', params: { slug: 'Foobar' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to match(/Validation failed: Created by can't be blank/)
+        expect(response.body).to match(/Validation failed: Markdown can't be blank/)
       end
     end
   end
 
-  describe 'PUT /api/pages/:id' do
-    let(:valid_attributes) { { id: '1' }.to_json }
+  describe 'PUT /api/v1/pages/:id' do
 
     context 'when the record exists' do
-      before { put "/api/pages/#{page_id}", params: valid_attributes }
+      before { put "/api/v1/pages/#{page_id}", params: { slug: 'about' } }
 
-      fit 'updates the record' do
-        expect(response.body).to be_empty
+      it 'updates the record' do
+        expect(Page.find_by_id(page_id).slug).to eq('about')
       end
 
-      fit 'returns status code 204' do
+      it 'returns status code 204' do
         expect(response).to have_http_status(204)
       end
     end
   end
 
-  describe 'DELETE /api/pages/:id' do
-    before { delete "/api/pages/#{page_id}" }
+  describe 'DELETE /api/v1/pages/:id' do
+    before { delete "/api/v1/pages/#{page_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

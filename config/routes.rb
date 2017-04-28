@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :pages
+    namespace :v1 do
+      resources :pages
+    end
   end
 
   resources :pages, only: :show
