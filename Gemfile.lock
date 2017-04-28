@@ -188,6 +188,7 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.0.3)
+    jwt (1.5.6)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -201,6 +202,10 @@ GEM
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
     key_struct (0.4.2)
+    knock (2.1.1)
+      bcrypt (~> 3.1)
+      jwt (~> 1.5)
+      rails (>= 4.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -495,7 +500,9 @@ DEPENDENCIES
   formtastic (~> 3.1)
   fuubar
   inherited_resources!
+  jwt
   kaminari
+  knock
   letter_opener
   listen (~> 3.0.5)
   lograge

@@ -188,6 +188,12 @@ gem 'paper_trail', '~> 7.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# API
+
+# authentication
+gem 'jwt'
+gem 'knock'
+
 group :development do
   # Run app in background for faster reload
   gem 'spring'
@@ -202,7 +208,7 @@ group :development do
   # Insert console everywhere it's required
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
-  gem "binding_of_caller"
+  gem 'binding_of_caller'
 
   # Debugger for console-only environments
   gem 'byebug', platform: :mri
