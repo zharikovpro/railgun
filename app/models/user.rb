@@ -66,4 +66,11 @@ class User < ApplicationRecord
   #   self.errors[:password_confirmation] << 'does not match' if password != password_confirmation
   #   password.present? && password == password_confirmation
   # end
+
+  alias_method :authenticate, :valid_password?
+
+  def self.from_token_payload(payload)
+    self.find payload["sub"]
+  end
+
 end

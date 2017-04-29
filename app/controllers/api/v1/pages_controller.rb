@@ -1,6 +1,7 @@
 module Api
   module V1
     class PagesController < Api::V1::ApiController
+      before_action :authenticate_user
       before_action :set_page, only: [:show, :update, :destroy]
 
       def index
@@ -31,8 +32,11 @@ module Api
       end
 
       def update
-        @page.update(page_params)
-        head :no_content
+        if @page.update(page_params)
+          head :no_content
+        else
+          render json: @page.errors, status: :unprocessable_entity
+        end
       end
 
       def destroy
