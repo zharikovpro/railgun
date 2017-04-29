@@ -1,16 +1,12 @@
 require 'rails_helper'
 
-def authenticated_header
-  token = Knock::AuthToken.new(payload: { sub: create(:editor).id }).token
-
-  {
-      'Authorization': "Bearer #{token}"
-  }
-end
-
 RSpec.describe 'pages API', type: :request, issues: [116] do
   let!(:pages) { create_list(:page, 10) }
   let(:page_id) { pages.first.id }
+  let(:authenticated_header) {
+    token = Knock::AuthToken.new(payload: { sub: create(:editor).id }).token
+    { 'Authorization': "Bearer #{token}" }
+  }
 
   describe 'GET /api/v1/pages' do
     before { get '/api/v1/pages', headers: authenticated_header }
