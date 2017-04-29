@@ -1,7 +1,7 @@
 module Api
   module V1
     class PagesController < Api::V1::ApiController
-      before_action :authenticate_user
+      before_action :authenticate_user, except: :show
       before_action :set_page, only: [:show, :update, :destroy]
 
       def index
@@ -11,7 +11,11 @@ module Api
       end
 
       def show
-        render json: @page, status: :ok
+        if current_user
+          render json: @page, status: :ok
+        else
+          render json: { message: "Authorization failed" }, status: :unauthorized
+        end
       end
 
       def create
@@ -40,8 +44,11 @@ module Api
       end
 
       def destroy
-        @page.destroy
-        head :no_content
+        if @page.destroy
+          head :no_content
+        else
+          render json: @page.errors, status: :unprocessable_entity
+        end
       end
 
       private
