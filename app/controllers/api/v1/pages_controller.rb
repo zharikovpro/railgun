@@ -1,7 +1,7 @@
 module Api
   module V1
     class PagesController < Api::V1::ApiController
-      before_action :authenticate_user, except: :show
+      before_action :authenticate_user
       before_action :set_page, only: [:show, :update, :destroy]
 
       def index
@@ -11,50 +11,36 @@ module Api
       end
 
       def show
-        if current_user
-          render json: @page, status: :ok
-        else
-          render json: { message: "Authorization failed" }, status: :unauthorized
-        end
+        render json: @page, status: :ok
       end
 
       def create
-        begin
-          @page = Page.create!(page_params)
-        rescue ActiveRecord::RecordInvalid => e
-          @exeption = {json: { message: e.message }, status: :unprocessable_entity}
-        end
-        begin
-          authorize(@page)
-        rescue Pundit::NotDefinedError
-        end
-        if @page.nil?
-          render @exeption
-        else
+        @page = Page.new(params.permit(:slug, :markdown))
+        authorize(@page)
+        if @page.save
           render json: @page, status: :created
+        else
+          render json: @page.errors, status: :unprocessable_entity
         end
       end
 
       def update
         if @page.update(page_params)
-          head :no_content
+          render json: @page, status: :accepted
         else
           render json: @page.errors, status: :unprocessable_entity
         end
       end
 
       def destroy
-        if @page.destroy
-          head :no_content
-        else
-          render json: @page.errors, status: :unprocessable_entity
-        end
+        @page.destroy
+        render json: @page, status: :accepted
       end
 
       private
 
       def page_params
-        params.permit(:slug, :markdown)
+        params.permit(policy(@page).permitted_attributes)
       end
 
       def set_page

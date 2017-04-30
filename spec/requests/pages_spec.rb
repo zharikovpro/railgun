@@ -69,32 +69,45 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to match(/Validation failed: Markdown can't be blank/)
+        expect(response.body).to be{ json Markdown: "can't be blank" }
       end
     end
   end
 
   describe 'PUT /api/v1/pages/:id' do
 
-    context 'when the record exists' do
-      before { put "/api/v1/pages/#{page_id}", headers: authenticated_header, params: { slug: 'about' } }
+    context 'when the record exists and format is correct' do
+      before { put "/api/v1/pages/#{page_id}", headers: authenticated_header, params: { slug: 'about_1' } }
 
       it 'updates the record' do
-        expect(Page.find_by_id(page_id).slug).to eq('about')
+        expect(Page.find_by_id(page_id).slug).to eq('about_1')
       end
 
-      it 'returns status code 204' do
-        expect(response).to have_http_status(204)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(202)
+      end
+    end
+
+    context 'when format is not correct' do
+      before { put "/api/v1/pages/#{page_id}", headers: authenticated_header, params: { slug: '%%^^##' } }
+
+      it 'updates the record' do
+        expect(Page.find_by_id(page_id).slug).not_to eq('%%^^##')
+      end
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
       end
     end
   end
 
   describe 'DELETE /api/v1/pages/:id' do
-    before { delete "/api/v1/pages/#{page_id}", headers: authenticated_header }
 
-    it 'returns status code 204' do
+    it 'returns status code 200' do
+      delete "/api/v1/pages/#{page_id}", headers: authenticated_header
+
       expect(Page.find_by_id(page_id)).to be_nil
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(202)
     end
   end
 end
