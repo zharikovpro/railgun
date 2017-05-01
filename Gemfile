@@ -194,6 +194,9 @@ gem 'paper_trail', '~> 7.0.0'
 gem 'jwt'
 gem 'knock'
 
+# enable cross-origin resource sharing
+gem 'rack-cors', :require => 'rack/cors'
+
 group :development do
   # Run app in background for faster reload
   gem 'spring'

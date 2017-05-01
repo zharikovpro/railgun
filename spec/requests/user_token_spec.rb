@@ -14,3 +14,11 @@ RSpec.describe UserTokenController, issues: [116] do
     end
   end
 end
+
+RSpec.describe 'Cors', issues: [113] do
+  it 'Returns the response CORS headers' do
+    get '/api/v1/pages', nil, 'HTTP_ORIGIN' => '*'
+
+    expect(response.headers['Access-Control-Allow-Origin']).to eq('*')
+  end
+end
