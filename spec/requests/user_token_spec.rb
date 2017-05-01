@@ -4,13 +4,16 @@ RSpec.describe UserTokenController, issues: [116] do
   describe 'authenticate' do
     it 'authenticates correctly' do
       user = create(:user)
-      token = Knock::AuthToken.new(payload: { sub: user.id }).token
+      page = create(:page).id
 
       post '/user_token', auth: { email: user.email, password: user.password }, format: 'json'
+      token = JSON.parse(response.body)["jwt"]
+      get "/api/v1/pages/#{page}", headers: { 'Authorization': "Bearer #{token}" }
 
       expect(response).to be_success
       expect(response.content_type).to match(/application\/json/)
-      expect(response.body).to eq({jwt: token}.to_json)
+      expect(json['id']).to eq(page)
+      expect(response).to have_http_status(200)
     end
   end
 end
