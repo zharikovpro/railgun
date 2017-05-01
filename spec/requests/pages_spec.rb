@@ -9,14 +9,28 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
   }
 
   describe 'GET /api/v1/pages' do
-    before { get '/api/v1/pages', headers: authenticated_header }
+    context 'when authenticates is not correctly' do
+      before { get '/api/v1/pages' }
 
-    it 'returns pages' do
-      expect(json.size).to eq(10)
+      it 'returns pages' do
+        expect(response.body).to match(/Not Authorized/)
+      end
+
+      it 'returns status code 401' do
+        expect(response).to have_http_status(401)
+      end
     end
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+    context 'when authenticates correctly' do
+      before { get '/api/v1/pages', headers: authenticated_header }
+
+      it 'returns pages' do
+        expect(json.size).to eq(10)
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
     end
   end
 
@@ -69,7 +83,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to be{ json Markdown: "can't be blank" }
+        expect(response.body).to  match(/can't be blank/)
       end
     end
   end

@@ -10,6 +10,12 @@ module Api
       def destroy_session
         request.session_options[:skip] = true
       end
+
+      def authenticate_user
+        unless current_user
+          render json: { message: 'Not Authorized' }, status: :unauthorized
+        end
+      end
     end
   end
 end

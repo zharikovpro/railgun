@@ -10,7 +10,7 @@ RSpec.describe UserTokenController, issues: [116] do
 
       expect(response).to be_success
       expect(response.content_type).to match(/application\/json/)
-      expect(response.body).to be{ json JWT: token }
+      expect(response.body).to eq({jwt: token}.to_json)
     end
   end
 end
