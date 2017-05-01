@@ -10,13 +10,8 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
 
   describe 'GET /api/v1/pages' do
     context 'when authenticates is not correctly' do
-      before { get '/api/v1/pages' }
-
-      it 'returns pages' do
-        expect(response.body).to match(/Not Authorized/)
-      end
-
       it 'returns status code 401' do
+        get '/api/v1/pages'
         expect(response).to have_http_status(401)
       end
     end
@@ -48,14 +43,9 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
     end
 
     context 'when the record does not exist' do
-      let(:page_id) { 0 }
-
       it 'returns status code 404' do
+        get '/api/v1/pages/0', headers: authenticated_header
         expect(response).to have_http_status(404)
-      end
-
-      it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find page/)
       end
     end
   end

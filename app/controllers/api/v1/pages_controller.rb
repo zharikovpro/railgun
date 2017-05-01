@@ -46,7 +46,7 @@ module Api
       def set_page
         @page = Page.find_by_id(params[:id])
         if @page.nil?
-          render json: { message: "Couldn't find page" }, status: :not_found
+          head :not_found
         else
           authorize(@page)
         end
@@ -54,4 +54,3 @@ module Api
     end
   end
 end
-
