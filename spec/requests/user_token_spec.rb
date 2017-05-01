@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UserTokenController, issues: [116] do
   describe 'authenticate' do
-    it 'authenticates correctly' do
+    fit 'authenticates correctly' do
       user = create(:user)
       page_id = create(:page).id
 
