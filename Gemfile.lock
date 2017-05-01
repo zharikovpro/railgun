@@ -501,9 +501,9 @@ DEPENDENCIES
   formtastic (~> 3.1)
   fuubar
   inherited_resources!
-  jwt
+  jwt (~> 1.5.6)
   kaminari
-  knock
+  knock (~> 2.1.1)
   letter_opener
   listen (~> 3.0.5)
   lograge

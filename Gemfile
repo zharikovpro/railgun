@@ -90,9 +90,6 @@ gem 'devise', '~> 4.2.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Authorization helpers
-# gem 'pundit', '~> 1.1'
-
 # Slim for templates
 gem 'slim', '~> 3.0.7'
 gem 'slim-rails', '~> 3.1.0'
@@ -188,14 +185,12 @@ gem 'paper_trail', '~> 7.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# API
-
-# authentication
-gem 'jwt'
-gem 'knock'
+# API authentication
+gem 'jwt', '~> 1.5.6'
+gem 'knock', '~> 2.1.1'
 
 # enable cross-origin resource sharing
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development do
   # Run app in background for faster reload

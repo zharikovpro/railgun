@@ -4,23 +4,22 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
   let!(:pages) { create_list(:page, 10) }
   let(:page_id) { pages.first.id }
   let(:authenticated_header) {
-    token = Knock::AuthToken.new(payload: { sub: create(:editor).id }).token
-    { 'Authorization': "Bearer #{token}" }
+    { 'Authorization' => "Bearer #{create(:editor).api_token}" }
   }
 
   describe 'GET /api/v1/pages' do
-    context 'when authenticates is not correctly' do
+    context 'authentication error' do
       it 'returns status code 401' do
         get '/api/v1/pages'
         expect(response).to have_http_status(401)
       end
     end
 
-    context 'when authenticates correctly' do
+    context 'authentication ok' do
       before { get '/api/v1/pages', headers: authenticated_header }
 
       it 'returns pages' do
-        expect(json.size).to eq(10)
+        expect(response.parsed_body.size).to eq(10)
       end
 
       it 'returns status code 200' do
@@ -34,7 +33,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
 
     context 'when the record exists' do
       it 'returns the page' do
-        expect(json['id']).to eq(page_id)
+        expect(response.parsed_body['id']).to eq(page_id)
       end
 
       it 'returns status code 200' do
@@ -56,7 +55,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
       before { post '/api/v1/pages', headers: authenticated_header, params: { slug: 'faq', markdown: 'something' } }
 
       it 'creates a page' do
-        expect(json['slug']).to eq('faq')
+        expect(response.parsed_body['slug']).to eq('faq')
         expect(Page.find_by_slug(:faq).markdown).to eq('something')
       end
 
@@ -88,7 +87,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
       end
 
       it 'returns status code 200' do
-        expect(response).to have_http_status(202)
+        expect(response).to have_http_status(200)
       end
     end
 
@@ -111,7 +110,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
       delete "/api/v1/pages/#{page_id}", headers: authenticated_header
 
       expect(Page.find_by_id(page_id)).to be_nil
-      expect(response).to have_http_status(202)
+      expect(response).to have_http_status(200)
     end
   end
 end

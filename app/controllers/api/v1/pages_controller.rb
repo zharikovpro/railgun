@@ -7,11 +7,11 @@ module Api
       def index
         @pages = policy_scope(Page)
         authorize(@pages)
-        render json: @pages, status: :ok
+        render json: @pages
       end
 
       def show
-        render json: @page, status: :ok
+        render json: @page
       end
 
       def create
@@ -26,7 +26,7 @@ module Api
 
       def update
         if @page.update(page_params)
-          render json: @page, status: :accepted
+          render json: @page
         else
           render json: @page.errors, status: :unprocessable_entity
         end
@@ -34,7 +34,7 @@ module Api
 
       def destroy
         @page.destroy
-        render json: @page, status: :accepted
+        render json: @page
       end
 
       private

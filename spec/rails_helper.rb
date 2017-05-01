@@ -50,7 +50,6 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
   config.include Warden::Test::Helpers
   config.include Devise::Test::ControllerHelpers, type: :view
-  config.include RequestSpecHelper, type: :request
 
   config.after(:each) { Warden.test_reset! }
   config.after(:suite) { FileUtils.rm_rf("#{Rails.root}/tmp/paperclip") }

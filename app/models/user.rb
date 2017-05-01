@@ -66,8 +66,7 @@ class User < ApplicationRecord
   #   self.errors[:password_confirmation] << 'does not match' if password != password_confirmation
   #   password.present? && password == password_confirmation
   # end
-
-  def self.from_token_payload(payload)
-    self.find payload["sub"]
+  def api_token
+    Knock::AuthToken.new(payload: { sub: id }).token
   end
 end
