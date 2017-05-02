@@ -72,13 +72,12 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to  match(/can't be blank/)
+        expect(response.body).to match(/can't be blank/)
       end
     end
   end
 
   describe 'PUT /api/v1/pages/:id' do
-
     context 'when the record exists and format is correct' do
       before { put "/api/v1/pages/#{page_id}", headers: authenticated_header, params: { slug: 'about_1' } }
 
