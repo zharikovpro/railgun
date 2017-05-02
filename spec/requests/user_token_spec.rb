@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe UserTokenController, issues: [116] do
+RSpec.describe Api::V1::UserTokenController, issues: [116] do
   describe 'authenticate' do
-    fit 'authenticates correctly' do
+    it 'authenticates correctly' do
       user = create(:user)
       page_id = create(:page).id
 
-      post '/user_token', auth: { email: user.email, password: user.password }, format: 'json'
+      post '/api/v1/user_token', auth: { email: user.email, password: user.password }, format: 'json'
       token = response.parsed_body['jwt']
       get "/api/v1/pages/#{page_id}", headers: { 'Authorization' => "Bearer #{token}" }
 
@@ -24,7 +24,6 @@ RSpec.describe 'CORS', issues: [113] do
   end
 end
 
-=begin
 RSpec.feature "the requests support CORS headers", type: :feature, issues: [113] do
   scenario 'Send the CORS preflight OPTIONS request' do
     options '/', nil, 'HTTP_ORIGIN' => 'http://super-test.com', 'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'GET', 'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'test'
@@ -35,4 +34,3 @@ RSpec.feature "the requests support CORS headers", type: :feature, issues: [113]
     expect(last_response.headers).to have_key('Access-Control-Max-Age')
   end
 end
-=end

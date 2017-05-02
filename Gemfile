@@ -3,19 +3,19 @@ source 'https://rubygems.org'
 ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 
 # Pretty print Ruby objects
-gem 'awesome_print'
+gem 'awesome_print', '~> 1.7.0'
 
 # Load ENV variables from .env file
-gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'dotenv-rails', '~> 2.2.0', require: 'dotenv/rails-now'
 
 # Exceptions monitoring
-gem 'rollbar'
+gem 'rollbar', '~> 2.14.1'
 
 # Guess my country
-gem 'russian'
+gem 'russian', '~> 0.6.0'
 
 # Generate security report with brakeman -o brakeman.html
-gem 'brakeman', require: false
+gem 'brakeman', '~> 3.6.1', require: false
 
 # Cron jobs manager
 # gem 'whenever', require: false
@@ -51,10 +51,10 @@ gem 'rails', '~> 5.0.1'
 # gem 'redis', '~> 3.0'
 
 # Compact logs
-gem 'lograge'
+gem 'lograge', '~> 0.4.1'
 
 # Restore original remote_ip when using CloudFlare
-gem 'actionpack-cloudflare'
+gem 'actionpack-cloudflare', '~> 1.1.0'
 
 # Elastic logs support
 # gem 'logstash-event'
@@ -67,10 +67,10 @@ gem 'pg', '~> 0.18'
 gem 'schema_validations', '~> 2.2.x'
 
 # Validates emails
-gem 'email_validator'
+gem 'email_validator', '~> 1.6.0'
 
 # Validate and normalize phone numbers
-gem 'phony_rails'
+gem 'phony_rails', '~> 0.14.5'
 
 # Versioned database views in migrations
 # gem 'scenic', '~> 1.3.0'
@@ -98,13 +98,13 @@ gem 'slim-rails', '~> 3.1.0'
 gem 'stylus', '~> 1.0.1'
 
 # Markdown rendering
-gem 'redcarpet'
+gem 'redcarpet', '~> 3.4.0'
 
 # View helpers
-gem 'flutie'
+gem 'flutie', '~> 2.0.0'
 
 # Paging
-gem 'kaminari'
+gem 'kaminari', '~> 1.0.1'
 
 # Compress JavaScript in production
 gem 'uglifier', '>= 1.3.0'
@@ -142,12 +142,12 @@ gem 'paranoia', '~> 2.2'
 # gem 'chartkick'
 
 # File uploads and attachments
-gem 'paperclip', '~> 5.1.0'
 gem 'aws-sdk', '~> 2.6.33'
+gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
-gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'activeadmin', '~> 1.0.0.pre5', git: 'https://github.com/activeadmin/activeadmin'
+gem 'inherited_resources', '~> 1.7.0', git: 'https://github.com/activeadmin/inherited_resources'
 
 # Clone records with a click
 # gem 'active_admin-duplicatable'
@@ -167,13 +167,13 @@ gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resour
 gem 'formtastic', '~> 3.1'
 
 # HTML/XML parser
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.7.1'
 
 # Model factories in all environments
-gem 'factory_girl_rails'
+gem 'factory_girl_rails', '~> 4.8.0'
 
 # Fake values generator
-gem 'faker'
+gem 'faker', '~> 1.7.3'
 
 # Changes audit
 gem 'paper_trail', '~> 7.0.0'
@@ -190,82 +190,82 @@ gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
 
 # enable cross-origin resource sharing
-gem 'rack-cors', require: 'rack/cors'
+gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
 
 group :development do
   # Run app in background for faster reload
-  gem 'spring'
+  gem 'spring', '~> 2.0.1'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Run tests in background, too
-  gem 'spring-commands-rspec'
+  gem 'spring-commands-rspec', '~> 1.0.4'
 
   # Very informative error pages with console
-  gem 'better_errors'
+  gem 'better_errors', '~> 2.1.1'
 
   # Insert console everywhere it's required
-  gem 'web-console'
+  gem 'binding_of_caller', '~> 0.7.2'
   gem 'listen', '~> 3.0.5'
-  gem 'binding_of_caller'
+  gem 'web-console', '~> 3.5.0'
 
   # Debugger for console-only environments
-  gem 'byebug', platform: :mri
+  gem 'byebug', '~> 9.0.6', platform: :mri
 end
 
 group :development, :test do
   # Eloquent specs
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.5.2'
 
   # Testing helpers
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 3.1.1'
 
   # Cleaner test names
-  gem 'should_not'
+  gem 'should_not', '~> 1.1.0'
 
   # Time travel
-  gem 'timecop'
+  gem 'timecop', '~> 0.8.1'
 
   # View sent letters locally
-  gem 'letter_opener'
+  gem 'letter_opener', '~> 1.4.1'
 
   # Acceptance testing
-  gem 'capybara'
+  gem 'capybara', '~> 2.13.0'
 
   # Screenshot all failures
-  gem 'capybara-screenshot'
+  gem 'capybara-screenshot', '~> 1.0.14'
 
   # Email utilities
-  gem 'capybara-email'
+  gem 'capybara-email', '~> 2.5.0'
 
   # Fully featured driver
   # http://stackoverflow.com/questions/23951381/how-do-poltergeist-phantomjs-and-capybara-webkit-differ
-  gem 'poltergeist'
+  gem 'poltergeist', '~> 1.14.0'
 end
 
 group :test do
   # Instafailing formatter
-  gem 'fuubar'
+  gem 'fuubar', '~> 2.2.0'
 
   # Run tests with clean database
-  gem 'database_cleaner'
+  gem 'database_cleaner', '~> 1.5.3'
 
   # Generate code coverate reports
-  gem 'simplecov'
+  gem 'simplecov', '~> 0.13.0'
 
   # Upload coverage reports to CodeClimate
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'codeclimate-test-reporter', '~> 1.0.8', require: nil
 
   # Test background jobs
-  gem 'rspec-sidekiq'
+  gem 'rspec-sidekiq', '~> 2.2.0'
 
   # Mutation testing
-  gem 'mutant-rspec'
+  gem 'mutant-rspec', '~> 0.8.11'
 end
 
 group :production do
   # Redirect from additional hosts to original
-  gem 'rack-canonical-host'
+  gem 'rack-canonical-host', '~> 0.2.2'
 
   # New Relic APM
-  gem 'newrelic_rpm'
+  gem 'newrelic_rpm', '~> 4.0.0.332'
 end
