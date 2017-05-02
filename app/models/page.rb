@@ -1,4 +1,4 @@
 class Page < ApplicationRecord
   has_paper_trail
-  validates_format_of :slug, with: /([[:lower:]]|[0-9]+-?[[:lower:]])(-[[:lower:]0-9]+|[[:lower:]0-9])*/
+  validates_format_of :slug, with: /\A[a-z0-9\-_.]+\z/
 end
