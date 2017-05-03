@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_many :user_roles
   accepts_nested_attributes_for :user_roles, allow_destroy: true
-
+  alias_method :authenticate, :valid_password?
   scope :employees, -> { joins(:user_roles).distinct }
 
   # TODO: def timeout_in
@@ -38,7 +38,7 @@ class User < ApplicationRecord
   def employee?
     roles.present?
   end
-  
+
   def administrator?
     roles.include?(:administrator)
   end
@@ -66,4 +66,7 @@ class User < ApplicationRecord
   #   self.errors[:password_confirmation] << 'does not match' if password != password_confirmation
   #   password.present? && password == password_confirmation
   # end
+  def api_token
+    Knock::AuthToken.new(payload: { sub: id }).token
+  end
 end

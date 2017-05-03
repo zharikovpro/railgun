@@ -188,6 +188,7 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.0.3)
+    jwt (1.5.6)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -201,6 +202,10 @@ GEM
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
     key_struct (0.4.2)
+    knock (2.1.1)
+      bcrypt (~> 3.1)
+      jwt (~> 1.5)
+      rails (>= 4.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -297,6 +302,7 @@ GEM
     rack-canonical-host (0.2.2)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
+    rack-cors (0.4.1)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -471,67 +477,70 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionpack-cloudflare
-  activeadmin!
-  awesome_print
+  actionpack-cloudflare (~> 1.1.0)
+  activeadmin (~> 1.0.0.pre5)!
+  awesome_print (~> 1.7.0)
   aws-sdk (~> 2.6.33)
   bcrypt (~> 3.1.7)
-  better_errors
-  binding_of_caller
-  brakeman
-  byebug
-  capybara
-  capybara-email
-  capybara-screenshot
-  codeclimate-test-reporter
+  better_errors (~> 2.1.1)
+  binding_of_caller (~> 0.7.2)
+  brakeman (~> 3.6.1)
+  byebug (~> 9.0.6)
+  capybara (~> 2.13.0)
+  capybara-email (~> 2.5.0)
+  capybara-screenshot (~> 1.0.14)
+  codeclimate-test-reporter (~> 1.0.8)
   coffee-rails (~> 4.2)
-  database_cleaner
+  database_cleaner (~> 1.5.3)
   devise (~> 4.2.0)
-  dotenv-rails
-  email_validator
-  factory_girl_rails
-  faker
-  flutie
+  dotenv-rails (~> 2.2.0)
+  email_validator (~> 1.6.0)
+  factory_girl_rails (~> 4.8.0)
+  faker (~> 1.7.3)
+  flutie (~> 2.0.0)
   formtastic (~> 3.1)
-  fuubar
-  inherited_resources!
-  kaminari
-  letter_opener
+  fuubar (~> 2.2.0)
+  inherited_resources (~> 1.7.0)!
+  jwt (~> 1.5.6)
+  kaminari (~> 1.0.1)
+  knock (~> 2.1.1)
+  letter_opener (~> 1.4.1)
   listen (~> 3.0.5)
-  lograge
-  mutant-rspec
-  newrelic_rpm
-  nokogiri
+  lograge (~> 0.4.1)
+  mutant-rspec (~> 0.8.11)
+  newrelic_rpm (~> 4.0.0.332)
+  nokogiri (~> 1.7.1)
   paper_trail (~> 7.0.0)
   paperclip (~> 5.1.0)
   paranoia (~> 2.2)
   passenger (~> 5.1.2)
   pg (~> 0.18)
-  phony_rails
-  poltergeist
+  phony_rails (~> 0.14.5)
+  poltergeist (~> 1.14.0)
   pundit (~> 1.1.0)
-  rack-canonical-host
+  rack-canonical-host (~> 0.2.2)
+  rack-cors (~> 0.4.1)
   rails (~> 5.0.1)
-  redcarpet
-  rollbar
-  rspec-rails
-  rspec-sidekiq
-  russian
+  redcarpet (~> 3.4.0)
+  rollbar (~> 2.14.1)
+  rspec-rails (~> 3.5.2)
+  rspec-sidekiq (~> 2.2.0)
+  russian (~> 0.6.0)
   schema_validations (~> 2.2.x)
-  should_not
-  shoulda-matchers
+  should_not (~> 1.1.0)
+  shoulda-matchers (~> 3.1.1)
   sidekiq (~> 4.2, >= 4.2.9)
   sidekiq-failures (~> 0.4.5)
-  simplecov
+  simplecov (~> 0.13.0)
   slim (~> 3.0.7)
   slim-rails (~> 3.1.0)
-  spring
-  spring-commands-rspec
+  spring (~> 2.0.1)
+  spring-commands-rspec (~> 1.0.4)
   spring-watcher-listen (~> 2.0.0)
   stylus (~> 1.0.1)
-  timecop
+  timecop (~> 0.8.1)
   uglifier (>= 1.3.0)
-  web-console
+  web-console (~> 3.5.0)
 
 RUBY VERSION
    ruby 2.4.1p111
