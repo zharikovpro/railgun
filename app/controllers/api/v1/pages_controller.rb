@@ -16,7 +16,7 @@ module Api
 
       def create
         @page = Page.new
-        @page.update(page_params)
+        @page.assign_attributes(page_params)
         authorize(@page)
         if @page.save
           render json: @page, status: :created

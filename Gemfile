@@ -38,9 +38,6 @@ gem 'sidekiq-failures', '~> 0.4.5'
 # Rate limit jobs execution
 # gem 'sidekiq-throttler', '~> 0.5.1'
 
-# Optional CORS support
-# gem 'rack-cors', :require => 'rack/cors'
-
 # Passenger has the best documentation and support
 gem 'passenger', '~> 5.1.2'
 
