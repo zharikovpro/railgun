@@ -6,6 +6,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
   let(:authenticated_header) {
     { 'Authorization' => "Bearer #{create(:editor).api_token}" }
   }
+
   describe 'GET /api/v1/pages' do
     context 'authentication error' do
       it 'returns status code 401' do
@@ -49,7 +50,6 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
   end
 
   describe 'POST /api/v1/pages' do
-
     context 'when request is valid' do
       before { post '/api/v1/pages', headers: authenticated_header, params: { slug: 'faq', markdown: 'something' } }
 
@@ -103,7 +103,6 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
   end
 
   describe 'DELETE /api/v1/pages/:id' do
-
     it 'returns status code 200' do
       delete "/api/v1/pages/#{page_id}", headers: authenticated_header
 

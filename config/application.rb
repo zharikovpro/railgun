@@ -20,13 +20,6 @@ module Railgun
     config.active_record.schema_format = :sql
 
     config.autoload_paths << Rails.root.join('lib')
-
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '/api/v1/*', headers: :any, methods: :any
-      end
-    end
   end
 end
 
