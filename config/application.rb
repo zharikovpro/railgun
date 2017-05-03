@@ -24,7 +24,7 @@ module Railgun
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:options, :head, :get, :post, :put, :patch, :delete]
+        resource '/api/v1/*', headers: :any, methods: [:options, :head, :get, :post, :put, :patch, :delete]
       end
     end
   end

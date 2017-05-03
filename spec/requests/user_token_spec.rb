@@ -16,21 +16,14 @@ RSpec.describe Api::V1::UserTokenController, issues: [116] do
   end
 end
 
-RSpec.describe 'CORS', issues: [113] do
-  it 'Returns the response CORS headers' do
-    get '/api/v1/pages', nil, 'HTTP_ORIGIN' => 'http://super-test.com'
+RSpec.describe 'the requests support CORS headers', issues: [113] do
+  fit 'Returns the response CORS headers' do
+    get '/api/v1/pages', nil, 'HTTP_ORIGIN' => 'http://super-test.com', 'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'GET'
 
     expect(response.headers['Access-Control-Allow-Origin']).to eq('http://super-test.com')
-  end
-end
-
-RSpec.feature "the requests support CORS headers", type: :feature, issues: [113] do
-  scenario 'Send the CORS preflight OPTIONS request' do
-    options '/', nil, 'HTTP_ORIGIN' => 'http://super-test.com', 'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'GET', 'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'test'
-
-    expect(last_response.headers['Access-Control-Allow-Origin']).to eq('http://super-test.com')
-    expect(last_response.headers['Access-Control-Allow-Methods']).to eq('GET, POST, PATCH, OPTIONS')
-    expect(last_response.headers['Access-Control-Allow-Headers']).to eq('test')
-    expect(last_response.headers).to have_key('Access-Control-Max-Age')
+    expect(response.headers['Access-Control-Allow-Origin']).to eq('http://super-test.com')
+    expect(response.headers['Access-Control-Allow-Methods']).to eq('OPTIONS, HEAD, GET, POST, PUT, PATCH, DELETE')
+    expect(response.headers['Access-Control-Allow-Headers']).to be_nil
+    expect(response.headers).to have_key('Access-Control-Max-Age')
   end
 end

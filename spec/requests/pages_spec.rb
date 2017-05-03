@@ -6,7 +6,6 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
   let(:authenticated_header) {
     { 'Authorization' => "Bearer #{create(:editor).api_token}" }
   }
-
   describe 'GET /api/v1/pages' do
     context 'authentication error' do
       it 'returns status code 401' do

@@ -15,7 +15,8 @@ module Api
       end
 
       def create
-        @page = Page.new(params.permit(:slug, :markdown))
+        @page = Page.new
+        @page.update(page_params)
         authorize(@page)
         if @page.save
           render json: @page, status: :created
