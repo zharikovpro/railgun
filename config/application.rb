@@ -20,6 +20,8 @@ module Railgun
     config.active_record.schema_format = :sql
 
     config.autoload_paths << Rails.root.join('lib')
+
+    config.middleware.use Rack::Attack
   end
 end
 

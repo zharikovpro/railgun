@@ -189,6 +189,9 @@ gem 'knock', '~> 2.1.1'
 # enable cross-origin resource sharing
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
 
+# Rack middleware for blocking & throttling abusive requests
+gem 'rack-attack', '~> 5.0.1'
+
 group :development do
   # Run app in background for faster reload
   gem 'spring', '~> 2.0.1'
@@ -237,6 +240,10 @@ group :development, :test do
   # Fully featured driver
   # http://stackoverflow.com/questions/23951381/how-do-poltergeist-phantomjs-and-capybara-webkit-differ
   gem 'poltergeist', '~> 1.14.0'
+
+  # Testing Rack::Attack
+  gem 'rack-test', '~> 0.6.3'
+
 end
 
 group :test do
