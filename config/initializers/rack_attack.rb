@@ -41,7 +41,7 @@ class Rack::Attack
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:logins/ip:#{req.ip}"
   throttle('logins/ip', :limit => 5, :period => 20.seconds) do |req|
-    if req.path == '/login' && req.post?
+    if req.path == '/staff/login' && req.post?
       req.ip
     end
   end
@@ -55,7 +55,7 @@ class Rack::Attack
   # denied, but that's not very common and shouldn't happen to you. (Knock
   # on wood!)
   throttle('logins/email', :limit => 5, :period => 20.seconds) do |req|
-    if req.path == '/login' && req.post?
+    if req.path == '/staff/login' && req.post?
       # return the email if present, nil otherwise
       req.params['email'].presence
     end
