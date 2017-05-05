@@ -21,7 +21,7 @@ class Rack::Attack
   # counted by rack-attack and this throttle may be activated too
   # quickly. If so, enable the condition to exclude them from tracking.
 
-  # Throttle all requests by IP (60rpm)
+  # Throttle all requests by IP
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
   throttle('req/ip', limit: 100, period: 0.5.minutes) do |req|

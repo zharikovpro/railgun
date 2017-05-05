@@ -10,6 +10,7 @@ RSpec.describe Rack::Attack, issues: [112] do
     let(:limit) { 100 }
     context 'number of requests is lower than the limit' do
       it 'does not change the request status' do
+        Rails.cache.clear # reset throttle counters
         limit.times do
           get '/', {}, 'REMOTE_ADDR' => '1.2.3.4'
           expect(last_response.status).to_not eq(429)
