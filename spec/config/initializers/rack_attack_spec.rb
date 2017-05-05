@@ -22,6 +22,15 @@ RSpec.describe Rack::Attack, issues: [112] do
       it 'changes the request status to 429' do
         (limit * 2).times do |i|
           get '/', {}, 'REMOTE_ADDR' => '1.2.3.5'
+          expect(last_response.status).to_not eq(429) if i > limit
+        end
+      end
+    end
+
+    context 'number of requests is higher than the limit to API' do
+      it 'changes the request status to 429' do
+        (limit * 2).times do |i|
+          post api_v1_tokens_path, { 'auth' => { 'email' => i } }, 'REMOTE_ADDR' => '1.2.3.5'
           expect(last_response.status).to eq(429) if i > limit
         end
       end
