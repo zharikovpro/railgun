@@ -525,7 +525,7 @@ DEPENDENCIES
   rack-canonical-host (~> 0.2.3)
   rack-cors (~> 0.4.1)
   rack-test (~> 0.6.3)
-  rails
+  rails (= 5.0.2)
   redcarpet (~> 3.4.0)
   rollbar (~> 2.14.1)
   rspec-rails (~> 3.5.2)
