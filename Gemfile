@@ -6,7 +6,7 @@ ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 gem 'awesome_print', '~> 1.7.0'
 
 # Load ENV variables from .env file
-gem 'dotenv-rails', '~> 2.2.0', require: 'dotenv/rails-now'
+gem 'dotenv-rails', '~> 2.2.1', require: 'dotenv/rails-now'
 
 # Exceptions monitoring
 gem 'rollbar', '~> 2.14.1'
@@ -39,10 +39,10 @@ gem 'sidekiq-failures', '~> 0.4.5'
 # gem 'sidekiq-throttler', '~> 0.5.1'
 
 # Passenger has the best documentation and support
-gem 'passenger', '~> 5.1.2'
+gem 'passenger', '~> 5.1.3'
 
 # Rails 5 with Action Cable
-gem 'rails', '~> 5.0.1'
+gem 'rails', '5.0.1'
 
 # Redis for Action Cable, Sidekiq and cache
 # gem 'redis', '~> 3.0'
@@ -124,13 +124,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'pundit', '~> 1.1.0'
 
 # Soft delete
-gem 'paranoia', '~> 2.2'
+gem 'paranoia', '~> 2.3.1'
 
 # Encrypted attributes
 # gem 'attr_encrypted', '~> 3.0', '>= 3.0.1'
-
-# Track versioned model changes
-# gem 'paper_trail', '~> 5.2.0'
 
 # Better counter caches
 # gem 'counter_culture', '~> 0.1.33'
@@ -143,8 +140,8 @@ gem 'aws-sdk', '~> 2.6.33'
 gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', '~> 1.0.0.pre5', git: 'https://github.com/activeadmin/activeadmin'
-gem 'inherited_resources', '~> 1.7.0', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'activeadmin', '~> 1.0.0', git: 'https://github.com/activeadmin/activeadmin'
+gem 'inherited_resources', '~> 1.7.2', git: 'https://github.com/activeadmin/inherited_resources'
 
 # Clone records with a click
 # gem 'active_admin-duplicatable'
@@ -173,7 +170,7 @@ gem 'factory_girl_rails', '~> 4.8.0'
 gem 'faker', '~> 1.7.3'
 
 # Changes audit
-gem 'paper_trail', '~> 7.0.0'
+gem 'paper_trail', '~> 7.0.2'
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
@@ -268,7 +265,7 @@ end
 
 group :production do
   # Redirect from additional hosts to original
-  gem 'rack-canonical-host', '~> 0.2.2'
+  gem 'rack-canonical-host', '~> 0.2.3'
 
   # New Relic APM
   gem 'newrelic_rpm', '~> 4.0.0.332'
