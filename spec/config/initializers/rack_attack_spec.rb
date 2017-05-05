@@ -7,7 +7,7 @@ RSpec.describe Rack::Attack, issues: [112] do
   end
 
   describe 'throttle excessive requests by IP address' do
-    let(:limit) { 300 }
+    let(:limit) { 100 }
     context 'number of requests is lower than the limit' do
       it 'does not change the request status' do
         limit.times do
