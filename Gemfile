@@ -248,7 +248,7 @@ group :test do
   gem 'fuubar', '~> 2.2.0'
 
   # Run tests with clean database
-  gem 'database_cleaner', '~> 1.5.3'
+  gem 'database_cleaner', '~> 1.6.0'
 
   # Generate code coverate reports
   gem 'simplecov', '~> 0.13.0'
