@@ -23,6 +23,10 @@ class SnippetPolicy < ApplicationPolicy
     user.developer?
   end
 
+  def destroy?
+    user.developer?
+  end
+
   def permitted_attributes
     [:slug, :text]
   end
