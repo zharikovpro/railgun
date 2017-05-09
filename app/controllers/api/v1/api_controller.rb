@@ -24,27 +24,11 @@ module Api
       end
 
       def create
-        resource = resource_model.new
-        resource.assign_attributes(resource_params(resource))
-        authorize(resource)
-
-        if resource.save
-          render json: resource, status: :created
-        else
-          render json: resource.errors, status: :unprocessable_entity
-        end
+        save_attributes_with_status(resource_model.new, :created)
       end
 
       def update
-        resource = authorize_resource_by_id
-        resource.assign_attributes(resource_params(resource))
-        authorize(resource)
-
-        if resource.save
-          render json: resource, status: :ok
-        else
-          render json: resource.errors, status: :unprocessable_entity
-        end
+        save_attributes_with_status(authorize_resource_by_id, :ok)
       end
 
       def destroy
@@ -73,6 +57,17 @@ module Api
         end
 
         resource
+      end
+
+      def save_attributes_with_status(resource, status)
+        resource.assign_attributes(resource_params(resource))
+        authorize(resource)
+
+        if resource.save
+          render json: resource, status: status
+        else
+          render json: resource.errors, status: :unprocessable_entity
+        end
       end
     end
   end
