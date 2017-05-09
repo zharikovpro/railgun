@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'pages API', type: :request, issues: [116] do
+RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
   let!(:pages) { create_list(:page, 10) }
   let(:page_id) { pages.first.id }
   let(:authenticated_header) {
     { 'Authorization' => "Bearer #{create(:editor).api_token}" }
   }
 
-  describe 'GET /api/v1/pages' do
+  describe 'GET /' do
     context 'authentication error' do
       it 'returns status code 401' do
         get '/api/v1/pages'
@@ -28,7 +28,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
     end
   end
 
-  describe 'GET /api/v1/pages/:id' do
+  describe 'GET /:id' do
     before { get "/api/v1/pages/#{page_id}", headers: authenticated_header }
 
     context 'when the record exists' do
@@ -49,7 +49,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
     end
   end
 
-  describe 'POST /api/v1/pages' do
+  describe 'POST /' do
     context 'when request is valid' do
       before { post '/api/v1/pages', headers: authenticated_header, params: { slug: 'faq', markdown: 'something' } }
 
@@ -76,7 +76,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
     end
   end
 
-  describe 'PUT /api/v1/pages/:id' do
+  describe 'PUT /:id' do
     context 'when the record exists and format is correct' do
       before { put "/api/v1/pages/#{page_id}", headers: authenticated_header, params: { slug: 'about_1' } }
 
@@ -102,7 +102,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
     end
   end
 
-  describe 'DELETE /api/v1/pages/:id' do
+  describe 'DELETE /:id' do
     it 'returns status code 204' do
       delete "/api/v1/pages/#{page_id}", headers: authenticated_header
 
