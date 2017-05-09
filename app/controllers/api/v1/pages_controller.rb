@@ -4,7 +4,7 @@ module Api
       before_action :set_resource, only: [:show, :update, :destroy]
 
       def index
-        @resources = policy_scope(request.path.split('/')[3].classify.constantize)
+        @resources = policy_scope(get_model)
         authorize(@resources)
         render json: @resources
       end
@@ -14,7 +14,7 @@ module Api
       end
 
       def create
-        @resource = request.path.split('/')[3].classify.constantize.new
+        @resource = get_model.new
         @resource.assign_attributes(resource_params)
         authorize(@resource)
         if @resource.save
@@ -43,9 +43,12 @@ module Api
         params.permit(policy(@resource).permitted_attributes)
       end
 
+      def get_model
+        request.path.split('/')[3].classify.constantize
+      end
+
       def set_resource
-        resource = request.path.split('/')[3].classify.constantize
-        @resource = resource.find_by_id(params[:id])
+        @resource = get_model.find_by_id(params[:id])
         if @resource.nil?
           head :not_found
         else
