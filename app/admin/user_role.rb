@@ -2,7 +2,10 @@ ActiveAdmin.register UserRole do
   menu priority: 3, label: 'Roles'
 
   config.clear_action_items!
-  permit_params :user_id, :role
+
+  permit_params do
+    active_admin_authorization.retrieve_policy(resource_class).permitted_attributes
+  end
 
   form do |f|
     f.semantic_errors(*f.object.errors.keys)

@@ -14,4 +14,8 @@ class UserRolePolicy < ApplicationPolicy
   alias_method :index?, :create?
   alias_method :show?, :create?
   alias_method :destroy?, :create?
+
+  def permitted_attributes
+    [:user_id, :role]
+  end
 end
