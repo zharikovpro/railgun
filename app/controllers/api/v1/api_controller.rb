@@ -7,15 +7,14 @@ module Api
 
       before_action :destroy_session
       before_action :authenticate_user
+      before_action :set_resource, only: [:show, :update, :destroy]
 
       def destroy_session
         request.session_options[:skip] = true
       end
 
-      before_action :set_resource, only: [:show, :update, :destroy]
-
       def index
-        @resources = policy_scope(get_model)
+        @resources = policy_scope(model)
         authorize(@resources)
         render json: @resources
       end
@@ -25,7 +24,7 @@ module Api
       end
 
       def create
-        @resource = get_model.new
+        @resource = model.new
         @resource.assign_attributes(resource_params)
         authorize(@resource)
         if @resource.save
@@ -54,12 +53,12 @@ module Api
         params.permit(policy(@resource).permitted_attributes)
       end
 
-      def get_model
+      def model
         request.path.split('/')[3].classify.constantize
       end
 
       def set_resource
-        @resource = get_model.find_by_id(params[:id])
+        @resource = model.find_by_id(params[:id])
         if @resource.nil?
           head :not_found
         else
