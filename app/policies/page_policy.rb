@@ -5,25 +5,17 @@ class PagePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    user.editor?
+  def show?
+    true
   end
 
   def create?
     user.editor?
   end
 
-  def show?
-    true
-  end
-
-  def update?
-    user.editor?
-  end
-
-  def destroy?
-    user.editor?
-  end
+  alias_method :index?, :create?
+  alias_method :update?, :create?
+  alias_method :destroy?, :create?
 
   def permitted_attributes
     [:slug, :markdown]

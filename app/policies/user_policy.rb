@@ -7,19 +7,11 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    user.administrator?
-  end
-
   def create?
     user.administrator?
   end
 
-  def show?
-    user.administrator?
-  end
-
-  def update?
-    user.administrator?
-  end
+  alias_method :index?, :create?
+  alias_method :show?, :create?
+  alias_method :update?, :create?
 end
