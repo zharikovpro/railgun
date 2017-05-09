@@ -103,11 +103,11 @@ RSpec.describe 'snippets API', type: :request, issues: [116] do
   end
 
   describe 'DELETE /api/v1/snippets/:id' do
-    it 'returns status code 200' do
+    it 'returns status code 204' do
       delete "/api/v1/snippets/#{snippet_id}", headers: authenticated_header
 
       expect(Snippet.find_by_id(snippet_id)).to be_nil
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(204)
     end
   end
 end
