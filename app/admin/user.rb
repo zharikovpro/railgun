@@ -1,14 +1,6 @@
 ActiveAdmin.register User do
   menu priority: 2, label: 'Users'
 
-  permit_params :email, :password, :password_confirmation,
-                user_role_ids: [],
-                user_roles_attributes: [
-                  :id,
-                  :user_id, :role,
-                  :_create, :_destroy
-                ]
-
   filter :email
   filter :current_sign_in_at
   filter :sign_in_count
@@ -29,6 +21,10 @@ ActiveAdmin.register User do
     end
 
     active_admin_comments
+  end
+
+  permit_params do
+    active_admin_authorization.retrieve_policy(resource_class).permitted_attributes
   end
 
   form do |f|

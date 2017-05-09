@@ -14,4 +14,8 @@ class UserPolicy < ApplicationPolicy
   alias_method :index?, :create?
   alias_method :show?, :create?
   alias_method :update?, :create?
+
+  def permitted_attributes
+    [:email, :password, :password_confirmation]
+  end
 end
