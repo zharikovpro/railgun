@@ -1,7 +1,6 @@
 module Api
   module V1
     class SnippetsController < Api::V1::ApiController
-      before_action :authenticate_user
       before_action :set_snippet, only: [:show, :update, :destroy]
 
       def index

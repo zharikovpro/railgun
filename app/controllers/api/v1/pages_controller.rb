@@ -1,55 +1,55 @@
 module Api
   module V1
     class PagesController < Api::V1::ApiController
-      before_action :authenticate_user
-      before_action :set_page, only: [:show, :update, :destroy]
+      before_action :set_resource, only: [:show, :update, :destroy]
 
       def index
-        @pages = policy_scope(Page)
-        authorize(@pages)
-        render json: @pages
+        @resources = policy_scope(request.path.split('/')[3].classify.constantize)
+        authorize(@resources)
+        render json: @resources
       end
 
       def show
-        render json: @page
+        render json: @resource
       end
 
       def create
-        @page = Page.new
-        @page.assign_attributes(page_params)
-        authorize(@page)
-        if @page.save
-          render json: @page, status: :created
+        @resource = request.path.split('/')[3].classify.constantize.new
+        @resource.assign_attributes(resource_params)
+        authorize(@resource)
+        if @resource.save
+          render json: @resource, status: :created
         else
-          render json: @page.errors, status: :unprocessable_entity
+          render json: @resource.errors, status: :unprocessable_entity
         end
       end
 
       def update
-        if @page.update(page_params)
-          render json: @page
+        if @resource.update(resource_params)
+          render json: @resource
         else
-          render json: @page.errors, status: :unprocessable_entity
+          render json: @resource.errors, status: :unprocessable_entity
         end
       end
 
       def destroy
-        @page.destroy
-        render json: @page
+        @resource.destroy
+        render json: @resource
       end
 
       private
 
-      def page_params
-        params.permit(policy(@page).permitted_attributes)
+      def resource_params
+        params.permit(policy(@resource).permitted_attributes)
       end
 
-      def set_page
-        @page = Page.find_by_id(params[:id])
-        if @page.nil?
+      def set_resource
+        resource = request.path.split('/')[3].classify.constantize
+        @resource = resource.find_by_id(params[:id])
+        if @resource.nil?
           head :not_found
         else
-          authorize(@page)
+          authorize(@resource)
         end
       end
     end
