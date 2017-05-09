@@ -42,8 +42,8 @@ module Api
         request.path.split('/')[3].classify.constantize
       end
 
-      def resource_params(resource = nil)
-        params.permit(policy(resource || resource_model.new).permitted_attributes)
+      def resource_params(resource)
+        params.permit(policy(resource).permitted_attributes)
       end
 
       def authorize_resource_by_id
