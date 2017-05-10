@@ -10,6 +10,13 @@ module ActiveAdmin
   end
 end
 
+# every resource must use permitted_attributes from Pundit policies
+ActiveSupport::Notifications.subscribe ActiveAdmin::Resource::RegisterEvent do |_event, resource|
+  resource.dsl.send :permit_params do
+    active_admin_authorization.retrieve_policy(resource_class).permitted_attributes
+  end
+end
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
