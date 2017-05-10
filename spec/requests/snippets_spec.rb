@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'snippets API', type: :request, issues: [116] do
+RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
   let!(:snippets) { create_list(:snippet, 10) }
   let(:snippet_id) { snippets.first.id }
   let(:authenticated_header) {
     { 'Authorization' => "Bearer #{create(:developer).api_token}" }
   }
 
-  describe 'GET /api/v1/snippets' do
+  describe 'GET /' do
     context 'authentication error' do
       it 'returns status code 401' do
         get '/api/v1/snippets'
@@ -28,7 +28,7 @@ RSpec.describe 'snippets API', type: :request, issues: [116] do
     end
   end
 
-  describe 'GET /api/v1/snippets/:id' do
+  describe 'GET /:id' do
     before { get "/api/v1/snippets/#{snippet_id}", headers: authenticated_header }
 
     context 'when the record exists' do
@@ -49,7 +49,7 @@ RSpec.describe 'snippets API', type: :request, issues: [116] do
     end
   end
 
-  describe 'POST /api/v1/snippets' do
+  describe 'POST' do
     context 'when request is valid' do
       before { post '/api/v1/snippets', headers: authenticated_header, params: { slug: 'faq', text: 'something' } }
 
@@ -76,7 +76,7 @@ RSpec.describe 'snippets API', type: :request, issues: [116] do
     end
   end
 
-  describe 'PUT /api/v1/snippets/:id' do
+  describe 'PUT /:id' do
     context 'when the record exists and format is correct' do
       before { put "/api/v1/snippets/#{snippet_id}", headers: authenticated_header, params: { slug: 'about_1' } }
 
@@ -102,12 +102,12 @@ RSpec.describe 'snippets API', type: :request, issues: [116] do
     end
   end
 
-  describe 'DELETE /api/v1/snippets/:id' do
-    it 'returns status code 200' do
+  describe 'DELETE /:id' do
+    it 'returns status code 204' do
       delete "/api/v1/snippets/#{snippet_id}", headers: authenticated_header
 
       expect(Snippet.find_by_id(snippet_id)).to be_nil
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(204)
     end
   end
 end

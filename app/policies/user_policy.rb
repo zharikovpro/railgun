@@ -7,19 +7,15 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    user.administrator?
-  end
-
   def create?
     user.administrator?
   end
 
-  def show?
-    user.administrator?
-  end
+  alias_method :index?, :create?
+  alias_method :show?, :create?
+  alias_method :update?, :create?
 
-  def update?
-    user.administrator?
+  def permitted_attributes
+    [:email, :password, :password_confirmation]
   end
 end

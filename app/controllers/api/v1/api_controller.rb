@@ -12,58 +12,67 @@ module Api
         request.session_options[:skip] = true
       end
 
-      before_action :set_resource, only: [:show, :update, :destroy]
-
       def index
-        @resources = policy_scope(get_model)
-        authorize(@resources)
-        render json: @resources
+        resources = policy_scope(resource_model)
+        authorize(resources)
+        render json: resources
       end
 
       def show
-        render json: @resource
+        resource = authorize_resource_by_id
+        render json: resource if resource
       end
 
       def create
-        @resource = get_model.new
-        @resource.assign_attributes(resource_params)
-        authorize(@resource)
-        if @resource.save
-          render json: @resource, status: :created
-        else
-          render json: @resource.errors, status: :unprocessable_entity
-        end
+        save_attributes_with_status(resource_model.new, :created)
       end
 
       def update
-        if @resource.update(resource_params)
-          render json: @resource
-        else
-          render json: @resource.errors, status: :unprocessable_entity
+        resource = authorize_resource_by_id
+        if resource.present?
+          save_attributes_with_status(resource, :ok)
         end
       end
 
       def destroy
-        @resource.destroy
-        render json: @resource
+        resource = authorize_resource_by_id
+        if resource.present?
+          resource.destroy
+          render json: nil, status: :no_content
+        end
       end
 
       private
 
-      def resource_params
-        params.permit(policy(@resource).permitted_attributes)
-      end
-
-      def get_model
+      def resource_model
         request.path.split('/')[3].classify.constantize
       end
 
-      def set_resource
-        @resource = get_model.find_by_id(params[:id])
-        if @resource.nil?
+      def resource_params(resource)
+        params.permit(policy(resource).permitted_attributes)
+      end
+
+      def authorize_resource_by_id
+        resource = resource_model.find_by_id(params[:id])
+
+        if resource.nil?
+          skip_authorization
           head :not_found
         else
-          authorize(@resource)
+          authorize(resource)
+        end
+
+        resource
+      end
+
+      def save_attributes_with_status(resource, status)
+        resource.assign_attributes(resource_params(resource))
+        authorize(resource)
+
+        if resource.save
+          render json: resource, status: status
+        else
+          render json: resource.errors, status: :unprocessable_entity
         end
       end
     end

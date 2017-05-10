@@ -7,19 +7,15 @@ class UserRolePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    user.administrator?
-  end
-
   def create?
     user.administrator?
   end
 
-  def destroy?
-    user.administrator?
-  end
+  alias_method :index?, :create?
+  alias_method :show?, :create?
+  alias_method :destroy?, :create?
 
-  def show?
-    user.administrator?
+  def permitted_attributes
+    [:user_id, :role]
   end
 end
