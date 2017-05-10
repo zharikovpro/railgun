@@ -24,23 +24,11 @@ module Api
       end
 
       def create
-        resource = model.new
-        resource.assign_attributes(params.permit(policy(resource).permitted_attributes))
-        authorize(resource)
-        if resource.save
-          render json: resource, status: :created
-        else
-          render json: resource.errors, status: :unprocessable_entity
-        end
+        assign_attributes_and_save(model.new, :created)
       end
 
       def update
-        resource = set_resource
-        if resource.update(resource_params)
-          render json: resource
-        else
-          render json: resource.errors, status: :unprocessable_entity
-        end
+        assign_attributes_and_save(set_resource, :ok)
       end
 
       def destroy
@@ -51,8 +39,18 @@ module Api
 
       private
 
+      def assign_attributes_and_save(resource, status)
+        resource.assign_attributes(resource_params)
+        authorize(resource)
+        if resource.save
+          render json: resource, status: status
+        else
+          render json: resource.errors, status: :unprocessable_entity
+        end
+      end
+
       def resource_params
-        params.permit(policy(set_resource).permitted_attributes)
+        params.permit(policy(model.new || set_resource).permitted_attributes)
       end
 
       def model
