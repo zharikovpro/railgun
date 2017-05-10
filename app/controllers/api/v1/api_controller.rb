@@ -14,43 +14,45 @@ module Api
       end
 
       def index
-        @resources = policy_scope(model)
-        authorize(@resources)
-        render json: @resources
+        resources = policy_scope(model)
+        authorize(resources)
+        render json: resources
       end
 
       def show
-        render json: @resource
+        render json: set_resource
       end
 
       def create
-        @resource = model.new
-        @resource.assign_attributes(resource_params)
-        authorize(@resource)
-        if @resource.save
-          render json: @resource, status: :created
+        resource = model.new
+        resource.assign_attributes(params.permit(policy(resource).permitted_attributes))
+        authorize(resource)
+        if resource.save
+          render json: resource, status: :created
         else
-          render json: @resource.errors, status: :unprocessable_entity
+          render json: resource.errors, status: :unprocessable_entity
         end
       end
 
       def update
-        if @resource.update(resource_params)
-          render json: @resource
+        resource = set_resource
+        if resource.update(resource_params)
+          render json: resource
         else
-          render json: @resource.errors, status: :unprocessable_entity
+          render json: resource.errors, status: :unprocessable_entity
         end
       end
 
       def destroy
-        @resource.destroy
-        render json: @resource
+        resource = set_resource
+        resource.destroy
+        render json: resource
       end
 
       private
 
       def resource_params
-        params.permit(policy(@resource).permitted_attributes)
+        params.permit(policy(set_resource).permitted_attributes)
       end
 
       def model
@@ -58,12 +60,13 @@ module Api
       end
 
       def set_resource
-        @resource = model.find_by_id(params[:id])
-        if @resource.nil?
+        resource = model.find_by_id(params[:id])
+        if resource.nil?
           head :not_found
         else
-          authorize(@resource)
+          authorize(resource)
         end
+        resource
       end
     end
   end
