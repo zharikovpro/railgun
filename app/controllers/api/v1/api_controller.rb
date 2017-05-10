@@ -7,6 +7,7 @@ module Api
 
       before_action :destroy_session
       before_action :authenticate_user
+      before_action :authorize_resource_by_id, only: [:show, :update, :destroy]
 
       def destroy_session
         request.session_options[:skip] = true
@@ -19,8 +20,7 @@ module Api
       end
 
       def show
-        resource = authorize_resource_by_id
-        render json: resource if resource
+        render json: resource_by_id
       end
 
       def create
@@ -28,18 +28,12 @@ module Api
       end
 
       def update
-        resource = authorize_resource_by_id
-        if resource.present?
-          save_attributes_with_status(resource, :ok)
-        end
+        save_attributes_with_status(resource_by_id, :ok)
       end
 
       def destroy
-        resource = authorize_resource_by_id
-        if resource.present?
-          resource.destroy
-          render json: nil, status: :no_content
-        end
+        resource_by_id.destroy
+        render json: nil, status: :no_content
       end
 
       private
@@ -48,12 +42,12 @@ module Api
         request.path.split('/')[3].classify.constantize
       end
 
-      def resource_params(resource)
-        params.permit(policy(resource).permitted_attributes)
+      def resource_by_id
+        @resource ||= resource_model.find_by_id(params[:id])
       end
 
       def authorize_resource_by_id
-        resource = resource_model.find_by_id(params[:id])
+        resource = resource_by_id
 
         if resource.nil?
           skip_authorization
@@ -61,8 +55,10 @@ module Api
         else
           authorize(resource)
         end
+      end
 
-        resource
+      def resource_params(resource)
+        params.permit(policy(resource).permitted_attributes)
       end
 
       def save_attributes_with_status(resource, status)
