@@ -7,7 +7,7 @@ module Api
 
       before_action :destroy_session
       before_action :authenticate_user
-      before_action :set_resource, only: [:show, :update, :destroy]
+      before_action :set_resource, only: [:show]
 
       def destroy_session
         request.session_options[:skip] = true
@@ -40,7 +40,6 @@ module Api
       private
 
       def assign_attributes_and_save(resource, status)
-        resource = resource
         resource.assign_attributes(resource_params)
         authorize(resource)
         if resource.save
