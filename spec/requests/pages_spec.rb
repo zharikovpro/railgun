@@ -43,7 +43,7 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
 
     context 'when the record does not exist' do
       it 'returns status code 404' do
-        get '/api/v1/pages/0', headers: authenticated_header
+        get '/api/v1/pages/-1', headers: authenticated_header
         expect(response).to have_http_status(404)
       end
     end
