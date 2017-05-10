@@ -100,6 +100,12 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
         expect(response).to have_http_status(422)
       end
     end
+
+    it 'returns status code 404 if not found' do
+      put "/api/v1/pages/-1", headers: authenticated_header
+
+      expect(response).to have_http_status(404)
+    end
   end
 
   describe 'DELETE /:id' do
@@ -108,6 +114,12 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
 
       expect(Page.find_by_id(page_id)).to be_nil
       expect(response).to have_http_status(204)
+    end
+
+    it 'returns status code 404 if not found' do
+      delete "/api/v1/pages/-1", headers: authenticated_header
+
+      expect(response).to have_http_status(404)
     end
   end
 end

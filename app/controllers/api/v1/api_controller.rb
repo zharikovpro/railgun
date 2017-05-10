@@ -20,7 +20,7 @@ module Api
 
       def show
         resource = authorize_resource_by_id
-        render json: authorize_resource_by_id if resource
+        render json: resource if resource
       end
 
       def create
@@ -28,12 +28,18 @@ module Api
       end
 
       def update
-        save_attributes_with_status(authorize_resource_by_id, :ok)
+        resource = authorize_resource_by_id
+        if resource.present?
+          save_attributes_with_status(resource, :ok)
+        end
       end
 
       def destroy
-        authorize_resource_by_id.destroy
-        render json: nil, status: :no_content
+        resource = authorize_resource_by_id
+        if resource.present?
+          resource.destroy
+          render json: nil, status: :no_content
+        end
       end
 
       private
