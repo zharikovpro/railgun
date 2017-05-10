@@ -40,6 +40,7 @@ module Api
       private
 
       def assign_attributes_and_save(resource, status)
+        resource = resource
         resource.assign_attributes(resource_params)
         authorize(resource)
         if resource.save
