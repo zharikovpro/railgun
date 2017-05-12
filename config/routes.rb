@@ -1,17 +1,9 @@
 Rails.application.routes.draw do
-  namespace :api, defaults: {format: :json} do
-    namespace :v1 do
-      post 'tokens' => 'user_token#create'
-      resources :pages
-      resources :snippets
-    end
-  end
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'application#root'
 
   resources :pages, only: :show
   resources :medias, only: :show
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'application#root'
 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
@@ -22,6 +14,14 @@ Rails.application.routes.draw do
   #   end
   #   resource :reincarnation, only: :destroy
   # end
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      post 'tokens' => 'user_token#create'
+      resources :pages
+      resources :snippets
+    end
+  end
 
   require 'sidekiq/web'
   authenticate :user, lambda { |user| user.try(:developer?) } do
