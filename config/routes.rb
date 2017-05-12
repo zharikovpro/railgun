@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       post 'tokens' => 'user_token#create'
-      resources :pages
-      resources :snippets
+
+      [:pages, :snippets].each do |resource|
+        resources resource, except: [:new, :edit]
+      end
     end
   end
 
