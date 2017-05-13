@@ -51,11 +51,11 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
 
   describe 'POST /' do
     fcontext 'when request is valid' do
-      before { post '/api/v1/medias', headers: authenticated_header, params: { slug: 'faq', file: Rails.root + 'spec/media/images/demo.jpg' } }
+      before { post '/api/v1/medias', headers: authenticated_header, params: { slug: 'faq', file_file_name: 'something.jpg' } }
 
       it 'creates a media' do
-        expect(response.parsed_body['slug']).to eq('faq')
         expect(Media.find_by_slug(:faq).file_file_name).to eq('something.jpg')
+        expect(response.parsed_body['slug']).to eq('faq')
       end
 
       it 'returns status code 201' do
