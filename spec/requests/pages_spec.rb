@@ -109,7 +109,7 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
   end
 
   describe 'DELETE /:id' do
-    it 'returns status code 204' do
+    fit 'returns status code 204' do
       delete "/api/v1/pages/#{page_id}", headers: authenticated_header
 
       expect(Page.find_by_id(page_id)).to be_nil
