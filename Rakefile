@@ -13,6 +13,6 @@ end
 
 # run all specs like on the CI server
 task 'ci' do
-  puts `CI=1 bundle exec rspec`
+  system('CI=1 bundle exec rspec')
   exit($?.success?)
 end
