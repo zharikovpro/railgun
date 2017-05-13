@@ -6,7 +6,9 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
   let(:authenticated_header) {
     { 'Authorization' => "Bearer #{create(:editor).api_token}" }
   }
-
+  let(:file) {
+    { 'file' => { filename: "original_filename.jpg", content: "<Base64Encoded data>", content_type: "<image content type>" } }
+  }
   describe 'GET /' do
     context 'authentication error' do
       it 'returns status code 401' do
@@ -51,11 +53,11 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
 
   describe 'POST /' do
     fcontext 'when request is valid' do
-      before { post '/api/v1/medias', headers: authenticated_header, params: { slug: 'faq', file_file_name: 'something.jpg' } }
+      before { post '/api/v1/medias', headers: authenticated_header, params: { slug: 'faq', file: file } }
 
       it 'creates a media' do
-        expect(Media.find_by_slug(:faq).file_file_name).to eq('something.jpg')
         expect(response.parsed_body['slug']).to eq('faq')
+        expect(Media.find_by_slug(:faq).file_file_name).to eq('something.jpg')
       end
 
       it 'returns status code 201' do
