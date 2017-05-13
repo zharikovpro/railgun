@@ -53,7 +53,7 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
     context 'when request is valid' do
       before { post '/api/v1/snippets', headers: authenticated_header, params: { slug: 'faq', text: 'something' } }
 
-      it 'creates a snippet' do
+      fit 'creates a snippet' do
         expect(response.parsed_body['slug']).to eq('faq')
         expect(Snippet.find_by_slug(:faq).text).to eq('something')
       end
