@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'tokens' => 'user_token#create'
 
-      [:pages, :snippets].each do |resource|
+      [:pages, :snippets, :medias].each do |resource|
         resources resource, except: [:new, :edit]
       end
     end
