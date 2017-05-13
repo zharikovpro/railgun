@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 module Api
   module V1
     class ResourcesController < Api::V1::ApiController
@@ -8,23 +9,26 @@ end
 RSpec.describe Api::V1::ResourcesController, type: :controller, issues: [133] do
 
   controller do
+
   end
-  before(:all) do
+=begin
+  before do
     Rails.application.routes.draw do
       resources :resources
     end
   end
 
-  after(:all) do
+  after do
     Rails.application.reload_routes!
   end
+=end
 
   let!(:pages) { create_list(:page, 10) }
   let(:page_id) { pages.first.id }
   let(:authenticated_header) {
     { 'Authorization' => "Bearer #{create(:editor).api_token}" }
   }
-  #before { routes.draw { get 'index' => 'resource#index' } }
+  #before { routes.draw { get 'index' => 'resources#index' } }
   describe 'GET /' do
     context 'authentication error' do
       it 'returns status code 401' do
@@ -40,7 +44,7 @@ RSpec.describe Api::V1::ResourcesController, type: :controller, issues: [133] do
       end
 
       fit 'returns status code 200' do
-        Api::V1::ResourcesController.authenticate_user
+        #Api::V1::ResourcesController.authenticate_user
         expect(response).to have_http_status(200)
       end
     end
