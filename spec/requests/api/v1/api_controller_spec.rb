@@ -8,6 +8,14 @@ module Api
 end
 
 class Resource
+  def self.find_by_id(id)
+    id = id.to_i
+    (id.negative?) ? nil : Resource.new(id)
+  end
+
+  def initialize(id)
+    @id = id
+  end
 end
 
 class ResourcePolicy < ApplicationPolicy
@@ -42,10 +50,8 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
     Rails.application.reload_routes!
   end
 
-  let!(:pages) { create_list(:page, 10) }
-  let(:page_id) { pages.first.id }
   let(:authenticated_header) {
-    { 'Authorization' => "Bearer #{create(:editor).api_token}" }
+    { 'Authorization' => "Bearer #{create(:owner).api_token}" }
   }
 
   fdescribe 'GET /' do
@@ -71,22 +77,22 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
     end
   end
 
-  xdescribe 'GET /:id' do
-    before { get :show, id: page_id, headers: authenticated_header }
-
+  fdescribe 'GET /:id' do
     context 'when the record exists' do
       it 'returns the page' do
-        expect(response.parsed_body['id']).to eq(page_id)
+        get '/api/v1/resources/1', headers: authenticated_header
+        expect(response.parsed_body['id']).to eq(1)
       end
 
       it 'returns status code 200' do
+        get '/api/v1/resources/1', headers: authenticated_header
         expect(response).to have_http_status(200)
       end
     end
 
     context 'when the record does not exist' do
       it 'returns status code 404' do
-        get :show, id: -1, headers: authenticated_header
+        get '/api/v1/resources/-1', headers: authenticated_header
         expect(response).to have_http_status(404)
       end
     end
@@ -94,9 +100,9 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
 
   xdescribe 'DELETE /:id' do
     it 'returns status code 204' do
-      delete :destroy, id: page_id, headers: authenticated_header
+      delete :destroy, id: 1, headers: authenticated_header
 
-      #expect(Page.find_by_id(page_id)).to be_nil
+      #expect(Page.find_by_id(1)).to be_nil
       expect(response).to have_http_status(204)
     end
 
