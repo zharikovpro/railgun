@@ -14,11 +14,7 @@ RSpec.feature feature, issues: [84] do
   scenario scenario do
     media = create(:media, slug: 'image')
 
-    # TODO: move to the requests specs, without rescue
-    begin
-      visit media_path(media.slug)
-    rescue ActionController::RoutingError
-    end
+    expect{ visit media_path(media.slug) }.to raise_error(ActionController::RoutingError)
 
     expect(page.status_code).to eq(303)
     expect(page.current_url).to eq(media.file.url)
