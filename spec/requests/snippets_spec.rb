@@ -8,22 +8,18 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
   }
 
   describe 'GET /' do
-    context 'authentication ok' do
-      before { get '/api/v1/snippets', headers: authenticated_header }
+    it 'returns snippets' do
+      get '/api/v1/snippets', headers: authenticated_header
 
-      it 'returns snippets' do
-        expect(response.parsed_body.size).to eq(10)
-      end
+      expect(response.parsed_body.size).to eq(10)
     end
   end
 
   describe 'GET /:id' do
-    before { get "/api/v1/snippets/#{snippet_id}", headers: authenticated_header }
+    it 'returns snippet' do
+      get "/api/v1/snippets/#{snippet_id}", headers: authenticated_header
 
-    context 'when the record exists' do
-      it 'returns the snippet' do
-        expect(response.parsed_body['id']).to eq(snippet_id)
-      end
+      expect(response.parsed_body['id']).to eq(snippet_id)
     end
   end
 
@@ -55,12 +51,10 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
   end
 
   describe 'PUT /:id' do
-    context 'when the record exists and format is correct' do
-      before { put "/api/v1/snippets/#{snippet_id}", headers: authenticated_header, params: { slug: 'about_1' } }
+    it 'updates the record' do
+      put "/api/v1/snippets/#{snippet_id}", headers: authenticated_header, params: { slug: 'about_1' }
 
-      it 'updates the record' do
-        expect(Snippet.find_by_id(snippet_id).slug).to eq('about_1')
-      end
+      expect(Snippet.find_by_id(snippet_id).slug).to eq('about_1')
     end
 
     context 'when format is not correct' do

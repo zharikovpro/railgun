@@ -8,22 +8,18 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
   }
 
   describe 'GET /' do
-    context 'authentication ok' do
-      before { get '/api/v1/pages', headers: authenticated_header }
+    it 'returns pages' do
+      get '/api/v1/pages', headers: authenticated_header
 
-      it 'returns pages' do
-        expect(response.parsed_body.size).to eq(10)
-      end
+      expect(response.parsed_body.size).to eq(10)
     end
   end
 
   describe 'GET /:id' do
-    before { get "/api/v1/pages/#{page_id}", headers: authenticated_header }
+    it 'returns the page' do
+      get "/api/v1/pages/#{page_id}", headers: authenticated_header
 
-    context 'when the record exists' do
-      it 'returns the page' do
-        expect(response.parsed_body['id']).to eq(page_id)
-      end
+      expect(response.parsed_body['id']).to eq(page_id)
     end
   end
 
@@ -55,12 +51,10 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
   end
 
   describe 'PUT /:id' do
-    context 'when the record exists and format is correct' do
-      before { put "/api/v1/pages/#{page_id}", headers: authenticated_header, params: { slug: 'about_1' } }
+    it 'updates page' do
+      put "/api/v1/pages/#{page_id}", headers: authenticated_header, params: { slug: 'about_1' }
 
-      it 'updates the record' do
-        expect(Page.find_by_id(page_id).slug).to eq('about_1')
-      end
+      expect(Page.find_by_id(page_id).slug).to eq('about_1')
     end
 
     context 'when format is not correct' do
