@@ -16,7 +16,7 @@ RSpec.feature feature, issues: [84] do
     visit new_staff_media_path
 
     fill_in 'media_slug', with: 'image'
-    attach_file('media_file', Rails.root + 'spec/media/images/demo.jpg')
+    attach_file('media_file', Rails.root + 'spec/fixtures/files/images/demo.jpg')
     click_button 'Create Media'
 
     expect(Media.find_by_slug(:image).file_file_name).to eq('demo.jpg')
