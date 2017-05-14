@@ -57,6 +57,9 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
     { 'Authorization' => "Bearer #{create(:owner).api_token}" }
   }
 
+  # TODO: POST, check status 201
+  # TODO: POST, check status 422
+
   describe 'GET /' do
     context 'authentication error' do
       it 'returns status code 401' do
