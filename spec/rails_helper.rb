@@ -76,6 +76,9 @@ RSpec.configure do |config|
 
   # http://www.virtuouscode.com/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
   config.use_transactional_fixtures = false
+
+  # https://relishapp.com/rspec/rspec-rails/docs/controller-specs/anonymous-controller
+  config.infer_base_class_for_anonymous_controllers = false
 end
 
 Shoulda::Matchers.configure do |config|

@@ -8,9 +8,6 @@ module Api
 end
 RSpec.describe Api::V1::ResourcesController, type: :controller, issues: [133] do
 
-  controller do
-
-  end
 =begin
   before do
     Rails.application.routes.draw do
