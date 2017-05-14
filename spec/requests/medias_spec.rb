@@ -8,43 +8,21 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
   }
 
   describe 'GET /' do
-    context 'authentication error' do
-      it 'returns status code 401' do
-        get '/api/v1/medias'
-        expect(response).to have_http_status(401)
-      end
-    end
-
     context 'authentication ok' do
-      before { get '/api/v1/medias', headers: authenticated_header }
-
       it 'returns medias' do
-        expect(response.parsed_body.size).to eq(10)
-      end
+        get '/api/v1/medias', headers: authenticated_header
 
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+        expect(response.parsed_body.size).to eq(10)
       end
     end
   end
 
   describe 'GET /:id' do
-    before { get "/api/v1/medias/#{media_id}", headers: authenticated_header }
-
     context 'when the record exists' do
       it 'returns the media' do
+        get "/api/v1/medias/#{media_id}", headers: authenticated_header
+
         expect(response.parsed_body['id']).to eq(media_id)
-      end
-
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
-      end
-    end
-
-    context 'when the record does not exist' do
-      it 'returns status code 404' do
-        get '/api/v1/medias/-1', headers: authenticated_header
-        expect(response).to have_http_status(404)
       end
     end
   end
@@ -82,14 +60,10 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
 
   describe 'PUT /:id' do
     context 'when the record exists and format is correct' do
-      before { put "/api/v1/medias/#{media_id}", headers: authenticated_header, params: { slug: 'about_1' } }
-
       it 'updates the record' do
-        expect(Media.find_by_id(media_id).slug).to eq('about_1')
-      end
+        put "/api/v1/medias/#{media_id}", headers: authenticated_header, params: { slug: 'about_1' }
 
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+        expect(Media.find_by_id(media_id).slug).to eq('about_1')
       end
     end
 
@@ -104,12 +78,6 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
         expect(response).to have_http_status(422)
       end
     end
-
-    it 'returns status code 404 if not found' do
-      put "/api/v1/medias/-1", headers: authenticated_header
-
-      expect(response).to have_http_status(404)
-    end
   end
 
   describe 'DELETE /:id' do
@@ -118,12 +86,6 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
 
       expect(Media.find_by_id(media_id)).to be_nil
       expect(response).to have_http_status(204)
-    end
-
-    it 'returns status code 404 if not found' do
-      delete "/api/v1/medias/-1", headers: authenticated_header
-
-      expect(response).to have_http_status(404)
     end
   end
 end
