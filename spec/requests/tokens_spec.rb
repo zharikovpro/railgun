@@ -5,7 +5,7 @@ RSpec.describe Api::V1::UserTokenController, issues: [116] do
     user = create(:user)
     page_id = create(:page).id
 
-    post '/api/v1/tokens', auth: { email: user.email, password: user.password }, format: 'json'
+    post '/api/v1/tokens', params: { auth: { email: user.email, password: user.password } }
     token = response.parsed_body['jwt']
     expect(response).to have_http_status(201)
     get "/api/v1/pages/#{page_id}", headers: { 'Authorization' => "Bearer #{token}" }

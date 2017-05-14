@@ -24,7 +24,7 @@ end
 class ResourcePolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     def resolve
-      []
+      [1, 2, 3]
     end
   end
 
@@ -57,32 +57,32 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
     { 'Authorization' => "Bearer #{create(:owner).api_token}" }
   }
 
-  fdescribe 'GET /' do
+  describe 'GET /' do
     context 'authentication error' do
       it 'returns status code 401' do
         get '/api/v1/resources'
+
         expect(response).to have_http_status(401)
       end
     end
 
     context 'authentication ok' do
-      it 'returns pages' do
+      before { get '/api/v1/resources', headers: authenticated_header }
+      it 'returns resources' do
         #mock_model('Resource')
-        get '/api/v1/resources', headers: authenticated_header
-        expect(response.parsed_body.size).to eq(0)
+        expect(response.parsed_body.size).to eq(3)
       end
 
       it 'returns status code 200' do
         #mock_model('Resource')
-        get '/api/v1/resources', headers: authenticated_header
         expect(response).to have_http_status(200)
       end
     end
   end
 
-  fdescribe 'GET /:id' do
+  describe 'GET /:id' do
     context 'when the record exists' do
-      it 'returns the page' do
+      it 'returns resource' do
         get '/api/v1/resources/1', headers: authenticated_header
         expect(response.parsed_body['id']).to eq(1)
       end
@@ -101,18 +101,19 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
     end
   end
 
-  fdescribe 'DELETE /:id' do
+  describe 'DELETE /:id' do
     it 'returns status code 204' do
+      # TODO: expect destroy call
+
       delete '/api/v1/resources/1', headers: authenticated_header
 
-      # TODO: expect destroy call
       expect(response).to have_http_status(204)
     end
 
     it 'returns status code 404 if not found' do
-      delete '/api/v1/resources/-1', headers: authenticated_header
-
       # TODO expect destroy call
+
+      delete '/api/v1/resources/-1', headers: authenticated_header
 
       expect(response).to have_http_status(404)
     end

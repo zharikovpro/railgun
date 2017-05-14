@@ -8,22 +8,11 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
   }
 
   describe 'GET /' do
-    context 'authentication error' do
-      it 'returns status code 401' do
-        get '/api/v1/snippets'
-        expect(response).to have_http_status(401)
-      end
-    end
-
     context 'authentication ok' do
       before { get '/api/v1/snippets', headers: authenticated_header }
 
       it 'returns snippets' do
         expect(response.parsed_body.size).to eq(10)
-      end
-
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
       end
     end
   end
@@ -34,17 +23,6 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
     context 'when the record exists' do
       it 'returns the snippet' do
         expect(response.parsed_body['id']).to eq(snippet_id)
-      end
-
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
-      end
-    end
-
-    context 'when the record does not exist' do
-      it 'returns status code 404' do
-        get '/api/v1/snippets/0', headers: authenticated_header
-        expect(response).to have_http_status(404)
       end
     end
   end
@@ -83,10 +61,6 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
       it 'updates the record' do
         expect(Snippet.find_by_id(snippet_id).slug).to eq('about_1')
       end
-
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
-      end
     end
 
     context 'when format is not correct' do
@@ -103,11 +77,10 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
   end
 
   describe 'DELETE /:id' do
-    it 'returns status code 204' do
+    it 'deletes snippet' do
       delete "/api/v1/snippets/#{snippet_id}", headers: authenticated_header
 
       expect(Snippet.find_by_id(snippet_id)).to be_nil
-      expect(response).to have_http_status(204)
     end
   end
 end
