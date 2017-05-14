@@ -52,7 +52,7 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
   describe 'POST /' do
     context 'when request is valid' do
       before :each do
-        @file = fixture_file_upload(Rails.root + 'spec/media/images/demo.jpg', 'image/jpeg')
+        @file = fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg')
       end
 
       before { post '/api/v1/medias', headers: authenticated_header, params: { slug: 'faq', file: @file } }
