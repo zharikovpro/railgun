@@ -13,8 +13,8 @@ module Api
       end
 
       def index
+        authorize(resource_model)
         resources = policy_scope(resource_model)
-        authorize(resources)
         render json: resources
       end
 
