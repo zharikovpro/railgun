@@ -21,7 +21,7 @@ gem 'brakeman', '~> 3.6.1', require: false
 # gem 'whenever', require: false
 
 # Background jobs queue
-gem 'sidekiq', '~> 4.2', '>= 4.2.9'
+gem 'sidekiq', '~> 5.0.0'
 
 # Track failed jobs
 gem 'sidekiq-failures', '~> 0.4.5'
@@ -45,7 +45,7 @@ gem 'passenger', '~> 5.1.2'
 gem 'rails', '~> 5.0.1'
 
 # Redis for Action Cable, Sidekiq and cache
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.3.3'
 
 # Compact logs
 gem 'lograge', '~> 0.4.1'
@@ -143,7 +143,7 @@ gem 'aws-sdk', '~> 2.6.33'
 gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', '~> 1.0.0.pre5', git: 'https://github.com/activeadmin/activeadmin'
+gem 'activeadmin', '~> 1.0.0'
 gem 'inherited_resources', '~> 1.7.0', git: 'https://github.com/activeadmin/inherited_resources'
 
 # Clone records with a click
