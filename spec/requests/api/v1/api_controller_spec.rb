@@ -16,6 +16,9 @@ class Resource
   def initialize(id)
     @id = id
   end
+
+  def destroy
+  end
 end
 
 class ResourcePolicy < ApplicationPolicy
@@ -98,16 +101,18 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
     end
   end
 
-  xdescribe 'DELETE /:id' do
+  fdescribe 'DELETE /:id' do
     it 'returns status code 204' do
-      delete :destroy, id: 1, headers: authenticated_header
+      delete '/api/v1/resources/1', headers: authenticated_header
 
-      #expect(Page.find_by_id(1)).to be_nil
+      # TODO: expect destroy call
       expect(response).to have_http_status(204)
     end
 
     it 'returns status code 404 if not found' do
-      delete :destroy, id: -1, headers: authenticated_header
+      delete '/api/v1/resources/-1', headers: authenticated_header
+
+      # TODO expect destroy call
 
       expect(response).to have_http_status(404)
     end
