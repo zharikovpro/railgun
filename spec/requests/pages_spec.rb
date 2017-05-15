@@ -9,7 +9,7 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
 
   describe 'GET /' do
     context 'authentication error' do
-      it 'returns status code 401' do
+      fit 'returns status code 401' do
         get '/api/v1/pages'
         expect(response).to have_http_status(401)
       end
