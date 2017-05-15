@@ -1,5 +1,8 @@
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  # Heroku CI puts it's staff here, too
+  add_filter '/vendor/'
+end
 SimpleCov.minimum_coverage 100
 SimpleCov.refuse_coverage_drop
 
