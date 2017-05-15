@@ -23,10 +23,9 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
       expect(Media.find_by_id(media.id).slug).to eq('about_1')
     end
 
-    it 'when format is not correct' do
+    it 'slug can not contain special chars' do
       put "/api/v1/medias/#{media.id}", headers: authenticated_header, params: { slug: '%%^^##' }
 
-      expect(Media.find_by_id(media.id).slug).not_to eq('%%^^##')
       expect(response).to have_http_status(422)
     end
   end

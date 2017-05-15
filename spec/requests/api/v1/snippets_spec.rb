@@ -22,10 +22,10 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
       expect(Snippet.find_by_id(snippet.id).slug).to eq('about_1')
     end
 
-    it 'when format is not correct' do
+    it 'slug can not contain special chars' do
       put "/api/v1/snippets/#{snippet.id}", headers: authenticated_header, params: { slug: '%%^^##' }
 
-      expect(Snippet.find_by_id(snippet.id).slug).not_to eq('%%^^##')
+      expect(response).to have_http_status(422)
     end
   end
 end

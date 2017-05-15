@@ -60,6 +60,13 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   }
   let(:resource) { Resource.create!(content: 'something') }
 
+  context 'when record does not exist' do
+    it 'returns status code 404' do
+      get '/api/v1/resources/-1', headers: authenticated_header
+      expect(response).to have_http_status(404)
+    end
+  end
+
   describe 'GET /' do
     context 'authentication error' do
       it 'returns status code 401' do
@@ -93,13 +100,6 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
         expect(response).to have_http_status(200)
       end
     end
-
-    context 'when the record does not exist' do
-      it 'returns status code 404' do
-        get '/api/v1/resources/-1', headers: authenticated_header
-        expect(response).to have_http_status(404)
-      end
-    end
   end
 
   describe 'POST#create' do
@@ -128,6 +128,12 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
+    end
+
+    it 'returns status code 404 if not found' do
+      put '/api/v1/resources/-1', headers: authenticated_header
+
+      expect(response).to have_http_status(404)
     end
   end
 

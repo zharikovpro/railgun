@@ -22,10 +22,9 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
       expect(Page.find_by_id(page.id).slug).to eq('about_1')
     end
 
-    it 'when format is not correct' do
+    it 'slug can not contain special chars' do
       put "/api/v1/pages/#{page.id}", headers: authenticated_header, params: { slug: '%%^^##' }
 
-      expect(Page.find_by_id(page.id).slug).not_to eq('%%^^##')
       expect(response).to have_http_status(422)
     end
   end
