@@ -15,9 +15,9 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
       expect(Media.find_by_slug(:faq).file_file_name).to eq('demo.jpg')
     end
   end
-# file can be blank!
+
   describe 'PUT /:id' do
-    it 'when format is correct updates media' do
+    it 'when format is correct - updates media' do
       put "/api/v1/medias/#{media.id}", headers: authenticated_header, params: { slug: 'about_1' }
 
       expect(Media.find_by_id(media.id).slug).to eq('about_1')

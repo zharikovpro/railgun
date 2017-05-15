@@ -16,7 +16,7 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
   end
 
   describe 'PUT /:id' do
-    it 'when format is correct updates snippet' do
+    it 'when format is correct - updates snippet' do
       put "/api/v1/snippets/#{snippet.id}", headers: authenticated_header, params: { slug: 'about_1' }
 
       expect(Snippet.find_by_id(snippet.id).slug).to eq('about_1')

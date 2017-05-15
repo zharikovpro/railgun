@@ -16,7 +16,7 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
   end
 
   describe 'PUT /:id' do
-    it 'when format is correct updates page' do
+    it 'when format is correct - updates page' do
       put "/api/v1/pages/#{page.id}", headers: authenticated_header, params: { slug: 'about_1' }
 
       expect(Page.find_by_id(page.id).slug).to eq('about_1')

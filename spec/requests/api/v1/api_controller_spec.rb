@@ -8,6 +8,7 @@ module Api
 end
 
 class Resource < ApplicationRecord
+  validates_presence_of :content
 end
 
 class ResourcePolicy < ApplicationPolicy
@@ -123,7 +124,7 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
 
   describe 'PUT /:id' do
     context 'when request is invalid' do
-      before { put "/api/v1/resources/#{resource.id}", headers: authenticated_header }
+      before { put "/api/v1/resources/#{resource.id}", headers: authenticated_header, params: { content: ''} }
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
