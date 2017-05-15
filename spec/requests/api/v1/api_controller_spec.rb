@@ -8,22 +8,6 @@ module Api
 end
 
 class Resource < ApplicationRecord
-  has_paper_trail
-=begin
-  def self.find_by_id(id)
-    id = id.to_i
-    (id.negative?) ? nil : Resource.new(id)
-  end
-
-  def initialize(id = nil)
-    @id = id
-  end
-=end
-=begin
-
-  def destroy
-  end
-=end
 end
 
 class ResourcePolicy < ApplicationPolicy
@@ -73,7 +57,7 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   let(:authenticated_header) {
     { 'Authorization' => "Bearer #{create(:owner).api_token}" }
   }
-  let(:item) { Resource.create!(content: 'something') }
+  let(:resource) { Resource.create!(content: 'something') }
 
   # TODO: POST, check status 201
 
@@ -127,12 +111,12 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   describe 'GET /:id' do
     context 'when the record exists' do
       it 'returns resource' do
-        get '/api/v1/resources/1', headers: authenticated_header
+        get "/api/v1/resources/#{resource.id}", headers: authenticated_header
         expect(response.parsed_body['id']).to eq(1)
       end
 
       it 'returns status code 200' do
-        get '/api/v1/resources/1', headers: authenticated_header
+        get "/api/v1/resources/#{resource.id}", headers: authenticated_header
         expect(response).to have_http_status(200)
       end
     end
@@ -147,14 +131,14 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
 
   describe 'DELETE /:id' do
     context 'deletes resource' do
-      before { delete "/api/v1/resources/#{item.id}", headers: authenticated_header }
+      before { delete "/api/v1/resources/#{resource.id}", headers: authenticated_header }
 
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
       end
 
       it 'delete resource' do
-        expect(Resource.find_by_id(item.id)).to be_nil
+        expect(Resource.find_by_id(resource.id)).to be_nil
       end
     end
 

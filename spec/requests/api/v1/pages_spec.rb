@@ -15,14 +15,6 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
     end
   end
 
-  describe 'GET /:id' do
-    it 'returns the page' do
-      get "/api/v1/pages/#{page_id}", headers: authenticated_header
-
-      expect(response.parsed_body['id']).to eq(page_id)
-    end
-  end
-
   describe 'POST /' do
     context 'when request is valid' do
       before { post '/api/v1/pages', headers: authenticated_header, params: { slug: 'faq', markdown: 'something' } }

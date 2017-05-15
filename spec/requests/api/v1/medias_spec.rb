@@ -17,16 +17,6 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
     end
   end
 
-  describe 'GET /:id' do
-    context 'when the record exists' do
-      it 'returns the media' do
-        get "/api/v1/medias/#{media_id}", headers: authenticated_header
-
-        expect(response.parsed_body['id']).to eq(media_id)
-      end
-    end
-  end
-
   describe 'POST /' do
     context 'when request is valid' do
       before :each do

@@ -17,14 +17,6 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
   end
 =end
 
-  describe 'GET /:id' do
-    it 'returns snippet' do
-      get "/api/v1/snippets/#{snippet_id}", headers: authenticated_header
-
-      expect(response.parsed_body['id']).to eq(snippet_id)
-    end
-  end
-
   describe 'POST' do
     context 'when request is valid' do
       before { post '/api/v1/snippets', headers: authenticated_header, params: { slug: 'faq', text: 'something' } }
