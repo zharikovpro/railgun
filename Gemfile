@@ -216,6 +216,9 @@ group :development, :test do
   # Eloquent specs
   gem 'rspec-rails', '~> 3.5.2'
 
+  # Fake ActiveRecord models
+  # gem 'rspec-activemodel-mocks', '~> 1.0.3'
+
   # Testing helpers
   gem 'shoulda-matchers', '~> 3.1.1'
 

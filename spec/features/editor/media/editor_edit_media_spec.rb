@@ -17,7 +17,7 @@ RSpec.feature feature, issues: [84] do
     login_as create(:editor)
     visit edit_staff_media_path(media)
 
-    attach_file('media_file', Rails.root + 'spec/media/images/demo.jpg')
+    attach_file('media_file', Rails.root + 'spec/fixtures/files/images/demo.jpg')
     click_button 'Update Media'
 
     expect(Media.find_by_slug(:image).file_file_name).to eq('demo.jpg')
