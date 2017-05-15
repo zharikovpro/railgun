@@ -60,10 +60,14 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   }
   let(:resource) { Resource.create!(content: 'something') }
 
-  context 'when record does not exist' do
-    it 'returns status code 404' do
-      get '/api/v1/resources/-1', headers: authenticated_header
-      expect(response).to have_http_status(404)
+  %w[get put delete].each do |method|
+    context "#{method.to_s.upcase} when record does not exist" do
+      it 'returns status code 404' do
+
+        send(method, '/api/v1/resources/-1', headers: authenticated_header)
+
+        expect(response).to have_http_status(404)
+      end
     end
   end
 
@@ -89,23 +93,21 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   end
 
   describe 'GET /:id' do
-    context 'when the record exists' do
-      it 'returns resource' do
-        get "/api/v1/resources/#{resource.id}", headers: authenticated_header
-        expect(response.parsed_body['id']).to eq(1)
-      end
+    it 'returns resource' do
+      get "/api/v1/resources/#{resource.id}", headers: authenticated_header
+      expect(response.parsed_body['id']).to eq(1)
+    end
 
-      it 'returns status code 200' do
-        get "/api/v1/resources/#{resource.id}", headers: authenticated_header
-        expect(response).to have_http_status(200)
-      end
+    it 'returns status code 200' do
+      get "/api/v1/resources/#{resource.id}", headers: authenticated_header
+      expect(response).to have_http_status(200)
     end
   end
 
   describe 'POST#create' do
-
     it 'when request is valid returns status code 201' do
       post '/api/v1/resources', headers: authenticated_header, params: { content: 'Foobar' }
+
       expect(response).to have_http_status(201)
     end
 
@@ -123,37 +125,22 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   end
 
   describe 'PUT /:id' do
-    context 'when request is invalid' do
-      before { put "/api/v1/resources/#{resource.id}", headers: authenticated_header, params: { content: ''} }
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-    end
+    it 'when request is invalid returns status code 422' do
+      put "/api/v1/resources/#{resource.id}", headers: authenticated_header, params: { content: ''}
 
-    it 'returns status code 404 if not found' do
-      put '/api/v1/resources/-1', headers: authenticated_header
-
-      expect(response).to have_http_status(404)
+      expect(response).to have_http_status(422)
     end
   end
 
   describe 'DELETE /:id' do
-    context 'deletes resource' do
-      before { delete "/api/v1/resources/#{resource.id}", headers: authenticated_header }
+    before { delete "/api/v1/resources/#{resource.id}", headers: authenticated_header }
 
-      it 'returns status code 204' do
-        expect(response).to have_http_status(204)
-      end
-
-      it 'delete resource' do
-        expect(Resource.find_by_id(resource.id)).to be_nil
-      end
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
     end
 
-    it 'returns status code 404 if not found' do
-      delete '/api/v1/resources/-1', headers: authenticated_header
-
-      expect(response).to have_http_status(404)
+    it 'delete resource' do
+      expect(Resource.find_by_id(resource.id)).to be_nil
     end
   end
 end
