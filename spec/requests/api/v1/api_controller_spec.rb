@@ -14,7 +14,7 @@ end
 class ResourcePolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     def resolve
-      [1, 2, 3]
+      scope.all
     end
   end
 
@@ -41,6 +41,7 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
         end
       end
     end
+
     m = ActiveRecord::Migration.new
     m.verbose = false
     m.create_table :resources do |t|
@@ -50,17 +51,34 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
 
   after do
     Rails.application.reload_routes!
+
     m = ActiveRecord::Migration.new
     m.verbose = false
     m.drop_table :resources
   end
 
   let(:authenticated_header) {
-    { 'Authorization' => "Bearer #{create(:owner).api_token}" }
+    { 'Authorization' => "Bearer #{create(:user).api_token}" }
   }
   let(:resource) { Resource.create!(content: 'something') }
 
-  context 'no record' do
+  context 'unauthenticated user' do
+    it 'GET resources returns status 401' do
+      get '/api/v1/resources'
+
+      expect(response).to have_http_status(401)
+    end
+
+    %w[get put delete].each do |method|
+      it "#{method.to_s.upcase} resource returns status 401" do
+        public_send(method, '/api/v1/resources/1')
+
+        expect(response).to have_http_status(401)
+      end
+    end
+  end
+
+  context 'resource not found' do
     %w[get put delete].each do |method|
       it "#{method.to_s.upcase} returns status 404" do
         public_send(method, '/api/v1/resources/-1', headers: authenticated_header)
@@ -71,40 +89,34 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   end
 
   describe 'GET /' do
-    context 'authentication error' do
-      it 'returns status code 401' do
-        get '/api/v1/resources'
+    let!(:resources) { 3.times { Resource.create!(content: 'test') } }
+    before { get '/api/v1/resources', headers: authenticated_header }
 
-        expect(response).to have_http_status(401)
-      end
+    it 'returns resources' do
+      expect(response.parsed_body.size).to eq(3)
     end
 
-    context 'authentication ok' do
-      before { get '/api/v1/resources', headers: authenticated_header }
-      it 'returns resources' do
-        expect(response.parsed_body.size).to eq(3)
-      end
-
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
-      end
+    it 'returns status 200' do
+      expect(response).to have_http_status(200)
     end
   end
 
   describe 'GET /:id' do
     it 'returns resource' do
       get "/api/v1/resources/#{resource.id}", headers: authenticated_header
+
       expect(response.parsed_body['id']).to eq(1)
     end
 
-    it 'returns status code 200' do
+    it 'returns status 200' do
       get "/api/v1/resources/#{resource.id}", headers: authenticated_header
+
       expect(response).to have_http_status(200)
     end
   end
 
   describe 'POST#create' do
-    it 'when request is valid returns status code 201' do
+    it 'valid request returns status 201' do
       post '/api/v1/resources', headers: authenticated_header, params: { content: 'Foobar' }
 
       expect(response).to have_http_status(201)
@@ -113,7 +125,7 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
     context 'when request is invalid' do
       before { post '/api/v1/resources', headers: authenticated_header }
 
-      it 'returns status code 422' do
+      it 'returns status 422' do
         expect(response).to have_http_status(422)
       end
 
@@ -124,8 +136,8 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   end
 
   describe 'PUT /:id' do
-    it 'when request is invalid returns status code 422' do
-      put "/api/v1/resources/#{resource.id}", headers: authenticated_header, params: { content: ''}
+    it 'invalid request returns status 422' do
+      put "/api/v1/resources/#{resource.id}", headers: authenticated_header, params: { content: '' }
 
       expect(response).to have_http_status(422)
     end
@@ -134,11 +146,11 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   describe 'DELETE /:id' do
     before { delete "/api/v1/resources/#{resource.id}", headers: authenticated_header }
 
-    it 'returns status code 204' do
+    it 'returns status 204' do
       expect(response).to have_http_status(204)
     end
 
-    it 'delete resource' do
+    it 'deletes resource' do
       expect(Resource.find_by_id(resource.id)).to be_nil
     end
   end
