@@ -7,6 +7,7 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
     { 'Authorization' => "Bearer #{create(:developer).api_token}" }
   }
 
+=begin
   describe 'GET /' do
     it 'returns snippets' do
       get '/api/v1/snippets', headers: authenticated_header
@@ -14,6 +15,7 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
       expect(response.parsed_body.size).to eq(10)
     end
   end
+=end
 
   describe 'GET /:id' do
     it 'returns snippet' do
@@ -67,14 +69,6 @@ RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
-    end
-  end
-
-  describe 'DELETE /:id' do
-    it 'deletes snippet' do
-      delete "/api/v1/snippets/#{snippet_id}", headers: authenticated_header
-
-      expect(Snippet.find_by_id(snippet_id)).to be_nil
     end
   end
 end

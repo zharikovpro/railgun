@@ -79,13 +79,4 @@ RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
       end
     end
   end
-
-  describe 'DELETE /:id' do
-    it 'returns status code 204' do
-      delete "/api/v1/medias/#{media_id}", headers: authenticated_header
-
-      expect(Media.find_by_id(media_id)).to be_nil
-      expect(response).to have_http_status(204)
-    end
-  end
 end

@@ -69,12 +69,4 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
       end
     end
   end
-
-  describe 'DELETE /:id' do
-    it 'deletes page' do
-      delete "/api/v1/pages/#{page_id}", headers: authenticated_header
-
-      expect(Page.find_by_id(page_id)).to be_nil
-    end
-  end
 end
