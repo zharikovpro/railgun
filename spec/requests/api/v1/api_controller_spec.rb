@@ -59,34 +59,6 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   }
   let(:resource) { Resource.create!(content: 'something') }
 
-  # TODO: POST, check status 201
-
-  # TODO: POST, check status 422
-  describe 'POST, check status 422' do
-    context 'when request is invalid' do
-      before { post '/api/v1/resources', headers: authenticated_header }
-
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-
-      it 'returns a validation failure message' do
-        expect(response.body).to match(/can't be blank/)
-      end
-    end
-  end
-
-  describe 'PUT /:id' do
-    context 'when format is not correct' do
-      before { put "/api/v1/resources/1", headers: authenticated_header }
-#TODO create method
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-    end
-  end
-
-
   describe 'GET /' do
     context 'authentication error' do
       it 'returns status code 401' do
@@ -125,6 +97,35 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
       it 'returns status code 404' do
         get '/api/v1/resources/-1', headers: authenticated_header
         expect(response).to have_http_status(404)
+      end
+    end
+  end
+
+  describe 'POST#create' do
+
+    it 'when request is valid returns status code 201' do
+      post '/api/v1/resources', headers: authenticated_header, params: { content: 'Foobar' }
+      expect(response).to have_http_status(201)
+    end
+
+    context 'when request is invalid' do
+      before { post '/api/v1/resources', headers: authenticated_header }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expect(response.body).to match(/can't be blank/)
+      end
+    end
+  end
+
+  describe 'PUT /:id' do
+    context 'when request is invalid' do
+      before { put "/api/v1/resources/#{resource.id}", headers: authenticated_header }
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
       end
     end
   end
