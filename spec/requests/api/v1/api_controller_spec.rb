@@ -60,11 +60,10 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   }
   let(:resource) { Resource.create!(content: 'something') }
 
-  %w[get put delete].each do |method|
-    context "#{method.to_s.upcase} when record does not exist" do
-      it 'returns status code 404' do
-
-        send(method, '/api/v1/resources/-1', headers: authenticated_header)
+  context 'no record' do
+    %w[get put delete].each do |method|
+      it "#{method.to_s.upcase} returns status 404" do
+        public_send(method, '/api/v1/resources/-1', headers: authenticated_header)
 
         expect(response).to have_http_status(404)
       end
