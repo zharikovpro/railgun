@@ -16,13 +16,13 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
   end
 
   describe 'PUT /:id' do
-    it 'when format is correct - updates page' do
+    it 'updates page with valid slug' do
       put "/api/v1/pages/#{page.id}", headers: authenticated_header, params: { slug: 'about_1' }
 
       expect(Page.find_by_id(page.id).slug).to eq('about_1')
     end
 
-    it 'slug can not contain special chars' do
+    it 'slug cannot contain special chars' do
       put "/api/v1/pages/#{page.id}", headers: authenticated_header, params: { slug: '%%^^##' }
 
       expect(response).to have_http_status(422)

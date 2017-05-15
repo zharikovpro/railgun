@@ -99,7 +99,7 @@ end
 Capybara.app_host = 'http://localhost:5050'
 Capybara.server_host = 'localhost'
 Capybara.server_port = '5050'
-Capybara.default_wait_time = 10
+Capybara.default_max_wait_time = 10
 
 Capybara.javascript_driver = :poltergeist
 Capybara.ignore_hidden_elements = true

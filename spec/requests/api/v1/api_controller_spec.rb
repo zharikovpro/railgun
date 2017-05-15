@@ -102,15 +102,13 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
   end
 
   describe 'GET /:id' do
-    it 'returns resource' do
-      get "/api/v1/resources/#{resource.id}", headers: authenticated_header
+    before { get "/api/v1/resources/#{resource.id}", headers: authenticated_header }
 
+    it 'returns resource' do
       expect(response.parsed_body['id']).to eq(1)
     end
 
     it 'returns status 200' do
-      get "/api/v1/resources/#{resource.id}", headers: authenticated_header
-
       expect(response).to have_http_status(200)
     end
   end
@@ -122,7 +120,7 @@ RSpec.describe Api::V1::ResourcesController, issues: [133] do
       expect(response).to have_http_status(201)
     end
 
-    context 'when request is invalid' do
+    context 'when request is invalid returns status 422' do
       before { post '/api/v1/resources', headers: authenticated_header }
 
       it 'returns status 422' do
