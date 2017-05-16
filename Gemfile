@@ -161,7 +161,7 @@ gem 'inherited_resources', '~> 1.7.2', git: 'https://github.com/activeadmin/inhe
 gem 'formtastic', '~> 3.1'
 
 # HTML/XML parser
-gem 'nokogiri', '~> 1.7.1'
+gem 'nokogiri', '~> 1.7.2'
 
 # Model factories in all environments
 gem 'factory_girl_rails', '~> 4.8.0'
