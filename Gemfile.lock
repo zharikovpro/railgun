@@ -513,7 +513,7 @@ DEPENDENCIES
   lograge (~> 0.4.1)
   mutant-rspec (~> 0.8.11)
   newrelic_rpm (~> 4.0.0.332)
-  nokogiri (~> 1.7.2)
+  nokogiri (~> 1.7.1)
   paper_trail (~> 7.0.2)
   paperclip (~> 5.1.0)
   paranoia (~> 2.3.1)
