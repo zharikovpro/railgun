@@ -140,8 +140,8 @@ gem 'aws-sdk', '~> 2.6.33'
 gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', '~> 1.0.0', git: 'https://github.com/activeadmin/activeadmin'
-gem 'inherited_resources', '~> 1.7.2', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'activeadmin', '~> 1.0.0'
+gem 'inherited_resources', '~> 1.7.2'
 
 # Clone records with a click
 # gem 'active_admin-duplicatable'
