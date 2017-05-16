@@ -12,13 +12,13 @@ class User < ApplicationRecord
   alias_method :authenticate, :valid_password?
   scope :employees, -> { joins(:user_roles).distinct }
 
-  # TODO: def timeout_in
-  #   if employee?
-  #     30.minutes
-  #   else
-  #     7.days
-  #   end
-  # end
+  def timeout_in
+    if employee?
+      5.minutes
+    else
+      7.days
+    end
+  end
 
   # TODO: def confirmation_required?
   #   employee?
