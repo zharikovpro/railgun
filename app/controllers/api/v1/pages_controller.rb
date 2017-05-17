@@ -1,6 +1,6 @@
-module Api
+module API
   module V1
-    class PagesController < Api::V1::ApiController
+    class PagesController < API::V1::ApiController
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::UserTokenController, issues: [116] do
+RSpec.describe API::V1::UserTokenController, issues: [116] do
   it 'authenticates correctly' do
     user = create(:user)
     page_id = create(:page).id
