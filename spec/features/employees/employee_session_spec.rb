@@ -6,21 +6,21 @@ HEREDOC
 
 RSpec.feature feature, issues: [111] do
   scenario = <<~HEREDOC
-    Given employee is logined
+    Given employee is on root page and sees self email
     When he have not been active in a 5 minutes
-    Then expires session and employee is logout
+    Then expires session and employee is logout and sees 'Hello, guest'
   HEREDOC
 
   scenario scenario do
     employee = create(:owner)
     login_as(employee)
     visit root_path
-
     expect(page).to have_content(employee.email)
+
     Timecop.travel(Time.now + 5.minutes)
     visit root_path
 
-    expect(page).to have_content('guest')
+    expect(page).to have_content('Hello, guest')
     expect(employee.timedout?(5.minutes.ago)).to be true
   end
 end
