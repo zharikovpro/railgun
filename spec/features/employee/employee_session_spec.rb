@@ -1,14 +1,14 @@
 feature = <<~HEREDOC
-  When employee login he gets session,
-  he have not been active in a specified period of time
-  so expires session and employee is logout
+  When employee is logged in,
+  his session will be timed out after short period,
+  so he will not forget to logout and will not compromise security
 HEREDOC
 
 RSpec.feature feature, issues: [111] do
   scenario = <<~HEREDOC
-    Given employee is on root page and sees self email
-    When he have not been active in a 5 minutes
-    Then expires session and employee is logout and sees 'Hello, guest'
+    Given employee is on the root page and sees welcome message with his email
+    When he have been inactive for more than 5 minutes
+    Then session will expire, employee will become visitor and see general welcome message
   HEREDOC
 
   scenario scenario do
