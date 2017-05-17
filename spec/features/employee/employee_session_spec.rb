@@ -17,7 +17,7 @@ RSpec.feature feature, issues: [111] do
     visit root_path
     expect(page).to have_content(employee.email)
 
-    Timecop.travel(Time.now + 5.minutes)
+    travel(5.minutes)
     visit root_path
 
     expect(page).to have_content('Hello, guest')
