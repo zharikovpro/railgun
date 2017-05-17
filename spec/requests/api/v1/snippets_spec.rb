@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe '/api/v1/snippets', issues: [123] do
   let!(:snippet) { create(:snippet) }
-  let(:authenticated_header) {
-    { 'Authorization' => "Bearer #{create(:developer).api_token}" }
-  }
+  let(:authenticated_header) { create(:developer).api_header }
 
   describe 'POST /' do
     it 'creates a snippet' do

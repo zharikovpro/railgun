@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe '/api/v1/pages', issues: [116] do
   let!(:page) { create(:page) }
-  let(:authenticated_header) {
-    { 'Authorization' => "Bearer #{create(:editor).api_token}" }
-  }
+  let(:authenticated_header) { create(:editor).api_header }
 
   describe 'POST /' do
     it 'creates a page' do
