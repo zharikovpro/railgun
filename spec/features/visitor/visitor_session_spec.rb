@@ -13,7 +13,14 @@ RSpec.feature feature, issues: [111] do
 
   scenario scenario do
     visitor = create(:user)
+    login_as(visitor)
+    visit root_path
 
+    expect(page).to have_content(visitor.email)
+    Timecop.travel(Time.now + 7.days)
+    visit root_path
+
+    expect(page).to have_content('guest')
     expect(visitor.timedout?(7.days.ago)).to be true
   end
 end

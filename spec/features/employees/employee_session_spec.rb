@@ -13,7 +13,14 @@ RSpec.feature feature, issues: [111] do
 
   scenario scenario do
     employee = create(:owner)
+    login_as(employee)
+    visit root_path
 
-    expect(employee.timedout?(6.minutes.ago)).to be true
+    expect(page).to have_content(employee.email)
+    Timecop.travel(Time.now + 5.minutes)
+    visit root_path
+
+    expect(page).to have_content('guest')
+    expect(employee.timedout?(5.minutes.ago)).to be true
   end
 end
