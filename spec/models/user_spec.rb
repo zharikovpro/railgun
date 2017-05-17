@@ -59,10 +59,4 @@ RSpec.describe do
 
     expect(missing_roles).to contain_exactly(:owner, :administrator, :moderator, :support)
   end
-
-  it 'Employee session timeout in 5 minutes', issues: [111] do
-    employee = create(:owner)
-
-    expect(employee.timeout_in).to eq(5.minutes)
-  end
 end
