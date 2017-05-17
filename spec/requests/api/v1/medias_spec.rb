@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '/api/v1/medias', type: :request, issues: [116] do
+RSpec.describe '/api/v1/medias', issues: [134] do
   let!(:media) { create(:media) }
   let(:authenticated_header) {
     { 'Authorization' => "Bearer #{create(:editor).api_token}" }

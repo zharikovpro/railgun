@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '/api/v1/snippets', type: :request, issues: [116] do
+RSpec.describe '/api/v1/snippets', issues: [123] do
   let!(:snippet) { create(:snippet) }
   let(:authenticated_header) {
     { 'Authorization' => "Bearer #{create(:developer).api_token}" }
