@@ -1,6 +1,6 @@
-module Api
+module API
   module V1
-    class MediasController < Api::V1::ApiController
+    class MediasController < API::V1::ApiController
     end
   end
 end

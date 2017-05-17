@@ -41,7 +41,7 @@ RSpec.describe do
     end
   end
 
-  it 'Scope employees return only employees', issues: [76] do
+  it 'Scope employee return only employee', issues: [76] do
     create(:user)
     create(:administrator)
 
