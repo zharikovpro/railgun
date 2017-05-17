@@ -13,7 +13,6 @@ RSpec.feature feature, issues: [111] do
 
   scenario scenario do
     employee = create(:owner)
-    login_as employee
 
     expect(employee.timedout?(6.minutes.ago)).to be true
   end

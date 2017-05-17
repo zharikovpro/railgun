@@ -13,7 +13,6 @@ RSpec.feature feature, issues: [111] do
 
   scenario scenario do
     visitor = create(:user)
-    login_as visitor
 
     expect(visitor.timedout?(7.days.ago)).to be true
   end
