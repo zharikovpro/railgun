@@ -1,4 +1,4 @@
-RSpec.describe Media, issues: [84] do
+RSpec.describe Media, issues: ['railgun#84'] do
   it 'is versioned' do
     is_expected.to be_versioned
   end

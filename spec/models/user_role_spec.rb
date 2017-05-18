@@ -1,4 +1,4 @@
-RSpec.describe UserRole, issues: [54] do
+RSpec.describe UserRole, issues: ['railgun#54'] do
   it 'is versioned' do
     is_expected.to be_versioned
   end

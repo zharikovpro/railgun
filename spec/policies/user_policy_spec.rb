@@ -1,4 +1,4 @@
-RSpec.describe UserPolicy, issues: [54] do
+RSpec.describe UserPolicy, issues: ['railgun#54'] do
   subject { described_class }
 
   context 'administrator' do

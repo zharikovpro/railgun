@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so he will not forget to logout and will not compromise security
 HEREDOC
 
-RSpec.feature feature, issues: [111] do
+RSpec.feature feature, issues: ['railgun#111'] do
   scenario = <<~HEREDOC
     Given employee is on the root page and sees welcome message with his email
     When he have been inactive for more than 5 minutes

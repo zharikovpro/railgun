@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '/api/v1/pages', issues: [116] do
+RSpec.describe '/api/v1/pages', issues: ['railgun#116'] do
   let!(:page) { create(:page) }
   let(:authenticated_header) { create(:editor).api_header }
 

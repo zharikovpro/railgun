@@ -32,7 +32,7 @@ class ResourcePolicy < ApplicationPolicy
   end
 end
 
-RSpec.describe API::V1::ResourcesController, issues: [133] do
+RSpec.describe API::V1::ResourcesController, issues: ['railgun#133'] do
   before do
     Rails.application.routes.draw do
       namespace :api do

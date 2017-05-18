@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '/api/v1/snippets', issues: [123] do
+RSpec.describe '/api/v1/snippets', issues: ['railgun#123'] do
   let!(:snippet) { create(:snippet) }
   let(:authenticated_header) { create(:developer).api_header }
 

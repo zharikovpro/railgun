@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that user can use them to login immediately
 HEREDOC
 
-RSpec.feature feature, issues: [54] do
+RSpec.feature feature, issues: ['railgun#54'] do
   let(:email) { Faker::Internet.email }
   let(:password) { Faker::Internet.password }
 

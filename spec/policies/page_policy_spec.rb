@@ -1,4 +1,4 @@
-RSpec.describe PagePolicy, issues: [109] do
+RSpec.describe PagePolicy, issues: ['railgun#109'] do
   subject { described_class }
 
   let(:page) { build(:page) }

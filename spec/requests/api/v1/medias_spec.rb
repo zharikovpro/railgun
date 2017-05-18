@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '/api/v1/medias', issues: [134] do
+RSpec.describe '/api/v1/medias', issues: ['railgun#134'] do
   let!(:media) { create(:media) }
   let(:authenticated_header) { create(:editor).api_header }
 

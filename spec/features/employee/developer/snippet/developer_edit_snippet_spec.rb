@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that it has new text
 HEREDOC
 
-RSpec.feature feature, issues: [90] do
+RSpec.feature feature, issues: ['railgun#90'] do
   scenario = <<~HEREDOC
     Given snippet with slug 'head' and text 'one'
     Given developer is on the edit snippet page

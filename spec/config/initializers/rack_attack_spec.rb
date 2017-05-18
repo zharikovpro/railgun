@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Rack::Attack, issues: [112] do
+RSpec.describe Rack::Attack, issues: ['railgun#112'] do
   include Rack::Test::Methods
   def app
     Rails.application

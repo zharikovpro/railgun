@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that he can see file content
 HEREDOC
 
-RSpec.feature feature, issues: [84] do
+RSpec.feature feature, issues: ['railgun#84'] do
   scenario = <<~HEREDOC
     Given media with slug 'image'
     When visitor visits this media URL

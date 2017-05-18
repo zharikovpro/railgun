@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that editor can edit this media file
 HEREDOC
 
-RSpec.feature feature, issues: [84] do
+RSpec.feature feature, issues: ['railgun#84'] do
   scenario = <<~HEREDOC
     Given editor is on the new media page
     When he fills in slug and attachment file and clicks 'Create Media'
