@@ -3,21 +3,20 @@ require 'spec_helper'
 require 'rspec_api_documentation'
 require 'rspec_api_documentation/dsl'
 
-=begin
 RSpec.resource 'Pages', issues: [132] do
-  header 'Host', 'localhost:5000/api'
-  header 'Content-Type', 'application/json'
-
   let(:authenticated_header) {
-    { 'Authorization' => "Bearer #{create(:user).api_token}" }
+    { 'Authorization' => "Bearer #{create(:editor).api_token}" }
   }
+  header 'Host', 'localhost:5000'
+  header 'Content-Type', 'application/json'
+  header 'Authorization', authenticated_header
 
   let!(:pages) {  create_list(:page, 2) }
   response_field :id, 'page ID', 'Type' => 'Integer'
   response_field :slug, 'Name of page', 'Type' => 'String'
   response_field :markdown, 'Weight in kilograms', 'Type' => 'Text'
 
-  get '/v1/pages' do
+  get '/api/v1/pages' do
     example_request 'List pages' do
       explanation 'List all available pages'
 
@@ -26,7 +25,7 @@ RSpec.resource 'Pages', issues: [132] do
     end
   end
 
-  get '/v1/pages/:id' do
+  get '/api/v1/pages/:id' do
     let(:page) { pages.first }
     let(:id) { page.id }
 
@@ -38,7 +37,7 @@ RSpec.resource 'Pages', issues: [132] do
     end
   end
 
-  post '/v1/pages' do
+  post '/api/v1/pages' do
     parameter :slug, 'Slug of page', required: true, scope: :page
     parameter :markdown, 'markdown text', required: false, scope: :page
 
@@ -54,7 +53,7 @@ RSpec.resource 'Pages', issues: [132] do
   end
 
 end
-=end
+=begin
 require 'rails_helper'
 
 RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
@@ -86,7 +85,9 @@ RSpec.describe '/api/v1/pages', type: :request, issues: [116] do
     end
   end
 end
+=end
 
+=begin
 resource "Pages" do
   get "pages" do
     parameter :page, "Page to view"
@@ -98,3 +99,4 @@ resource "Pages" do
     end
   end
 end
+=end
