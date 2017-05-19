@@ -1,6 +1,6 @@
 feature = <<~HEREDOC
   When visitor finds site in google,
-  he wants to visit roo page,
+  he wants to visit root page,
   so that he can read content
 HEREDOC
 
