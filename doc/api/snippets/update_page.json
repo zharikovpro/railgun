@@ -16,7 +16,7 @@
       "required": false,
       "scope": "snippet",
       "name": "text",
-      "description": "text"
+      "description": "Text"
     }
   ],
   "response_fields": [
@@ -33,13 +33,13 @@
     {
       "Type": "Text",
       "name": "text",
-      "description": "Weight in kilograms"
+      "description": "Text with workings html-tags"
     }
   ],
   "requests": [
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/snippets/11",
+      "request_path": "/api/v1/snippets/3",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -49,16 +49,16 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 11,\n  \"slug\": \"eos_itaque\",\n  \"text\": \"We need to input the wireless XSS panel!\"\n}",
+      "response_body": "{\n  \"id\": 3,\n  \"slug\": \"illo.dolores\",\n  \"text\": \"Try to synthesize the PNG transmitter, maybe it will navigate the solid state monitor!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/11\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MTN9.3yGpo-qgnafATOfuioX7kAhFG52pHgteL3BIk0SdWNM\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/3\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6OX0.FpYb4S9eeBzgZOOlMO0LLQe6t9F6jhMf95L-6Z01QlM\""
     },
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/snippets/11",
+      "request_path": "/api/v1/snippets/3",
       "request_body": "{\"slug\":\"%%^^##\",\"text\":\"\"}",
       "request_headers": {
         "Content-Type": "application/json"
@@ -73,7 +73,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/11\" -d '{\"slug\":\"%%^^##\",\"text\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MTN9.3yGpo-qgnafATOfuioX7kAhFG52pHgteL3BIk0SdWNM\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/3\" -d '{\"slug\":\"%%^^##\",\"text\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6OX0.FpYb4S9eeBzgZOOlMO0LLQe6t9F6jhMf95L-6Z01QlM\""
     }
   ]
 }

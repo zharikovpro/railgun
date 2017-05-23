@@ -16,7 +16,7 @@
       "required": false,
       "scope": "page",
       "name": "markdown",
-      "description": "markdown"
+      "description": "Markdown"
     }
   ],
   "response_fields": [
@@ -33,7 +33,7 @@
     {
       "Type": "Text",
       "name": "markdown",
-      "description": "Weight in kilograms"
+      "description": "Text safe convert to html tags"
     }
   ],
   "requests": [
@@ -49,12 +49,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 14,\n  \"slug\": \"autem.cumque\",\n  \"markdown\": \"The HDD interface is down, override the open-source alarm so we can program the SMTP card!\"\n}",
+      "response_body": "{\n  \"id\": 14,\n  \"slug\": \"ut-libero\",\n  \"markdown\": \"The HTTP transmitter is down, generate the auxiliary bus so we can compress the RAM driver!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/pages/14\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6N30.8fWvi4RddsER4MoFEK6UsFg_PNAwIGlm2WT_M4j0j8M\""
+      "curl": "curl \"http://localhost:5000/api/v1/pages/14\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzUwMDAsInN1YiI6MjF9.Dv_SidcFq_rgxSMB-6b2vnmvoCER77GM-yorGd1hOR0\""
     },
     {
       "request_method": "PUT",
@@ -73,7 +73,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/pages/14\" -d '{\"slug\":\"%%^^##\",\"markdown\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6N30.8fWvi4RddsER4MoFEK6UsFg_PNAwIGlm2WT_M4j0j8M\""
+      "curl": "curl \"http://localhost:5000/api/v1/pages/14\" -d '{\"slug\":\"%%^^##\",\"markdown\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzUwMDAsInN1YiI6MjF9.Dv_SidcFq_rgxSMB-6b2vnmvoCER77GM-yorGd1hOR0\""
     }
   ]
 }

@@ -22,13 +22,13 @@
     {
       "Type": "Text",
       "name": "text",
-      "description": "Weight in kilograms"
+      "description": "Text with workings html-tags"
     }
   ],
   "requests": [
     {
       "request_method": "DELETE",
-      "request_path": "/api/v1/snippets/1",
+      "request_path": "/api/v1/snippets/5",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -42,7 +42,7 @@
       "response_headers": {
       },
       "response_content_type": null,
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/1\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6OH0.NGHSKb2A4F1DWkAa3h8hq-3nc8hg0sMk-OEbpVG9VA0\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/5\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6MTB9.iTPJwf5clcrbXrE40mmkJuTzd43R2XiyEWl52ypxiMU\""
     }
   ]
 }

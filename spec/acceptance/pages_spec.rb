@@ -9,7 +9,7 @@ RSpec.resource 'Pages', issues: [132] do
   let!(:pages) {  create_list(:page, 2) }
   response_field :id, 'page ID', 'Type' => 'Integer'
   response_field :slug, 'Name of page', 'Type' => 'String'
-  response_field :markdown, 'Weight in kilograms', 'Type' => 'Text'
+  response_field :markdown, 'Text safe convert to html tags', 'Type' => 'Text'
 
   get '/api/v1/pages' do
     example_request 'List pages' do
@@ -42,7 +42,7 @@ RSpec.resource 'Pages', issues: [132] do
 
   post '/api/v1/pages' do
     parameter :slug, 'Slug', required: true, scope: :page
-    parameter :markdown, 'markdown', required: false, scope: :page
+    parameter :markdown, 'Markdown', required: false, scope: :page
 
     example_request 'Create page' do
       explanation 'Create the new page'
@@ -58,7 +58,7 @@ RSpec.resource 'Pages', issues: [132] do
     let(:page) { pages.first }
     let(:id) { page.id }
     parameter :slug, 'Slug', required: true, scope: :page
-    parameter :markdown, 'markdown', required: false, scope: :page
+    parameter :markdown, 'Markdown', required: false, scope: :page
 
     example_request 'Update page' do
       explanation 'Update page with new content'
@@ -74,7 +74,7 @@ RSpec.resource 'Pages', issues: [132] do
     let(:page) { pages.first }
     let(:id) { page.id }
     parameter :slug, 'Slug', required: true, scope: :page
-    parameter :markdown, 'markdown', required: false, scope: :page
+    parameter :markdown, 'Markdown', required: false, scope: :page
 
     example_request 'Update page' do
       explanation 'Update page with new content'

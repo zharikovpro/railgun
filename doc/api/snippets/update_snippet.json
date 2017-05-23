@@ -16,7 +16,7 @@
       "required": false,
       "scope": "snippet",
       "name": "text",
-      "description": "text"
+      "description": "Text"
     }
   ],
   "response_fields": [
@@ -33,13 +33,13 @@
     {
       "Type": "Text",
       "name": "text",
-      "description": "Weight in kilograms"
+      "description": "Text with workings html-tags"
     }
   ],
   "requests": [
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/snippets/9",
+      "request_path": "/api/v1/snippets/10",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -49,16 +49,16 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 9,\n  \"slug\": \"sequi_aperiam\",\n  \"text\": \"We need to input the wireless XSS panel!\"\n}",
+      "response_body": "{\n  \"id\": 10,\n  \"slug\": \"quidem_aliquid\",\n  \"text\": \"Try to synthesize the PNG transmitter, maybe it will navigate the solid state monitor!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/9\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MTJ9.QVdHEXJ40-bggMWLRl2RyZu9-oULUpqB0C6GfKISEQo\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/10\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6MTJ9.v6UUh-mzoWsAvKG9U_S-yE8iEFwi8eQ1pdhhF80pF0M\""
     },
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/snippets/9",
+      "request_path": "/api/v1/snippets/10",
       "request_body": "{\"slug\":\"about\",\"text\":\"new content\"}",
       "request_headers": {
         "Content-Type": "application/json"
@@ -68,12 +68,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 9,\n  \"slug\": \"about\",\n  \"text\": \"new content\"\n}",
+      "response_body": "{\n  \"id\": 10,\n  \"slug\": \"about\",\n  \"text\": \"new content\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/9\" -d '{\"slug\":\"about\",\"text\":\"new content\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MTJ9.QVdHEXJ40-bggMWLRl2RyZu9-oULUpqB0C6GfKISEQo\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/10\" -d '{\"slug\":\"about\",\"text\":\"new content\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6MTJ9.v6UUh-mzoWsAvKG9U_S-yE8iEFwi8eQ1pdhhF80pF0M\""
     }
   ]
 }

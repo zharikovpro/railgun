@@ -9,7 +9,7 @@ RSpec.resource 'Snippets', issues: [132] do
   let!(:snippets) {  create_list(:snippet, 2) }
   response_field :id, 'snippet ID', 'Type' => 'Integer'
   response_field :slug, 'Name of snippet', 'Type' => 'String'
-  response_field :text, 'Weight in kilograms', 'Type' => 'Text'
+  response_field :text, 'Text with workings html-tags', 'Type' => 'Text'
 
   get '/api/v1/snippets' do
     example_request 'List snippets' do
@@ -42,7 +42,7 @@ RSpec.resource 'Snippets', issues: [132] do
 
   post '/api/v1/snippets' do
     parameter :slug, 'Slug', required: true, scope: :snippet
-    parameter :text, 'text', required: false, scope: :snippet
+    parameter :text, 'Text', required: false, scope: :snippet
 
     example_request 'Create snippet' do
       explanation 'Create the new snippet'
@@ -58,7 +58,7 @@ RSpec.resource 'Snippets', issues: [132] do
     let(:snippet) { snippets.first }
     let(:id) { snippet.id }
     parameter :slug, 'Slug', required: true, scope: :snippet
-    parameter :text, 'text', required: false, scope: :snippet
+    parameter :text, 'Text', required: false, scope: :snippet
 
     example_request 'Update snippet' do
       explanation 'Update snippet with new content'
@@ -74,7 +74,7 @@ RSpec.resource 'Snippets', issues: [132] do
     let(:snippet) { snippets.first }
     let(:id) { snippet.id }
     parameter :slug, 'Slug', required: true, scope: :snippet
-    parameter :text, 'text', required: false, scope: :snippet
+    parameter :text, 'Text', required: false, scope: :snippet
 
     example_request 'Update page' do
       explanation 'Update page with new content'

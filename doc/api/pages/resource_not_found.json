@@ -22,7 +22,7 @@
     {
       "Type": "Text",
       "name": "markdown",
-      "description": "Weight in kilograms"
+      "description": "Text safe convert to html tags"
     }
   ],
   "requests": [
@@ -43,7 +43,7 @@
         "Content-Type": "text/html"
       },
       "response_content_type": "text/html",
-      "curl": "curl \"http://localhost:5000/api/v1/pages/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MX0.81ad6YsOtsqBgbZ4U6wgnAdXF49RkxSd69g9YCubHeM\""
+      "curl": "curl \"http://localhost:5000/api/v1/pages/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzUwMDAsInN1YiI6MTd9._TxiaiYfyaXdm1rcBei1PJw9bhKWNYGM0b06GCI0A-8\""
     }
   ]
 }

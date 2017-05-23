@@ -1,10 +1,10 @@
 {
-  "resource": "Pages",
+  "resource": "Medias",
   "resource_explanation": null,
   "http_method": "DELETE",
-  "route": "/api/v1/pages/:id",
-  "description": "Delete page",
-  "explanation": "Deletes page and returns status 204",
+  "route": "/api/v1/medias/:id",
+  "description": "Delete media",
+  "explanation": "Deletes media and returns status 204",
   "parameters": [
 
   ],
@@ -12,23 +12,23 @@
     {
       "Type": "Integer",
       "name": "id",
-      "description": "page ID"
+      "description": "media ID"
     },
     {
       "Type": "String",
       "name": "slug",
-      "description": "Name of page"
+      "description": "Name of media"
     },
     {
       "Type": "Text",
-      "name": "markdown",
-      "description": "Text safe convert to html tags"
+      "name": "file_file_name",
+      "description": "Path to media file"
     }
   ],
   "requests": [
     {
       "request_method": "DELETE",
-      "request_path": "/api/v1/pages/1",
+      "request_path": "/api/v1/medias/1",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -42,7 +42,7 @@
       "response_headers": {
       },
       "response_content_type": null,
-      "curl": "curl \"http://localhost:5000/api/v1/pages/1\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzUwMDAsInN1YiI6MTV9.CuNYejJ6bh-6q7obx4CXt3oQ_9h7HTkBzMiJ1EFaWEs\""
+      "curl": "curl \"http://localhost:5000/api/v1/medias/1\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6MX0.1jKxih7NALEV-Ca5WlkxbntCNNxL97oF5iIeIAUaOFM\""
     }
   ]
 }

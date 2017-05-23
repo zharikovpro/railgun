@@ -22,13 +22,13 @@
     {
       "Type": "Text",
       "name": "text",
-      "description": "Weight in kilograms"
+      "description": "Text with workings html-tags"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/snippets/7",
+      "request_path": "/api/v1/snippets/12",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -38,12 +38,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 7,\n  \"slug\": \"ducimus_placeat\",\n  \"text\": \"We need to input the wireless XSS panel!\"\n}",
+      "response_body": "{\n  \"id\": 12,\n  \"slug\": \"maxime_voluptatem\",\n  \"text\": \"Try to synthesize the PNG transmitter, maybe it will navigate the solid state monitor!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/7\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MTF9.xNj-UhpJmSy2StPIe8ffgxGvugocFVDWuLnx9SkJgG8\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/12\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzUwMDAsInN1YiI6MTN9.__-aiC9x6CvT9rV4nZd2GoHxduHVO5e-sPoDI3mfNtE\""
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "resource": "Snippets",
+  "resource": "Medias",
   "resource_explanation": null,
   "http_method": "GET",
-  "route": "/api/v1/snippets/-1",
+  "route": "/api/v1/medias/-1",
   "description": "resource not found",
   "explanation": "returns status 404",
   "parameters": [
@@ -12,23 +12,23 @@
     {
       "Type": "Integer",
       "name": "id",
-      "description": "snippet ID"
+      "description": "media ID"
     },
     {
       "Type": "String",
       "name": "slug",
-      "description": "Name of snippet"
+      "description": "Name of media"
     },
     {
       "Type": "Text",
-      "name": "text",
-      "description": "Text with workings html-tags"
+      "name": "file_file_name",
+      "description": "Path to media file"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/snippets/-1",
+      "request_path": "/api/v1/medias/-1",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -43,7 +43,7 @@
         "Content-Type": "text/html"
       },
       "response_content_type": "text/html",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6OH0.HNKub3LFrqEteCnfGgdhOPaePVV6XDM35FArw_ThA6A\""
+      "curl": "curl \"http://localhost:5000/api/v1/medias/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6N30.gEOZ_w1KJYFCaXWDnNbGkEk46fRhnAlGHuRnK-y5y_Y\""
     }
   ]
 }

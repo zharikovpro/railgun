@@ -1,6 +1,54 @@
 {
   "resources": [
     {
+      "name": "Medias",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Delete media",
+          "link": "medias/delete_media.json",
+          "groups": "all",
+          "route": "/api/v1/medias/:id",
+          "method": "delete"
+        },
+        {
+          "description": "Get specific media",
+          "link": "medias/get_specific_media.json",
+          "groups": "all",
+          "route": "/api/v1/medias/:id",
+          "method": "get"
+        },
+        {
+          "description": "List medias",
+          "link": "medias/list_medias.json",
+          "groups": "all",
+          "route": "/api/v1/medias",
+          "method": "get"
+        },
+        {
+          "description": "Update media",
+          "link": "medias/update_media.json",
+          "groups": "all",
+          "route": "/api/v1/medias/:id",
+          "method": "put"
+        },
+        {
+          "description": "Update media",
+          "link": "medias/update_media.json",
+          "groups": "all",
+          "route": "/api/v1/medias/:id",
+          "method": "put"
+        },
+        {
+          "description": "resource not found",
+          "link": "medias/resource_not_found.json",
+          "groups": "all",
+          "route": "/api/v1/medias/-1",
+          "method": "get"
+        }
+      ]
+    },
+    {
       "name": "Pages",
       "explanation": null,
       "examples": [

@@ -22,7 +22,7 @@
     {
       "Type": "Text",
       "name": "text",
-      "description": "Weight in kilograms"
+      "description": "Text with workings html-tags"
     }
   ],
   "requests": [
@@ -38,12 +38,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[\n  {\n    \"id\": 5,\n    \"slug\": \"numquam.unde\",\n    \"text\": \"We need to input the wireless XSS panel!\"\n  },\n  {\n    \"id\": 6,\n    \"slug\": \"voluptatem-laudantium\",\n    \"text\": \"We need to input the wireless XSS panel!\"\n  }\n]",
+      "response_body": "[\n  {\n    \"id\": 14,\n    \"slug\": \"velit.consequuntur\",\n    \"text\": \"Try to synthesize the PNG transmitter, maybe it will navigate the solid state monitor!\"\n  },\n  {\n    \"id\": 15,\n    \"slug\": \"quibusdam-omnis\",\n    \"text\": \"Try to synthesize the PNG transmitter, maybe it will navigate the solid state monitor!\"\n  }\n]",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MTB9.YE0fF6X9CZLZcQJvXxMVHJdCZlU4eOp5dwhTGJCKHP0\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzUwMDAsInN1YiI6MTR9.dCZRMLNaavn6mCuxmd8mKMA084tFuDFs8ZP1k0NSoWw\""
     }
   ]
 }
