@@ -1,45 +1,45 @@
 {
-  "resource": "Pages",
+  "resource": "Snippets",
   "resource_explanation": null,
   "http_method": "PUT",
-  "route": "/api/v1/pages/:id",
+  "route": "/api/v1/snippets/:id",
   "description": "Update page",
   "explanation": "Update page with new content",
   "parameters": [
     {
       "required": true,
-      "scope": "page",
+      "scope": "snippet",
       "name": "slug",
       "description": "Slug"
     },
     {
       "required": false,
-      "scope": "page",
-      "name": "markdown",
-      "description": "markdown"
+      "scope": "snippet",
+      "name": "text",
+      "description": "text"
     }
   ],
   "response_fields": [
     {
       "Type": "Integer",
       "name": "id",
-      "description": "page ID"
+      "description": "snippet ID"
     },
     {
       "Type": "String",
       "name": "slug",
-      "description": "Name of page"
+      "description": "Name of snippet"
     },
     {
       "Type": "Text",
-      "name": "markdown",
+      "name": "text",
       "description": "Weight in kilograms"
     }
   ],
   "requests": [
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/pages/14",
+      "request_path": "/api/v1/snippets/11",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -49,17 +49,17 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 14,\n  \"slug\": \"autem.cumque\",\n  \"markdown\": \"The HDD interface is down, override the open-source alarm so we can program the SMTP card!\"\n}",
+      "response_body": "{\n  \"id\": 11,\n  \"slug\": \"eos_itaque\",\n  \"text\": \"We need to input the wireless XSS panel!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/pages/14\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6N30.8fWvi4RddsER4MoFEK6UsFg_PNAwIGlm2WT_M4j0j8M\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/11\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MTN9.3yGpo-qgnafATOfuioX7kAhFG52pHgteL3BIk0SdWNM\""
     },
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/pages/14",
-      "request_body": "{\"slug\":\"%%^^##\",\"markdown\":\"\"}",
+      "request_path": "/api/v1/snippets/11",
+      "request_body": "{\"slug\":\"%%^^##\",\"text\":\"\"}",
       "request_headers": {
         "Content-Type": "application/json"
       },
@@ -68,12 +68,12 @@
       "request_content_type": "application/json",
       "response_status": 422,
       "response_status_text": "Unprocessable Entity",
-      "response_body": "{\n  \"slug\": [\n    \"is invalid\"\n  ],\n  \"markdown\": [\n    \"can't be blank\"\n  ]\n}",
+      "response_body": "{\n  \"slug\": [\n    \"is invalid\"\n  ],\n  \"text\": [\n    \"can't be blank\"\n  ]\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/pages/14\" -d '{\"slug\":\"%%^^##\",\"markdown\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6N30.8fWvi4RddsER4MoFEK6UsFg_PNAwIGlm2WT_M4j0j8M\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/11\" -d '{\"slug\":\"%%^^##\",\"text\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MTN9.3yGpo-qgnafATOfuioX7kAhFG52pHgteL3BIk0SdWNM\""
     }
   ]
 }

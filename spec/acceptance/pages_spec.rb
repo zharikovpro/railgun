@@ -11,16 +11,6 @@ RSpec.resource 'Pages', issues: [132] do
   response_field :slug, 'Name of page', 'Type' => 'String'
   response_field :markdown, 'Weight in kilograms', 'Type' => 'Text'
 
-=begin
-  get '/api/v1/pages', [:skip_before] do
-    example_request 'unauthenticated user' do
-      explanation 'GET resources returns status 401'
-
-      expect(status).to eq 401
-    end
-  end
-=end
-
   get '/api/v1/pages' do
     example_request 'List pages' do
       explanation 'List all available pages'
@@ -77,6 +67,21 @@ RSpec.resource 'Pages', issues: [132] do
       expect(status).to eq 200
       expect(JSON.parse(response_body)['slug']).to eq('about')
       expect(Page.find_by_slug(:about).markdown).to eq('new content')
+    end
+  end
+
+  put '/api/v1/pages/:id' do
+    let(:page) { pages.first }
+    let(:id) { page.id }
+    parameter :slug, 'Slug', required: true, scope: :page
+    parameter :markdown, 'markdown', required: false, scope: :page
+
+    example_request 'Update page' do
+      explanation 'Update page with new content'
+      do_request(slug: '%%^^##', markdown: '')
+
+      expect(status).to eq 422
+      expect(JSON.parse(response_body)['slug']).not_to eq('%%^^##')
     end
   end
 

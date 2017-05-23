@@ -1,8 +1,8 @@
 {
-  "resource": "Pages",
+  "resource": "Snippets",
   "resource_explanation": null,
   "http_method": "GET",
-  "route": "/api/v1/pages/-1",
+  "route": "/api/v1/snippets/-1",
   "description": "resource not found",
   "explanation": "returns status 404",
   "parameters": [
@@ -12,23 +12,23 @@
     {
       "Type": "Integer",
       "name": "id",
-      "description": "page ID"
+      "description": "snippet ID"
     },
     {
       "Type": "String",
       "name": "slug",
-      "description": "Name of page"
+      "description": "Name of snippet"
     },
     {
       "Type": "Text",
-      "name": "markdown",
+      "name": "text",
       "description": "Weight in kilograms"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/pages/-1",
+      "request_path": "/api/v1/snippets/-1",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -43,7 +43,7 @@
         "Content-Type": "text/html"
       },
       "response_content_type": "text/html",
-      "curl": "curl \"http://localhost:5000/api/v1/pages/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MX0.81ad6YsOtsqBgbZ4U6wgnAdXF49RkxSd69g9YCubHeM\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6OX0.uOIDi2J49UYLybl16LFXx3X5SuuZ7UWGr0ku6LVUE40\""
     }
   ]
 }

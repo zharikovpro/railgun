@@ -1,45 +1,45 @@
 {
-  "resource": "Pages",
+  "resource": "Snippets",
   "resource_explanation": null,
   "http_method": "POST",
-  "route": "/api/v1/pages",
-  "description": "Create page",
-  "explanation": "Create the new page",
+  "route": "/api/v1/snippets",
+  "description": "Create snippet",
+  "explanation": "Create the new snippet",
   "parameters": [
     {
       "required": true,
-      "scope": "page",
+      "scope": "snippet",
       "name": "slug",
       "description": "Slug"
     },
     {
       "required": false,
-      "scope": "page",
-      "name": "markdown",
-      "description": "markdown"
+      "scope": "snippet",
+      "name": "text",
+      "description": "text"
     }
   ],
   "response_fields": [
     {
       "Type": "Integer",
       "name": "id",
-      "description": "page ID"
+      "description": "snippet ID"
     },
     {
       "Type": "String",
       "name": "slug",
-      "description": "Name of page"
+      "description": "Name of snippet"
     },
     {
       "Type": "Text",
-      "name": "markdown",
+      "name": "text",
       "description": "Weight in kilograms"
     }
   ],
   "requests": [
     {
       "request_method": "POST",
-      "request_path": "/api/v1/pages",
+      "request_path": "/api/v1/snippets",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -49,17 +49,17 @@
       "request_content_type": "application/json",
       "response_status": 422,
       "response_status_text": "Unprocessable Entity",
-      "response_body": "{\n  \"slug\": [\n    \"is invalid\",\n    \"can't be blank\"\n  ],\n  \"markdown\": [\n    \"can't be blank\"\n  ]\n}",
+      "response_body": "{\n  \"slug\": [\n    \"is invalid\",\n    \"can't be blank\"\n  ],\n  \"text\": [\n    \"can't be blank\"\n  ]\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/pages\" -d '' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6M30.dtiZ4mLfkyOg9I0k-ba9HDZsJRGSdHSst_4NI9xSxPI\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets\" -d '' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTQsInN1YiI6MTR9.KBrbe_pAC8OjnwL4M1m47AQpSZmvHsnEVwXTVDkBgNU\""
     },
     {
       "request_method": "POST",
-      "request_path": "/api/v1/pages",
-      "request_body": "{\"slug\":\"faq\",\"markdown\":\"something\"}",
+      "request_path": "/api/v1/snippets",
+      "request_body": "{\"slug\":\"faq\",\"text\":\"something\"}",
       "request_headers": {
         "Content-Type": "application/json"
       },
@@ -68,12 +68,12 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"id\": 7,\n  \"slug\": \"faq\",\n  \"markdown\": \"something\"\n}",
+      "response_body": "{\n  \"id\": 15,\n  \"slug\": \"faq\",\n  \"text\": \"something\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/pages\" -d '{\"slug\":\"faq\",\"markdown\":\"something\"}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6M30.dtiZ4mLfkyOg9I0k-ba9HDZsJRGSdHSst_4NI9xSxPI\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets\" -d '{\"slug\":\"faq\",\"text\":\"something\"}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTQsInN1YiI6MTR9.KBrbe_pAC8OjnwL4M1m47AQpSZmvHsnEVwXTVDkBgNU\""
     }
   ]
 }

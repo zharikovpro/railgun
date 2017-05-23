@@ -1,0 +1,49 @@
+{
+  "resource": "Snippets",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/api/v1/snippets",
+  "description": "List snippets",
+  "explanation": "List all available snippets",
+  "parameters": [
+
+  ],
+  "response_fields": [
+    {
+      "Type": "Integer",
+      "name": "id",
+      "description": "snippet ID"
+    },
+    {
+      "Type": "String",
+      "name": "slug",
+      "description": "Name of snippet"
+    },
+    {
+      "Type": "Text",
+      "name": "text",
+      "description": "Weight in kilograms"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/snippets",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[\n  {\n    \"id\": 5,\n    \"slug\": \"numquam.unde\",\n    \"text\": \"We need to input the wireless XSS panel!\"\n  },\n  {\n    \"id\": 6,\n    \"slug\": \"voluptatem-laudantium\",\n    \"text\": \"We need to input the wireless XSS panel!\"\n  }\n]",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:5000/api/v1/snippets\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzEwOTMsInN1YiI6MTB9.YE0fF6X9CZLZcQJvXxMVHJdCZlU4eOp5dwhTGJCKHP0\""
+    }
+  ]
+}

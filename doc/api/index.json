@@ -40,10 +40,72 @@
           "method": "put"
         },
         {
+          "description": "Update page",
+          "link": "pages/update_page.json",
+          "groups": "all",
+          "route": "/api/v1/pages/:id",
+          "method": "put"
+        },
+        {
           "description": "resource not found",
           "link": "pages/resource_not_found.json",
           "groups": "all",
           "route": "/api/v1/pages/-1",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Snippets",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Create snippet",
+          "link": "snippets/create_snippet.json",
+          "groups": "all",
+          "route": "/api/v1/snippets",
+          "method": "post"
+        },
+        {
+          "description": "Delete snippet",
+          "link": "snippets/delete_snippet.json",
+          "groups": "all",
+          "route": "/api/v1/snippets/:id",
+          "method": "delete"
+        },
+        {
+          "description": "Get specific snippet",
+          "link": "snippets/get_specific_snippet.json",
+          "groups": "all",
+          "route": "/api/v1/snippets/:id",
+          "method": "get"
+        },
+        {
+          "description": "List snippets",
+          "link": "snippets/list_snippets.json",
+          "groups": "all",
+          "route": "/api/v1/snippets",
+          "method": "get"
+        },
+        {
+          "description": "Update page",
+          "link": "snippets/update_page.json",
+          "groups": "all",
+          "route": "/api/v1/snippets/:id",
+          "method": "put"
+        },
+        {
+          "description": "Update snippet",
+          "link": "snippets/update_snippet.json",
+          "groups": "all",
+          "route": "/api/v1/snippets/:id",
+          "method": "put"
+        },
+        {
+          "description": "resource not found",
+          "link": "snippets/resource_not_found.json",
+          "groups": "all",
+          "route": "/api/v1/snippets/-1",
           "method": "get"
         }
       ]
