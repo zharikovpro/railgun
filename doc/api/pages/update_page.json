@@ -1,0 +1,79 @@
+{
+  "resource": "Pages",
+  "resource_explanation": null,
+  "http_method": "PUT",
+  "route": "/api/v1/pages/:id",
+  "description": "Update page",
+  "explanation": "Update page with new content",
+  "parameters": [
+    {
+      "required": true,
+      "scope": "page",
+      "name": "slug",
+      "description": "Slug"
+    },
+    {
+      "required": false,
+      "scope": "page",
+      "name": "markdown",
+      "description": "markdown"
+    }
+  ],
+  "response_fields": [
+    {
+      "Type": "Integer",
+      "name": "id",
+      "description": "page ID"
+    },
+    {
+      "Type": "String",
+      "name": "slug",
+      "description": "Name of page"
+    },
+    {
+      "Type": "Text",
+      "name": "markdown",
+      "description": "Weight in kilograms"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "PUT",
+      "request_path": "/api/v1/pages/10",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 10,\n  \"slug\": \"dolores_quas\",\n  \"markdown\": \"Try to copy the SCSI feed, maybe it will quantify the multi-byte firewall!\"\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:5000/api/v1/pages/10\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzAxMjYsInN1YiI6NX0.DIl_S1ipXutzbRUU0zPFsasZrKOfWo9Vlmrj1Wyhho8\""
+    },
+    {
+      "request_method": "PUT",
+      "request_path": "/api/v1/pages/10",
+      "request_body": "{\"slug\":\"about\",\"markdown\":\"new content\"}",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 10,\n  \"slug\": \"about\",\n  \"markdown\": \"new content\"\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:5000/api/v1/pages/10\" -d '{\"slug\":\"about\",\"markdown\":\"new content\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzAxMjYsInN1YiI6NX0.DIl_S1ipXutzbRUU0zPFsasZrKOfWo9Vlmrj1Wyhho8\""
+    }
+  ]
+}

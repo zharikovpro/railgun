@@ -5,6 +5,20 @@
       "explanation": null,
       "examples": [
         {
+          "description": "Create page",
+          "link": "pages/create_page.json",
+          "groups": "all",
+          "route": "/api/v1/pages",
+          "method": "post"
+        },
+        {
+          "description": "Delete page",
+          "link": "pages/delete_page.json",
+          "groups": "all",
+          "route": "/api/v1/pages/:id",
+          "method": "delete"
+        },
+        {
           "description": "Get specific page",
           "link": "pages/get_specific_page.json",
           "groups": "all",
@@ -16,6 +30,20 @@
           "link": "pages/list_pages.json",
           "groups": "all",
           "route": "/api/v1/pages",
+          "method": "get"
+        },
+        {
+          "description": "Update page",
+          "link": "pages/update_page.json",
+          "groups": "all",
+          "route": "/api/v1/pages/:id",
+          "method": "put"
+        },
+        {
+          "description": "resource not found",
+          "link": "pages/resource_not_found.json",
+          "groups": "all",
+          "route": "/api/v1/pages/-1",
           "method": "get"
         }
       ]
