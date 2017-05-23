@@ -6,7 +6,7 @@ RSpec.resource 'Pages', issues: [132] do
   header 'Host', 'localhost:5000'
   header 'Content-Type', 'application/json'
   before { header 'Authorization', "Bearer #{create(:editor).api_token}" }
-  let!(:pages) {  create_list(:page, 2) }
+  let!(:pages) { create_list(:page, 2) }
   response_field :id, 'page ID', 'Type' => 'Integer'
   response_field :slug, 'Name of page', 'Type' => 'String'
   response_field :markdown, 'Text safe convert to html tags', 'Type' => 'Text'

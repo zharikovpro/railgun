@@ -43,7 +43,7 @@
         "Content-Type": "text/html"
       },
       "response_content_type": "text/html",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6OH0.HNKub3LFrqEteCnfGgdhOPaePVV6XDM35FArw_ThA6A\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2NDA3ODYsInN1YiI6MTF9.G7-bhrFjiOb5K4RjiYaIbDCbdsW677ChNR8Kwkk1zLI\""
     }
   ]
 }

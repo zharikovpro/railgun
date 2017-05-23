@@ -6,7 +6,7 @@ RSpec.resource 'Snippets', issues: [132] do
   header 'Host', 'localhost:5000'
   header 'Content-Type', 'application/json'
   before { header 'Authorization', "Bearer #{create(:developer).api_token}" }
-  let!(:snippets) {  create_list(:snippet, 2) }
+  let!(:snippets) { create_list(:snippet, 2) }
   response_field :id, 'snippet ID', 'Type' => 'Integer'
   response_field :slug, 'Name of snippet', 'Type' => 'String'
   response_field :text, 'Text with workings html-tags', 'Type' => 'Text'

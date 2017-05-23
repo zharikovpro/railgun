@@ -33,13 +33,6 @@
           "method": "put"
         },
         {
-          "description": "Update media",
-          "link": "medias/update_media.json",
-          "groups": "all",
-          "route": "/api/v1/medias/:id",
-          "method": "put"
-        },
-        {
           "description": "resource not found",
           "link": "medias/resource_not_found.json",
           "groups": "all",

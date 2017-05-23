@@ -21,7 +21,7 @@
     },
     {
       "Type": "Text",
-      "name": "file_file_name",
+      "name": "file",
       "description": "Path to media file"
     }
   ],
@@ -43,7 +43,7 @@
         "Content-Type": "text/html"
       },
       "response_content_type": "text/html",
-      "curl": "curl \"http://localhost:5000/api/v1/medias/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzQ5OTksInN1YiI6N30.gEOZ_w1KJYFCaXWDnNbGkEk46fRhnAlGHuRnK-y5y_Y\""
+      "curl": "curl \"http://localhost:5000/api/v1/medias/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2NDA3ODYsInN1YiI6NX0.XLOJlVJsZzPJOSRq_rBtSh-GppmZXOeK5HmcuK6Qb4s\""
     }
   ]
 }

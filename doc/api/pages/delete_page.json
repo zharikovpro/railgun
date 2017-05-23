@@ -28,7 +28,7 @@
   "requests": [
     {
       "request_method": "DELETE",
-      "request_path": "/api/v1/pages/1",
+      "request_path": "/api/v1/pages/3",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -42,7 +42,7 @@
       "response_headers": {
       },
       "response_content_type": null,
-      "curl": "curl \"http://localhost:5000/api/v1/pages/1\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MzUwMDAsInN1YiI6MTV9.CuNYejJ6bh-6q7obx4CXt3oQ_9h7HTkBzMiJ1EFaWEs\""
+      "curl": "curl \"http://localhost:5000/api/v1/pages/3\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2NDA3ODYsInN1YiI6MTZ9.GtWXsxfR8_PfJIht9INFDt_byl69qhm29dO2IrSIh8I\""
     }
   ]
 }
