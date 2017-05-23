@@ -1,0 +1,49 @@
+{
+  "resource": "Pages",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/api/v1/pages",
+  "description": "List pages",
+  "explanation": "List all available pages",
+  "parameters": [
+
+  ],
+  "response_fields": [
+    {
+      "Type": "Integer",
+      "name": "id",
+      "description": "page ID"
+    },
+    {
+      "Type": "String",
+      "name": "slug",
+      "description": "Name of page"
+    },
+    {
+      "Type": "Text",
+      "name": "markdown",
+      "description": "Weight in kilograms"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/pages",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[\n  {\n    \"id\": 1,\n    \"slug\": \"ut.reiciendis\",\n    \"markdown\": \"The ADP protocol is down, reboot the wireless capacitor so we can input the SQL hard drive!\"\n  },\n  {\n    \"id\": 2,\n    \"slug\": \"enim_voluptates\",\n    \"markdown\": \"The ADP protocol is down, reboot the wireless capacitor so we can input the SQL hard drive!\"\n  }\n]",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:5000/api/v1/pages\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2MjgxODEsInN1YiI6MX0.T0lUFtPaSChzhRj621pybxOh9BLcA7UrGAqrgLldyfE\""
+    }
+  ]
+}

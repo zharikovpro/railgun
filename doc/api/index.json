@@ -1,5 +1,24 @@
 {
   "resources": [
-
+    {
+      "name": "Pages",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Get specific page",
+          "link": "pages/get_specific_page.json",
+          "groups": "all",
+          "route": "/api/v1/pages/:id",
+          "method": "get"
+        },
+        {
+          "description": "List pages",
+          "link": "pages/list_pages.json",
+          "groups": "all",
+          "route": "/api/v1/pages",
+          "method": "get"
+        }
+      ]
+    }
   ]
 }
