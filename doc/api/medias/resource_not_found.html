@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Snippets API</title>
+    <title>Medias API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,13 +106,13 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Snippets API</h1>
+      <h1>Medias API</h1>
 
       <div class="article">
-        <h2>Get specific snippet</h2>
-        <h3>GET /api/v1/snippets/:id</h3>
+        <h2>resource not found</h2>
+        <h3>GET /api/v1/medias/-1</h3>
           <p class="explanation">
-            Get a snippet by id
+            returns status 404
           </p>
 
 
@@ -130,7 +130,7 @@ table th, table td {
                     <span class="name">id</span>
                 </td>
                 <td>
-                  <span class="description">snippet ID</span>
+                  <span class="description">media ID</span>
                 </td>
               </tr>
               <tr>
@@ -138,15 +138,15 @@ table th, table td {
                     <span class="name">slug</span>
                 </td>
                 <td>
-                  <span class="description">Name of snippet</span>
+                  <span class="description">Name of media</span>
                 </td>
               </tr>
               <tr>
                 <td>
-                    <span class="name">text</span>
+                    <span class="name">file</span>
                 </td>
                 <td>
-                  <span class="description">Text with workings html-tags</span>
+                  <span class="description">Path to media file</span>
                 </td>
               </tr>
             </tbody>
@@ -158,26 +158,20 @@ table th, table td {
             <pre class="request headers">Content-Type: application/json</pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">GET /api/v1/snippets/12</pre>
+          <pre class="request route highlight">GET /api/v1/medias/-1</pre>
 
 
 
             <h4>cURL</h4>
-            <pre class="request curl">curl &quot;http://localhost:5000/api/v1/snippets/12&quot; -X GET \
+            <pre class="request curl">curl &quot;http://localhost:5000/api/v1/medias/-1&quot; -X GET \
 	-H &quot;Content-Type: application/json&quot; \
-	-H &quot;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU3MTI4ODAsInN1YiI6MjB9.NMxAErEcJ-eGJiZVeIiZX-_3bqft0iQICEOwEkpxzzI&quot;</pre>
+	-H &quot;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU3MTI4NzksInN1YiI6MTN9.rxwbHSFFr3vnbNL7ZsHTSyU1_flXlC3cPFLL8x4se_I&quot;</pre>
 
             <h3>Response</h3>
               <h4>Headers</h4>
-              <pre class="response headers">Content-Type: application/json; charset=utf-8</pre>
+              <pre class="response headers">Content-Type: text/html</pre>
             <h4>Status</h4>
-            <pre class="response status">200 OK</pre>
-              <h4>Body</h4>
-              <pre class="response body">{
-  &quot;id&quot;: 12,
-  &quot;slug&quot;: &quot;vel_ipsum&quot;,
-  &quot;text&quot;: &quot;If we copy the circuit, we can get to the SAS protocol through the wireless FTP circuit!&quot;
-}</pre>
+            <pre class="response status">404 Not Found</pre>
       </div>
     </div>
   </body>

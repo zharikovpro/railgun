@@ -1,8 +1,8 @@
 {
-  "resource": "Snippets",
+  "resource": "Pages",
   "resource_explanation": null,
   "http_method": "GET",
-  "route": "/api/v1/snippets/-1",
+  "route": "/api/v1/pages/-1",
   "description": "resource not found",
   "explanation": "returns status 404",
   "parameters": [
@@ -12,23 +12,23 @@
     {
       "Type": "Integer",
       "name": "id",
-      "description": "snippet ID"
+      "description": "page ID"
     },
     {
       "Type": "String",
       "name": "slug",
-      "description": "Name of snippet"
+      "description": "Name of page"
     },
     {
       "Type": "Text",
-      "name": "text",
-      "description": "Text with workings html-tags"
+      "name": "markdown",
+      "description": "Text safe convert to html tags"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/snippets/-1",
+      "request_path": "/api/v1/pages/-1",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -43,7 +43,7 @@
         "Content-Type": "text/html"
       },
       "response_content_type": "text/html",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU3MTI4NzksInN1YiI6MTV9.D_HOT-Q8xL2HlwW7Iv-WWotyl90b_NfQcEXF7sqt2js\"",
+      "curl": "curl \"http://localhost:5000/api/v1/pages/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU3MTI4NzgsInN1YiI6NH0.NRCe-KPFtW08x0tIA5m2aImsSvqwRPLoMmOK8GS9pBY\"",
       "request_headers_text": "Content-Type: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: text/html"

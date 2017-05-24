@@ -1,10 +1,10 @@
 {
-  "resource": "Snippets",
+  "resource": "Pages",
   "resource_explanation": null,
   "http_method": "GET",
-  "route": "/api/v1/snippets/:id",
-  "description": "Get specific snippet",
-  "explanation": "Get a snippet by id",
+  "route": "/api/v1/pages/:id",
+  "description": "Get specific page",
+  "explanation": "Get a page by id",
   "parameters": [
 
   ],
@@ -12,23 +12,23 @@
     {
       "Type": "Integer",
       "name": "id",
-      "description": "snippet ID"
+      "description": "page ID"
     },
     {
       "Type": "String",
       "name": "slug",
-      "description": "Name of snippet"
+      "description": "Name of page"
     },
     {
       "Type": "Text",
-      "name": "text",
-      "description": "Text with workings html-tags"
+      "name": "markdown",
+      "description": "Text safe convert to html tags"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/snippets/12",
+      "request_path": "/api/v1/pages/5",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -38,12 +38,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 12,\n  \"slug\": \"vel_ipsum\",\n  \"text\": \"If we copy the circuit, we can get to the SAS protocol through the wireless FTP circuit!\"\n}",
+      "response_body": "{\n  \"id\": 5,\n  \"slug\": \"porro_aut\",\n  \"markdown\": \"Use the auxiliary JSON card, then you can calculate the bluetooth program!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/12\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU3MTI4ODAsInN1YiI6MjB9.NMxAErEcJ-eGJiZVeIiZX-_3bqft0iQICEOwEkpxzzI\"",
+      "curl": "curl \"http://localhost:5000/api/v1/pages/5\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU3MTI4NzgsInN1YiI6M30.eSMVAXsS_O5rzTNg9Cm8qHXdNfrcqYHQbMBMFl6b5IY\"",
       "request_headers_text": "Content-Type: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: application/json; charset=utf-8"

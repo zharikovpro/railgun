@@ -16,7 +16,7 @@ RSpec.resource 'Snippets', issues: [132] do
       explanation 'List all available snippets'
 
       expect(status).to eq 200
-      expect(JSON.parse(response_body).size).to eq 2
+      expect(JSON.parse(response_body).size).to eq(2)
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.resource 'Snippets', issues: [132] do
       explanation 'Get a snippet by id'
 
       expect(status).to eq 200
-      expect(JSON.parse(response_body)['slug']).to eq snippet.slug
+      expect(JSON.parse(response_body)['slug']).to eq(snippet.slug)
     end
   end
 
