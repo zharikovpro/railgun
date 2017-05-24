@@ -1,144 +1,55 @@
 {
   "resources": [
     {
-      "name": "Medias",
-      "explanation": null,
-      "examples": [
-        {
-          "description": "Delete media",
-          "link": "medias/delete_media.json",
-          "groups": "developers",
-          "route": "/api/v1/medias/:id",
-          "method": "delete"
-        },
-        {
-          "description": "Get specific media",
-          "link": "medias/get_specific_media.json",
-          "groups": "developers",
-          "route": "/api/v1/medias/:id",
-          "method": "get"
-        },
-        {
-          "description": "List medias",
-          "link": "medias/list_medias.json",
-          "groups": "developers",
-          "route": "/api/v1/medias",
-          "method": "get"
-        },
-        {
-          "description": "resource not found",
-          "link": "medias/resource_not_found.json",
-          "groups": "developers",
-          "route": "/api/v1/medias/-1",
-          "method": "get"
-        }
-      ]
-    },
-    {
-      "name": "Pages",
-      "explanation": null,
-      "examples": [
-        {
-          "description": "Create page",
-          "link": "pages/create_page.json",
-          "groups": "public",
-          "route": "/api/v1/pages",
-          "method": "post"
-        },
-        {
-          "description": "Delete page",
-          "link": "pages/delete_page.json",
-          "groups": "public",
-          "route": "/api/v1/pages/:id",
-          "method": "delete"
-        },
-        {
-          "description": "Get specific page",
-          "link": "pages/get_specific_page.json",
-          "groups": "public",
-          "route": "/api/v1/pages/:id",
-          "method": "get"
-        },
-        {
-          "description": "List pages",
-          "link": "pages/list_pages.json",
-          "groups": "public",
-          "route": "/api/v1/pages",
-          "method": "get"
-        },
-        {
-          "description": "Update page",
-          "link": "pages/update_page.json",
-          "groups": "public",
-          "route": "/api/v1/pages/:id",
-          "method": "put"
-        },
-        {
-          "description": "Update page",
-          "link": "pages/update_page.json",
-          "groups": "public",
-          "route": "/api/v1/pages/:id",
-          "method": "put"
-        },
-        {
-          "description": "resource not found",
-          "link": "pages/resource_not_found.json",
-          "groups": "public",
-          "route": "/api/v1/pages/-1",
-          "method": "get"
-        }
-      ]
-    },
-    {
       "name": "Snippets",
       "explanation": null,
       "examples": [
         {
           "description": "Create snippet",
           "link": "snippets/create_snippet.json",
-          "groups": "public",
+          "groups": "all",
           "route": "/api/v1/snippets",
           "method": "post"
         },
         {
           "description": "Delete snippet",
           "link": "snippets/delete_snippet.json",
-          "groups": "public",
+          "groups": "all",
           "route": "/api/v1/snippets/:id",
           "method": "delete"
         },
         {
           "description": "Get specific snippet",
           "link": "snippets/get_specific_snippet.json",
-          "groups": "public",
+          "groups": "all",
           "route": "/api/v1/snippets/:id",
           "method": "get"
         },
         {
           "description": "List snippets",
           "link": "snippets/list_snippets.json",
-          "groups": "public",
+          "groups": "all",
           "route": "/api/v1/snippets",
           "method": "get"
         },
         {
           "description": "Update page",
           "link": "snippets/update_page.json",
-          "groups": "public",
+          "groups": "all",
           "route": "/api/v1/snippets/:id",
           "method": "put"
         },
         {
           "description": "Update snippet",
           "link": "snippets/update_snippet.json",
-          "groups": "public",
+          "groups": "all",
           "route": "/api/v1/snippets/:id",
           "method": "put"
         },
         {
           "description": "resource not found",
           "link": "snippets/resource_not_found.json",
-          "groups": "public",
+          "groups": "all",
           "route": "/api/v1/snippets/-1",
           "method": "get"
         }

@@ -4,7 +4,9 @@ require 'rspec_api_documentation/dsl'
 
 # https://github.com/thoughtbot/factory_girl/issues/385#issuecomment-5876695
 include ActionDispatch::TestProcess
-
+RspecApiDocumentation.configure do |config|
+  config.request_body_formatter = nil
+end
 RSpec.resource 'Medias', issues: [132] do
   header 'Host', 'localhost:5000'
   header 'Content-Type', 'application/json'

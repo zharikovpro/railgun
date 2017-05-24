@@ -11,14 +11,4 @@ RspecApiDocumentation.configure do |config|
   config.request_headers_to_include = %w(Content-Type Authentication)
   config.response_headers_to_include = %w(Content-Type)
   config.request_body_formatter = :json
-=begin
-  config.define_group :developers do |d|
-    d.request_body_formatter = :json
-    d.filter = :developers
-  end
-  config.define_group :public  do |p|
-    p.request_body_formatter = nil
-    p.filter = :public
-  end
-=end
 end

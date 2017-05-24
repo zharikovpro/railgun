@@ -28,7 +28,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/snippets/12",
+      "request_path": "/api/v1/snippets/14",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -38,12 +38,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 12,\n  \"slug\": \"rem_voluptatem\",\n  \"text\": \"Try to index the HDD bus, maybe it will hack the virtual matrix!\"\n}",
+      "response_body": "{\n  \"id\": 14,\n  \"slug\": \"delectus.soluta\",\n  \"text\": \"The XML interface is down, input the neural protocol so we can generate the SSL bandwidth!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/12\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDYsInN1YiI6MjB9.hePgkQMAh7kDCA57KvfslV_rbOAHryTCjVPYx-vEhSs\"",
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/14\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTc2NzcsInN1YiI6N30.rgK1GISglhS1n00R2KOAhnvqYNDyfFVM2ieOsnBDavE\"",
       "request_headers_text": "Content-Type: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: application/json; charset=utf-8"

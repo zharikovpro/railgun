@@ -43,7 +43,7 @@
         "Content-Type": "text/html"
       },
       "response_content_type": "text/html",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDYsInN1YiI6MTl9.zOv_EYNvrYmmK9wGkyv4aHySeQQPyvmu0fkeVMdZUPw\"",
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/-1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTc2NzcsInN1YiI6Nn0.LRExQZgL8s_WRVWjryg1JTO-weQkBvHKPHIJc0C0c5A\"",
       "request_headers_text": "Content-Type: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: text/html"

@@ -39,7 +39,7 @@
   "requests": [
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/snippets/6",
+      "request_path": "/api/v1/snippets/1",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -49,19 +49,19 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 6,\n  \"slug\": \"in_veniam\",\n  \"text\": \"Try to index the HDD bus, maybe it will hack the virtual matrix!\"\n}",
+      "response_body": "{\n  \"id\": 1,\n  \"slug\": \"voluptatem_blanditiis\",\n  \"text\": \"The XML interface is down, input the neural protocol so we can generate the SSL bandwidth!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/6\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDYsInN1YiI6MTd9.gkgrbnErsSHt1vxTp2OXKIy1bW1dledlY7SNFtQJDuw\"",
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/1\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTc2NzYsInN1YiI6MX0.Nx5Mv_aykmrB4LzsD31AjSo7UYg-ms30OE8n9CJZzQA\"",
       "request_headers_text": "Content-Type: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: application/json; charset=utf-8"
     },
     {
       "request_method": "PUT",
-      "request_path": "/api/v1/snippets/6",
+      "request_path": "/api/v1/snippets/1",
       "request_body": "{\"slug\":\"%%^^##\",\"text\":\"\"}",
       "request_headers": {
         "Content-Type": "application/json"
@@ -76,7 +76,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/6\" -d '{\"slug\":\"%%^^##\",\"text\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDYsInN1YiI6MTd9.gkgrbnErsSHt1vxTp2OXKIy1bW1dledlY7SNFtQJDuw\"",
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/1\" -d '{\"slug\":\"%%^^##\",\"text\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTc2NzYsInN1YiI6MX0.Nx5Mv_aykmrB4LzsD31AjSo7UYg-ms30OE8n9CJZzQA\"",
       "request_headers_text": "Content-Type: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: application/json; charset=utf-8"

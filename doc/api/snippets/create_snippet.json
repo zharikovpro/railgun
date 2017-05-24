@@ -54,7 +54,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets\" -d '' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDYsInN1YiI6MTZ9.HTwgxV1Ov5NeElIObFmPO8Uo-Ns1lXYcC3MWMGfkGVU\"",
+      "curl": "curl \"http://localhost:5000/api/v1/snippets\" -d '' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTc2NzcsInN1YiI6NH0.htRtn2vHJ55onHhroKRBWRm0R-MzVqyTrHSVuyFkZ3c\"",
       "request_headers_text": "Content-Type: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: application/json; charset=utf-8"
@@ -71,12 +71,12 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"id\": 5,\n  \"slug\": \"faq\",\n  \"text\": \"something\"\n}",
+      "response_body": "{\n  \"id\": 9,\n  \"slug\": \"faq\",\n  \"text\": \"something\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets\" -d '{\"slug\":\"faq\",\"text\":\"something\"}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDYsInN1YiI6MTZ9.HTwgxV1Ov5NeElIObFmPO8Uo-Ns1lXYcC3MWMGfkGVU\"",
+      "curl": "curl \"http://localhost:5000/api/v1/snippets\" -d '{\"slug\":\"faq\",\"text\":\"something\"}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTc2NzcsInN1YiI6NH0.htRtn2vHJ55onHhroKRBWRm0R-MzVqyTrHSVuyFkZ3c\"",
       "request_headers_text": "Content-Type: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: application/json; charset=utf-8"
