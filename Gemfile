@@ -48,7 +48,7 @@ gem 'rails', '~> 5.1.0.rc2'
 # gem 'redis', '~> 3.0'
 
 # Compact logs
-gem 'lograge', '~> 0.4.1'
+gem 'lograge', '~> 0.5.1'
 
 # Restore original remote_ip when using CloudFlare
 gem 'actionpack-cloudflare', '~> 1.1.0'
@@ -62,6 +62,7 @@ gem 'pg', '~> 0.18'
 
 # Automatically creates validations basing on the database schema
 gem 'schema_validations', '~> 2.2.x'
+# TODO: gem 'schema_validations', '~> 2.2.x', git: 'https://github.com/zharikovpro/schema_validations'
 
 # Validates emails
 gem 'email_validator', '~> 1.6.0'
@@ -82,7 +83,7 @@ gem 'phony_rails', '~> 0.14.5'
 # gem 'hightop', '~> 0.1.4'
 
 # Authentication engine
-gem 'devise', '~> 4.2.0'
+gem 'devise', '~> 4.3.0'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
