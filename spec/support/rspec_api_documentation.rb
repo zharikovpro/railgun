@@ -9,5 +9,5 @@ RspecApiDocumentation.configure do |config|
   config.curl_headers_to_filter = %w(Host Cookie)
   config.request_headers_to_include = %w(Content-Type Authentication)
   config.response_headers_to_include = %w(Content-Type)
-  config.request_body_formatter = :json
+  #config.request_body_formatter = :json
 end

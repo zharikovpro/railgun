@@ -43,3 +43,6 @@ bower.json
 
 # OS X tmp files
 .DS_Store
+
+API documentation
+/doc

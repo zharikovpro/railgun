@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'rspec_api_documentation'
 require 'rspec_api_documentation/dsl'
 
-include ActionDispatch::TestProcess
 RSpec.resource 'Medias', issues: [132] do
   header 'Host', 'localhost:5000'
   header 'Content-Type', 'application/json'
@@ -42,7 +41,7 @@ RSpec.resource 'Medias', issues: [132] do
   end
 
   post '/api/v1/medias' do
-    let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg').to_json }
+    let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg') }
     parameter :slug, 'Slug', required: true, scope: :media
     parameter :file, 'File', required: true, scope: :media
     example_request 'Create media' do
@@ -50,6 +49,7 @@ RSpec.resource 'Medias', issues: [132] do
       do_request(slug: 'avatar', file: file)
 
       #expect(status).to eq 201
+      puts file
       expect(JSON.parse(response_body)['slug']).to eq('avatar')
       expect(Media.find_by_slug(:avatar).file_file_name).to eq('demo.jpg')
     end
