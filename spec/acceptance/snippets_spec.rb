@@ -41,12 +41,15 @@ RSpec.resource 'Snippets', issues: [132] do
   end
 
   post '/api/v1/snippets' do
-    parameter :slug, 'Slug', required: true, scope: :snippet
-    parameter :text, 'Text', required: false, scope: :snippet
+    parameter :slug, 'Slug'
+    parameter :text, 'Text'
+
+    let(:slug) { 'faq' }
+    let(:text) { 'something' }
+    let(:raw_post) { params.to_json }
 
     example_request 'Create snippet' do
       explanation 'Create the new snippet'
-      do_request(slug: 'faq', text: 'something')
 
       expect(status).to eq 201
       expect(JSON.parse(response_body)['slug']).to eq('faq')
@@ -57,12 +60,15 @@ RSpec.resource 'Snippets', issues: [132] do
   put '/api/v1/snippets/:id' do
     let(:snippet) { snippets.first }
     let(:id) { snippet.id }
-    parameter :slug, 'Slug', required: true, scope: :snippet
-    parameter :text, 'Text', required: false, scope: :snippet
+    parameter :slug, 'Slug'
+    parameter :text, 'Text'
+
+    let(:slug) { 'about' }
+    let(:text) { 'new content' }
+    let(:raw_post) { params.to_json }
 
     example_request 'Update snippet' do
       explanation 'Update snippet with new content'
-      do_request(slug: 'about', text: 'new content')
 
       expect(status).to eq 200
       expect(JSON.parse(response_body)['slug']).to eq('about')
@@ -73,12 +79,15 @@ RSpec.resource 'Snippets', issues: [132] do
   put '/api/v1/snippets/:id' do
     let(:snippet) { snippets.first }
     let(:id) { snippet.id }
-    parameter :slug, 'Slug', required: true, scope: :snippet
-    parameter :text, 'Text', required: false, scope: :snippet
+    parameter :slug, 'Slug'
+    parameter :text, 'Text'
+
+    let(:slug) { '%%^^##' }
+    let(:text) { 'new content' }
+    let(:raw_post) { params.to_json }
 
     example_request 'Update page' do
       explanation 'Update page with new content'
-      do_request(slug: '%%^^##', text: '')
 
       expect(status).to eq 422
       expect(JSON.parse(response_body)['slug']).not_to eq('%%^^##')

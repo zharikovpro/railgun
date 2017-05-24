@@ -48,8 +48,7 @@ RSpec.resource 'Medias', issues: [132] do
       explanation 'Create the new media'
       do_request(slug: 'avatar', file: file)
 
-      #expect(status).to eq 201
-      puts file
+      expect(status).to eq 201
       expect(JSON.parse(response_body)['slug']).to eq('avatar')
       expect(Media.find_by_slug(:avatar).file_file_name).to eq('demo.jpg')
     end

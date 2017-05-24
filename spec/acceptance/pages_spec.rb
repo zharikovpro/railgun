@@ -41,12 +41,14 @@ RSpec.resource 'Pages', issues: [132] do
   end
 
   post '/api/v1/pages' do
-    parameter :slug, 'Slug', required: true, scope: :page
-    parameter :markdown, 'Markdown', required: false, scope: :page
+    parameter :slug, 'Slug'
+    parameter :markdown, 'Markdown'
+    let(:slug) { 'faq' }
+    let(:markdown) { 'something' }
+    let(:raw_post) { params.to_json }
 
     example_request 'Create page' do
       explanation 'Create the new page'
-      do_request(slug: 'faq', markdown: 'something')
 
       expect(status).to eq 201
       expect(JSON.parse(response_body)['slug']).to eq('faq')
@@ -57,12 +59,16 @@ RSpec.resource 'Pages', issues: [132] do
   put '/api/v1/pages/:id' do
     let(:page) { pages.first }
     let(:id) { page.id }
-    parameter :slug, 'Slug', required: true, scope: :page
-    parameter :markdown, 'Markdown', required: false, scope: :page
 
+    parameter :slug, 'Slug'
+    parameter :markdown, 'Markdown'
+
+    let(:slug) { 'about' }
+    let(:markdown) { 'new content' }
+    let(:raw_post) { params.to_json }
     example_request 'Update page' do
       explanation 'Update page with new content'
-      do_request(slug: 'about', markdown: 'new content')
+      do_request
 
       expect(status).to eq 200
       expect(JSON.parse(response_body)['slug']).to eq('about')
@@ -73,12 +79,15 @@ RSpec.resource 'Pages', issues: [132] do
   put '/api/v1/pages/:id' do
     let(:page) { pages.first }
     let(:id) { page.id }
-    parameter :slug, 'Slug', required: true, scope: :page
-    parameter :markdown, 'Markdown', required: false, scope: :page
+    parameter :slug, 'Slug'
+    parameter :markdown, 'Markdown'
+
+    let(:slug) { '%%^^##' }
+    let(:markdown) { 'bad request' }
+    let(:raw_post) { params.to_json }
 
     example_request 'Update page' do
       explanation 'Update page with new content'
-      do_request(slug: '%%^^##', markdown: '')
 
       expect(status).to eq 422
       expect(JSON.parse(response_body)['slug']).not_to eq('%%^^##')
