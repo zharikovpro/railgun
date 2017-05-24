@@ -54,7 +54,10 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/pages\" -d '' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2NDA3ODYsInN1YiI6MjB9.BSUA5RP99zmcxfJ6EegLizVQ3DrlC4fjONnBXrKZ5-o\""
+      "curl": "curl \"http://localhost:5000/api/v1/pages\" -d '' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDUsInN1YiI6NX0.0CwGWZS3ZTscRlad8JSZ7rzg21JPQAMhmRkt6N9j-lc\"",
+      "request_headers_text": "Content-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
     },
     {
       "request_method": "POST",
@@ -68,12 +71,15 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"id\": 13,\n  \"slug\": \"faq\",\n  \"markdown\": \"something\"\n}",
+      "response_body": "{\n  \"id\": 11,\n  \"slug\": \"faq\",\n  \"markdown\": \"something\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/pages\" -d '{\"slug\":\"faq\",\"markdown\":\"something\"}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2NDA3ODYsInN1YiI6MjB9.BSUA5RP99zmcxfJ6EegLizVQ3DrlC4fjONnBXrKZ5-o\""
+      "curl": "curl \"http://localhost:5000/api/v1/pages\" -d '{\"slug\":\"faq\",\"markdown\":\"something\"}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDUsInN1YiI6NX0.0CwGWZS3ZTscRlad8JSZ7rzg21JPQAMhmRkt6N9j-lc\"",
+      "request_headers_text": "Content-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
     }
   ]
 }

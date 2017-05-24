@@ -28,7 +28,7 @@
   "requests": [
     {
       "request_method": "DELETE",
-      "request_path": "/api/v1/medias/11",
+      "request_path": "/api/v1/medias/5",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -42,7 +42,10 @@
       "response_headers": {
       },
       "response_content_type": null,
-      "curl": "curl \"http://localhost:5000/api/v1/medias/11\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2NDA3ODYsInN1YiI6Nn0.ZjqSY4vUl7-Rez7jAPwXOfEO94Tk6gdDA37f86Zc1O8\""
+      "curl": "curl \"http://localhost:5000/api/v1/medias/5\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDUsInN1YiI6MTB9.Se47dN6LV9e1Na0G3bDWuum4_zSdHFv5BuLMtGQXGss\"",
+      "request_headers_text": "Content-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": null
     }
   ]
 }

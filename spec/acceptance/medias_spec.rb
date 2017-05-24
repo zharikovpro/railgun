@@ -1,8 +1,10 @@
 require 'rails_helper'
 require 'rspec_api_documentation'
 require 'rspec_api_documentation/dsl'
+
 # https://github.com/thoughtbot/factory_girl/issues/385#issuecomment-5876695
 include ActionDispatch::TestProcess
+
 RSpec.resource 'Medias', issues: [132] do
   header 'Host', 'localhost:5000'
   header 'Content-Type', 'application/json'
@@ -41,16 +43,16 @@ RSpec.resource 'Medias', issues: [132] do
     end
   end
 
-    post '/api/v1/medias' do
-    let(:file) { fixture_file_upload(Rails.root + 'README.md') }
+  post '/api/v1/medias' do
+    let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg') }
     parameter :slug, 'Slug', required: true, scope: :media
     parameter :file, 'File', required: true, scope: :media
     example_request 'Create media' do
       explanation 'Create the new media'
       do_request(slug: 'avatar', file: file)
 
-      #expect(status).to eq 201
-      expect(JSON.parse(response_body)).to eq('avatar')
+      expect(status).to eq 201
+      expect(JSON.parse(response_body)['slug']).to eq('avatar')
       expect(Media.find_by_slug(:avatar).file_file_name).to eq('demo.jpg')
     end
   end
@@ -58,7 +60,7 @@ RSpec.resource 'Medias', issues: [132] do
   put '/api/v1/medias/:id' do
     let(:media) { medias.first }
     let(:id) { media.id }
-    let(:file) { fixture_file_upload(Rails.root + 'README.md') }
+    let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg') }
     parameter :slug, 'Slug', required: true, scope: :media
     parameter :file, 'File', required: true, scope: :media
     example_request 'Update media' do
@@ -67,19 +69,20 @@ RSpec.resource 'Medias', issues: [132] do
 
       expect(status).to eq 200
       expect(JSON.parse(response_body)['slug']).to eq('about')
-      expect(Media.find_by_slug(:about).file_file_name).to eq('README.md')
+      expect(Media.find_by_slug(:about).file_file_name).to eq('demo.jpg')
     end
   end
 
   put '/api/v1/medias/:id' do
     let(:media) { medias.first }
     let(:id) { media.id }
+    let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg') }
     parameter :slug, 'Slug', required: true, scope: :media
-    parameter :file_file_name, 'File', required: false, scope: :media
+    parameter :file, 'File', required: true, scope: :media
 
     example_request 'Update media' do
       explanation 'Update media with new content'
-      do_request(slug: '%%^^##', file: '')
+      do_request(slug: '%%^^##', file: file)
 
       expect(status).to eq 422
       expect(JSON.parse(response_body)['slug']).not_to eq('%%^^##')

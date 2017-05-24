@@ -28,7 +28,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/api/v1/pages/1",
+      "request_path": "/api/v1/pages/3",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json"
@@ -38,12 +38,15 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 1,\n  \"slug\": \"minima.sunt\",\n  \"markdown\": \"The EXE protocol is down, reboot the 1080p array so we can parse the JBOD bus!\"\n}",
+      "response_body": "{\n  \"id\": 3,\n  \"slug\": \"minus_necessitatibus\",\n  \"markdown\": \"Bypassing the application won't do anything, we need to navigate the optical thx array!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/pages/1\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2NDA3ODYsInN1YiI6MTV9.2Dt78t43rbwCaFtzO3drpo8XwTM4WMevJMLq2cmui30\""
+      "curl": "curl \"http://localhost:5000/api/v1/pages/3\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDUsInN1YiI6Mn0.Xqa-LSkjuedzerXwFsojPowmU9tQa9F3DS_9zFUTtmk\"",
+      "request_headers_text": "Content-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
     }
   ]
 }

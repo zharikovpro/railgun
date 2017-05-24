@@ -49,12 +49,15 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"id\": 6,\n  \"slug\": \"ut.eligendi\",\n  \"text\": \"I'll compress the 1080p JSON system, that should circuit the ADP transmitter!\"\n}",
+      "response_body": "{\n  \"id\": 6,\n  \"slug\": \"in_veniam\",\n  \"text\": \"Try to index the HDD bus, maybe it will hack the virtual matrix!\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/6\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2NDA3ODYsInN1YiI6MTB9.l_EMIk1vaiBV9Ng1XTehwMwWFPwJ2oXF38VPk9b0p38\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/6\" -d '' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDYsInN1YiI6MTd9.gkgrbnErsSHt1vxTp2OXKIy1bW1dledlY7SNFtQJDuw\"",
+      "request_headers_text": "Content-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
     },
     {
       "request_method": "PUT",
@@ -73,7 +76,10 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:5000/api/v1/snippets/6\" -d '{\"slug\":\"%%^^##\",\"text\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2NDA3ODYsInN1YiI6MTB9.l_EMIk1vaiBV9Ng1XTehwMwWFPwJ2oXF38VPk9b0p38\""
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/6\" -d '{\"slug\":\"%%^^##\",\"text\":\"\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU2OTM4MDYsInN1YiI6MTd9.gkgrbnErsSHt1vxTp2OXKIy1bW1dledlY7SNFtQJDuw\"",
+      "request_headers_text": "Content-Type: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
     }
   ]
 }
