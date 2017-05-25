@@ -247,6 +247,9 @@ group :development, :test do
   # Testing Rack::Attack
   gem 'rack-test', '~> 0.6.3'
 
+  # Documentation
+  gem 'rspec_api_documentation'
+  gem 'raddocs', github: 'smartlogic/raddocs'
 end
 
 group :test do
