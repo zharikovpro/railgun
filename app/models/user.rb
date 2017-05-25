@@ -69,8 +69,4 @@ class User < ApplicationRecord
   def api_token
     Knock::AuthToken.new(payload: { sub: id }).token
   end
-
-  def api_header
-    { 'Authorization' => "Bearer #{api_token}" }
-  end
 end
