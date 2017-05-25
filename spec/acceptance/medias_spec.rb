@@ -62,6 +62,7 @@ RSpec.resource 'Medias', issues: [132] do
 
     let(:media) { medias.first }
     let(:id) { media.id }
+
     let(:slug) { 'about' }
     let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg') }
 
@@ -80,6 +81,7 @@ RSpec.resource 'Medias', issues: [132] do
 
     let(:media) { medias.first }
     let(:id) { media.id }
+
     let(:slug) { '%%^^##' }
     let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg') }
 
@@ -94,6 +96,7 @@ RSpec.resource 'Medias', issues: [132] do
   delete '/api/v1/medias/:id' do
     let(:media) { medias.first }
     let(:id) { media.id }
+
     example_request 'Delete media' do
       explanation 'Deletes media and returns status 204'
 

@@ -59,11 +59,11 @@ RSpec.resource 'Snippets', issues: [132] do
   end
 
   put '/api/v1/snippets/:id' do
-    let(:snippet) { snippets.first }
-    let(:id) { snippet.id }
-
     parameter :slug, 'Slug'
     parameter :text, 'Text'
+
+    let(:snippet) { snippets.first }
+    let(:id) { snippet.id }
 
     let(:slug) { 'about' }
     let(:text) { 'new content' }
@@ -80,11 +80,11 @@ RSpec.resource 'Snippets', issues: [132] do
   end
 
   put '/api/v1/snippets/:id' do
-    let(:snippet) { snippets.first }
-    let(:id) { snippet.id }
-
     parameter :slug, 'Slug'
     parameter :text, 'Text'
+
+    let(:snippet) { snippets.first }
+    let(:id) { snippet.id }
 
     let(:slug) { '%%^^##' }
     let(:text) { 'new content' }
@@ -102,6 +102,7 @@ RSpec.resource 'Snippets', issues: [132] do
   delete '/api/v1/snippets/:id' do
     let(:snippet) { snippets.first }
     let(:id) { snippet.id }
+
     example_request 'Delete snippet' do
       explanation 'Deletes snippet and returns status 204'
 

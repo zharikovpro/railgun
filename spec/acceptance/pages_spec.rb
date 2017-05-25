@@ -59,11 +59,11 @@ RSpec.resource 'Pages', issues: [132] do
   end
 
   put '/api/v1/pages/:id' do
-    let(:page) { pages.first }
-    let(:id) { page.id }
-
     parameter :slug, 'Slug'
     parameter :markdown, 'Markdown'
+
+    let(:page) { pages.first }
+    let(:id) { page.id }
 
     let(:slug) { 'about' }
     let(:markdown) { 'new content' }
@@ -72,7 +72,6 @@ RSpec.resource 'Pages', issues: [132] do
 
     example_request 'Update page' do
       explanation 'Update page with new content'
-      do_request
 
       expect(status).to eq 200
       expect(JSON.parse(response_body)['slug']).to eq('about')
@@ -81,11 +80,11 @@ RSpec.resource 'Pages', issues: [132] do
   end
 
   put '/api/v1/pages/:id' do
-    let(:page) { pages.first }
-    let(:id) { page.id }
-
     parameter :slug, '%%^^##'
     parameter :markdown, 'bad request'
+
+    let(:page) { pages.first }
+    let(:id) { page.id }
 
     let(:slug) { '%%^^##' }
     let(:markdown) { 'bad request' }
@@ -103,6 +102,7 @@ RSpec.resource 'Pages', issues: [132] do
   delete '/api/v1/pages/:id' do
     let(:page) { pages.first }
     let(:id) { page.id }
+
     example_request 'Delete page' do
       explanation 'Deletes page and returns status 204'
 
