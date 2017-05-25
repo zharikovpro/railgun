@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that its text will be rendered in application layout
 HEREDOC
 
-RSpec.feature feature, issues: [89] do
+RSpec.feature feature, issues: ['railgun#89'] do
   scenario = <<~HEREDOC
     Given developer is on the new snippet page
     When he fills in slug and text and clicks 'Create Snippet'

@@ -1,6 +1,6 @@
-module Api
+module API
   module V1
-    class SnippetsController < Api::V1::ApiController
+    class SnippetsController < API::V1::ApiController
     end
   end
 end

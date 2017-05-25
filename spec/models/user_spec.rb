@@ -1,9 +1,9 @@
 RSpec.describe do
-  it 'may have many roles', issues: [54] do
+  it 'may have many roles', issues: ['railgun#54'] do
     it.is_expected.to have_many(:roles)
   end
 
-  it '.roles returns array of role titles', issues: [54] do
+  it '.roles returns array of role titles', issues: ['railgun#54'] do
     user = create(:user)
     UserRole.create(user: user, role: :support)
     UserRole.create(user: user, role: :editor)
@@ -13,7 +13,7 @@ RSpec.describe do
     expect(roles).to match_array([:support, :editor])
   end
 
-  it '.add_role adds and returns associated UserRole', issues: [54] do
+  it '.add_role adds and returns associated UserRole', issues: ['railgun#54'] do
     user = create(:user)
 
     user.add_role(:editor)
@@ -22,7 +22,7 @@ RSpec.describe do
   end
 
   context 'has role' do
-    it 'is employee', issues: [76] do
+    it 'is employee', issues: ['railgun#76'] do
       user = create(:administrator)
 
       is_employee = user.employee?
@@ -32,7 +32,7 @@ RSpec.describe do
   end
 
   context 'has no role' do 
-    it 'is not employee', issues: [76] do
+    it 'is not employee', issues: ['railgun#76'] do
       user = create(:user)
 
       is_employee = user.employee?
@@ -41,7 +41,7 @@ RSpec.describe do
     end
   end
 
-  it 'Scope employees return only employees', issues: [76] do
+  it 'Scope employee return only employee', issues: ['railgun#76'] do
     create(:user)
     create(:administrator)
 
@@ -51,7 +51,7 @@ RSpec.describe do
     expect(employees.first).to be_employee
   end
 
-  it '.missing_roles returns missing user roles as array of symbols', issues: [95] do
+  it '.missing_roles returns missing user roles as array of symbols', issues: ['railgun#95'] do
     user = create(:editor)
     user.add_role(:developer)
 

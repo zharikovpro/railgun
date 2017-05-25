@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that he can find specific page by slug
 HEREDOC
 
-RSpec.feature feature, issues: [97] do
+RSpec.feature feature, issues: ['railgun#97'] do
   scenario = <<~HEREDOC
     Given page with slug 'faq'
     When editor visits pages

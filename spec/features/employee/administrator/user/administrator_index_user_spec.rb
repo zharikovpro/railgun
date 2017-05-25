@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that he can know more about user
 HEREDOC
 
-RSpec.feature feature, issues: [75] do
+RSpec.feature feature, issues: ['railgun#75'] do
   scenario = <<~HEREDOC
     Given user
     Given administrator is on the Users page
@@ -24,13 +24,13 @@ RSpec.feature feature, issues: [75] do
 end
 
 feature = <<~HEREDOC
-  When administrator wants to work with employees
-  and struggles to find 10 employees amongst 1000 users,
-  he wants to quickly list only employees,
+  When administrator wants to work with employee
+  and struggles to find 10 employee amongst 1000 users,
+  he wants to quickly list only employee,
   so that he can work with them right away
 HEREDOC
 
-RSpec.feature feature, issues: [76] do
+RSpec.feature feature, issues: ['railgun#76'] do
   scenario = <<~HEREDOC
     Given user
     Given employee
@@ -52,13 +52,13 @@ RSpec.feature feature, issues: [76] do
 end
 
 feature = <<~HEREDOC
-  When administrator wants to work with employees with specific role
-  and struggles to find 3 editors amongst 100 employees,
-  he wants to quickly filter employees list by 'editor' role,
+  When administrator wants to work with employee with specific role
+  and struggles to find 3 editors amongst 100 employee,
+  he wants to quickly filter employee list by 'editor' role,
   so that he can work with editors right away
 HEREDOC
 
-RSpec.feature feature, issues: [82] do
+RSpec.feature feature, issues: ['railgun#82'] do
   scenario = <<~HEREDOC
     Given employee with role 'editor'
     Given employee with role 'support'
@@ -73,7 +73,7 @@ RSpec.feature feature, issues: [82] do
     admin = create(:administrator)
 
     login_as admin
-    visit staff_users_path(scope: 'employees')
+    visit staff_users_path(scope: 'employee')
 
     select 'editor', from: 'Role'
     click_button('Filter')

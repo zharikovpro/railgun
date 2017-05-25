@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'API allows CORS', issues: [113] do
+RSpec.describe 'API allows CORS', issues: ['railgun#113'] do
   it 'response contains CORS headers' do
     get '/api/v1/pages', headers: { 'HTTP_ORIGIN' => 'http://super-test.com', 'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'GET' }
 

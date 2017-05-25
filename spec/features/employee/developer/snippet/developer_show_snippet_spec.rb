@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that he can confirm correct analytics code installation
 HEREDOC
 
-RSpec.feature feature, issues: [41] do
+RSpec.feature feature, issues: ['railgun#41'] do
   scenario = <<~HEREDOC
     Given snippet with slug 'head' and text '<script>alert('test');</script>'
     When developer visits root page

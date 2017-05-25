@@ -12,13 +12,13 @@ class User < ApplicationRecord
   alias_method :authenticate, :valid_password?
   scope :employees, -> { joins(:user_roles).distinct }
 
-  # TODO: def timeout_in
-  #   if employee?
-  #     30.minutes
-  #   else
-  #     7.days
-  #   end
-  # end
+  def timeout_in
+    if employee?
+      5.minutes
+    else
+      7.days
+    end
+  end
 
   # TODO: def confirmation_required?
   #   employee?
@@ -68,5 +68,9 @@ class User < ApplicationRecord
   # end
   def api_token
     Knock::AuthToken.new(payload: { sub: id }).token
+  end
+
+  def api_header
+    { 'Authorization' => "Bearer #{api_token}" }
   end
 end

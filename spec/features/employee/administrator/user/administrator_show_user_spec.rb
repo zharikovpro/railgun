@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that administrator is sure he works with correct user
 HEREDOC
 
-RSpec.feature feature, issues: [83, 105] do
+RSpec.feature feature, issues: ['railgun#83', 'railgun#105'] do
   scenario = <<~HEREDOC
     Given user
     When administrator visits this user page

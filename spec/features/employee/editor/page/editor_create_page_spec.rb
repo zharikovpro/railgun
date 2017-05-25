@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that editor can edit this page
 HEREDOC
 
-RSpec.feature feature, issues: [97] do
+RSpec.feature feature, issues: ['railgun#97'] do
   scenario = <<~HEREDOC
     Given editor is on the new page URL
     When he fills in slug and markdown and clicks 'Create Page'

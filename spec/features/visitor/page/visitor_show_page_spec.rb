@@ -1,10 +1,10 @@
 feature = <<~HEREDOC
   When visitor finds site in google,
-  he wants to visit roo page,
+  he wants to visit root page,
   so that he can read content
 HEREDOC
 
-RSpec.feature feature, issues: [41] do
+RSpec.feature feature, issues: ['railgun#41'] do
   scenario = <<~HEREDOC
     Given link to the domain
     When visitor visits root page
@@ -26,7 +26,7 @@ feature = <<~HEREDOC
   so that he can find important words faster
 HEREDOC
 
-RSpec.feature feature, issues: [97] do
+RSpec.feature feature, issues: ['railgun#97'] do
   scenario = <<~HEREDOC
     Given page with slug 'faq' and markdown '*italic*'
     When visitor visits FAQ page

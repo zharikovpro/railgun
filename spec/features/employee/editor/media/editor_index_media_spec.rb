@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that he can find specific media file by slug
 HEREDOC
 
-RSpec.feature feature, issues: [84] do
+RSpec.feature feature, issues: ['railgun#84'] do
   scenario = <<~HEREDOC
     Given media with slug 'document'
     When editor visits media page

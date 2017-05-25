@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that it has new content
 HEREDOC
 
-RSpec.feature feature, issues: [97] do
+RSpec.feature feature, issues: ['railgun#97'] do
   scenario = <<~HEREDOC
     Given page with slug 'faq' and markdown 'one'
     Given editor is on the edit page

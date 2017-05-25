@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-module Api
+module API
   module V1
-    class ResourcesController < Api::V1::ApiController
+    class ResourcesController < API::V1::ApiController
     end
   end
 end
@@ -32,7 +32,7 @@ class ResourcePolicy < ApplicationPolicy
   end
 end
 
-RSpec.describe Api::V1::ResourcesController, issues: [133] do
+RSpec.describe API::V1::ResourcesController, issues: ['railgun#133'] do
   before do
     Rails.application.routes.draw do
       namespace :api do

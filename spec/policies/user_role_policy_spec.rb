@@ -1,4 +1,4 @@
-RSpec.describe UserRolePolicy, issues: [54] do
+RSpec.describe UserRolePolicy, issues: ['railgun#54'] do
   subject { described_class }
 
   context 'administrator' do
