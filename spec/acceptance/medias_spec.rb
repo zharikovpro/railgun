@@ -41,12 +41,14 @@ RSpec.resource 'Medias', issues: [132] do
   end
 
   post '/api/v1/medias' do
+    parameter :slug, 'Slug'
+    parameter :file, 'File'
+
+    let(:slug) { 'avatar' }
     let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg') }
-    parameter :slug, 'Slug', required: true, scope: :media
-    parameter :file, 'File', required: true, scope: :media
+
     example_request 'Create media' do
       explanation 'Create the new media'
-      do_request(slug: 'avatar', file: file)
 
       expect(status).to eq 201
       expect(JSON.parse(response_body)['slug']).to eq('avatar')
@@ -55,14 +57,16 @@ RSpec.resource 'Medias', issues: [132] do
   end
 
   put '/api/v1/medias/:id' do
+    parameter :slug, 'Slug'
+    parameter :file, 'File'
+
     let(:media) { medias.first }
     let(:id) { media.id }
+    let(:slug) { 'about' }
     let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg') }
-    parameter :slug, 'Slug', required: true, scope: :media
-    parameter :file, 'File', required: true, scope: :media
+
     example_request 'Update media' do
       explanation 'Update media with new path to media content'
-      do_request(slug: 'about', file: file)
 
       expect(status).to eq 200
       expect(JSON.parse(response_body)['slug']).to eq('about')
@@ -71,15 +75,16 @@ RSpec.resource 'Medias', issues: [132] do
   end
 
   put '/api/v1/medias/:id' do
+    parameter :slug, '%%^^##'
+    parameter :file, 'File'
+
     let(:media) { medias.first }
     let(:id) { media.id }
+    let(:slug) { '%%^^##' }
     let(:file) { fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg') }
-    parameter :slug, 'Slug', required: true, scope: :media
-    parameter :file, 'File', required: true, scope: :media
 
-    example_request 'Update media' do
-      explanation 'Update media with new content'
-      do_request(slug: '%%^^##', file: file)
+    example_request 'Error when updates media' do
+      explanation 'Params of media is not valid'
 
       expect(status).to eq 422
       expect(JSON.parse(response_body)['slug']).not_to eq('%%^^##')

@@ -43,8 +43,10 @@ RSpec.resource 'Pages', issues: [132] do
   post '/api/v1/pages' do
     parameter :slug, 'Slug'
     parameter :markdown, 'Markdown'
+
     let(:slug) { 'faq' }
     let(:markdown) { 'something' }
+
     let(:raw_post) { params.to_json }
 
     example_request 'Create page' do
@@ -65,7 +67,9 @@ RSpec.resource 'Pages', issues: [132] do
 
     let(:slug) { 'about' }
     let(:markdown) { 'new content' }
+
     let(:raw_post) { params.to_json }
+
     example_request 'Update page' do
       explanation 'Update page with new content'
       do_request
@@ -79,15 +83,17 @@ RSpec.resource 'Pages', issues: [132] do
   put '/api/v1/pages/:id' do
     let(:page) { pages.first }
     let(:id) { page.id }
-    parameter :slug, 'Slug'
-    parameter :markdown, 'Markdown'
+
+    parameter :slug, '%%^^##'
+    parameter :markdown, 'bad request'
 
     let(:slug) { '%%^^##' }
     let(:markdown) { 'bad request' }
+
     let(:raw_post) { params.to_json }
 
-    example_request 'Update page' do
-      explanation 'Update page with new content'
+    example_request 'Error when updates page' do
+      explanation 'Params of page is not valid'
 
       expect(status).to eq 422
       expect(JSON.parse(response_body)['slug']).not_to eq('%%^^##')

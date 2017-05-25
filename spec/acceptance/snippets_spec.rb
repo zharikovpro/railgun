@@ -46,6 +46,7 @@ RSpec.resource 'Snippets', issues: [132] do
 
     let(:slug) { 'faq' }
     let(:text) { 'something' }
+
     let(:raw_post) { params.to_json }
 
     example_request 'Create snippet' do
@@ -60,11 +61,13 @@ RSpec.resource 'Snippets', issues: [132] do
   put '/api/v1/snippets/:id' do
     let(:snippet) { snippets.first }
     let(:id) { snippet.id }
+
     parameter :slug, 'Slug'
     parameter :text, 'Text'
 
     let(:slug) { 'about' }
     let(:text) { 'new content' }
+
     let(:raw_post) { params.to_json }
 
     example_request 'Update snippet' do
@@ -79,15 +82,17 @@ RSpec.resource 'Snippets', issues: [132] do
   put '/api/v1/snippets/:id' do
     let(:snippet) { snippets.first }
     let(:id) { snippet.id }
+
     parameter :slug, 'Slug'
     parameter :text, 'Text'
 
     let(:slug) { '%%^^##' }
     let(:text) { 'new content' }
+
     let(:raw_post) { params.to_json }
 
-    example_request 'Update page' do
-      explanation 'Update page with new content'
+    example_request 'Error when updates snippet' do
+      explanation 'Params of snippet is not valid'
 
       expect(status).to eq 422
       expect(JSON.parse(response_body)['slug']).not_to eq('%%^^##')
