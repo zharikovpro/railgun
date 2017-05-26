@@ -1,7 +1,3 @@
-require 'spec_helper'
-require 'rspec_api_documentation'
-require 'rspec_api_documentation/dsl'
-
 RSpec.resource 'Medias', issues: [132] do
   header 'Host', 'localhost:5000'
   header 'Content-Type', 'application/json'
