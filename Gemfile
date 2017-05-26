@@ -61,7 +61,8 @@ gem 'actionpack-cloudflare', '~> 1.1.0'
 gem 'pg', '~> 0.18'
 
 # Automatically creates validations basing on the database schema
-gem 'schema_validations', '~> 2.2.1'
+gem 'schema_validations', '~> 2.2.x'
+# TODO: gem 'schema_validations', '~> 2.2.x', git: 'https://github.com/zharikovpro/schema_validations'
 
 # Validates emails
 gem 'email_validator', '~> 1.6.0'
