@@ -1,0 +1,51 @@
+{
+  "resource": "Snippets",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/api/v1/snippets/-1",
+  "description": "resource not found",
+  "explanation": "returns status 404",
+  "parameters": [
+
+  ],
+  "response_fields": [
+    {
+      "Type": "Integer",
+      "name": "id",
+      "description": "snippet ID"
+    },
+    {
+      "Type": "String",
+      "name": "slug",
+      "description": "Name of snippet"
+    },
+    {
+      "Type": "Text",
+      "name": "text",
+      "description": "Text with workings html-tags"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/snippets/-1",
+      "request_body": null,
+      "request_headers": {
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 404,
+      "response_status_text": "Not Found",
+      "response_body": null,
+      "response_headers": {
+        "Content-Type": "text/html"
+      },
+      "response_content_type": "text/html",
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/-1\" -X GET \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU3OTQ2NTgsInN1YiI6OX0.KvUgtONmClJflyYHrW8AkARP-h_MlekKr312ox0o64s\"",
+      "request_headers_text": null,
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: text/html"
+    }
+  ]
+}

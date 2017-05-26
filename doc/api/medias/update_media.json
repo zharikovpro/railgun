@@ -1,0 +1,59 @@
+{
+  "resource": "Medias",
+  "resource_explanation": null,
+  "http_method": "PUT",
+  "route": "/api/v1/medias/:id",
+  "description": "Update media",
+  "explanation": "Update media with new path to media content",
+  "parameters": [
+    {
+      "name": "slug",
+      "description": "Slug"
+    },
+    {
+      "name": "file",
+      "description": "File"
+    }
+  ],
+  "response_fields": [
+    {
+      "Type": "Integer",
+      "name": "id",
+      "description": "media ID"
+    },
+    {
+      "Type": "String",
+      "name": "slug",
+      "description": "Name of media"
+    },
+    {
+      "Type": "Text",
+      "name": "file",
+      "description": "Path to media file"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "PUT",
+      "request_path": "/api/v1/medias/7",
+      "request_body": "------------XnJLe9ZIbbGUYtzPQJ16u1\r\nContent-Disposition: form-data; name=\"slug\"\r\n\r\nabout\r\n------------XnJLe9ZIbbGUYtzPQJ16u1\r\nContent-Disposition: form-data; name=\"file\"; filename=\"demo.jpg\"\r\nContent-Type: \r\nContent-Length: 44340\r\n\r\n[uploaded data]\r\n------------XnJLe9ZIbbGUYtzPQJ16u1--\r",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=----------XnJLe9ZIbbGUYtzPQJ16u1"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "multipart/form-data; boundary=----------XnJLe9ZIbbGUYtzPQJ16u1",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 7,\n  \"slug\": \"about\",\n  \"file_file_name\": \"demo.jpg\"\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:5000/api/v1/medias/7\" -d '------------XnJLe9ZIbbGUYtzPQJ16u1\r\nContent-Disposition: form-data; name=\"slug\"\r\n\r\nabout\r\n------------XnJLe9ZIbbGUYtzPQJ16u1\r\nContent-Disposition: form-data; name=\"file\"; filename=\"demo.jpg\"\r\nContent-Type: \r\nContent-Length: 44340\r\n\r\n[uploaded data]\r\n------------XnJLe9ZIbbGUYtzPQJ16u1--\r' -X PUT \\\n\t-H \"Content-Type: multipart/form-data; boundary=----------XnJLe9ZIbbGUYtzPQJ16u1\" \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU3OTQ2NTksInN1YiI6MTh9.SSZ50t4QjAz9ClhqW9VhKGUe9_5vsB5TlGcGQ9I2w4w\"",
+      "request_headers_text": "Content-Type: multipart/form-data; boundary=----------XnJLe9ZIbbGUYtzPQJ16u1",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8"
+    }
+  ]
+}

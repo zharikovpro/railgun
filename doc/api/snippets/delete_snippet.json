@@ -1,0 +1,51 @@
+{
+  "resource": "Snippets",
+  "resource_explanation": null,
+  "http_method": "DELETE",
+  "route": "/api/v1/snippets/:id",
+  "description": "Delete snippet",
+  "explanation": "Deletes snippet and returns status 204",
+  "parameters": [
+
+  ],
+  "response_fields": [
+    {
+      "Type": "Integer",
+      "name": "id",
+      "description": "snippet ID"
+    },
+    {
+      "Type": "String",
+      "name": "slug",
+      "description": "Name of snippet"
+    },
+    {
+      "Type": "Text",
+      "name": "text",
+      "description": "Text with workings html-tags"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "DELETE",
+      "request_path": "/api/v1/snippets/9",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 204,
+      "response_status_text": "No Content",
+      "response_body": null,
+      "response_headers": {
+      },
+      "response_content_type": null,
+      "curl": "curl \"http://localhost:5000/api/v1/snippets/9\" -d '' -X DELETE \\\n\t-H \"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTU3OTQ2NTgsInN1YiI6MTJ9.8FzDDDsPwWil3HKLW1bJn6Y0XGRJJrAPx56uxKHO3RM\" \\\n\t-H \"Content-Type: application/x-www-form-urlencoded\"",
+      "request_headers_text": "Content-Type: application/x-www-form-urlencoded",
+      "request_query_parameters_text": null,
+      "response_headers_text": null
+    }
+  ]
+}

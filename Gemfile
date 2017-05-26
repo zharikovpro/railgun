@@ -15,7 +15,7 @@ gem 'rollbar', '~> 2.14.1'
 gem 'russian', '~> 0.6.0'
 
 # Generate security report with brakeman -o brakeman.html
-gem 'brakeman', '~> 3.6.1', require: false
+gem 'brakeman', '~> 3.6.2', require: false
 
 # Cron jobs manager
 # gem 'whenever', require: false
@@ -39,7 +39,7 @@ gem 'sidekiq-failures', '~> 0.4.5'
 # gem 'sidekiq-throttler', '~> 0.5.1'
 
 # Passenger has the best documentation and support
-gem 'passenger', '~> 5.1.3'
+gem 'passenger', '~> 5.1.4'
 
 # Rails 5 with Action Cable
 gem 'rails', '~> 5.1.0.rc2'
@@ -88,7 +88,7 @@ gem 'devise', '~> 4.2.0'
 gem 'bcrypt', '~> 3.1.7'
 
 # Slim for templates
-gem 'slim', '~> 3.0.7'
+gem 'slim', '~> 3.0.8'
 gem 'slim-rails', '~> 3.1.0'
 
 # Stylus for styles
@@ -107,7 +107,7 @@ gem 'kaminari', '~> 1.0.1'
 gem 'uglifier', '>= 1.3.0'
 
 # CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2.2'
 
 # Optional daster navigation with some JavaScript caveats
 # Read more: https://github.com/turbolinks/turbolinks
@@ -191,7 +191,7 @@ gem 'rack-attack', '~> 5.0.1'
 
 group :development do
   # Run app in background for faster reload
-  gem 'spring', '~> 2.0.1'
+  gem 'spring', '~> 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Run tests in background, too
@@ -203,7 +203,7 @@ group :development do
   # Insert console everywhere it's required
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'listen', '~> 3.0.5'
-  gem 'web-console', '~> 3.5.0'
+  gem 'web-console', '~> 3.5.1'
 
   # Debugger for console-only environments
   gem 'byebug', '~> 9.0.6', platform: :mri
@@ -248,7 +248,7 @@ group :test do
   gem 'fuubar', '~> 2.2.0'
 
   # Run tests with clean database
-  gem 'database_cleaner', '~> 1.6.0'
+  gem 'database_cleaner', '~> 1.6.1'
 
   # Generate code coverate reports
   gem 'simplecov', '~> 0.13.0'
