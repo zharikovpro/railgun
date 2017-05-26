@@ -1,4 +1,4 @@
-RSpec.resource 'Pages', issues: [132] do
+RSpec.resource 'Pages', issues: ['railgun#132'] do
   header 'Host', 'localhost:5000'
   header 'Content-Type', 'application/json'
   before { header 'Authorization', "Bearer #{create(:editor).api_token}" }

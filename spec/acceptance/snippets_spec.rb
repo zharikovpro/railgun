@@ -1,4 +1,4 @@
-RSpec.resource 'Snippets', issues: [132] do
+RSpec.resource 'Snippets', issues: ['railgun#132'] do
   header 'Host', 'localhost:5000'
   header 'Content-Type', 'application/json'
   before { header 'Authorization', "Bearer #{create(:developer).api_token}" }
