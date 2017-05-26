@@ -5,19 +5,20 @@ RSpec.resource 'Tokens', issues: ['railgun#149'] do
   let(:user) { create(:editor) }
 
   post '/api/v1/tokens' do
-    parameter :auth, 'Token'
+    parameter :auth, 'Email and Password'
 
     let(:auth) { { email: user.email, password: user.password } }
 
     let(:raw_post) { params.to_json }
 
     example_request 'Get authenticate token' do
-      explanation 'Create the new snippet'
+      explanation 'User get token with verified signature'
+
+      token = JSON.parse(response_body)['jwt']
+      secret = Rails.application.secrets.secret_key_base
 
       expect(status).to eq 201
-      @@token = JSON.parse(response_body)['jwt']
-      puts @@token
-      puts user.api_token
+      expect(JWT.decode(token, secret)[0]['sub']).to eq(user.id)
     end
   end
 end
