@@ -6,8 +6,9 @@ feature = <<~HEREDOC
 HEREDOC
 
 RSpec.feature feature, issues: ['railgun#151'] do
-  let(:email) { Faker::Internet.email }
-  let(:password) { Faker::Internet.password }
+  before { login_as FactoryGirl.create(:administrator) }
+  let(:user) { create(:user) }
+  before { visit edit_staff_user_path(user) }
 
   scenario = <<~HEREDOC
     Given administrator is on the edit user page
@@ -15,16 +16,11 @@ RSpec.feature feature, issues: ['railgun#151'] do
     Then user record has credential emial 'new@mail.com'
   HEREDOC
 
-  fscenario scenario do
-    login_as FactoryGirl.create(:administrator)
-    visit new_staff_user_path
+  scenario scenario do
+    fill_in 'Email', with: 'new@mail.com'
+    click_button 'Update User'
 
-    fill_in 'Email', with: email
-    fill_in 'Password', with: password, match: :prefer_exact
-    fill_in 'Password confirmation', with: password, match: :prefer_exact
-    click_button 'Create User'
-
-    expect(User.find_by_email(email).valid_password?(password)).to be_truthy
+    expect(User.find_by_id(user.id).email).to eq('new@mail.com')
   end
 
   scenario = <<~HEREDOC
@@ -33,15 +29,11 @@ RSpec.feature feature, issues: ['railgun#151'] do
     Then user record has new password 'qwerty'
   HEREDOC
 
-  fscenario scenario do
-    login_as FactoryGirl.create(:administrator)
-    visit new_staff_user_path
+  scenario scenario do
+    fill_in 'Password', with: 'qwerty', match: :prefer_exact
+    fill_in 'Password confirmation', with: 'qwerty', match: :prefer_exact
+    click_button 'Update User'
 
-    fill_in 'Email', with: email
-    fill_in 'Password', with: password, match: :prefer_exact
-    fill_in 'Password confirmation', with: password, match: :prefer_exact
-    click_button 'Create User'
-
-    expect(User.find_by_email(email).valid_password?(password)).to be_truthy
+    expect(User.find_by_id(user.id).valid_password?('qwerty')).to be true
   end
 end
