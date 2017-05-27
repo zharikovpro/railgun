@@ -1,0 +1,45 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "0467b3d5d893ac31f7cb4e6a431d66a25c074cffa4187991fda369eee97da047",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/layouts/application.html.slim",
+      "line": 15,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Snippet.find_by_slug(:head).text",
+      "render_path": [{"type":"controller","class":"API::V1::ApiController","method":"destroy_session","line":14,"file":"app/controllers/api/v1/api_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "layouts/application"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "5d9fffc9092c4cef2279b18325fada52324b3c8ef891538ab1af626aa970acc8",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/medias_controller.rb",
+      "line": 5,
+      "link": "http://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Media.find_by_slug(params[:id]).file.url, :status => 303)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "MediasController",
+        "method": "show"
+      },
+      "user_input": "Media.find_by_slug(params[:id]).file.url",
+      "confidence": "High",
+      "note": ""
+    }
+  ],
+  "updated": "2017-05-26 17:40:56 +0300",
+  "brakeman_version": "3.6.1"
+}

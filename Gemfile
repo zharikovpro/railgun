@@ -249,7 +249,7 @@ group :development, :test do
 
   # Documentation
   gem 'rspec_api_documentation'
-  gem 'raddocs', github: 'smartlogic/raddocs'
+  gem 'raddocs'
 end
 
 group :test do

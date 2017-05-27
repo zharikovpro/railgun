@@ -20,9 +20,6 @@ class User < ApplicationRecord
     end
   end
 
-  # TODO: def confirmation_required?
-  #   employee?
-  # end
   def missing_roles
     UserRole::TITLES - roles
   end

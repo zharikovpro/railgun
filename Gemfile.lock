@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/smartlogic/raddocs.git
-  revision: a95bf2030ca5c411b3895ed99261f9618b1caf5d
-  specs:
-    raddocs (2.0.0)
-      haml (~> 4.0)
-      json (~> 1.8)
-      sinatra (~> 2.0)
-
-GIT
   remote: https://github.com/activeadmin/inherited_resources
   revision: 2c6c8caeeb2fe6d3ae8aabc138bf7ea08e781b9b
   specs:
@@ -317,6 +308,10 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    raddocs (2.0.0)
+      haml (~> 4.0)
+      json (~> 1.8)
+      sinatra (~> 2.0)
     rails (5.0.3)
       actioncable (= 5.0.3)
       actionmailer (= 5.0.3)
@@ -542,7 +537,7 @@ DEPENDENCIES
   rack-canonical-host (~> 0.2.2)
   rack-cors (~> 0.4.1)
   rack-test (~> 0.6.3)
-  raddocs!
+  raddocs
   rails (~> 5.0.1)
   redcarpet (~> 3.4.0)
   redis (~> 3.3.3)
