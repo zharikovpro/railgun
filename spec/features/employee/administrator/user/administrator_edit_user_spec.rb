@@ -1,6 +1,7 @@
 feature = <<~HEREDOC
-  When administrator wants to edit user,
-  so that user has new data
+  When user profile changes,
+  administrator wants to edit user profile,
+  so that it contains actual data
 HEREDOC
 
 RSpec.feature feature, issues: ['railgun#151'] do
@@ -10,8 +11,8 @@ RSpec.feature feature, issues: ['railgun#151'] do
 
   scenario = <<~HEREDOC
     Given administrator is on the edit user page
-    When he fills in email 'new@mail.com' and clicks 'Update User' button
-    Then user record has credential email 'new@mail.com'
+    When he fills in email 'new@mail.com' and clicks 'Update User'
+    Then user has email 'new@mail.com'
   HEREDOC
 
   scenario scenario do
@@ -23,7 +24,7 @@ RSpec.feature feature, issues: ['railgun#151'] do
 
   scenario = <<~HEREDOC
     Given administrator is on the edit user page
-    When he fills in new password 'qwerty' and same password confirmation and clicks 'Update User' button
+    When he types 'qwerty' as new password and password confirmation and clicks 'Update User'
     Then user record has new password 'qwerty'
   HEREDOC
 
