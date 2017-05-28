@@ -1,8 +1,6 @@
 feature = <<~HEREDOC
-  When administrator wants to edit user valid credentials,
-  he wants to edit just password of user by new and confirmationed password,
-  he wants to edit others credentials of user without entering a password,
-  so that user have beening  new credentials
+  When administrator wants to edit user,
+  so that user has new data
 HEREDOC
 
 RSpec.feature feature, issues: ['railgun#151'] do
@@ -12,8 +10,8 @@ RSpec.feature feature, issues: ['railgun#151'] do
 
   scenario = <<~HEREDOC
     Given administrator is on the edit user page
-    When he fills in email 'new@mail.com' with no entering a password and clicks 'Update User' button
-    Then user record has credential emial 'new@mail.com'
+    When he fills in email 'new@mail.com' and clicks 'Update User' button
+    Then user record has credential email 'new@mail.com'
   HEREDOC
 
   scenario scenario do

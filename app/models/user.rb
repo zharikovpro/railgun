@@ -51,7 +51,7 @@ class User < ApplicationRecord
   def password_required?
     # Password is required if it is being set, but not for new records
     if persisted?
-      password.nil? || password_confirmation.nil?
+      !password.nil? || !password_confirmation.nil?
     else
       false
     end
