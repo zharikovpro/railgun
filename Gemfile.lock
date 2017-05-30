@@ -169,7 +169,9 @@ GEM
       ruby-progressbar (~> 1.4)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    graphql (1.5.13)
+    graphiql-rails (1.4.1)
+      rails
+    graphql (1.5.14)
     haml (4.0.7)
       tilt
     has_scope (0.7.1)
@@ -516,7 +518,8 @@ DEPENDENCIES
   flutie (~> 2.0.0)
   formtastic (~> 3.1)
   fuubar (~> 2.2.0)
-  graphql (~> 1.5.13)
+  graphiql-rails
+  graphql (~> 1.5.14)
   inherited_resources (~> 1.7.0)!
   jwt (~> 1.5.6)
   kaminari (~> 1.0.1)
