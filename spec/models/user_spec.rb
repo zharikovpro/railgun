@@ -1,6 +1,6 @@
-RSpec.describe do
+RSpec.describe User do
   it 'may have many roles', issues: ['railgun#54'] do
-    it.is_expected.to have_many(:roles)
+    is_expected.to have_many(:user_roles)
   end
 
   it '.roles returns array of role titles', issues: ['railgun#54'] do
