@@ -71,7 +71,7 @@ RSpec.describe 'pages API', type: :request, issues: [116] do
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to match(/can't be blank/)
+        expect(response.body).to match(/is invalid/)
       end
     end
   end

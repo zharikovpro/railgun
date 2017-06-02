@@ -42,7 +42,7 @@ gem 'sidekiq-failures', '~> 0.4.5'
 gem 'passenger', '~> 5.1.4'
 
 # Rails 5 with Action Cable
-gem 'rails', '~> 5.1.0.rc2'
+gem 'rails', '~> 5.1.1'
 
 # Redis for Action Cable, Sidekiq and cache
 # gem 'redis', '~> 3.0'
@@ -59,10 +59,6 @@ gem 'actionpack-cloudflare', '~> 1.1.0'
 
 # PostgreSQL for Active Record
 gem 'pg', '~> 0.18'
-
-# Automatically creates validations basing on the database schema
-gem 'schema_validations', '~> 2.2.x'
-# TODO: gem 'schema_validations', '~> 2.2.x', git: 'https://github.com/zharikovpro/schema_validations'
 
 # Validates emails
 gem 'email_validator', '~> 1.6.0'
