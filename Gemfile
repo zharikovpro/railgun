@@ -6,7 +6,7 @@ ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 gem 'awesome_print', '~> 1.7.0'
 
 # Load ENV variables from .env file
-gem 'dotenv-rails', '~> 2.2.0', require: 'dotenv/rails-now'
+gem 'dotenv-rails', '~> 2.2.1', require: 'dotenv/rails-now'
 
 # Exceptions monitoring
 gem 'rollbar', '~> 2.14.1'
@@ -15,13 +15,13 @@ gem 'rollbar', '~> 2.14.1'
 gem 'russian', '~> 0.6.0'
 
 # Generate security report with brakeman -o brakeman.html
-gem 'brakeman', '~> 3.6.1', require: false
+gem 'brakeman', '~> 3.6.2', require: false
 
 # Cron jobs manager
 # gem 'whenever', require: false
 
 # Background jobs queue
-gem 'sidekiq', '~> 5.0.0'
+gem 'sidekiq', '~> 5.0.x'
 
 # Track failed jobs
 gem 'sidekiq-failures', '~> 0.4.5'
@@ -39,16 +39,16 @@ gem 'sidekiq-failures', '~> 0.4.5'
 # gem 'sidekiq-throttler', '~> 0.5.1'
 
 # Passenger has the best documentation and support
-gem 'passenger', '~> 5.1.2'
+gem 'passenger', '~> 5.1.4'
 
 # Rails 5 with Action Cable
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.1.1'
 
 # Redis for Action Cable, Sidekiq and cache
-gem 'redis', '~> 3.3.3'
+# gem 'redis', '~> 3.0'
 
 # Compact logs
-gem 'lograge', '~> 0.4.1'
+gem 'lograge', '~> 0.5.1'
 
 # Restore original remote_ip when using CloudFlare
 gem 'actionpack-cloudflare', '~> 1.1.0'
@@ -59,9 +59,6 @@ gem 'actionpack-cloudflare', '~> 1.1.0'
 
 # PostgreSQL for Active Record
 gem 'pg', '~> 0.18'
-
-# Automatically creates validations basing on the database schema
-gem 'schema_validations', '~> 2.2.x'
 
 # Validates emails
 gem 'email_validator', '~> 1.6.0'
@@ -82,13 +79,13 @@ gem 'phony_rails', '~> 0.14.5'
 # gem 'hightop', '~> 0.1.4'
 
 # Authentication engine
-gem 'devise', '~> 4.2.0'
+gem 'devise', '~> 4.3.0'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
 # Slim for templates
-gem 'slim', '~> 3.0.7'
+gem 'slim', '~> 3.0.8'
 gem 'slim-rails', '~> 3.1.0'
 
 # Stylus for styles
@@ -107,7 +104,7 @@ gem 'kaminari', '~> 1.0.1'
 gem 'uglifier', '>= 1.3.0'
 
 # CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2.2'
 
 # Optional daster navigation with some JavaScript caveats
 # Read more: https://github.com/turbolinks/turbolinks
@@ -124,13 +121,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'pundit', '~> 1.1.0'
 
 # Soft delete
-gem 'paranoia', '~> 2.2'
+gem 'paranoia', '~> 2.3.1'
 
 # Encrypted attributes
 # gem 'attr_encrypted', '~> 3.0', '>= 3.0.1'
-
-# Track versioned model changes
-# gem 'paper_trail', '~> 5.2.0'
 
 # Better counter caches
 # gem 'counter_culture', '~> 0.1.33'
@@ -144,7 +138,7 @@ gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
 gem 'activeadmin', '~> 1.0.0'
-gem 'inherited_resources', '~> 1.7.0', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'inherited_resources', '~> 1.7.2'
 
 # Clone records with a click
 # gem 'active_admin-duplicatable'
@@ -173,7 +167,7 @@ gem 'factory_girl_rails', '~> 4.8.0'
 gem 'faker', '~> 1.7.3'
 
 # Changes audit
-gem 'paper_trail', '~> 7.0.0'
+gem 'paper_trail', '~> 7.0.2'
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
@@ -194,7 +188,7 @@ gem 'rack-attack', '~> 5.0.1'
 
 group :development do
   # Run app in background for faster reload
-  gem 'spring', '~> 2.0.1'
+  gem 'spring', '~> 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Run tests in background, too
@@ -206,7 +200,7 @@ group :development do
   # Insert console everywhere it's required
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'listen', '~> 3.0.5'
-  gem 'web-console', '~> 3.5.0'
+  gem 'web-console', '~> 3.5.1'
 
   # Debugger for console-only environments
   gem 'byebug', '~> 9.0.6', platform: :mri
@@ -215,9 +209,6 @@ end
 group :development, :test do
   # Eloquent specs
   gem 'rspec-rails', '~> 3.5.2'
-
-  # Fake ActiveRecord models
-  # gem 'rspec-activemodel-mocks', '~> 1.0.3'
 
   # Testing helpers
   gem 'shoulda-matchers', '~> 3.1.1'
@@ -257,7 +248,7 @@ group :test do
   gem 'fuubar', '~> 2.2.0'
 
   # Run tests with clean database
-  gem 'database_cleaner', '~> 1.5.3'
+  gem 'database_cleaner', '~> 1.6.1'
 
   # Generate code coverate reports
   gem 'simplecov', '~> 0.13.0'
@@ -274,7 +265,7 @@ end
 
 group :production do
   # Redirect from additional hosts to original
-  gem 'rack-canonical-host', '~> 0.2.2'
+  gem 'rack-canonical-host', '~> 0.2.3'
 
   # New Relic APM
   gem 'newrelic_rpm', '~> 4.0.0.332'
