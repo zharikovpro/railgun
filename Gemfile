@@ -21,7 +21,7 @@ gem 'brakeman', '~> 3.6.2', require: false
 # gem 'whenever', require: false
 
 # Background jobs queue
-gem 'sidekiq', '~> 4.2', '>= 4.2.9'
+gem 'sidekiq', '~> 5.0.x'
 
 # Track failed jobs
 gem 'sidekiq-failures', '~> 0.4.5'
