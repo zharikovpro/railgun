@@ -16,7 +16,6 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara-screenshot/rspec'
 require 'capybara/email/rspec'
-require 'capybara/poltergeist'
 
 require 'aws-sdk'
 Aws.config[:s3] = { stub_responses: true }
@@ -88,12 +87,15 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new app, {
-    timeout: 60,
-    window_size: [1280, 720],
-    js_errors: true
-  }
+chrome_bin = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
+chrome_options = chrome_bin ? { 'chromeOptions' => { 'binary' => chrome_bin } } : {}
+
+Capybara.register_driver :chromedriver do |app|
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(chrome_options)
+  )
 end
 
 Capybara.app_host = 'http://localhost:5050'
@@ -101,6 +103,6 @@ Capybara.server_host = 'localhost'
 Capybara.server_port = '5050'
 Capybara.default_max_wait_time = 10
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :chromedriver
 Capybara.ignore_hidden_elements = true
 Capybara::Screenshot.prune_strategy = :keep_last_run

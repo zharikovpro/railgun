@@ -231,9 +231,9 @@ group :development, :test do
   # Email utilities
   gem 'capybara-email', '~> 2.5.0'
 
-  # Fully featured driver
-  # http://stackoverflow.com/questions/23951381/how-do-poltergeist-phantomjs-and-capybara-webkit-differ
-  gem 'poltergeist', '~> 1.14.0'
+  # Test with real Chrome
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 
   # Testing Rack::Attack
   gem 'rack-test', '~> 0.6.3'
