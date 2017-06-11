@@ -1,7 +1,6 @@
 Types::UserType = GraphQL::ObjectType.define do
   name 'User'
   description 'User'
-  # `!` marks a field as "non-null"
   field :id, !types.ID
   field :email, !types.String
   field :encrypted_password, !types.String
