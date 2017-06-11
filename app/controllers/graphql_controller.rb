@@ -1,10 +1,13 @@
 class GraphqlController < ApplicationController
   def execute
+    skip_authorization
     variables = ensure_hash(params[:variables])
     query = params[:query]
     context = {
       # Query context goes here, for example:
+        #auth: current_user.api_token,
        current_user: current_user,
+      #pundit: self
     }
     result = RailgunSchema.execute(query, variables: variables, context: context)
     render json: result
