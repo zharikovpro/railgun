@@ -1,24 +1,22 @@
 class GraphqlController < ApplicationController
   include Knock::Authenticable
   undef_method :current_user
-  protect_from_forgery with: :null_session
-
   before_action :destroy_session
-  #before_action :authenticate_user
+  before_action :authenticate_user
+  protect_from_forgery with: :null_session
 
   def destroy_session
     request.session_options[:skip] = true
   end
 
   def execute
-    skip_authorization
+    #skip_authorization
+    authorize(current_user)
     variables = ensure_hash(params[:variables])
     query = params[:query]
     context = {
       # Query context goes here, for example:
-        #auth: current_user.api_token,
        current_user: current_user,
-      #pundit: self
     }
     result = RailgunSchema.execute(query, variables: variables, context: context)
     render json: result
