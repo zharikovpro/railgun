@@ -247,9 +247,6 @@ group :test do
   # Instafailing formatter
   gem 'fuubar', '~> 2.2.0'
 
-  # Run tests with clean database
-  gem 'database_cleaner', '~> 1.6.1'
-
   # Generate code coverate reports
   gem 'simplecov', '~> 0.13.0'
 
