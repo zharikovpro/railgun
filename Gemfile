@@ -183,9 +183,6 @@ gem 'knock', '~> 2.1.1'
 # enable cross-origin resource sharing
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
 
-# Rack middleware for blocking & throttling abusive requests
-gem 'rack-attack', '~> 5.0.1'
-
 group :development do
   # Run app in background for faster reload
   gem 'spring', '~> 2.0.2'
