@@ -20,4 +20,14 @@ RSpec.describe UserPolicy, issues: ['railgun#54'] do
       end
     end
   end
+
+  context 'user' do
+    let(:user) { create(:user) }
+
+    permissions :execute? do
+      it 'allow' do
+        is_expected.to permit(user)
+      end
+    end
+  end
 end

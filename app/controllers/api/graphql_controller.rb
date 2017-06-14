@@ -1,7 +1,6 @@
 module API
   class GraphqlController < MainController
     def execute
-      #skip_authorization
       authorize(current_user)
       variables = ensure_hash(params[:variables])
       query = params[:query]
