@@ -1,8 +1,5 @@
 Types::UserRoleType = GraphQL::ObjectType.define do
   name 'UserRole'
   description 'User role'
-  # `!` marks a field as "non-null"
-  field :id, !types.ID
-  field :user_id, !types.Integer
-  #field :role, types[!User_roleType]
+  field :roles, !types.String
 end

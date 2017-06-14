@@ -6,8 +6,8 @@ module API
       variables = ensure_hash(params[:variables])
       query = params[:query]
       context = {
-        # Query context goes here, for example:
-         current_user: current_user,
+          # Query context goes here, for example:
+          current_user: current_user,
       }
       result = RailgunSchema.execute(query, variables: variables, context: context)
       render json: result

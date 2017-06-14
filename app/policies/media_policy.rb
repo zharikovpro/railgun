@@ -16,7 +16,6 @@ class MediaPolicy < ApplicationPolicy
   alias_method :index?, :create?
   alias_method :update?, :create?
   alias_method :destroy?, :create?
-  alias_method :execute?, :create?
 
   def permitted_attributes
     [:slug, :file]
