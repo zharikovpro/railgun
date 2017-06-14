@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  post '/graphql', to: 'graphql#execute'
   # http://guides.rubyonrails.org/routing.html
   root 'application#root'
 
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
 
   namespace :api, defaults: {format: :json} do
+    post 'graphql' => 'graphql#execute'
     namespace :v1 do
       post 'tokens' => 'user_token#create'
 
