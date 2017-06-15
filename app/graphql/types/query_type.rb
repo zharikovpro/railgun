@@ -15,7 +15,7 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :limit, types.Int, default_value: 20
     resolve ->(obj, args, ctx) do
       limit = [args[:limit], 30].min
-      object = User.all.limit(limit)
+      object = UserPolicy::Scope.new(ctx[:current_user], User).resolve.limit(limit)
       UserPolicy.new(ctx[:current_user], object).index? ? (object) : nil
     end
   end
@@ -44,7 +44,7 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :limit, types.Int, default_value: 20
     resolve ->(obj, args, ctx) do
       limit = [args[:limit], 30].min
-      object = Page.all.limit(limit)
+      object = PagePolicy::Scope.new(ctx[:current_user], Page).resolve.limit(limit)
       PagePolicy.new(ctx[:current_user], object).index? ? (object) : nil
     end
   end
@@ -63,7 +63,7 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :limit, types.Int, default_value: 20
     resolve ->(obj, args, ctx) do
       limit = [args[:limit], 30].min
-      object = Media.all.limit(limit)
+      object = MediaPolicy::Scope.new(ctx[:current_user], Media).resolve.limit(limit)
       MediaPolicy.new(ctx[:current_user], object).index? ? (object) : nil
     end
   end
@@ -82,7 +82,7 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :limit, types.Int, default_value: 20
     resolve ->(obj, args, ctx) do
       limit = [args[:limit], 30].min
-      object = Snippet.all.limit(limit)
+      object = SnippetPolicy::Scope.new(ctx[:current_user], Snippet).resolve.limit(limit)
       SnippetPolicy.new(ctx[:current_user], object).index? ? (object) : nil
     end
   end
