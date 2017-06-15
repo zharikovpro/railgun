@@ -10,7 +10,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     describe 'post /api/graphql#execute' do
       it 'valid request returns users' do
         users = create_list(:user, 2)
-        post '/api/graphql', headers: authenticated_header, params: { query: "{ users { id email }}" }
+        post '/api/graphql', headers: authenticated_header, params: { query: '{ users { id email }}' }
 
         expect(response.body).to match(users.first.email)
       end
@@ -39,7 +39,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     describe 'post /api/graphql#execute' do
       it 'valid request returns snippets' do
         snippets = create_list(:snippet, 2)
-        post '/api/graphql', headers: authenticated_header, params: { query: "{ snippets { slug }}" }
+        post '/api/graphql', headers: authenticated_header, params: { query: '{ snippets { slug }}' }
 
         expect(response.body).to match(snippets.first.slug)
       end
@@ -67,7 +67,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     describe 'post /api/graphql#execute' do
       it 'valid request returns medias' do
         medias = create_list(:media, 2)
-        post '/api/graphql', headers: authenticated_header, params: { query: "{ medias { slug file_file_name }}" }
+        post '/api/graphql', headers: authenticated_header, params: { query: '{ medias { slug file_file_name }}' }
 
         expect(response.body).to match(medias.first.slug)
       end
@@ -88,7 +88,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
       it 'valid request returns pages' do
         pages = create_list(:page, 2)
-        post '/api/graphql', headers: authenticated_header, params: { query: "{ pages { slug markdown }}" }
+        post '/api/graphql', headers: authenticated_header, params: { query: '{ pages { slug markdown }}' }
 
         expect(response.body).to match(pages.first.slug)
       end

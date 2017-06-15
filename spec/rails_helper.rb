@@ -17,7 +17,6 @@ require 'capybara/rails'
 require 'capybara-screenshot/rspec'
 require 'capybara/email/rspec'
 require 'capybara/poltergeist'
-require 'graphql'
 
 require 'aws-sdk'
 Aws.config[:s3] = { stub_responses: true }
