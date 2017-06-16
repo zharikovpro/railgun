@@ -54,6 +54,13 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
         expect(data("mutation{addSnippet(snippet: {slug: \"script\", text: \"My graphql snippet\"}) { slug text }}")['addSnippet']['slug']).to eq('script')
         expect(Snippet.find_by_slug('script').text).to eq('My graphql snippet')
       end
+
+      it 'Delete snippet by param slug' do
+        snippet = create(:snippet)
+
+        expect(data("mutation{deleteSnippet(slug: \"#{snippet.slug}\") {slug}}")['deleteSnippet']['slug']).to eq(snippet.slug)
+        expect(Snippet.find_by_id(snippet.id)).to be_nil
+      end
     end
   end
 
@@ -80,6 +87,13 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
         expect(data("mutation{addMedia(media: {slug: \"file\", file_file_name: \"Path_to_file\"}) { slug file_file_name }}")['addMedia']['slug']).to eq('file')
         expect(Media.find_by_slug('file').file_file_name).to eq('Path_to_file')
       end
+
+      it 'Delete media by param slug' do
+        media = create(:media)
+
+        expect(data("mutation{deleteMedia(slug: \"#{media.slug}\") {slug}}")['deleteMedia']['slug']).to eq(media.slug)
+        expect(Media.find_by_id(media.id)).to be_nil
+      end
     end
 
     describe 'queries pages' do
@@ -98,6 +112,19 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       it 'Create Page' do
         expect(data("mutation{addPage(page: {slug: \"faq\", markdown: \"some text\"}) { slug markdown }}")['addPage']['slug']).to eq('faq')
         expect(Page.find_by_slug('faq').markdown).to eq('some text')
+      end
+
+      it 'Update page by param slug' do
+        page = create(:page)
+
+        expect(data("{ page(slug: \"#{page.slug}\") { slug markdown }}")['page']['markdown']).to eq(page.markdown)
+      end
+
+      it 'Delete page by param slug' do
+        page = create(:page)
+
+        expect(data("mutation{deletePage(slug: \"#{page.slug}\") {slug}}")['deletePage']['slug']).to eq(page.slug)
+        expect(Page.find_by_id(page.id)).to be_nil
       end
     end
   end
