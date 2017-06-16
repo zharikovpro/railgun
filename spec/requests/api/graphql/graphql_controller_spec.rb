@@ -57,7 +57,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
       it 'Update snippet by param slug' do
         expect(data("mutation{updateSnippet(slug: \"#{snippet.slug}\", snippet: {slug: \"\", text: \"new snippet\"}) {slug text}}")['updateSnippet']['text']).to eq('new snippet')
-        expect(data("mutation{updateSnippet(slug: \"#{snippet.slug}\", snippet: {slug: \"updated\", text: \"new path to file\"}) {slug text}}")['updateSnippet']['slug']).to eq('updated')
+        expect(data("mutation{updateSnippet(slug: \"#{snippet.slug}\", snippet: {slug: \"updated\", text: \"\"}) {slug text}}")['updateSnippet']['slug']).to eq('updated')
       end
 
       it 'Delete snippet by param slug' do
@@ -74,6 +74,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
     describe 'queries medias' do
       let(:media) { create(:media) }
+
       it 'list of medias slug and file name' do
         create_list(:media, 2)
 
@@ -92,7 +93,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
       it 'Update media by param slug' do
         expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"\", file_file_name: \"new path to file\"}) {slug file_file_name}}")['updateMedia']['file_file_name']).to eq('new path to file')
-        expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"updated\", file_file_name: \"new path to file\"}) {slug file_file_name}}")['updateMedia']['slug']).to eq('updated')
+        expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"updated\", file_file_name: \"\"}) {slug file_file_name}}")['updateMedia']['slug']).to eq('updated')
       end
 
       it 'Delete media by param slug' do
@@ -121,7 +122,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
       it 'Update page by param slug' do
         expect(data("mutation{updatePage(slug: \"#{page.slug}\", page: {slug: \"\", markdown: \"new markdown\"}) {slug markdown}}")['updatePage']['markdown']).to eq('new markdown')
-        expect(data("mutation{updatePage(slug: \"#{page.slug}\", page: {slug: \"updated\", markdown: \"new markdown\"}) {slug markdown}}")['updatePage']['slug']).to eq('updated')
+        expect(data("mutation{updatePage(slug: \"#{page.slug}\", page: {slug: \"updated\", markdown: \"\"}) {slug markdown}}")['updatePage']['slug']).to eq('updated')
       end
 
       it 'Delete page by param slug' do
