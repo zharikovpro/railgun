@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
+  def data(query)
+    post '/api/graphql', headers: authenticated_header, params: { query: query }
+    response.parsed_body['data']
+  end
+
   context 'Administrator can use users and user_roles' do
     let(:authenticated_header) {
       { 'Authorization' => "Bearer #{create(:administrator).api_token}" }
@@ -10,23 +15,19 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     describe 'queries users, user_roles' do
       it 'list of users id and email' do
         create(:user)
-        post '/api/graphql', headers: authenticated_header, params: { query: '{ users { id email }}' }
-
-        expect(response.parsed_body['data']['users'].size).to eq(2)
+        expect(data('{ users { id email }}')['users'].size).to eq(2)
       end
 
       it 'user email by param id' do
         user = create(:user)
-        post '/api/graphql', headers: authenticated_header, params: { query: "{ user(id: \"#{user.id}\") { id email }}" }
 
-        expect(response.parsed_body['data']['user']['email']).to eq(user.email)
+        expect(data("{ user(id: \"#{user.id}\") { id email }}")['user']['email']).to eq(user.email)
       end
 
       it 'user roles by param id' do
-        user = create(:owner)
-        post '/api/graphql', headers: authenticated_header, params: { query: "{ user_roles(user_id: #{user.id}) { roles }}" }
+        owner = create(:owner)
 
-        expect(response.body).to match('owner')
+        expect(data("{ user_roles(user_id: #{owner.id}) { roles }}")['user_roles']['roles']).to eq("#{owner.roles}")
       end
     end
   end
@@ -39,22 +40,19 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     describe 'queries snippets' do
       it 'list of snippets slug and text' do
         create_list(:snippet, 2)
-        post '/api/graphql', headers: authenticated_header, params: { query: '{ snippets { slug text }}' }
 
-        expect(response.parsed_body['data']['snippets'].size).to eq(2)
+        expect(data('{ snippets { slug text }}')['snippets'].size).to eq(2)
       end
 
       it 'snippet by param slug' do
         snippet = create(:snippet)
-        post '/api/graphql', headers: authenticated_header, params: { query: "{ snippet(slug: \"#{snippet.slug}\") { slug text }}" }
 
-        expect(response.parsed_body['data']['snippet']['text']).to eq(snippet.text)
+        expect(data("{ snippet(slug: \"#{snippet.slug}\") { slug text }}")['snippet']['text']).to eq(snippet.text)
       end
 
       it 'Create Snippet' do
-        post '/api/graphql', headers: authenticated_header, params: { query: "mutation{addSnippet(snippet: {slug: \"qwe2\", text: \"My graphql snippet\"}) { slug text }}" }
-
-        expect(Snippet.find_by_slug('qwe2').text).to eq('My graphql snippet')
+        expect(data("mutation{addSnippet(snippet: {slug: \"script\", text: \"My graphql snippet\"}) { slug text }}")['addSnippet']['slug']).to eq('script')
+        expect(Snippet.find_by_slug('script').text).to eq('My graphql snippet')
       end
     end
   end
@@ -67,22 +65,19 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     describe 'queries medias' do
       it 'list of medias slug and file name' do
         create_list(:media, 2)
-        post '/api/graphql', headers: authenticated_header, params: { query: '{ medias { slug file_file_name }}' }
 
-        expect(response.parsed_body['data']['medias'].size).to eq(2)
+        expect(data('{ medias { slug file_file_name }}')['medias'].size).to eq(2)
       end
 
       it 'media by param slug' do
         media = create(:media)
-        post '/api/graphql', headers: authenticated_header, params: { query: "{ media(slug: \"#{media.slug}\") { slug file_file_name }}" }
 
-        expect(response.parsed_body['data']['media']['file_file_name']).to eq(media.file_file_name)
+        expect(data("{ media(slug: \"#{media.slug}\") { slug file_file_name }}")['media']['file_file_name']).to eq(media.file_file_name)
       end
 
       # TODO adding a real file
       it 'Create Media' do
-        post '/api/graphql', headers: authenticated_header, params: { query: "mutation{addMedia(media: {slug: \"file\", file_file_name: \"Path_to_file\"}) { slug file_file_name }}" }
-
+        expect(data("mutation{addMedia(media: {slug: \"file\", file_file_name: \"Path_to_file\"}) { slug file_file_name }}")['addMedia']['slug']).to eq('file')
         expect(Media.find_by_slug('file').file_file_name).to eq('Path_to_file')
       end
     end
@@ -90,21 +85,18 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     describe 'queries pages' do
       it 'list of pages slug and markdown' do
         create_list(:page, 2)
-        post '/api/graphql', headers: authenticated_header, params: { query: '{ pages { slug markdown }}' }
 
-        expect(response.parsed_body['data']['pages'].size).to eq(2)
+        expect(data('{ pages { slug markdown }}')['pages'].size).to eq(2)
       end
 
       it 'page by param slug' do
         page = create(:page)
-        post '/api/graphql', headers: authenticated_header, params: { query: "{ page(slug: \"#{page.slug}\") { slug markdown }}" }
 
-        expect(response.parsed_body['data']['page']['markdown']).to eq(page.markdown)
+        expect(data("{ page(slug: \"#{page.slug}\") { slug markdown }}")['page']['markdown']).to eq(page.markdown)
       end
 
       it 'Create Page' do
-        post '/api/graphql', headers: authenticated_header, params: { query: "mutation{addPage(page: {slug: \"faq\", markdown: \"some text\"}) { slug markdown }}" }
-
+        expect(data("mutation{addPage(page: {slug: \"faq\", markdown: \"some text\"}) { slug markdown }}")['addPage']['slug']).to eq('faq')
         expect(Page.find_by_slug('faq').markdown).to eq('some text')
       end
     end
