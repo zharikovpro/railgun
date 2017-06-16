@@ -44,7 +44,10 @@
           "url": "heroku/ruby"
         },
         {
-          "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
+          "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
+        },
+        {
+          "url": "https://github.com/heroku/heroku-buildpack-xvfb-google-chrome"
         }
       ]
     }

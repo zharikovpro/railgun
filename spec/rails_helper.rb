@@ -16,7 +16,6 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara-screenshot/rspec'
 require 'capybara/email/rspec'
-require 'capybara/poltergeist'
 
 require 'aws-sdk'
 Aws.config[:s3] = { stub_responses: true }
@@ -54,6 +53,11 @@ RSpec.configure do |config|
   config.after(:each) { Warden.test_reset! }
   config.after(:suite) { FileUtils.rm_rf("#{Rails.root}/tmp/paperclip") }
 
+  # If you're not using ActiveRecord, or you'd prefer not to run each of your
+  # examples within a transaction, remove the following line or assign false
+  # instead of true.
+  config.use_transactional_fixtures = true
+
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -74,9 +78,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # http://www.virtuouscode.com/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
-  config.use_transactional_fixtures = false
-
   # https://relishapp.com/rspec/rspec-rails/docs/controller-specs/anonymous-controller
   config.infer_base_class_for_anonymous_controllers = false
 end
@@ -88,12 +89,15 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new app, {
-    timeout: 60,
-    window_size: [1280, 720],
-    js_errors: true
-  }
+chrome_bin = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
+chrome_options = chrome_bin ? { 'chromeOptions' => { 'binary' => chrome_bin } } : {}
+
+Capybara.register_driver :chromedriver do |app|
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(chrome_options)
+  )
 end
 
 Capybara.app_host = 'http://localhost:5050'
@@ -101,6 +105,6 @@ Capybara.server_host = 'localhost'
 Capybara.server_port = '5050'
 Capybara.default_max_wait_time = 10
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :chromedriver
 Capybara.ignore_hidden_elements = true
 Capybara::Screenshot.prune_strategy = :keep_last_run

@@ -1,7 +1,5 @@
 RSpec.describe UserRole, issues: ['railgun#54'] do
-  it 'is versioned' do
-    is_expected.to be_versioned
-  end
+  it { is_expected.to be_versioned }
 
   it 'belongs to user' do
     is_expected.to belong_to(:user)
