@@ -38,6 +38,8 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     }
 
     describe 'queries snippets' do
+      let(:snippet) { create(:snippet) }
+
       it 'list of snippets slug and text' do
         create_list(:snippet, 2)
 
@@ -45,8 +47,6 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'snippet by param slug' do
-        snippet = create(:snippet)
-
         expect(data("{ snippet(slug: \"#{snippet.slug}\") { slug text }}")['snippet']['text']).to eq(snippet.text)
       end
 
@@ -55,10 +55,13 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
         expect(Snippet.find_by_slug('script').text).to eq('My graphql snippet')
       end
 
-      it 'Delete snippet by param slug' do
-        snippet = create(:snippet)
+      it 'Update snippet by param slug' do
+        expect(data("mutation{updateSnippet(slug: \"#{snippet.slug}\", snippet: {slug: \"\", text: \"new snippet\"}) {slug text}}")['updateSnippet']['text']).to eq('new snippet')
+        expect(data("mutation{updateSnippet(slug: \"#{snippet.slug}\", snippet: {slug: \"updated\", text: \"new path to file\"}) {slug text}}")['updateSnippet']['slug']).to eq('updated')
+      end
 
-        expect(data("mutation{deleteSnippet(slug: \"#{snippet.slug}\") {slug}}")['deleteSnippet']['slug']).to eq(snippet.slug)
+      it 'Delete snippet by param slug' do
+        expect(data("mutation{deleteSnippet(slug: \"#{snippet.slug}\") {slug text}}")['deleteSnippet']['slug']).to eq(snippet.slug)
         expect(Snippet.find_by_id(snippet.id)).to be_nil
       end
     end
@@ -70,6 +73,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     }
 
     describe 'queries medias' do
+      let(:media) { create(:media) }
       it 'list of medias slug and file name' do
         create_list(:media, 2)
 
@@ -77,8 +81,6 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'media by param slug' do
-        media = create(:media)
-
         expect(data("{ media(slug: \"#{media.slug}\") { slug file_file_name }}")['media']['file_file_name']).to eq(media.file_file_name)
       end
 
@@ -88,15 +90,20 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
         expect(Media.find_by_slug('file').file_file_name).to eq('Path_to_file')
       end
 
-      it 'Delete media by param slug' do
-        media = create(:media)
+      it 'Update media by param slug' do
+        expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"\", file_file_name: \"new path to file\"}) {slug file_file_name}}")['updateMedia']['file_file_name']).to eq('new path to file')
+        expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"updated\", file_file_name: \"new path to file\"}) {slug file_file_name}}")['updateMedia']['slug']).to eq('updated')
+      end
 
-        expect(data("mutation{deleteMedia(slug: \"#{media.slug}\") {slug}}")['deleteMedia']['slug']).to eq(media.slug)
+      it 'Delete media by param slug' do
+        expect(data("mutation{deleteMedia(slug: \"#{media.slug}\") {slug file_file_name}}")['deleteMedia']['slug']).to eq(media.slug)
         expect(Media.find_by_id(media.id)).to be_nil
       end
     end
 
     describe 'queries pages' do
+      let(:page) { create(:page) }
+
       it 'list of pages slug and markdown' do
         create_list(:page, 2)
 
@@ -104,8 +111,6 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'page by param slug' do
-        page = create(:page)
-
         expect(data("{ page(slug: \"#{page.slug}\") { slug markdown }}")['page']['markdown']).to eq(page.markdown)
       end
 
@@ -115,15 +120,12 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'Update page by param slug' do
-        page = create(:page)
-
-        expect(data("{ page(slug: \"#{page.slug}\") { slug markdown }}")['page']['markdown']).to eq(page.markdown)
+        expect(data("mutation{updatePage(slug: \"#{page.slug}\", page: {slug: \"\", markdown: \"new markdown\"}) {slug markdown}}")['updatePage']['markdown']).to eq('new markdown')
+        expect(data("mutation{updatePage(slug: \"#{page.slug}\", page: {slug: \"updated\", markdown: \"new markdown\"}) {slug markdown}}")['updatePage']['slug']).to eq('updated')
       end
 
       it 'Delete page by param slug' do
-        page = create(:page)
-
-        expect(data("mutation{deletePage(slug: \"#{page.slug}\") {slug}}")['deletePage']['slug']).to eq(page.slug)
+        expect(data("mutation{deletePage(slug: \"#{page.slug}\") {slug markdown}}")['deletePage']['slug']).to eq(page.slug)
         expect(Page.find_by_id(page.id)).to be_nil
       end
     end
