@@ -186,7 +186,6 @@ gem 'paper_trail', '~> 7.0.0'
 gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
 gem 'graphql', '~> 1.5.14'
-gem 'graphiql-rails', group: :development
 
 # enable cross-origin resource sharing
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'

@@ -14,13 +14,13 @@ Types::QueryType = GraphQL::ObjectType.define do
   field :users, types[Types::UserType] do
     argument :limit, types.Int, default_value: 20
     resolve ->(obj, args, ctx) do
-      limit = [args[:limit], 30].min
-      object = UserPolicy::Scope.new(ctx[:current_user], User).resolve.limit(limit)
-      UserPolicy.new(ctx[:current_user], object).index? ? (object) : nil
+      limit = [args[:limit]].min
+      objects = UserPolicy::Scope.new(ctx[:current_user], User).resolve.limit(limit)
+      UserPolicy.new(ctx[:current_user], objects).index? ? (objects) : nil
     end
   end
 
-  field :user_role do
+  field :user_roles do
     type Types::UserRoleType
     argument :user_id, !types.ID
     description 'Find a UserRoles by user ID'
@@ -44,8 +44,8 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :limit, types.Int, default_value: 20
     resolve ->(obj, args, ctx) do
       limit = [args[:limit], 30].min
-      object = PagePolicy::Scope.new(ctx[:current_user], Page).resolve.limit(limit)
-      PagePolicy.new(ctx[:current_user], object).index? ? (object) : nil
+      objects = PagePolicy::Scope.new(ctx[:current_user], Page).resolve.limit(limit)
+      PagePolicy.new(ctx[:current_user], objects).index? ? (objects) : nil
     end
   end
 
@@ -62,9 +62,9 @@ Types::QueryType = GraphQL::ObjectType.define do
   field :medias, types[Types::MediaType] do
     argument :limit, types.Int, default_value: 20
     resolve ->(obj, args, ctx) do
-      limit = [args[:limit], 30].min
-      object = MediaPolicy::Scope.new(ctx[:current_user], Media).resolve.limit(limit)
-      MediaPolicy.new(ctx[:current_user], object).index? ? (object) : nil
+      limit = [args[:limit]].min
+      objects = MediaPolicy::Scope.new(ctx[:current_user], Media).resolve.limit(limit)
+      MediaPolicy.new(ctx[:current_user], objects).index? ? (objects) : nil
     end
   end
 
@@ -81,9 +81,9 @@ Types::QueryType = GraphQL::ObjectType.define do
   field :snippets, types[Types::SnippetType] do
     argument :limit, types.Int, default_value: 20
     resolve ->(obj, args, ctx) do
-      limit = [args[:limit], 30].min
-      object = SnippetPolicy::Scope.new(ctx[:current_user], Snippet).resolve.limit(limit)
-      SnippetPolicy.new(ctx[:current_user], object).index? ? (object) : nil
+      limit = [args[:limit]].min
+      objects = SnippetPolicy::Scope.new(ctx[:current_user], Snippet).resolve.limit(limit)
+      SnippetPolicy.new(ctx[:current_user], objects).index? ? (objects) : nil
     end
   end
 end
