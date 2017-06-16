@@ -9,17 +9,17 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
     describe 'queries users, user_roles' do
       it 'list of users id and email' do
-        users = create_list(:user, 2)
+        create(:user)
         post '/api/graphql', headers: authenticated_header, params: { query: '{ users { id email }}' }
 
-        expect(response.body).to match(users.first.email)
+        expect(response.parsed_body['data']['users'].size).to eq(2)
       end
 
       it 'user email by param id' do
         user = create(:user)
         post '/api/graphql', headers: authenticated_header, params: { query: "{ user(id: \"#{user.id}\") { id email }}" }
 
-        expect(response.body).to match(user.email)
+        expect(response.parsed_body['data']['user']['email']).to eq(user.email)
       end
 
       it 'user roles by param id' do
@@ -38,17 +38,17 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
     describe 'queries snippets' do
       it 'list of snippets slug and text' do
-        snippets = create_list(:snippet, 2)
+        create_list(:snippet, 2)
         post '/api/graphql', headers: authenticated_header, params: { query: '{ snippets { slug text }}' }
 
-        expect(response.body).to match(snippets.first.slug)
+        expect(response.parsed_body['data']['snippets'].size).to eq(2)
       end
 
       it 'snippet by param slug' do
         snippet = create(:snippet)
         post '/api/graphql', headers: authenticated_header, params: { query: "{ snippet(slug: \"#{snippet.slug}\") { slug text }}" }
 
-        expect(response.body).to match(snippet.text)
+        expect(response.parsed_body['data']['snippet']['text']).to eq(snippet.text)
       end
 
       it 'Create Snippet' do
@@ -66,17 +66,17 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
     describe 'queries medias' do
       it 'list of medias slug and file name' do
-        medias = create_list(:media, 2)
+        create_list(:media, 2)
         post '/api/graphql', headers: authenticated_header, params: { query: '{ medias { slug file_file_name }}' }
 
-        expect(response.body).to match(medias.first.slug)
+        expect(response.parsed_body['data']['medias'].size).to eq(2)
       end
 
       it 'media by param slug' do
         media = create(:media)
         post '/api/graphql', headers: authenticated_header, params: { query: "{ media(slug: \"#{media.slug}\") { slug file_file_name }}" }
 
-        expect(response.body).to match(media.file_file_name)
+        expect(response.parsed_body['data']['media']['file_file_name']).to eq(media.file_file_name)
       end
 
       # TODO adding a real file
@@ -89,17 +89,17 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
 
     describe 'queries pages' do
       it 'list of pages slug and markdown' do
-        pages = create_list(:page, 2)
+        create_list(:page, 2)
         post '/api/graphql', headers: authenticated_header, params: { query: '{ pages { slug markdown }}' }
 
-        expect(response.body).to match(pages.first.slug)
+        expect(response.parsed_body['data']['pages'].size).to eq(2)
       end
 
       it 'page by param slug' do
         page = create(:page)
         post '/api/graphql', headers: authenticated_header, params: { query: "{ page(slug: \"#{page.slug}\") { slug markdown }}" }
 
-        expect(response.body).to match(page.markdown)
+        expect(response.parsed_body['data']['page']['markdown']).to eq(page.markdown)
       end
 
       it 'Create Page' do
