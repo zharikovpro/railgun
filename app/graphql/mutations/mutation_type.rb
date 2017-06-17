@@ -1,6 +1,50 @@
 Mutations::MutationType = GraphQL::ObjectType.define do
   name 'Mutation'
 
+  field :addUser, Types::UserType do
+    argument :user, Mutations::UserInputType
+    resolve ->(_obj, args, _ctx) do
+      User.create!(args[:user].to_h)
+    end
+  end
+
+  field :updateUser, Types::UserType do
+    argument :user, Mutations::UserInputType
+    argument :id, !types.ID
+    resolve ->(_obj, args, _ctx) do
+      object = User.find(args['id'])
+      object.update(args[:user].to_h)
+      object
+    end
+  end
+
+  field :deleteUser, Types::UserType do
+    argument :id, !types.ID
+    resolve ->(_obj, args, _ctx) do
+      User.find(args[:id]).delete
+    end
+  end
+
+  field :addUserRole, Types::UserRoleType do
+    argument :user_id, !types.ID
+    argument :user_role, Mutations::UserRoleInputType
+    resolve ->(_obj, args, _ctx) do
+      object = User.find(args[:user_id])
+      object.add_role(args[:user_role]['roles'])
+      object
+    end
+  end
+
+  field :deleteUserRole, Types::UserRoleType do
+    argument :user_id, !types.ID
+    argument :user_role, Mutations::UserRoleInputType
+    resolve ->(_obj, args, _ctx) do
+      object = User.find(args[:user_id])
+      object.user_roles.find_by_role(args[:user_role]['roles']).delete
+      object
+    end
+  end
+
   field :addPage, Types::PageType do
     argument :page, Mutations::PageInputType
     resolve ->(_obj, args, _ctx) do

@@ -11,6 +11,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
     let(:authenticated_header) {
       { 'Authorization' => "Bearer #{create(:administrator).api_token}" }
     }
+    let(:user) { create(:user) }
 
     describe 'queries users, user_roles' do
       it 'list of users id and email' do
@@ -19,15 +20,39 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'user email by param id' do
-        user = create(:user)
-
         expect(data("{ user(id: \"#{user.id}\") { id email }}")['user']['email']).to eq(user.email)
+      end
+
+      it 'Create User' do
+        expect(data("mutation{addUser(user: {email: \"test@mail.com\", password: \"qwerty\"}) { id email }}")['addUser']['email']).to eq('test@mail.com')
+        expect(User.find_by_email('test@mail.com').email).to eq('test@mail.com')
+      end
+
+      it 'Update user by ID' do
+        expect(data("mutation{updateUser(id: \"#{user.id}\", user: {email: \"\", password: \"qwerty\"}) {id email}}")['updateUser']['id']).to eq("#{user.id}")
+        expect(data("mutation{updateUser(id: \"#{user.id}\", user: {email: \"new@mail.com\", password: \"qwerty\"}) {id email}}")['updateUser']['email']).to eq('new@mail.com')
+      end
+
+      it 'Delete user by ID' do
+        expect(data("mutation{deleteUser(id: \"#{user.id}\") {id email}}")['deleteUser']['email']).to eq(user.email)
+        expect(User.find_by_id(user.id)).to be_nil
       end
 
       it 'user roles by param id' do
         owner = create(:owner)
 
         expect(data("{ user_roles(user_id: #{owner.id}) { roles }}")['user_roles']['roles']).to eq("#{owner.roles}")
+      end
+
+      it 'Add user role by user ID' do
+        expect(data("mutation{addUserRole(user_id: \"#{user.id}\", user_role: {roles: \"editor\"}) { roles }}")['addUserRole']['roles']).to eq("#{[:editor]}")
+        expect(User.find(user.id).roles).to include(:editor)
+      end
+
+      it 'Delete user_role by user ID' do
+        user.add_role(:developer)
+        expect(data("mutation{deleteUserRole(user_id: \"#{user.id}\", user_role: {roles: \"developer\"}) { roles }}")['deleteUserRole']['roles']).to eq("#{user.roles}")
+        expect(User.find(user.id).roles).not_to include(:developer)
       end
     end
   end
