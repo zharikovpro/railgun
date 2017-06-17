@@ -24,13 +24,13 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'Create User' do
-        expect(data("mutation{addUser(user: {email: \"test@mail.com\", password: \"qwerty\"}) { id email }}")['addUser']['email']).to eq('test@mail.com')
+        expect(data("mutation{addUser(user: {email: \"test@mail.com\", password: \"qwerty\", password_confirmation: \"qwerty\"}) { id email }}")['addUser']['email']).to eq('test@mail.com')
         expect(User.find_by_email('test@mail.com').email).to eq('test@mail.com')
       end
 
       it 'Update user by ID' do
-        expect(data("mutation{updateUser(id: \"#{user.id}\", user: {email: \"\", password: \"qwerty\"}) {id email}}")['updateUser']['id']).to eq("#{user.id}")
-        expect(data("mutation{updateUser(id: \"#{user.id}\", user: {email: \"new@mail.com\", password: \"qwerty\"}) {id email}}")['updateUser']['email']).to eq('new@mail.com')
+        expect(data("mutation{updateUser(id: \"#{user.id}\", user: {email: \"new@mail.com\", password: \"qwerty\", password_confirmation: \"qwerty\"}) {id email}}")['updateUser']['email']).to eq('new@mail.com')
+        expect(User.find(user.id).email).to eq('new@mail.com')
       end
 
       it 'Delete user by ID' do
@@ -81,8 +81,8 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'Update snippet by param slug' do
-        expect(data("mutation{updateSnippet(slug: \"#{snippet.slug}\", snippet: {slug: \"\", text: \"new snippet\"}) {slug text}}")['updateSnippet']['text']).to eq('new snippet')
-        expect(data("mutation{updateSnippet(slug: \"#{snippet.slug}\", snippet: {slug: \"updated\", text: \"\"}) {slug text}}")['updateSnippet']['slug']).to eq('updated')
+        expect(data("mutation{updateSnippet(slug: \"#{snippet.slug}\", snippet: {slug: \"updated\", text: \"new snippet\"}) {slug text}}")['updateSnippet']['text']).to eq('new snippet')
+        expect(Snippet.find_by_slug('updated').text).to eq('new snippet')
       end
 
       it 'Delete snippet by param slug' do
@@ -117,8 +117,8 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'Update media by param slug' do
-        expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"\", file_file_name: \"new path to file\"}) {slug file_file_name}}")['updateMedia']['file_file_name']).to eq('new path to file')
-        expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"updated\", file_file_name: \"\"}) {slug file_file_name}}")['updateMedia']['slug']).to eq('updated')
+        expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"updated\", file_file_name: \"new path to file\"}) {slug file_file_name}}")['updateMedia']['file_file_name']).to eq('new path to file')
+        expect(Media.find_by_slug('updated').file_file_name).to eq('new path to file')
       end
 
       it 'Delete media by param slug' do
@@ -146,8 +146,8 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'Update page by param slug' do
-        expect(data("mutation{updatePage(slug: \"#{page.slug}\", page: {slug: \"\", markdown: \"new markdown\"}) {slug markdown}}")['updatePage']['markdown']).to eq('new markdown')
-        expect(data("mutation{updatePage(slug: \"#{page.slug}\", page: {slug: \"updated\", markdown: \"\"}) {slug markdown}}")['updatePage']['slug']).to eq('updated')
+        expect(data("mutation{updatePage(slug: \"#{page.slug}\", page: {slug: \"updated\", markdown: \"new markdown\"}) {slug markdown}}")['updatePage']['markdown']).to eq('new markdown')
+        expect(Page.find_by_slug('updated').markdown).to eq('new markdown')
       end
 
       it 'Delete page by param slug' do

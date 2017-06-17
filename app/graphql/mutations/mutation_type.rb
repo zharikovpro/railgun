@@ -9,11 +9,11 @@ Mutations::MutationType = GraphQL::ObjectType.define do
   end
 
   field :updateUser, Types::UserType do
-    argument :user, Mutations::UserInputType
     argument :id, !types.ID
+    argument :user, Mutations::UserInputType
     resolve ->(_obj, args, _ctx) do
       object = User.find(args['id'])
-      object.update(args[:user].to_h)
+      object.update_attributes(args[:user].to_h)
       object
     end
   end
@@ -57,7 +57,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, _ctx) do
       object = Page.find_by_slug(args['slug'])
-      object.update(args[:page].to_h)
+      object.update_attributes(args[:page].to_h)
       object
     end
   end
@@ -81,7 +81,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, _ctx) do
       object = Media.find_by_slug(args['slug'])
-      object.update(args[:media].to_h)
+      object.update_attributes(args[:media].to_h)
       object
     end
   end
@@ -105,7 +105,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, _ctx) do
       object = Snippet.find_by_slug(args['slug'])
-      object.update(args[:snippet].to_h)
+      object.update_attributes(args[:snippet].to_h)
       object
     end
   end
