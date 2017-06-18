@@ -110,15 +110,14 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
         expect(data("{ media(slug: \"#{media.slug}\") { slug file_file_name }}")['media']['file_file_name']).to eq(media.file_file_name)
       end
 
-      # TODO adding a real file
       it 'Create Media' do
-        expect(data("mutation{addMedia(media: {slug: \"file\", file_file_name: \"Path_to_file\"}) { slug file_file_name }}")['addMedia']['slug']).to eq('file')
-        expect(Media.find_by_slug('file').file_file_name).to eq('Path_to_file')
+        expect(data("mutation{addMedia(media: {slug: \"file\", file_file_name: \"#{fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg')}\"}) { slug file_file_name }}")['addMedia']['slug']).to eq('file')
+        expect(Media.find_by_slug(:file).file_file_name).not_to be_nil
       end
 
       it 'Update media by param slug' do
-        expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"updated\", file_file_name: \"new path to file\"}) {slug file_file_name}}")['updateMedia']['file_file_name']).to eq('new path to file')
-        expect(Media.find_by_slug('updated').file_file_name).to eq('new path to file')
+        expect(data("mutation{updateMedia(slug: \"#{media.slug}\", media: {slug: \"updated\", file_file_name: \"#{fixture_file_upload(Rails.root + 'spec/fixtures/files/images/demo.jpg')}\"}) {slug file_file_name}}")['updateMedia']['slug']).to eq('updated')
+        expect(Media.find_by_slug(:updated).file_file_name).not_to be_nil
       end
 
       it 'Delete media by param slug' do

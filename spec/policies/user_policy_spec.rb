@@ -30,4 +30,12 @@ RSpec.describe UserPolicy, issues: ['railgun#54'] do
       end
     end
   end
+
+  context 'not existened user' do
+    permissions :execute? do
+      it 'allow' do
+        is_expected.not_to permit(nil)
+      end
+    end
+  end
 end
