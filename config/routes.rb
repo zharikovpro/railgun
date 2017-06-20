@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'tokens' => 'user_token#create'
 
-      resources :pages, :snippets, :medias, except: [:new, :edit]
+      resources :pages, :snippets, :medias, :user_roles, except: [:new, :edit]
     end
   end
 
