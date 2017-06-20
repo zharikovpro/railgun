@@ -7,7 +7,7 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def execute?
+  def graphiql?
     user
   end
 
