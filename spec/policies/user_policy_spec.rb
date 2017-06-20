@@ -20,4 +20,22 @@ RSpec.describe UserPolicy, issues: ['railgun#54'] do
       end
     end
   end
+
+  context 'user' do
+    let(:user) { create(:user) }
+
+    permissions :graphiql? do
+      it 'allow' do
+        is_expected.to permit(user)
+      end
+    end
+  end
+
+  context 'not user' do
+    permissions :graphiql? do
+      it 'denied' do
+        is_expected.not_to permit(nil)
+      end
+    end
+  end
 end

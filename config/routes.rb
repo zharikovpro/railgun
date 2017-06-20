@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
 
   namespace :api, defaults: {format: :json} do
+    post 'graphql' => 'graphql#execute'
     namespace :v1 do
       post 'tokens' => 'user_token#create'
 
