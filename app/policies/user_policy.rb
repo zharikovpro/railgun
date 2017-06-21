@@ -7,6 +7,10 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def execute?
+    user
+  end
+
   def create?
     user.administrator?
   end

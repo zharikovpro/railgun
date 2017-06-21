@@ -1,17 +1,7 @@
 module API
   module V1
-    class ApiController < ApplicationController
-      include Knock::Authenticable
-      undef_method :current_user
-      protect_from_forgery with: :null_session
-
-      before_action :destroy_session
-      before_action :authenticate_user
+    class ApiController < MainController
       before_action :authorize_resource_by_id, only: [:show, :update, :destroy]
-
-      def destroy_session
-        request.session_options[:skip] = true
-      end
 
       def index
         authorize(resource_model)
