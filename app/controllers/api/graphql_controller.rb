@@ -1,7 +1,7 @@
 module API
   class GraphqlController < MainController
     def execute
-      authorize(current_user)
+      authorize(current_user, :graphiql?)
       variables = params[:variables]
       query = params[:query]
       context = {
