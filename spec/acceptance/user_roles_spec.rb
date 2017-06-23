@@ -54,4 +54,16 @@ RSpec.resource 'UserRoles', issues: ['railgun#168'] do
       expect(User.find(user.id).roles).to include(:editor)
     end
   end
+
+  delete '/api/v1/user_roles/:id' do
+    let(:id) { user_role.id }
+    let(:role) { 'owner' }
+
+    example_request 'Delete user role' do
+      explanation 'Deletes user role and returns status 204'
+
+      expect(status).to eq 204
+      expect(User.find(user.id).roles).to be_empty
+    end
+  end
 end
