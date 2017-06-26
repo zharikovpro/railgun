@@ -59,4 +59,18 @@ RSpec.describe User do
 
     expect(missing_roles).to contain_exactly(:owner, :administrator, :moderator, :support)
   end
+
+  context 'can not create user', issues: ['railgun#169'] do
+    it 'without password' do
+      is_expected.to validate_presence_of :password
+    end
+
+    it 'without password_confirmation' do
+      expect(build(:user, password_confirmation: '')).not_to be_valid
+    end
+
+    it 'if password not match password_confirmation' do
+      expect(build(:user, password: 'Not', password_confirmation: 'Match')).not_to be_valid
+    end
+  end
 end
