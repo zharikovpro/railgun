@@ -53,7 +53,7 @@ class User < ApplicationRecord
     if persisted?
       !password.nil? || !password_confirmation.nil?
     else
-      false
+      true
     end
   end
 

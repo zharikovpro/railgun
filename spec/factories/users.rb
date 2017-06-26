@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :user do
     email { Faker::Internet.unique.email }
-    password Faker::Internet.password
-    password_confirmation Faker::Internet.password
+    password = Faker::Internet.password
+    password password
+    password_confirmation password
 
     UserRole::TITLES.each do |title|
       factory title do
