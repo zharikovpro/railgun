@@ -26,11 +26,13 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       it 'Create User' do
         expect(data("mutation{addUser(user: {email: \"test@mail.com\", password: \"qwerty\", password_confirmation: \"qwerty\"}) { id email }}")['addUser']['email']).to eq('test@mail.com')
         expect(User.find_by_email('test@mail.com').email).to eq('test@mail.com')
+        expect(User.find_by_email('test@mail.com').valid_password?('qwerty')).to be_truthy
       end
 
       it 'Update user by ID' do
-        expect(data("mutation{updateUser(id: \"#{user.id}\", user: {email: \"new@mail.com\", password: \"qwerty\", password_confirmation: \"qwerty\"}) {id email}}")['updateUser']['email']).to eq('new@mail.com')
+        expect(data("mutation{updateUser(id: \"#{user.id}\", user: {email: \"new@mail.com\", password: \"updated_password\", password_confirmation: \"updated_password\"}) {id email}}")['updateUser']['email']).to eq('new@mail.com')
         expect(User.find(user.id).email).to eq('new@mail.com')
+        expect(User.find(user.id).valid_password?('updated_password')).to be_truthy
       end
 
       it 'Delete user by ID' do
