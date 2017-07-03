@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # consider using :lockable when user has financial transactions
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :timeoutable
 
-  validates_presence_of :email
+  validates_format_of :email, with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})\z/
 
   validates_presence_of :password, if: :password_required?
   validate :password_match?, if: :password_required?
