@@ -3,25 +3,26 @@ Mutations::MutationType = GraphQL::ObjectType.define do
 
   field :addUser, Types::UserType do
     argument :user, Mutations::UserInputType
-    resolve ->(_obj, args, _ctx) do
-      User.create!(args[:user].to_h)
+    resolve ->(_obj, args, ctx) do
+      UserPolicy.new(ctx[:current_user], User).create? ? (User.create!(args[:user].to_h)) : nil
     end
   end
 
   field :updateUser, Types::UserType do
     argument :id, !types.ID
     argument :user, Mutations::UserInputType
-    resolve ->(_obj, args, _ctx) do
+    resolve ->(_obj, args, ctx) do
       object = User.find(args['id'])
-      object.update_attributes(args[:user].to_h)
+      UserPolicy.new(ctx[:current_user], object).update? ? (object.update_attributes(args[:user].to_h)) : nil
       object
     end
   end
 
   field :deleteUser, Types::UserType do
     argument :id, !types.ID
-    resolve ->(_obj, args, _ctx) do
-      User.find(args[:id]).delete
+    resolve ->(_obj, args, ctx) do
+      object = User.find(args['id'])
+      UserPolicy.new(ctx[:current_user], object).destroy? ? (object.delete) : nil
     end
   end
 
