@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # consider using :lockable when user has financial transactions
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :timeoutable
 
-  validates_format_of :email, with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})\z/
+  # https://davidcel.is/posts/stop-validating-email-addresses-with-regex/
+  validates_format_of :email, with: /.*@.*\z/
 
   validates_presence_of :password, if: :password_required?
   validate :password_match?, if: :password_required?
