@@ -12,16 +12,16 @@ RSpec.feature feature, issues: ['railgun#178'] do
     Then user record has removed
   HEREDOC
 
-  fscenario scenario, :js do
+  scenario scenario do
     user = create(:user)
+
     login_as create(:administrator)
     visit staff_users_path
 
     click_link 'Delete', href: staff_user_path(user)
-    # For an unspecified reason, the deletion occurs without an alert confirm
     page.driver.browser.switch_to.alert.accept
 
-    #expect(User.find_by_id(user.id)).to be_nil
-    expect(user.reload.email).to be_empty
+    expect(page).not_to have_content(user.email)
+    expect(User.find_by_id(user.id)).to be_nil
   end
 end

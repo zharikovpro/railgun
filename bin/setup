@@ -17,8 +17,6 @@ else
   fi
   cp .env.example .env
 
-  sudo npm install -g phantomjs-prebuilt
-
   bundle install
 
   bundle exec rails db:create
