@@ -101,4 +101,16 @@ RSpec.resource 'Users', issues: ['railgun#174'] do
       expect(User.find(id).valid_password?(password)).not_to be_truthy
     end
   end
+
+  delete '/api/v1/users/:id' do
+    let(:user) { users.first }
+    let(:id) { user.id }
+
+    example_request 'Delete user' do
+      explanation 'Deletes user and returns status 204'
+
+      expect(status).to eq 204
+      expect(User.find_by_id(user.id)).to be_nil
+    end
+  end
 end
