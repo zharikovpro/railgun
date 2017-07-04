@@ -18,6 +18,7 @@ RSpec.feature feature, issues: ['railgun#178'] do
     visit staff_users_path
 
     click_link 'Delete', href: staff_user_path(user)
+    # For an unspecified reason, the deletion occurs without an alert confirm
     #page.driver.browser.switch_to.alert.accept
 
     expect(User.find_by_id(user.id)).to be_nil
