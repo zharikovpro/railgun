@@ -3,7 +3,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :timeoutable
 
   # https://davidcel.is/posts/stop-validating-email-addresses-with-regex/
-  validates_format_of :email, with: /.*@.*\z/
+  validates_format_of :email, with: /.*@.*/
 
   validates_presence_of :password, if: :password_required?
   validate :password_match?, if: :password_required?
