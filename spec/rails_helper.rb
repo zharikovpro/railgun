@@ -105,7 +105,6 @@ Capybara.server_host = 'localhost'
 Capybara.server_port = '5050'
 Capybara.default_max_wait_time = 10
 
-Capybara.default_driver = :chromedriver
 Capybara.javascript_driver = :chromedriver
 Capybara.ignore_hidden_elements = true
 
