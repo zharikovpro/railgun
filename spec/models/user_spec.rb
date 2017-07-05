@@ -73,4 +73,8 @@ RSpec.describe User do
       expect(build(:user, password: 'Not', password_confirmation: 'Match')).not_to be_valid
     end
   end
+
+  it 'incorrect format', issues: ['railgun#175'] do
+    expect(build(:user, email: 'not_format_email_string')).not_to be_valid
+  end
 end
