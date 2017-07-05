@@ -107,4 +107,9 @@ Capybara.default_max_wait_time = 10
 
 Capybara.javascript_driver = :chromedriver
 Capybara.ignore_hidden_elements = true
+
+Capybara::Screenshot.register_driver(:chromedriver) do |driver, path|
+  driver.browser.save_screenshot(path)
+end
+
 Capybara::Screenshot.prune_strategy = :keep_last_run
