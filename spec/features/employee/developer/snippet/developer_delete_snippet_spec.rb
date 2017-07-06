@@ -7,7 +7,7 @@ HEREDOC
 RSpec.feature feature, issues: ['railgun#184'] do
   scenario = <<~HEREDOC
     Given developer is on the Snippet page
-    When he clicks 'Delete' and accept confirm
+    When he clicks 'Delete' and accepts confirmation
     Then snippet record has removed
   HEREDOC
 

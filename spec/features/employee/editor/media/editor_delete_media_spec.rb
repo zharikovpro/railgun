@@ -7,7 +7,7 @@ HEREDOC
 RSpec.feature feature, issues: ['railgun#184'] do
   scenario = <<~HEREDOC
     Given editor is on the Medias page
-    When he clicks 'Delete' and accept confirm
+    When he clicks 'Delete' and accepts confirmation
     Then media file record has removed
   HEREDOC
 

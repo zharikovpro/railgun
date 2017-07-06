@@ -8,7 +8,7 @@ RSpec.feature feature, issues: ['railgun#178'] do
 
   scenario = <<~HEREDOC
     Given administrator is on the Users page
-    When he clicks 'Delete' and accept confirm
+    When he clicks 'Delete' and accepts confirmation
     Then user record has removed
   HEREDOC
 

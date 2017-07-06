@@ -7,7 +7,7 @@ HEREDOC
 RSpec.feature feature, issues: ['railgun#184'] do
   scenario = <<~HEREDOC
     Given editor is on the Pages page
-    When he clicks 'Delete' and accept confirm
+    When he clicks 'Delete' and accepts confirmation
     Then page record has removed
   HEREDOC
 
