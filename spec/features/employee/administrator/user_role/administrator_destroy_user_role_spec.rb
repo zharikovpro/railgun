@@ -8,7 +8,7 @@ RSpec.feature feature, issues: ['railgun#54', 'railgun#95'] do
   scenario = <<~HEREDOC
     Given user with 'support' role
     Given administrator is on the user roles page
-    When he clicks 'Delete' support role
+    When he clicks 'Delete' support role and accepts confirmation
     Then user has no 'support' role
   HEREDOC
 
