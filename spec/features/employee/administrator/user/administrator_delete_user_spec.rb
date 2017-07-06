@@ -4,7 +4,7 @@ feature = <<~HEREDOC
   so that user will be completely removed from the system
 HEREDOC
 
-RSpec.feature feature do
+RSpec.feature feature, issues: ['railgun#178'] do
   before { login_as create(:administrator) }
   let!(:user) { create(:user) }
   let!(:employee) { create(:owner) }
@@ -16,7 +16,7 @@ RSpec.feature feature do
     Then user record has removed
   HEREDOC
 
-  scenario scenario, :js, issues: ['railgun#178'] do
+  scenario scenario, :js do
     click_link 'Delete', href: staff_user_path(user)
     page.accept_alert
 
