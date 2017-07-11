@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # consider using :lockable when user has financial transactions
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :timeoutable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :timeoutable, :validatable
 
   validates_presence_of :password, if: :password_required?
   validate :password_match?, if: :password_required?
