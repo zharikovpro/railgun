@@ -74,11 +74,13 @@ RSpec.describe User do
     end
   end
 
-  it 'incorrect format', issues: ['railgun#175'] do
-    expect(build(:user, email: 'not_format_email_string')).not_to be_valid
-  end
+  context 'Email validation' do
+    it 'incorrect format', issues: ['railgun#175'] do
+      expect(build(:user, email: 'not_format_email_string')).not_to be_valid
+    end
 
-  it 'correct format', issues: ['railgun#190'] do
-    expect(build(:user, email: 'this correct format@email_string')).to be_valid
+    it 'correct format', issues: ['railgun#190'] do
+      expect(build(:user, email: 'this correct format@email_string')).to be_valid
+    end
   end
 end
