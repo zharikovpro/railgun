@@ -16,6 +16,6 @@ RSpec.feature feature, issues: ['railgun#84'] do
 
     visit media_path(media.slug)
 
-    expect(URI.parse(current_url).path).to eq(media.file.url)
+    expect(current_path).to eq(media.file.url)
   end
 end
