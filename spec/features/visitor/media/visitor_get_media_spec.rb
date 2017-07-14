@@ -14,9 +14,8 @@ RSpec.feature feature, issues: ['railgun#84'] do
   scenario scenario do
     media = create(:media, slug: 'image')
 
-    expect{ visit media_path(media.slug) }.to raise_error(ActionController::RoutingError)
+    visit media_path(media.slug)
 
-    expect(page.status_code).to eq(303)
-    expect(page.current_url).to eq(media.file.url)
+    expect(current_path).to eq(media.file.url)
   end
 end
