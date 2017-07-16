@@ -21,7 +21,7 @@ gem 'brakeman', '~> 3.6.2', require: false
 # gem 'whenever', require: false
 
 # Background jobs queue
-gem 'sidekiq', '~> 5.0.x'
+gem 'sidekiq', '~> 5.0.4'
 
 # Track failed jobs
 gem 'sidekiq-failures', '~> 0.4.5'
@@ -39,10 +39,10 @@ gem 'sidekiq-failures', '~> 0.4.5'
 # gem 'sidekiq-throttler', '~> 0.5.1'
 
 # Passenger has the best documentation and support
-gem 'passenger', '~> 5.1.4'
+gem 'passenger', '~> 5.1.5'
 
 # Rails 5 with Action Cable
-gem 'rails', '~> 5.1.1'
+gem 'rails', '~> 5.1.2'
 
 # Redis for Action Cable, Sidekiq and cache
 # gem 'redis', '~> 3.0'
@@ -58,13 +58,13 @@ gem 'actionpack-cloudflare', '~> 1.1.0'
 # gem 'logstash-logger'
 
 # PostgreSQL for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 0.21'
 
 # Validates emails
 gem 'email_validator', '~> 1.6.0'
 
 # Validate and normalize phone numbers
-gem 'phony_rails', '~> 0.14.5'
+gem 'phony_rails', '~> 0.14.6'
 
 # Versioned database views in migrations
 # gem 'scenic', '~> 1.3.0'
@@ -167,7 +167,7 @@ gem 'factory_girl_rails', '~> 4.8.0'
 gem 'faker', '~> 1.7.3'
 
 # Changes audit
-gem 'paper_trail', '~> 7.0.2'
+gem 'paper_trail', '~> 7.0.3'
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
@@ -179,7 +179,7 @@ gem 'paper_trail', '~> 7.0.2'
 # API authentication
 gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
-gem 'graphql', '~> 1.5.14'
+gem 'graphql', '~> 1.5.15'
 
 # enable cross-origin resource sharing
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
@@ -209,7 +209,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5.2'
 
   # Testing helpers
-  gem 'shoulda-matchers', '~> 3.1.1'
+  gem 'shoulda-matchers', '~> 3.1.2'
 
   # Cleaner test names
   gem 'should_not', '~> 1.1.0'
@@ -224,21 +224,21 @@ group :development, :test do
   gem 'capybara', '~> 2.13.0'
 
   # Screenshot all failures
-  gem 'capybara-screenshot', '~> 1.0.14'
+  gem 'capybara-screenshot', '~> 1.0.16'
 
   # Email utilities
   gem 'capybara-email', '~> 2.5.0'
 
   # Test with real Chrome
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'selenium-webdriver', '~> 3.4.4'
+  gem 'chromedriver-helper', '~> 1.1.0'
 
   # Testing Rack::Attack
   gem 'rack-test', '~> 0.6.3'
 
   # Documentation
-  gem 'rspec_api_documentation'
-  gem 'raddocs'
+  gem 'rspec_api_documentation', '~> 5.0.0'
+  gem 'raddocs', '~> 2.0.0'
 end
 
 group :test do
@@ -255,7 +255,7 @@ group :test do
   gem 'rspec-sidekiq', '~> 2.2.0'
 
   # Mutation testing
-  gem 'mutant-rspec', '~> 0.8.11'
+  gem 'mutant-rspec', '~> 0.8.14'
 end
 
 group :production do
