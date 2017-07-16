@@ -182,7 +182,7 @@ gem 'knock', '~> 2.1.1'
 gem 'graphql', '~> 1.6.6'
 
 # enable cross-origin resource sharing
-gem 'rack-cors', '~> 1.0.0', require: 'rack/cors'
+gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
 
 group :development do
   # Run app in background for faster reload
