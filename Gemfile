@@ -197,7 +197,7 @@ group :development do
 
   # Insert console everywhere it's required
   gem 'binding_of_caller', '~> 0.7.2'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen', '~> 3.1.5'
   gem 'web-console', '~> 3.5.1'
 
   # Debugger for console-only environments
@@ -206,7 +206,7 @@ end
 
 group :development, :test do
   # Eloquent specs
-  gem 'rspec-rails', '~> 3.5.2'
+  gem 'rspec-rails', '~> 3.6.0'
 
   # Testing helpers
   gem 'shoulda-matchers', '~> 3.1.2'
@@ -215,13 +215,13 @@ group :development, :test do
   gem 'should_not', '~> 1.1.0'
 
   # Time travel
-  gem 'timecop', '~> 0.8.1'
+  gem 'timecop', '~> 0.9.1'
 
   # View sent letters locally
   gem 'letter_opener', '~> 1.4.1'
 
   # Acceptance testing
-  gem 'capybara', '~> 2.13.0'
+  gem 'capybara', '~> 2.14.4'
 
   # Screenshot all failures
   gem 'capybara-screenshot', '~> 1.0.16'
@@ -252,7 +252,7 @@ group :test do
   gem 'codeclimate-test-reporter', '~> 1.0.8', require: nil
 
   # Test background jobs
-  gem 'rspec-sidekiq', '~> 2.2.0'
+  gem 'rspec-sidekiq', '~> 3.0.3'
 
   # Mutation testing
   gem 'mutant-rspec', '~> 0.8.14'
