@@ -3,19 +3,19 @@ source 'https://rubygems.org'
 ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 
 # Pretty print Ruby objects
-gem 'awesome_print', '~> 1.7.0'
+gem 'awesome_print', '~> 1.8.0'
 
 # Load ENV variables from .env file
 gem 'dotenv-rails', '~> 2.2.1', require: 'dotenv/rails-now'
 
 # Exceptions monitoring
-gem 'rollbar', '~> 2.14.1'
+gem 'rollbar', '~> 2.15.0'
 
 # Guess my country
 gem 'russian', '~> 0.6.0'
 
 # Generate security report with brakeman -o brakeman.html
-gem 'brakeman', '~> 3.6.2', require: false
+gem 'brakeman', '~> 3.7.0', require: false
 
 # Cron jobs manager
 # gem 'whenever', require: false
@@ -24,7 +24,7 @@ gem 'brakeman', '~> 3.6.2', require: false
 gem 'sidekiq', '~> 5.0.4'
 
 # Track failed jobs
-gem 'sidekiq-failures', '~> 0.4.5'
+gem 'sidekiq-failures', '~> 1.0.0'
 
 # Scheduled and recurrent background jobs
 # gem 'sidetiq', '~> 0.6.3'
@@ -133,7 +133,7 @@ gem 'paranoia', '~> 2.3.1'
 # gem 'chartkick'
 
 # File uploads and attachments
-gem 'aws-sdk', '~> 2.6.33'
+gem 'aws-sdk', '~> 2.10.12'
 gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
@@ -158,16 +158,16 @@ gem 'inherited_resources', '~> 1.7.2'
 gem 'formtastic', '~> 3.1'
 
 # HTML/XML parser
-gem 'nokogiri', '~> 1.7.1'
+gem 'nokogiri', '~> 1.8.0'
 
 # Model factories in all environments
 gem 'factory_girl_rails', '~> 4.8.0'
 
 # Fake values generator
-gem 'faker', '~> 1.7.3'
+gem 'faker', '~> 1.8.4'
 
 # Changes audit
-gem 'paper_trail', '~> 7.0.3'
+gem 'paper_trail', '~> 7.1.0'
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
@@ -179,7 +179,7 @@ gem 'paper_trail', '~> 7.0.3'
 # API authentication
 gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
-gem 'graphql', '~> 1.5.15'
+gem 'graphql', '~> 1.6.6'
 
 # enable cross-origin resource sharing
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
@@ -263,5 +263,5 @@ group :production do
   gem 'rack-canonical-host', '~> 0.2.3'
 
   # New Relic APM
-  gem 'newrelic_rpm', '~> 4.0.0.332'
+  gem 'newrelic_rpm', '~> 4.2.0.334'
 end
