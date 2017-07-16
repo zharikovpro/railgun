@@ -1,3 +1,6 @@
+[![Quality](http://img.shields.io/codeclimate/github/zharikovpro/railgun.svg)](https://codeclimate.com/github/zharikovpro/railgun)
+[![Dependency Status](https://gemnasium.com/badges/github.com/zharikovpro/railgun.svg)](https://gemnasium.com/github.com/zharikovpro/railgun)
+
 Railgun
 =======
 
