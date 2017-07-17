@@ -11,14 +11,14 @@ RSpec.feature feature, issues: ['railgun#192'] do
     Then he is logged in
   HEREDOC
 
-  fscenario scenario do
-    employee = create(:administrator)
-    Rails.env = 'development'
-    visit new_user_session_path
+  scenario scenario, :js do
+    employee = create(:owner)
+    visit root_path
+    expect(page).to have_content('Hello, guest')
 
-    fill_in 'Email', with: employee.email
-    click_button 'Login'
+    find('#any_login').click
+    find('#selected_id').find(:option, "#{employee.email}").select_option
 
-    expect(page).to have_content('Signed in successfully.')
+    expect(page).to have_content("Hello, #{employee.email}")
   end
 end
