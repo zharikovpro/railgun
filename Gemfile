@@ -239,6 +239,9 @@ group :development, :test do
   # Documentation
   gem 'rspec_api_documentation', '~> 5.0.0'
   gem 'raddocs', '~> 2.0.0'
+
+  # Just make your life easier with switching users
+  gem 'any_login', '~> 1.2.2'
 end
 
 group :test do

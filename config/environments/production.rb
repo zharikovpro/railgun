@@ -66,4 +66,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # AnyLogin is created to speedup development process and allow developer's quickly login as any user in DB.
+  AnyLogin.setup do |config|
+    config.enabled = false
+  end
 end
