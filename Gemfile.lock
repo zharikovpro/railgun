@@ -103,7 +103,7 @@ GEM
     capybara-email (2.5.0)
       capybara (~> 2.4)
       mail
-    capybara-screenshot (1.0.16)
+    capybara-screenshot (1.0.17)
       capybara (>= 1.0, < 3)
       launchy
     childprocess (0.7.1)
@@ -485,7 +485,7 @@ DEPENDENCIES
   byebug (~> 9.0.6)
   capybara (~> 2.14.4)
   capybara-email (~> 2.5.0)
-  capybara-screenshot (~> 1.0.16)
+  capybara-screenshot (~> 1.0.17)
   chromedriver-helper (~> 1.1.0)
   codeclimate-test-reporter (~> 1.0.8)
   coffee-rails (~> 4.2.2)
@@ -546,4 +546,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.14.6
+   1.15.3

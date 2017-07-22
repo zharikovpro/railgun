@@ -224,7 +224,7 @@ group :development, :test do
   gem 'capybara', '~> 2.14.4'
 
   # Screenshot all failures
-  gem 'capybara-screenshot', '~> 1.0.16'
+  gem 'capybara-screenshot', '~> 1.0.17'
 
   # Email utilities
   gem 'capybara-email', '~> 2.5.0'
