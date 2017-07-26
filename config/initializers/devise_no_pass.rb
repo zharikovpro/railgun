@@ -1,12 +1,24 @@
 require 'devise/strategies/authenticatable'
-
 module Devise
   module Strategies
+
     class DeviseNoPass < Authenticatable
+
+      def valid?
+        true
+      end
+
       def authenticate!
-        return super unless params[:user_sign_in]
-        user = User.find_by_email(params[:user_sign_in])
-        user ? success!(user) : raise
+
+        if params[:user][:email]
+          user = User.find_by_email(params[:user][:email])
+          if user
+            success!(user)
+          else
+            fail
+          end
+        end
+
       end
     end
   end

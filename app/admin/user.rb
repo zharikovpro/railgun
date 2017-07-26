@@ -38,8 +38,6 @@ ActiveAdmin.register User do
   end
 
   controller do
-    #skip_after_action :verify_authorized if Rails.env.development?
-    sign_in(@dev_user)
     def update
       if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
         params[:user].delete('password')
