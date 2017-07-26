@@ -12,11 +12,11 @@ RSpec.feature feature, issues: ['railgun#88'] do
   HEREDOC
 
   scenario scenario do
-  	create(:snippet, slug: 'copyright')
-  	login_as create(:developer)
+    create(:snippet, slug: 'copyright')
+    login_as create(:developer)
 
-  	visit staff_snippets_path
+    visit staff_snippets_path
 
-  	expect(page).to have_content('copyright')
+    expect(page).to have_content('copyright')
   end
 end

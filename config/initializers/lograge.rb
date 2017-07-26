@@ -9,7 +9,7 @@ Rails.application.config.lograge.enabled = true
 Rails.application.config.log_formatter = ::Logger::Formatter.new
 
 # Detect 12F app environment, compatible with Heroku
-if ENV["RAILS_LOG_TO_STDOUT"].present?
+if ENV['RAILS_LOG_TO_STDOUT'].present?
   Rails.application.config.logger = ActiveSupport::Logger.new(STDOUT)
 end
 

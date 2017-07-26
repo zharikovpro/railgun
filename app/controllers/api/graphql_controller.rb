@@ -5,7 +5,7 @@ module API
       variables = params[:variables]
       query = params[:query]
       context = {
-          current_user: current_user,
+        current_user: current_user
       }
       result = RailgunSchema.execute(query, variables: variables, context: context)
       render json: result

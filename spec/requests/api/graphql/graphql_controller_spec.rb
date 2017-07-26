@@ -1,16 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
-
   def data(query)
     post '/api/graphql', headers: authenticated_header, params: { query: query }
     response.parsed_body['data']
   end
 
   context 'Administrator can use users and user_roles' do
-    let(:authenticated_header) {
+    let(:authenticated_header) do
       { 'Authorization' => "Bearer #{create(:administrator).api_token}" }
-    }
+    end
     let(:user) { create(:user) }
 
     describe 'queries users, user_roles' do
@@ -24,7 +23,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'Create User' do
-        expect(data("mutation{addUser(user: {email: \"test@mail.com\", password: \"qwerty\", password_confirmation: \"qwerty\"}) { id email }}")['addUser']['email']).to eq('test@mail.com')
+        expect(data('mutation{addUser(user: {email: "test@mail.com", password: "qwerty", password_confirmation: "qwerty"}) { id email }}')['addUser']['email']).to eq('test@mail.com')
         expect(User.find_by_email('test@mail.com').email).to eq('test@mail.com')
         expect(User.find_by_email('test@mail.com').valid_password?('qwerty')).to be_truthy
       end
@@ -43,26 +42,26 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       it 'user roles by param id' do
         owner = create(:owner)
 
-        expect(data("{ user_roles(user_id: #{owner.id}) { roles }}")['user_roles']['roles']).to eq("#{owner.roles}")
+        expect(data("{ user_roles(user_id: #{owner.id}) { roles }}")['user_roles']['roles']).to eq(owner.roles.to_s)
       end
 
       it 'Add user role by user ID' do
-        expect(data("mutation{addUserRole(user_id: \"#{user.id}\", user_role: {roles: \"editor\"}) { roles }}")['addUserRole']['roles']).to eq("#{[:editor]}")
+        expect(data("mutation{addUserRole(user_id: \"#{user.id}\", user_role: {roles: \"editor\"}) { roles }}")['addUserRole']['roles']).to eq('[:editor]')
         expect(User.find(user.id).roles).to include(:editor)
       end
 
       it 'Delete user_role by user ID' do
         user.add_role(:developer)
-        expect(data("mutation{deleteUserRole(user_id: \"#{user.id}\", user_role: {roles: \"developer\"}) { roles }}")['deleteUserRole']['roles']).to eq("#{user.roles}")
+        expect(data("mutation{deleteUserRole(user_id: \"#{user.id}\", user_role: {roles: \"developer\"}) { roles }}")['deleteUserRole']['roles']).to eq(user.roles.to_s)
         expect(User.find(user.id).roles).not_to include(:developer)
       end
     end
   end
 
   context 'Developer can use snippets' do
-    let(:authenticated_header) {
+    let(:authenticated_header) do
       { 'Authorization' => "Bearer #{create(:developer).api_token}" }
-    }
+    end
 
     describe 'queries snippets' do
       let(:snippet) { create(:snippet) }
@@ -78,7 +77,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'Create Snippet' do
-        expect(data("mutation{addSnippet(snippet: {slug: \"script\", text: \"My graphql snippet\"}) { slug text }}")['addSnippet']['slug']).to eq('script')
+        expect(data('mutation{addSnippet(snippet: {slug: "script", text: "My graphql snippet"}) { slug text }}')['addSnippet']['slug']).to eq('script')
         expect(Snippet.find_by_slug('script').text).to eq('My graphql snippet')
       end
 
@@ -95,9 +94,9 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
   end
 
   context 'Editor can use medias and pages' do
-    let(:authenticated_header) {
+    let(:authenticated_header) do
       { 'Authorization' => "Bearer #{create(:editor).api_token}" }
-    }
+    end
 
     describe 'queries medias' do
       let(:media) { create(:media) }
@@ -142,7 +141,7 @@ RSpec.describe API::GraphqlController, issues: ['railgun#147'] do
       end
 
       it 'Create Page' do
-        expect(data("mutation{addPage(page: {slug: \"faq\", markdown: \"some text\"}) { slug markdown }}")['addPage']['slug']).to eq('faq')
+        expect(data('mutation{addPage(page: {slug: "faq", markdown: "some text"}) { slug markdown }}')['addPage']['slug']).to eq('faq')
         expect(Page.find_by_slug('faq').markdown).to eq('some text')
       end
 

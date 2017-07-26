@@ -57,9 +57,9 @@ RSpec.describe API::V1::ResourcesController, issues: ['railgun#133'] do
     m.drop_table :resources
   end
 
-  let(:authenticated_header) {
+  let(:authenticated_header) do
     { 'Authorization' => "Bearer #{create(:user).api_token}" }
-  }
+  end
   let(:resource) { Resource.create!(content: 'something') }
 
   context 'unauthenticated user' do
@@ -69,7 +69,7 @@ RSpec.describe API::V1::ResourcesController, issues: ['railgun#133'] do
       expect(response).to have_http_status(401)
     end
 
-    %w[get put delete].each do |method|
+    %w(get put delete).each do |method|
       it "#{method.to_s.upcase} resource returns status 401" do
         public_send(method, '/api/v1/resources/1')
 
@@ -79,7 +79,7 @@ RSpec.describe API::V1::ResourcesController, issues: ['railgun#133'] do
   end
 
   context 'resource not found' do
-    %w[get put delete].each do |method|
+    %w(get put delete).each do |method|
       it "#{method.to_s.upcase} returns status 404" do
         public_send(method, '/api/v1/resources/-1', headers: authenticated_header)
 

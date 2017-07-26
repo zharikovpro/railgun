@@ -46,7 +46,7 @@ RSpec.feature feature, issues: ['railgun#76'] do
     visit staff_users_path
 
     click_link('Employees')
-    
+
     expect(User.employees.count).to eq(2)
   end
 end

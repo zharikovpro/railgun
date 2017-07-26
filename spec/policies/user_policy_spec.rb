@@ -15,7 +15,7 @@ RSpec.describe UserPolicy, issues: ['railgun#54'] do
         create(:user)
 
         resolved_scope = subject::Scope.new(administrator, User).resolve
-        
+
         expect(resolved_scope.count).to eq(2)
       end
     end

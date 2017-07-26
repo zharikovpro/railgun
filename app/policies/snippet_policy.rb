@@ -1,9 +1,7 @@
 class SnippetPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     def resolve
-      if user.developer?
-        scope.all
-      end
+      scope.all if user.developer?
     end
   end
 

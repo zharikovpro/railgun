@@ -177,9 +177,9 @@ gem 'paper_trail', '~> 7.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # API authentication
+gem 'graphql', '~> 1.6.6'
 gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
-gem 'graphql', '~> 1.6.6'
 
 # enable cross-origin resource sharing
 gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
@@ -230,15 +230,15 @@ group :development, :test do
   gem 'capybara-email', '~> 2.5.0'
 
   # Test with real Chrome
-  gem 'selenium-webdriver', '~> 3.4.4'
   gem 'chromedriver-helper', '~> 1.1.0'
+  gem 'selenium-webdriver', '~> 3.4.4'
 
   # Testing Rack::Attack
   gem 'rack-test', '~> 0.6.3'
 
   # Documentation
-  gem 'rspec_api_documentation', '~> 5.0.0'
   gem 'raddocs', '~> 2.0.0'
+  gem 'rspec_api_documentation', '~> 5.0.0'
 end
 
 group :test do
