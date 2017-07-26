@@ -11,5 +11,14 @@ RSpec.feature feature, issues: ['railgun#192'] do
     Then he is logged in
   HEREDOC
 
-  scenario scenario
+  scenario scenario do
+    instance_variable_set('@dev_user', true)
+    user = create(:administrator)
+    visit new_user_session_path
+
+    fill_in 'Email', with: user.email
+    click_button 'Login'
+
+    expect(page).to have_content('Signed in successfully.')
+  end
 end
