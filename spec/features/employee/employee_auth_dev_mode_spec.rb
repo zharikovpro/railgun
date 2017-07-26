@@ -11,14 +11,5 @@ RSpec.feature feature, issues: ['railgun#192'] do
     Then he is logged in
   HEREDOC
 
-  scenario scenario, :js do
-    employee = create(:owner)
-    visit root_path
-    expect(page).to have_content('Hello, guest')
-
-    find('#any_login').click
-    find('#selected_id').find(:option, "#{employee.email}").select_option
-
-    expect(page).to have_content("Hello, #{employee.email}")
-  end
+  scenario scenario
 end
