@@ -26,3 +26,5 @@ ClassAndModuleChildren:
   Enabled: false
 Style/RegexpLiteral:
   EnforcedStyle: slashes
+Style/SpecialGlobalVars:
+  Enabled: false
