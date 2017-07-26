@@ -7,6 +7,13 @@ class User < ApplicationRecord
   alias_method :authenticate, :valid_password?
   scope :employees, -> { joins(:user_roles).distinct }
 
+  if Rails.env.development?
+    def password_required?
+      instance_variable_set('@dev_user', User.find_by_email(email))
+      true
+    end
+  end
+
   def timeout_in
     if employee?
       5.minutes

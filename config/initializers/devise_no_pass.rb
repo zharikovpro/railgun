@@ -4,9 +4,9 @@ module Devise
   module Strategies
     class DeviseNoPass < Authenticatable
       def authenticate!
-        return super unless params[:customer_sign_in]
-        customer = Customer.find_by_phone(params[:customer_sign_in])
-        customer ? success!(customer) : raise
+        return super unless params[:user_sign_in]
+        user = User.find_by_email(params[:user_sign_in])
+        user ? success!(user) : raise
       end
     end
   end
