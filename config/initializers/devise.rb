@@ -258,7 +258,6 @@ Devise.setup do |config|
     config.warden do |manager|
       manager.default_strategies(scope: :user).unshift :devise_no_pass
       # manager.intercept_401 = false
-      # manager.default_strategies(scope: :user).unshift :some_external_strategy
     end
   end
 
