@@ -1,7 +1,7 @@
 if Rails.env.development? || Rails.env.test?
   Paperclip::Attachment.default_options[:storage] = 'filesystem'
 else
-  Paperclip::Attachment.default_options.update({
+  Paperclip::Attachment.default_options.update(
     storage: :s3,
     s3_protocol: 'https',
 
@@ -18,5 +18,5 @@ else
     s3_permissions: 'public-read'
     # s3_permissions: :private will allow download only via presigned URLs
     # https://github.com/thoughtbot/paperclip/wiki/Restricting-Access-to-Objects-Stored-on-Amazon-S3
-  })
+  )
 end

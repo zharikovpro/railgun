@@ -33,7 +33,7 @@ RSpec.resource 'UserRoles', issues: ['railgun#168'] do
       explanation 'Get a user_role by id'
 
       expect(status).to eq 200
-      expect(JSON.parse(response_body)['role']).to match("#{user.roles[0]}")
+      expect(JSON.parse(response_body)['role']).to match(user.roles[0].to_s)
     end
   end
 
@@ -41,7 +41,7 @@ RSpec.resource 'UserRoles', issues: ['railgun#168'] do
     parameter :user_id, 'User ID'
     parameter :role, 'User role'
 
-    let(:user_id) { "#{user.id}" }
+    let(:user_id) { user.id.to_s }
     let(:role) { 'editor' }
 
     let(:raw_post) { params.to_json }

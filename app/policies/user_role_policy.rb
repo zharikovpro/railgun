@@ -1,9 +1,7 @@
 class UserRolePolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     def resolve
-      if user.administrator?
-        scope.all
-      end
+      scope.all if user.administrator?
     end
   end
 

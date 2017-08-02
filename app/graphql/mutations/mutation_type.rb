@@ -4,7 +4,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
   field :addUser, Types::UserType do
     argument :user, Mutations::UserInputType
     resolve ->(_obj, args, ctx) do
-      UserPolicy.new(ctx[:current_user], User).create? ? (User.create!(args[:user].to_h)) : nil
+      UserPolicy.new(ctx[:current_user], User).create? ? User.create!(args[:user].to_h) : nil
     end
   end
 
@@ -13,7 +13,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :user, Mutations::UserInputType
     resolve ->(_obj, args, ctx) do
       object = User.find(args['id'])
-      UserPolicy.new(ctx[:current_user], object).update? ? (object.update_attributes(args[:user].to_h)) : nil
+      UserPolicy.new(ctx[:current_user], object).update? ? object.update_attributes(args[:user].to_h) : nil
       object
     end
   end
@@ -22,7 +22,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :id, !types.ID
     resolve ->(_obj, args, ctx) do
       object = User.find(args['id'])
-      UserPolicy.new(ctx[:current_user], object).destroy? ? (object.delete) : nil
+      UserPolicy.new(ctx[:current_user], object).destroy? ? object.delete : nil
     end
   end
 
@@ -31,7 +31,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :user_role, Mutations::UserRoleInputType
     resolve ->(_obj, args, ctx) do
       object = User.find(args[:user_id])
-      UserRolePolicy.new(ctx[:current_user], object).create? ? (object.add_role(args[:user_role]['roles'])) : nil
+      UserRolePolicy.new(ctx[:current_user], object).create? ? object.add_role(args[:user_role]['roles']) : nil
       object
     end
   end
@@ -41,7 +41,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :user_role, Mutations::UserRoleInputType
     resolve ->(_obj, args, ctx) do
       object = User.find(args[:user_id])
-      UserRolePolicy.new(ctx[:current_user], object).destroy? ? (object.user_roles.find_by_role(args[:user_role]['roles']).delete) : nil
+      UserRolePolicy.new(ctx[:current_user], object).destroy? ? object.user_roles.find_by_role(args[:user_role]['roles']).delete : nil
       object
     end
   end
@@ -49,7 +49,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
   field :addPage, Types::PageType do
     argument :page, Mutations::PageInputType
     resolve ->(_obj, args, ctx) do
-      PagePolicy.new(ctx[:current_user], Page).create? ? (Page.create!(args[:page].to_h)) : nil
+      PagePolicy.new(ctx[:current_user], Page).create? ? Page.create!(args[:page].to_h) : nil
     end
   end
 
@@ -58,7 +58,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, ctx) do
       object = Page.find_by_slug(args['slug'])
-      PagePolicy.new(ctx[:current_user], object).update? ? (object.update_attributes(args[:page].to_h)) : nil
+      PagePolicy.new(ctx[:current_user], object).update? ? object.update_attributes(args[:page].to_h) : nil
       object
     end
   end
@@ -67,14 +67,14 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, ctx) do
       object = Page.find_by_slug(args[:slug])
-      PagePolicy.new(ctx[:current_user], object).destroy? ? (object.delete) : nil
+      PagePolicy.new(ctx[:current_user], object).destroy? ? object.delete : nil
     end
   end
 
   field :addMedia, Types::MediaType do
     argument :media, Mutations::MediaInputType
     resolve ->(_obj, args, ctx) do
-      MediaPolicy.new(ctx[:current_user], Media).create? ? (Media.create!(args[:media].to_h)) : nil
+      MediaPolicy.new(ctx[:current_user], Media).create? ? Media.create!(args[:media].to_h) : nil
     end
   end
 
@@ -83,7 +83,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, ctx) do
       object = Media.find_by_slug(args['slug'])
-      MediaPolicy.new(ctx[:current_user], object).update? ? (object.update_attributes(args[:media].to_h)) : nil
+      MediaPolicy.new(ctx[:current_user], object).update? ? object.update_attributes(args[:media].to_h) : nil
       object
     end
   end
@@ -92,14 +92,14 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, ctx) do
       object = Media.find_by_slug(args[:slug])
-      MediaPolicy.new(ctx[:current_user], object).destroy? ? (object.delete) : nil
+      MediaPolicy.new(ctx[:current_user], object).destroy? ? object.delete : nil
     end
   end
 
   field :addSnippet, Types::SnippetType do
     argument :snippet, Mutations::SnippetInputType
     resolve ->(_obj, args, ctx) do
-      SnippetPolicy.new(ctx[:current_user], Snippet).create? ? (Snippet.create!(args[:snippet].to_h)) : nil
+      SnippetPolicy.new(ctx[:current_user], Snippet).create? ? Snippet.create!(args[:snippet].to_h) : nil
     end
   end
 
@@ -108,7 +108,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, ctx) do
       object = Snippet.find_by_slug(args['slug'])
-      SnippetPolicy.new(ctx[:current_user], object).update? ? (object.update_attributes(args[:snippet].to_h)) : nil
+      SnippetPolicy.new(ctx[:current_user], object).update? ? object.update_attributes(args[:snippet].to_h) : nil
       object
     end
   end
@@ -117,7 +117,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, ctx) do
       object = Snippet.find_by_slug(args[:slug])
-      SnippetPolicy.new(ctx[:current_user], object).destroy? ? (object.delete) : nil
+      SnippetPolicy.new(ctx[:current_user], object).destroy? ? object.delete : nil
     end
   end
 end

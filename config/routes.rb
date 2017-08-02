@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   resources :medias, only: :show
 
   devise_for :users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
+  begin
+    ActiveAdmin.routes(self)
+  rescue
+    ActiveAdmin::DatabaseHitDuringLoad
+  end
 
-  namespace :api, defaults: {format: :json} do
+  namespace :api, defaults: { format: :json } do
     post 'graphql' => 'graphql#execute'
     namespace :v1 do
       post 'tokens' => 'user_token#create'
@@ -18,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   require 'sidekiq/web'
-  authenticate :user, lambda { |user| user.try(:developer?) } do
+  authenticate :user, ->(user) { user.try(:developer?) } do
     mount Sidekiq::Web => '/staff/sidekiq'
   end
 end

@@ -1,0 +1,30 @@
+AllCops:
+  Includes:
+    - Rakefile
+    - Gemfile
+# Customize rules
+Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Metrics/LineLength:
+  Max: 190
+  Exclude:
+    - spec/requests/api/graphql/**
+Metrics/BlockLength:
+  Max: 125
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%w': ()
+Style/SymbolArray:
+  EnforcedStyle: brackets
+Style/Lambda:
+  Enabled: false
+ClassAndModuleChildren:
+  Enabled: false
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+Style/SpecialGlobalVars:
+  Enabled: false

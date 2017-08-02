@@ -30,11 +30,11 @@ RSpec.configure do |config|
     Timeout.timeout(60, &example)
   end
 
-  config.before(:each) { |example| fail 'Add issues metadata!' if example.metadata.fetch(:issues, []).empty? }
-  
+  config.before(:each) { |example| raise 'Add issues metadata!' if example.metadata.fetch(:issues, []).empty? }
+
   if ENV['CI']
-    config.before(focus: true) { fail 'Remove focused specs before commit!' }
-    config.before(skip: true) { fail 'Remove skipped specs before commit!' }
+    config.before(focus: true) { raise 'Remove focused specs before commit!' }
+    config.before(skip: true) { raise 'Remove skipped specs before commit!' }
   end
 
   # rspec-expectations config goes here. You can use an alternate

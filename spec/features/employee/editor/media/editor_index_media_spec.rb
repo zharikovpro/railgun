@@ -12,11 +12,11 @@ RSpec.feature feature, issues: ['railgun#84'] do
   HEREDOC
 
   scenario scenario do
-  	create(:media, slug: 'document')
-  	login_as create(:editor)
+    create(:media, slug: 'document')
+    login_as create(:editor)
 
-  	visit staff_medias_path
+    visit staff_medias_path
 
-  	expect(page).to have_content('document')
+    expect(page).to have_content('document')
   end
 end
