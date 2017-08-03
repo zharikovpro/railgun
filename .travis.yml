@@ -27,4 +27,4 @@ script:
   - bundle exec rails db:structure:load
   - bundle exec rails db:seed
   - rake ci
-  - CODECLIMATE_REPO_TOKEN=0a7c2a9ff76974762fbe7151d5e4aa171f8a86682672d0b32d52ae46b10b3f44 bundle exec codeclimate-test-reporter
+  - CODECLIMATE_REPO_TOKEN=861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe bundle exec codeclimate-test-reporter
