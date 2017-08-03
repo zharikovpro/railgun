@@ -12,7 +12,6 @@ RSpec.feature feature, issues: ['railgun#192'] do
   HEREDOC
 
   scenario scenario do
-    allow(Rails.env).to receive(:development?).and_return(true)
     user = create(:administrator)
     visit new_user_session_path
 

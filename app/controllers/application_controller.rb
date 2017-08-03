@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_paper_trail_whodunnit
-  before_action :authenticate, only: :create unless Rails.env.production?
+  before_action :authenticate, only: :create, if: :devise_controller? unless Rails.env.production?
 
   include Pundit
   after_action :verify_policy_scoped, only: :index, unless: :devise_or_active_admin_controller?
@@ -16,12 +16,10 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate
-    sign_in(model_by_param(User, :email))
-  rescue
-    'Model cannot be authenticate'
+    sign_in(model_by_params(User, :email))
   end
 
-  def model_by_param(model, param)
+  def model_by_params(model, param)
     model.find_by("#{param}": params[model.name.underscore][param])
   end
 
