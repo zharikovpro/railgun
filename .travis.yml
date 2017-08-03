@@ -19,12 +19,16 @@ addons:
     - postgresql-contrib-9.6
   postgresql: "9.6"
   chrome: stable
-before_install:
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  code_climate:
+    repo_token: 861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - google-chrome-stable --headless --no-sandbox --disable-gpu --remote-debugging-port=9222 http://localhost &
 script:
   - cp .env.example .env
   - bundle exec rails db:create
   - bundle exec rails db:structure:load
   - bundle exec rails db:seed
   - rake ci
-  - CODECLIMATE_REPO_TOKEN=861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe bundle exec codeclimate-test-reporter
+  - bundle exec codeclimate-test-reporter
