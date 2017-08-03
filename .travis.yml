@@ -31,4 +31,5 @@ script:
   - bundle exec rails db:structure:load
   - bundle exec rails db:seed
   - rake ci
+after_success:
   - bundle exec codeclimate-test-reporter
