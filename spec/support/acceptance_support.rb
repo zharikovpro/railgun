@@ -4,16 +4,11 @@ module AcceptanceSupport
   end
 
   def screenshot(outline: nil)
-    unless ENV['CI']
-      if outline
-        page.execute_script("$('#{outline}').css('outline', '9px solid magenta')")
-      end
+    return unless ENV['CI'].nil?
+    page.execute_script("$('#{outline}').css('outline', '9px solid magenta')") if outline
 
-      screenshot_and_open_image
+    screenshot_and_open_image
 
-      if outline
-        page.execute_script("$('#{outline}').css('outline', 'none')")
-      end
-    end
+    page.execute_script("$('#{outline}').css('outline', 'none')") if outline
   end
 end

@@ -31,7 +31,7 @@ RSpec.describe User do
     end
   end
 
-  context 'has no role' do 
+  context 'has no role' do
     it 'is not employee', issues: ['railgun#76'] do
       user = create(:user)
 
@@ -55,7 +55,7 @@ RSpec.describe User do
     user = create(:editor)
     user.add_role(:developer)
 
-    missing_roles  = user.missing_roles
+    missing_roles = user.missing_roles
 
     expect(missing_roles).to contain_exactly(:owner, :administrator, :moderator, :support)
   end

@@ -4,6 +4,6 @@ RSpec.describe 'layouts/application' do
 
     render template: 'application/root', layout: 'layouts/application'
 
-    expect(response).to match(/#{snippet.text}<\/head>/)
+    expect(response).to match(%r{#{snippet.text}<\/head>})
   end
 end

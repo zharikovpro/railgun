@@ -8,7 +8,7 @@ ActiveAdmin.register UserRole do
     f.inputs 'Roles' do
       f.div User.find_by_id(params[:user_id]).try(:email)
       f.input :role, as: :select, collection: User.find_by_id(params[:user_id]).missing_roles
-      f.input :user_id, input_html: {value: params[:user_id]}, as: :hidden
+      f.input :user_id, input_html: { value: params[:user_id] }, as: :hidden
     end
 
     f.actions
