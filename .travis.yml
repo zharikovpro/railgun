@@ -1,0 +1,34 @@
+sudo: required
+dist: trusty
+notifications:
+  email: false
+language: ruby
+rvm:
+  - 2.4.1
+env:
+  - RAILS_ENV=test
+cache:
+  bundler: true
+services:
+  - postgresql
+addons:
+  apt:
+    packages:
+    - postgresql-9.6
+    - postgresql-contrib-9.6
+  postgresql: "9.6"
+  chrome: stable
+  code_climate:
+    repo_token: 861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - google-chrome-stable --headless --no-sandbox --disable-gpu --remote-debugging-port=9222 http://localhost &
+script:
+  - cp .env.example .env
+  - bundle exec rails db:create
+  - bundle exec rails db:structure:load
+  - bundle exec rails db:seed
+  - rake ci
+after_success:
+  - bundle exec codeclimate-test-reporter
