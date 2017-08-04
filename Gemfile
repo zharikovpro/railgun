@@ -39,16 +39,16 @@ gem 'sidekiq-failures', '~> 1.0.0'
 # gem 'sidekiq-throttler', '~> 0.5.1'
 
 # Passenger has the best documentation and support
-gem 'passenger', '~> 5.1.5'
+gem 'passenger', '~> 5.1.7'
 
 # Rails 5 with Action Cable
-gem 'rails', '~> 5.1.2'
+gem 'rails', '~> 5.1.3'
 
 # Redis for Action Cable, Sidekiq and cache
 # gem 'redis', '~> 3.0'
 
 # Compact logs
-gem 'lograge', '~> 0.5.1'
+gem 'lograge', '~> 0.6.0'
 
 # Restore original remote_ip when using CloudFlare
 gem 'actionpack-cloudflare', '~> 1.1.0'
@@ -137,7 +137,7 @@ gem 'aws-sdk', '~> 2.10.12'
 gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', '~> 1.0.0'
+gem 'activeadmin', '~> 1.1.0'
 gem 'inherited_resources', '~> 1.7.2'
 
 # Clone records with a click
@@ -193,7 +193,7 @@ group :development do
   gem 'spring-commands-rspec', '~> 1.0.4'
 
   # Very informative error pages with console
-  gem 'better_errors', '~> 2.1.1'
+  gem 'better_errors', '~> 2.3.0'
 
   # Insert console everywhere it's required
   gem 'binding_of_caller', '~> 0.7.2'
@@ -221,10 +221,10 @@ group :development, :test do
   gem 'letter_opener', '~> 1.4.1'
 
   # Acceptance testing
-  gem 'capybara', '~> 2.14.4'
+  gem 'capybara', '~> 2.15.0'
 
   # Screenshot all failures
-  gem 'capybara-screenshot', '~> 1.0.16'
+  gem 'capybara-screenshot', '~> 1.0.17'
 
   # Email utilities
   gem 'capybara-email', '~> 2.5.0'
@@ -237,7 +237,7 @@ group :development, :test do
   gem 'rack-test', '~> 0.6.3'
 
   # Documentation
-  gem 'raddocs', '~> 2.0.0'
+  gem 'raddocs', '~> 2.2.0'
   gem 'rspec_api_documentation', '~> 5.0.0'
 end
 
@@ -263,5 +263,5 @@ group :production do
   gem 'rack-canonical-host', '~> 0.2.3'
 
   # New Relic APM
-  gem 'newrelic_rpm', '~> 4.2.0.334'
+  gem 'newrelic_rpm', '~> 4.3.0.335'
 end
