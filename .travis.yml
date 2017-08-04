@@ -14,7 +14,6 @@ services:
 addons:
   apt:
     packages:
-    - xvfb
     - postgresql-9.6
     - postgresql-contrib-9.6
   postgresql: "9.6"
