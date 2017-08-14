@@ -133,7 +133,7 @@ gem 'paranoia', '~> 2.3.1'
 # gem 'chartkick'
 
 # File uploads and attachments
-gem 'aws-sdk', '~> 2.10.12'
+gem 'aws-sdk', '~> 2.10.21'
 gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
@@ -177,7 +177,7 @@ gem 'paper_trail', '~> 7.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # API authentication
-gem 'graphql', '~> 1.6.6'
+gem 'graphql', '~> 1.6.7'
 gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
 
@@ -206,7 +206,7 @@ end
 
 group :development, :test do
   # Eloquent specs
-  gem 'rspec-rails', '~> 3.6.0'
+  gem 'rspec-rails', '~> 3.6.1'
 
   # Testing helpers
   gem 'shoulda-matchers', '~> 3.1.2'
@@ -221,7 +221,7 @@ group :development, :test do
   gem 'letter_opener', '~> 1.4.1'
 
   # Acceptance testing
-  gem 'capybara', '~> 2.15.0'
+  gem 'capybara', '~> 2.15.1'
 
   # Screenshot all failures
   gem 'capybara-screenshot', '~> 1.0.17'
