@@ -133,7 +133,7 @@ gem 'paranoia', '~> 2.3.1'
 # gem 'chartkick'
 
 # File uploads and attachments
-gem 'aws-sdk', '~> 2.10.21'
+gem 'aws-sdk', '~> 2.10.x'
 gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
@@ -182,7 +182,7 @@ gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
 
 # enable cross-origin resource sharing
-gem 'rack-cors', '~> 0.4.1', require: 'rack/cors'
+gem 'rack-cors', '~> 1.0.1', require: 'rack/cors'
 
 group :development do
   # Run app in background for faster reload
