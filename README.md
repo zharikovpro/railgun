@@ -18,3 +18,8 @@ Checkup
 -------
 
 `rspec`
+
+Docker
+------
+
+[Unofficial image](https://hub.docker.com/r/mifrill/railgun-browser/)
