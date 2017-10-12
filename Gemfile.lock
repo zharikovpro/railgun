@@ -276,7 +276,7 @@ GEM
       activerecord (>= 4.0, < 5.2)
     parser (2.4.0.0)
       ast (~> 2.2)
-    passenger (5.1.7)
+    passenger (5.1.10)
       rack
       rake (>= 0.8.1)
     pg (0.21.0)
