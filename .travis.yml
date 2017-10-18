@@ -29,6 +29,6 @@ script:
   - bundle exec rails db:create
   - bundle exec rails db:structure:load
   - bundle exec rails db:seed
-  - rake ci
+  - bundle exec rake ci
 after_success:
   - bundle exec codeclimate-test-reporter
