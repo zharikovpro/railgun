@@ -239,6 +239,22 @@ group :development, :test do
   # Documentation
   gem 'raddocs', '~> 2.2.0'
   gem 'rspec_api_documentation', '~> 5.0.0'
+
+  # Automatically launches by Guard
+
+  # Code style checker
+  gem 'guard-rubocop'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec'
+  # Automagically launches tests for changed files
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  # And updates gems when needed
+  gem 'guard-bundler', require: false
+  # And auto starts rails server
+  gem 'guard-rails'
+  # And auto runs migrations
+  gem 'guard-migrate'
 end
 
 group :test do

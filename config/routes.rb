@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :users, ActiveAdmin::Devise.config
   begin
     ActiveAdmin.routes(self)
-  rescue
+  rescue StandardError
     ActiveAdmin::DatabaseHitDuringLoad
   end
 

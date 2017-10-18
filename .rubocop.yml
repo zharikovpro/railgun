@@ -2,6 +2,8 @@ AllCops:
   Includes:
     - Rakefile
     - Gemfile
+  Excludes:
+    - Guardfile
 # Customize rules
 Documentation:
   Enabled: false
