@@ -9,13 +9,13 @@ gem 'awesome_print', '~> 1.8.0'
 gem 'dotenv-rails', '~> 2.2.1', require: 'dotenv/rails-now'
 
 # Exceptions monitoring
-gem 'rollbar', '~> 2.15.0'
+gem 'rollbar', '~> 2.15.5'
 
 # Guess my country
 gem 'russian', '~> 0.6.0'
 
 # Generate security report with brakeman -o brakeman.html
-gem 'brakeman', '~> 3.7.0', require: false
+gem 'brakeman', '~> 4.1.1', require: false
 
 # Cron jobs manager
 # gem 'whenever', require: false
@@ -39,7 +39,7 @@ gem 'sidekiq-failures', '~> 1.0.0'
 # gem 'sidekiq-throttler', '~> 0.5.1'
 
 # Passenger has the best documentation and support
-gem 'passenger', '~> 5.1.7'
+gem 'passenger', '~> 5.1.12'
 
 # Rails 5 with Action Cable
 gem 'rails', '~> 5.1.3'
@@ -48,7 +48,7 @@ gem 'rails', '~> 5.1.3'
 # gem 'redis', '~> 3.0'
 
 # Compact logs
-gem 'lograge', '~> 0.6.0'
+gem 'lograge', '~> 0.9.0'
 
 # Restore original remote_ip when using CloudFlare
 gem 'actionpack-cloudflare', '~> 1.1.0'
@@ -79,13 +79,13 @@ gem 'phony_rails', '~> 0.14.6'
 # gem 'hightop', '~> 0.1.4'
 
 # Authentication engine
-gem 'devise', '~> 4.3.0'
+gem 'devise', '~> 4.4.0'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
 # Slim for templates
-gem 'slim', '~> 3.0.8'
+gem 'slim', '~> 3.0.9'
 gem 'slim-rails', '~> 3.1.0'
 
 # Stylus for styles
@@ -121,7 +121,7 @@ gem 'coffee-rails', '~> 4.2.2'
 gem 'pundit', '~> 1.1.0'
 
 # Soft delete
-gem 'paranoia', '~> 2.3.1'
+gem 'paranoia', '~> 2.4.0'
 
 # Encrypted attributes
 # gem 'attr_encrypted', '~> 3.0', '>= 3.0.1'
@@ -133,12 +133,12 @@ gem 'paranoia', '~> 2.3.1'
 # gem 'chartkick'
 
 # File uploads and attachments
-gem 'aws-sdk', '~> 2.10.x'
+gem 'aws-sdk', '~> 3.0.x'
 gem 'paperclip', '~> 5.1.0'
 
 # Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', '~> 1.1.0'
-gem 'inherited_resources', '~> 1.7.2'
+gem 'activeadmin', '~> 1.2.1'
+gem 'inherited_resources', '~> 1.8.0'
 
 # Clone records with a click
 # gem 'active_admin-duplicatable'
@@ -161,13 +161,13 @@ gem 'formtastic', '~> 3.1'
 gem 'nokogiri', '~> 1.8.1'
 
 # Model factories in all environments
-gem 'factory_girl_rails', '~> 4.8.0'
+gem 'factory_girl_rails', '~> 4.9.0'
 
 # Fake values generator
-gem 'faker', '~> 1.8.4'
+gem 'faker', '~> 1.8.7'
 
 # Changes audit
-gem 'paper_trail', '~> 7.1.0'
+gem 'paper_trail', '~> 8.1.2'
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
@@ -177,7 +177,7 @@ gem 'paper_trail', '~> 7.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # API authentication
-gem 'graphql', '~> 1.6.7'
+gem 'graphql', '~> 1.7.8'
 gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
 
@@ -193,15 +193,15 @@ group :development do
   gem 'spring-commands-rspec', '~> 1.0.4'
 
   # Very informative error pages with console
-  gem 'better_errors', '~> 2.3.0'
+  gem 'better_errors', '~> 2.4.0'
 
   # Insert console everywhere it's required
-  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'binding_of_caller', '~> 0.8.0'
   gem 'listen', '~> 3.1.5'
   gem 'web-console', '~> 3.5.1'
 
   # Debugger for console-only environments
-  gem 'byebug', '~> 9.0.6', platform: :mri
+  gem 'byebug', '~> 9.1.0', platform: :mri
 end
 
 group :development, :test do
@@ -218,23 +218,23 @@ group :development, :test do
   gem 'timecop', '~> 0.9.1'
 
   # View sent letters locally
-  gem 'letter_opener', '~> 1.4.1'
+  gem 'letter_opener', '~> 1.6.0'
 
   # Acceptance testing
-  gem 'capybara', '~> 2.15.1'
+  gem 'capybara', '~> 2.17.0'
 
   # Screenshot all failures
-  gem 'capybara-screenshot', '~> 1.0.17'
+  gem 'capybara-screenshot', '~> 1.0.18'
 
   # Email utilities
   gem 'capybara-email', '~> 2.5.0'
 
   # Test with real Chrome
   gem 'chromedriver-helper', '~> 1.1.0'
-  gem 'selenium-webdriver', '~> 3.4.4'
+  gem 'selenium-webdriver', '~> 3.8.0'
 
   # Testing Rack::Attack
-  gem 'rack-test', '~> 0.6.3'
+  gem 'rack-test', '~> 0.8.2'
 
   # Documentation
   gem 'raddocs', '~> 2.2.0'
@@ -244,11 +244,11 @@ group :development, :test do
 
   # Code style checker
   gem 'guard-rubocop', '~> 1.3.0'
-  gem 'rubocop', '~> 0.50.0', require: false
-  gem 'rubocop-rspec', '~> 1.18.0'
+  gem 'rubocop', '~> 0.52.1', require: false
+  gem 'rubocop-rspec', '~> 1.22.0'
 
   # Automagically launches tests for changed files
-  gem 'guard', '~> 2.14.1'
+  gem 'guard', '~> 2.14.2'
   gem 'guard-rspec', '~> 4.7.3', require: false
 
   # And updates gems when needed
@@ -263,7 +263,7 @@ end
 
 group :test do
   # Instafailing formatter
-  gem 'fuubar', '~> 2.2.0'
+  gem 'fuubar', '~> 2.3.1'
 
   # Generate code coverate reports
   gem 'simplecov', '~> 0.13.0'
@@ -283,5 +283,5 @@ group :production do
   gem 'rack-canonical-host', '~> 0.2.3'
 
   # New Relic APM
-  gem 'newrelic_rpm', '~> 4.3.0.335'
+  gem 'newrelic_rpm', '~> 4.7.1.340'
 end
