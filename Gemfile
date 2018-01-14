@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version'))[/(\d\.){2}\d/]
+ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 
 # Pretty print Ruby objects
 gem 'awesome_print', '~> 1.8.0'
