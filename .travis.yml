@@ -4,7 +4,7 @@ notifications:
   email: false
 language: ruby
 rvm:
-  - 2.4.1
+  - 2.5.0
 env:
   - RAILS_ENV=test
 cache:
@@ -21,6 +21,7 @@ addons:
   code_climate:
     repo_token: 861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe
 before_script:
+  - gem update --system
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - google-chrome-stable --headless --no-sandbox --disable-gpu --remote-debugging-port=9222 http://localhost &
