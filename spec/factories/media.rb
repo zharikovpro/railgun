@@ -1,4 +1,3 @@
-include ActionDispatch::TestProcess
 FactoryGirl.define do
   factory :media do
     slug { Faker::Internet.unique.slug }
