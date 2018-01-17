@@ -9,9 +9,7 @@ Rails.application.config.lograge.enabled = true
 Rails.application.config.log_formatter = ::Logger::Formatter.new
 
 # Detect 12F app environment, compatible with Heroku
-if ENV['RAILS_LOG_TO_STDOUT'].present?
-  Rails.application.config.logger = ActiveSupport::Logger.new(STDOUT)
-end
+Rails.application.config.logger = ActiveSupport::Logger.new(STDOUT) if ENV['RAILS_LOG_TO_STDOUT'].present?
 
 # Configure sensitive parameters which will be filtered from the log file.
 Rails.application.config.filter_parameters += [:password]
