@@ -134,7 +134,7 @@ gem 'paranoia', '~> 2.4.0'
 
 # File uploads and attachments
 gem 'aws-sdk', '~> 3.0.x'
-gem 'paperclip', '~> 5.1.0'
+gem 'paperclip', '~> 5.2.1'
 
 # Administration area and additional gems required for it to work with Rails 5
 gem 'activeadmin', '~> 1.2.1'
