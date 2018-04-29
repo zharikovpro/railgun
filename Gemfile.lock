@@ -826,8 +826,8 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     parallel (1.12.1)
-    paranoia (2.4.0)
-      activerecord (>= 4.0, < 5.2)
+    paranoia (2.4.1)
+      activerecord (>= 4.0, < 5.3)
     parser (2.4.0.2)
       ast (~> 2.3)
     passenger (5.1.12)
