@@ -617,8 +617,8 @@ GEM
     capybara-email (2.5.0)
       capybara (~> 2.4)
       mail
-    capybara-screenshot (1.0.18)
-      capybara (>= 1.0, < 3)
+    capybara-screenshot (1.0.19)
+      capybara (>= 1.0, < 4)
       launchy
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
@@ -845,7 +845,7 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    public_suffix (3.0.1)
+    public_suffix (3.0.2)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.5)
@@ -903,7 +903,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rollbar (2.15.5)
+    rollbar (2.15.6)
       multi_json
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
