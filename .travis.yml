@@ -11,6 +11,7 @@ cache:
   bundler: true
 services:
   - postgresql
+  - docker
 addons:
   apt:
     packages:
@@ -31,5 +32,7 @@ script:
   - bundle exec rails db:structure:load
   - bundle exec rails db:seed
   - bundle exec rake ci
+  - docker build -t railgun .
+  - docker run -i -t -v `pwd`:/railgun -p 5000:3000 railgun /bin/sh -c "service postgresql start; bin/setup railgun; bundle exec rake ci"
 after_success:
   - bundle exec codeclimate-test-reporter

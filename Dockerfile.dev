@@ -1,0 +1,12 @@
+# docker build -f Dockerfile.dev -t railgun_dev .
+# docker run -i -t -v `pwd`:/railgun -p 5000:3000 railgun_dev
+
+FROM railgun
+
+WORKDIR /railgun
+
+ADD . /root/railgun
+
+RUN bin/setup railgun
+RUN bundle exec guard
+RUN bundle exec rails s
