@@ -1,11 +1,15 @@
-# docker build -f Dockerfile.dev -t railgun_dev .
-# docker run -i -t -v `pwd`:/railgun -p 5000:3000 railgun_dev
+# docker build -f Dockerfile.prod -t railgun_prod .
+# docker run -i -t -p 3000:3000 railgun_prod
 
 FROM railgun
 
-WORKDIR /railgun
+WORKDIR /root/railgun
 
-RUN git fetch && git pull origin master
+RUN git pull origin master
 
-RUN bin/setup railgun
-RUN bundle exec rails s
+RUN cp .env.example .env
+RUN rbenv exec bundle install
+
+ENV RAILS_ENV=production
+
+ENTRYPOINT ["rbenv", "exec", "bundle", "exec", "rails", "server", "-p", "3000", "-b", "0.0.0.0"]

@@ -1,5 +1,6 @@
 .git
-Dockerfile.*
+Dockerfile*
 .dockerignore
 .gitignore
+*.sql
 .env
