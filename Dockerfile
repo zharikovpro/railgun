@@ -96,6 +96,8 @@ RUN /etc/init.d/postgresql start \
     && psql --command "CREATE USER root WITH SUPERUSER PASSWORD 'root';"
 
 USER root
+
+# Install Railgun
 RUN git clone https://github.com/zharikovpro/railgun.git /root/railgun
 WORKDIR /root/railgun
 RUN rbenv exec bundle install \
