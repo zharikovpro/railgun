@@ -22,4 +22,4 @@ Checkup
 Docker
 ------
 
-[Unofficial image](https://hub.docker.com/r/mifrill/railgun-browser/)
+[Unofficial image](https://hub.docker.com/r/mifrill/railgun/)
