@@ -158,7 +158,7 @@ gem 'inherited_resources', '~> 1.8.0'
 gem 'formtastic', '~> 3.1'
 
 # HTML/XML parser
-gem 'nokogiri', '~> 1.8.1'
+gem 'nokogiri', '~> 1.10.3'
 
 # Model factories in all environments
 gem 'factory_girl_rails', '~> 4.9.0'
