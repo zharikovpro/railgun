@@ -98,7 +98,7 @@ gem 'redcarpet', '~> 3.4.0'
 gem 'flutie', '~> 2.0.0'
 
 # Paging
-gem 'kaminari', '~> 1.0.1'
+gem 'kaminari', '~> 1.2.1'
 
 # Compress JavaScript in production
 gem 'uglifier', '>= 1.3.0'
