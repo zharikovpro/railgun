@@ -39,7 +39,7 @@ gem 'sidekiq-failures', '~> 1.0.0'
 # gem 'sidekiq-throttler', '~> 0.5.1'
 
 # Passenger has the best documentation and support
-gem 'passenger', '~> 5.1.12'
+gem 'passenger', '~> 5.3.7'
 
 # Rails 5 with Action Cable
 gem 'rails', '~> 5.1.3'
