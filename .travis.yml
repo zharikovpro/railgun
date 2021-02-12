@@ -25,6 +25,7 @@ before_install:
   - gem install bundler --version=1.16.1
   - gem install bundler:1.16.1
   - bundler --version
+  - gem update --system
 before_script:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 script:
