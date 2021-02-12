@@ -852,7 +852,8 @@ GEM
     rack-canonical-host (0.2.3)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
-    rack-cors (1.0.2)
+    rack-cors (1.0.5)
+      rack (>= 1.6.0)
     rack-protection (2.0.3)
       rack
     rack-test (0.8.3)
@@ -1081,7 +1082,7 @@ DEPENDENCIES
   phony_rails (~> 0.14.6)
   pundit (~> 1.1.0)
   rack-canonical-host (~> 0.2.3)
-  rack-cors (~> 1.0.1)
+  rack-cors (~> 1.0.5)
   rack-test (~> 0.8.2)
   raddocs (~> 2.2.0)
   rails (~> 5.1.3)

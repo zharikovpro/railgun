@@ -182,7 +182,7 @@ gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
 
 # enable cross-origin resource sharing
-gem 'rack-cors', '~> 1.0.1', require: 'rack/cors'
+gem 'rack-cors', '~> 1.0.5', require: 'rack/cors'
 
 group :development do
   # Run app in background for faster reload
