@@ -245,7 +245,7 @@ group :development, :test do
   # Code style checker
   gem 'guard-rubocop', '~> 1.3.0'
   gem 'rubocop', '~> 0.52.1', require: false
-  gem 'rubocop-rspec', '~> 1.22.0'
+  # gem 'rubocop-rspec', '~> 1.22.0'
 
   # Automagically launches tests for changed files
   gem 'guard', '~> 2.14.2'
