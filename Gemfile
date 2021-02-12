@@ -92,7 +92,7 @@ gem 'slim-rails', '~> 3.1.0'
 gem 'stylus', '~> 1.0.1'
 
 # Markdown rendering
-gem 'redcarpet', '~> 3.4.0'
+gem 'redcarpet', '~> 3.5.1'
 
 # View helpers
 gem 'flutie', '~> 2.0.0'
@@ -158,7 +158,7 @@ gem 'inherited_resources', '~> 1.8.0'
 gem 'formtastic', '~> 3.1'
 
 # HTML/XML parser
-gem 'nokogiri', '~> 1.8.1'
+gem 'nokogiri', '~> 1.11.0'
 
 # Model factories in all environments
 gem 'factory_girl_rails', '~> 4.9.0'
@@ -245,7 +245,7 @@ group :development, :test do
   # Code style checker
   gem 'guard-rubocop', '~> 1.3.0'
   gem 'rubocop', '~> 0.52.1', require: false
-  gem 'rubocop-rspec', '~> 1.22.0'
+  # gem 'rubocop-rspec', '~> 1.22.0'
 
   # Automagically launches tests for changed files
   gem 'guard', '~> 2.14.2'
