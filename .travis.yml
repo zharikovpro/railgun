@@ -23,7 +23,7 @@ addons:
 before_install:
   - rvm use @global
   - gem uninstall bundler -x || gem uninstall bundler -a || true
-  - gem install bundler --version=1.16.1 --no-rdoc --no-ri
+  - gem install bundler --version=1.16.1
   - bundler --version
 before_script:
   - gem update --system
