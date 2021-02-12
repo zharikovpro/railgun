@@ -92,7 +92,7 @@ gem 'slim-rails', '~> 3.1.0'
 gem 'stylus', '~> 1.0.1'
 
 # Markdown rendering
-gem 'redcarpet', '~> 3.4.0'
+gem 'redcarpet', '~> 3.5.1'
 
 # View helpers
 gem 'flutie', '~> 2.0.0'
