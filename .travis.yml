@@ -22,7 +22,7 @@ addons:
     repo_token: 861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe
 before_install:
   - rvm use @global
-  - gem uninstall bundler -x
+  - gem uninstall bundler -x || gem uninstall bundler -a || true
   - gem install bundler --version=1.16.1 --no-rdoc --no-ri
   - bundler --version
 before_script:
