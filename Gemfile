@@ -266,10 +266,7 @@ group :test do
   gem 'fuubar', '~> 2.3.1'
 
   # Generate code coverate reports
-  gem 'simplecov', '~> 0.13.0'
-
-  # Upload coverage reports to CodeClimate
-  gem 'codeclimate-test-reporter', '~> 1.0.8', require: nil
+  gem 'simplecov', '~> 0.15.1'
 
   # Test background jobs
   gem 'rspec-sidekiq', '~> 3.0.3'

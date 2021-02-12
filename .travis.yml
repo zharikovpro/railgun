@@ -6,7 +6,10 @@ language: ruby
 rvm:
   - 2.5.0
 env:
-  - RAILS_ENV=test
+  global:
+    - CC_TEST_REPORTER_ID=861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe
+  matrix:
+    - RAILS_ENV=test
 cache:
   bundler: true
 services:
@@ -18,8 +21,6 @@ addons:
       - dpkg
   postgresql: "9.6"
   chrome: stable
-  code_climate:
-    repo_token: 861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe
 before_install:
   - rvm use @global
   - gem install bundler --version=1.16.1
@@ -30,6 +31,9 @@ before_install:
   - gem pristine --all
 before_script:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - cp .env.example .env
   - bundle exec rails db:create
@@ -37,4 +41,4 @@ script:
   - bundle exec rails db:seed
   - bundle exec rake ci
 after_success:
-  - bundle exec codeclimate-test-reporter
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
