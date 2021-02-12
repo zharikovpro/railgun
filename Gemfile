@@ -79,7 +79,7 @@ gem 'phony_rails', '~> 0.14.6'
 # gem 'hightop', '~> 0.1.4'
 
 # Authentication engine
-gem 'devise', '~> 4.4.0'
+gem 'devise', '~> 4.7.1'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
