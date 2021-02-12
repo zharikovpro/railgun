@@ -11,6 +11,7 @@ cache:
   bundler: true
 services:
   - postgresql
+  - xvfb
 addons:
   apt:
     packages:
