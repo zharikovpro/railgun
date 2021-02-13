@@ -1,7 +1,7 @@
 {
   "name": "railgun",
   "description": "",
-  "stack": "cedar-14",
+  "stack": "heroku-20",
   "scripts": {
     "test": "rake ci"
   },
