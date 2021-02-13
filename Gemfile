@@ -2,11 +2,14 @@ source 'https://rubygems.org'
 
 ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 
+# Framework
+gem 'rails', '~> 6.1.2'
+
 # Pretty print Ruby objects
 gem 'awesome_print', '~> 1.8.0'
 
 # Load ENV variables from .env file
-gem 'dotenv-rails', '~> 2.2.1', require: 'dotenv/rails-now'
+gem 'dotenv-rails', '~> 2.7.6', require: 'dotenv/rails-now'
 
 # Exceptions monitoring
 gem 'rollbar', '~> 2.15.5'
@@ -41,9 +44,6 @@ gem 'sidekiq-failures', '~> 1.0.0'
 # Passenger has the best documentation and support
 gem 'passenger', '~> 5.1.12'
 
-# Rails 5 with Action Cable
-gem 'rails', '~> 5.2.4'
-
 # Redis for Action Cable, Sidekiq and cache
 # gem 'redis', '~> 3.0'
 
@@ -58,7 +58,7 @@ gem 'actionpack-cloudflare', '~> 1.1.0'
 # gem 'logstash-logger'
 
 # PostgreSQL for Active Record
-gem 'pg', '~> 0.21'
+gem 'pg', '~> 1.2.3'
 
 # Validates emails
 gem 'email_validator', '~> 1.6.0'
@@ -137,9 +137,8 @@ gem 'paranoia', '~> 2.4.0'
 gem 'aws-sdk', '~> 3.0.x'
 gem 'paperclip', '~> 5.2.1'
 
-# Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', '~> 1.4.3'
-gem 'inherited_resources', '~> 1.12.0'
+# Administration area
+gem 'activeadmin', '~> 2.9.0'
 
 # Clone records with a click
 # gem 'active_admin-duplicatable'
@@ -207,7 +206,7 @@ end
 
 group :development, :test do
   # Eloquent specs
-  gem 'rspec-rails', '~> 3.6.1'
+  gem 'rspec-rails', '~> 4.0.2'
 
   # Testing helpers
   gem 'shoulda-matchers', '~> 3.1.2'
