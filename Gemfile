@@ -42,7 +42,7 @@ gem 'sidekiq-failures', '~> 1.0.0'
 gem 'passenger', '~> 5.1.12'
 
 # Rails 5 with Action Cable
-gem 'rails', '~> 5.1.3'
+gem 'rails', '~> 5.2.4'
 
 # Redis for Action Cable, Sidekiq and cache
 # gem 'redis', '~> 3.0'
@@ -138,8 +138,8 @@ gem 'aws-sdk', '~> 3.0.x'
 gem 'paperclip', '~> 5.2.1'
 
 # Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', '~> 1.2.1'
-gem 'inherited_resources', '~> 1.8.0'
+gem 'activeadmin', '~> 1.4.3'
+gem 'inherited_resources', '~> 1.12.0'
 
 # Clone records with a click
 # gem 'active_admin-duplicatable'
@@ -168,7 +168,7 @@ gem 'factory_girl_rails', '~> 4.9.0'
 gem 'faker', '~> 1.8.7'
 
 # Changes audit
-gem 'paper_trail', '~> 8.1.2'
+gem 'paper_trail', '~> 11.1.0'
 
 # Make network requests
 # gem 'httpclient', '~> 2.8'
