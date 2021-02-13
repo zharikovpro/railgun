@@ -84,10 +84,11 @@ gem 'devise', '~> 4.7.1'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Slim for templates
+# Slim for templates and gems to support integration with Rails 6
 gem 'slim', '~> 4.1.0'
 gem 'slim-rails', '~> 3.2.0'
-gem 'sprockets-rails', '~> 2.0' # lock version to support slim
+gem 'sprockets-rails', '~> 3.2.2'
+gem 'sassc-rails'
 
 # Markdown rendering
 gem 'redcarpet', '~> 3.5.1'
