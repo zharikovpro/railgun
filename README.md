@@ -5,7 +5,7 @@
 Railgun
 =======
 
-Opinionated Ruby 2.7.2 + Rails 5.1 [Twelve-Factor](http://12factor.net/) project template, Heroku-ready. 
+Opinionated Ruby 2.7.2 + Rails 5.2 [Twelve-Factor](http://12factor.net/) project template, Heroku-ready. 
 
 Installation
 ------------
