@@ -16,6 +16,7 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara-screenshot/rspec'
 require 'capybara/email/rspec'
+require 'webdrivers'
 
 require 'aws-sdk'
 Aws.config[:s3] = { stub_responses: true }
