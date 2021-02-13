@@ -3,13 +3,9 @@ dist: xenial
 notifications:
   email: false
 language: ruby
-rvm:
-  - 2.5.0
 env:
   global:
     - CC_TEST_REPORTER_ID=861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe
-  matrix:
-    - RAILS_ENV=test
 cache:
   bundler: true
 services:
@@ -22,13 +18,9 @@ addons:
   postgresql: "9.6"
   chrome: stable
 before_install:
-  - rvm use @global
-  - gem install bundler --version=1.16.1
-  - gem install bundler:1.16.1
-  - bundler --version
-  - gem update --system
-  - gem install backports
-  - gem pristine --all
+  - gem install bundler:2.2.9
+install:
+  - bundle --jobs=3 --retry=3
 before_script:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
