@@ -219,17 +219,17 @@ group :development, :test do
   gem 'letter_opener', '~> 1.6.0'
 
   # Acceptance testing
-  gem 'capybara', '~> 2.17.0'
+  gem 'capybara', '~> 3.35.3'
 
   # Screenshot all failures
-  gem 'capybara-screenshot', '~> 1.0.18'
+  gem 'capybara-screenshot', '~> 1.0.25'
 
   # Email utilities
-  gem 'capybara-email', '~> 2.5.0'
+  gem 'capybara-email', '~> 3.0.2'
 
   # Test with real Chrome
-  gem 'chromedriver-helper', '~> 1.1.0'
-  gem 'selenium-webdriver', '~> 3.8.0'
+  gem 'webdrivers', '~> 4.5.0', require: false
+  gem 'selenium-webdriver', '~> 3.142.7'
 
   # Testing Rack::Attack
   gem 'rack-test', '~> 0.8.2'
@@ -260,6 +260,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'puma' # for Capybara
+
   # Instafailing formatter
   gem 'fuubar', '~> 2.3.1'
 
