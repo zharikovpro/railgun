@@ -3,8 +3,6 @@ dist: xenial
 notifications:
   email: false
 language: ruby
-rvm:
-  - 2.5.0
 env:
   global:
     - CC_TEST_REPORTER_ID=861a17b4c76ddedf9972cdaca2771f9ab0c99f4ce92298fa965d25a4be55bdbe
