@@ -245,14 +245,14 @@ group :development, :test do
   # Code style checker
   gem 'guard-rubocop', '~> 1.3.0'
   gem 'rubocop', '~> 0.52.1', require: false
-  # gem 'rubocop-rspec', '~> 1.22.0'
+  gem 'rubocop-rspec', '~> 1.22.0'
 
   # Automagically launches tests for changed files
   gem 'guard', '~> 2.14.2'
   gem 'guard-rspec', '~> 4.7.3', require: false
 
   # And updates gems when needed
-  gem 'guard-bundler', '~> 2.1.0', require: false
+  gem 'guard-bundler', '~> 3.0.0', require: false
 
   # And auto starts rails server
   gem 'guard-rails', '~> 0.8.1'
