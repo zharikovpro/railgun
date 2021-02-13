@@ -21,8 +21,8 @@ addons:
   chrome: stable
 before_install:
   - rvm use @global
-  - gem install bundler --version=1.16.1
-  - gem install bundler:1.16.1
+  - yes | gem install bundler --version=1.16.1
+  - yes | gem install bundler:1.16.1
   - bundler --version
   - gem update --system
   - gem install backports
