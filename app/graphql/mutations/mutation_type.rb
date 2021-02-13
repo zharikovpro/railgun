@@ -13,7 +13,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :user, Mutations::UserInputType
     resolve ->(_obj, args, ctx) do
       object = User.find(args['id'])
-      UserPolicy.new(ctx[:current_user], object).update? ? object.update_attributes(args[:user].to_h) : nil
+      UserPolicy.new(ctx[:current_user], object).update? ? object.update(args[:user].to_h) : nil
       object
     end
   end
@@ -58,7 +58,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, ctx) do
       object = Page.find_by_slug(args['slug'])
-      PagePolicy.new(ctx[:current_user], object).update? ? object.update_attributes(args[:page].to_h) : nil
+      PagePolicy.new(ctx[:current_user], object).update? ? object.update(args[:page].to_h) : nil
       object
     end
   end
@@ -83,7 +83,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, ctx) do
       object = Media.find_by_slug(args['slug'])
-      MediaPolicy.new(ctx[:current_user], object).update? ? object.update_attributes(args[:media].to_h) : nil
+      MediaPolicy.new(ctx[:current_user], object).update? ? object.update(args[:media].to_h) : nil
       object
     end
   end
@@ -108,7 +108,7 @@ Mutations::MutationType = GraphQL::ObjectType.define do
     argument :slug, !types.String
     resolve ->(_obj, args, ctx) do
       object = Snippet.find_by_slug(args['slug'])
-      SnippetPolicy.new(ctx[:current_user], object).update? ? object.update_attributes(args[:snippet].to_h) : nil
+      SnippetPolicy.new(ctx[:current_user], object).update? ? object.update(args[:snippet].to_h) : nil
       object
     end
   end

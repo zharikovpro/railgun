@@ -12,7 +12,7 @@ gem 'awesome_print', '~> 1.8.0'
 gem 'dotenv-rails', '~> 2.7.6', require: 'dotenv/rails-now'
 
 # Exceptions monitoring
-gem 'rollbar', '~> 2.15.5'
+gem 'rollbar', '~> 3.1.2'
 
 # Guess my country
 gem 'russian', '~> 0.6.0'
@@ -89,9 +89,6 @@ gem 'slim', '~> 4.1.0'
 gem 'slim-rails', '~> 3.2.0'
 gem 'sprockets-rails', '~> 2.0' # lock version to support slim
 
-# Stylus for styles
-gem 'stylus', '~> 1.0.1'
-
 # Markdown rendering
 gem 'redcarpet', '~> 3.5.1'
 
@@ -161,7 +158,7 @@ gem 'formtastic', '~> 3.1'
 gem 'nokogiri', '~> 1.11.0'
 
 # Model factories in all environments
-gem 'factory_girl_rails', '~> 4.9.0'
+gem 'factory_bot_rails', '~> 6.1.0'
 
 # Fake values generator
 gem 'faker', '~> 1.8.7'
@@ -177,7 +174,7 @@ gem 'paper_trail', '~> 11.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # API authentication
-gem 'graphql', '~> 1.7.8'
+gem 'graphql', '~> 1.12.4'
 gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
 

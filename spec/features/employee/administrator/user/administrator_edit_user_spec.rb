@@ -5,7 +5,7 @@ feature = <<~HEREDOC
 HEREDOC
 
 RSpec.feature feature, issues: ['railgun#151'] do
-  before { login_as FactoryGirl.create(:administrator) }
+  before { login_as FactoryBot.create(:administrator) }
   let(:user) { create(:user) }
   before { visit edit_staff_user_path(user) }
 
