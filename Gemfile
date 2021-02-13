@@ -186,8 +186,8 @@ gem 'rack-cors', '~> 1.0.5', require: 'rack/cors'
 
 group :development do
   # Run app in background for faster reload
-  gem 'spring', '~> 2.0.2'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring', '~> 2.1.1'
+  gem 'spring-watcher-listen', '~> 2.0.1'
 
   # Run tests in background, too
   gem 'spring-commands-rspec', '~> 1.0.4'
