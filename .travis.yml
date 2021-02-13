@@ -30,7 +30,6 @@ script:
   - cp .env.example .env
   - bundle exec rails db:create
   - bundle exec rails db:structure:load
-  - bundle exec rails db:seed
   - bundle exec rake ci
 after_success:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
