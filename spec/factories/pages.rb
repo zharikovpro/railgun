@@ -1,6 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :page do
     slug { Faker::Internet.unique.slug }
-    markdown Faker::Hacker.say_something_smart
+    markdown { Faker::Hacker.say_something_smart }
   end
 end

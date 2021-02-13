@@ -2,14 +2,17 @@ source 'https://rubygems.org'
 
 ruby File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip
 
+# Framework
+gem 'rails', '~> 6.1.2'
+
 # Pretty print Ruby objects
 gem 'awesome_print', '~> 1.8.0'
 
 # Load ENV variables from .env file
-gem 'dotenv-rails', '~> 2.2.1', require: 'dotenv/rails-now'
+gem 'dotenv-rails', '~> 2.7.6', require: 'dotenv/rails-now'
 
 # Exceptions monitoring
-gem 'rollbar', '~> 2.15.5'
+gem 'rollbar', '~> 3.1.2'
 
 # Guess my country
 gem 'russian', '~> 0.6.0'
@@ -41,9 +44,6 @@ gem 'sidekiq-failures', '~> 1.0.0'
 # Passenger has the best documentation and support
 gem 'passenger', '~> 5.1.12'
 
-# Rails 5 with Action Cable
-gem 'rails', '~> 5.2.4'
-
 # Redis for Action Cable, Sidekiq and cache
 # gem 'redis', '~> 3.0'
 
@@ -58,7 +58,7 @@ gem 'actionpack-cloudflare', '~> 1.1.0'
 # gem 'logstash-logger'
 
 # PostgreSQL for Active Record
-gem 'pg', '~> 0.21'
+gem 'pg', '~> 1.2.3'
 
 # Validates emails
 gem 'email_validator', '~> 1.6.0'
@@ -88,9 +88,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'slim', '~> 4.1.0'
 gem 'slim-rails', '~> 3.2.0'
 gem 'sprockets-rails', '~> 2.0' # lock version to support slim
-
-# Stylus for styles
-gem 'stylus', '~> 1.0.1'
 
 # Markdown rendering
 gem 'redcarpet', '~> 3.5.1'
@@ -137,9 +134,8 @@ gem 'paranoia', '~> 2.4.0'
 gem 'aws-sdk', '~> 3.0.x'
 gem 'paperclip', '~> 5.2.1'
 
-# Administration area and additional gems required for it to work with Rails 5
-gem 'activeadmin', '~> 1.4.3'
-gem 'inherited_resources', '~> 1.12.0'
+# Administration area
+gem 'activeadmin', '~> 2.9.0'
 
 # Clone records with a click
 # gem 'active_admin-duplicatable'
@@ -162,7 +158,7 @@ gem 'formtastic', '~> 3.1'
 gem 'nokogiri', '~> 1.11.0'
 
 # Model factories in all environments
-gem 'factory_girl_rails', '~> 4.9.0'
+gem 'factory_bot_rails', '~> 6.1.0'
 
 # Fake values generator
 gem 'faker', '~> 1.8.7'
@@ -178,7 +174,7 @@ gem 'paper_trail', '~> 11.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # API authentication
-gem 'graphql', '~> 1.7.8'
+gem 'graphql', '~> 1.12.4'
 gem 'jwt', '~> 1.5.6'
 gem 'knock', '~> 2.1.1'
 
@@ -187,8 +183,8 @@ gem 'rack-cors', '~> 1.0.5', require: 'rack/cors'
 
 group :development do
   # Run app in background for faster reload
-  gem 'spring', '~> 2.0.2'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring', '~> 2.1.1'
+  gem 'spring-watcher-listen', '~> 2.0.1'
 
   # Run tests in background, too
   gem 'spring-commands-rspec', '~> 1.0.4'
@@ -207,7 +203,7 @@ end
 
 group :development, :test do
   # Eloquent specs
-  gem 'rspec-rails', '~> 3.6.1'
+  gem 'rspec-rails', '~> 4.0.2'
 
   # Testing helpers
   gem 'shoulda-matchers', '~> 3.1.2'

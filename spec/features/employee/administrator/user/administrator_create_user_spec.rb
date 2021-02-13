@@ -15,7 +15,7 @@ RSpec.feature feature, issues: ['railgun#95'] do
   HEREDOC
 
   scenario scenario do
-    login_as FactoryGirl.create(:administrator)
+    login_as FactoryBot.create(:administrator)
     visit new_staff_user_path
 
     fill_in 'Email', with: email

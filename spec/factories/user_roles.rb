@@ -1,11 +1,11 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user_role do
     association :user
-    role :administrator
+    role { :administrator }
 
     UserRole::TITLES.each do |title|
       trait title do
-        role title
+        role { title }
       end
     end
   end
