@@ -85,8 +85,9 @@ gem 'devise', '~> 4.7.1'
 gem 'bcrypt', '~> 3.1.7'
 
 # Slim for templates
-gem 'slim', '~> 3.0.9'
-gem 'slim-rails', '~> 3.1.0'
+gem 'slim', '~> 4.1.0'
+gem 'slim-rails', '~> 3.2.0'
+gem 'sprockets-rails', '~> 2.0' # lock version to support slim
 
 # Stylus for styles
 gem 'stylus', '~> 1.0.1'
