@@ -17,6 +17,8 @@ addons:
       - dpkg
   postgresql: "9.6"
   chrome: stable
+before_install:
+  - gem install bundler:2.2.9
 before_script:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
