@@ -156,7 +156,7 @@ gem 'activeadmin', '~> 2.9.0'
 gem 'formtastic', '~> 3.1'
 
 # HTML/XML parser
-gem 'nokogiri', '~> 1.11.0'
+gem 'nokogiri', '~> 1.11.4'
 
 # Model factories in all environments
 gem 'factory_bot_rails', '~> 6.1.0'
