@@ -1304,7 +1304,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0212)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     minitest (5.14.3)
     morpher (0.2.6)
@@ -1339,8 +1341,10 @@ GEM
       rspec-core (>= 3.4.0, < 4.0.0)
     nenv (0.3.0)
     newrelic_rpm (4.7.1.340)
-    nio4r (2.5.5)
+    nio4r (2.5.7)
     nokogiri (1.11.1-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -1374,7 +1378,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-    puma (5.2.1)
+    puma (5.3.1)
       nio4r (~> 2.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -1570,6 +1574,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   actionpack-cloudflare (~> 1.1.0)
